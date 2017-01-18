@@ -14,8 +14,14 @@
     <script src="js/bootstrap.min.js"></script>
 </head>
 <body>
-<header>
-	<h1>Santon Elo</h1>
-</header>
+    <header>
+    	<h1>Santon Elo</h1>
+    </header>
+    <main>
+        
+    </main>
+    <footer>
+        
+    </footer>
 </body>
 </html>
