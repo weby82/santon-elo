@@ -11,6 +11,20 @@ footer{
 }
 
 /*****************************************************
+		Bouton
+***************************************************/
+.btn-default{
+	background-color: #BAD1D1;
+	color: #fff;
+	border-color: #6E8A94;
+}
+
+.btn-default:hover{
+	background-color: #6E8A94;
+	color: #fff;
+
+}
+/*****************************************************
 		Navbar
 *********************************************************/
 .navbar-form{
@@ -68,7 +82,9 @@ footer{
 /**************************************************
 			contenu accueil
 **************************************************/
-
+section{
+	margin-bottom: 40px;
+}
 article .article-inner img{
 	width: 100%;
 }

@@ -34,7 +34,7 @@
 						<img src="http://lorempixel.com/150/150/abstract/6/" alt="#">
 						<p>Santon 1</p>
 						<p>12€</p>
-						<button type="button">Ajouter au panier</button>
+						<button class="btn btn-default" type="button">Ajouter au panier</button>
 					</div>
 				</article>
 				<article class="col-md-3 col-sm-6 col-xs-12">
@@ -42,7 +42,7 @@
 						<img src="http://lorempixel.com/150/150/abstract/6/" alt="#">
 						<p>Santon 2</p>
 						<p>12€</p>
-						<button type="button">Ajouter au panier</button>
+						<button class="btn btn-default" type="button">Ajouter au panier</button>
 					</div>
 				</article>
 				<article class="col-md-3 col-sm-6 col-xs-12">
@@ -50,7 +50,7 @@
 						<img src="http://lorempixel.com/150/150/abstract/6/" alt="#">
 						<p>Santon 3</p>
 						<p>12€</p>
-						<button type="button">Ajouter au panier</button>
+						<button class="btn btn-default" type="button">Ajouter au panier</button>
 					</div>
 				</article>
 				<article class="col-md-3 col-sm-6 col-xs-12">
@@ -58,7 +58,7 @@
 						<img src="http://lorempixel.com/150/150/abstract/6/" alt="#">
 						<p>Santon 4</p>
 						<p>12€</p>
-						<button type="button">Ajouter au panier</button>
+						<button class="btn btn-default" type="button">Ajouter au panier</button>
 					</div>
 				</article>
 			</div>
