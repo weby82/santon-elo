@@ -28,7 +28,7 @@
 					</nav>
 				</aside>
 				<section class="col-md-9 col-sm-12" id="section-liste">
-					<div class="col-md-3 col-sm-6 col-xs-12 bloc-santon">
+					<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 bloc-santon">
 						<div class="bloc-santon-inner">
 							<a href="" title="">
 								<img src="./assets/img/santons/nativite/mouton.jpg" alt="santon mouton">
@@ -40,7 +40,7 @@
 							</a>
 						</div>
 					</div>
-					<div class="col-md-3 col-sm-6 col-xs-12 bloc-santon">
+					<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 bloc-santon">
 						<div class="bloc-santon-inner">
 							<a href="" title="">
 								<img src="./assets/img/santons/nativite/vache.jpg" alt="santon vache">
@@ -52,7 +52,7 @@
 							</a>
 						</div>
 					</div>
-					<div class="col-md-3 col-sm-6 col-xs-12 bloc-santon">
+					<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 bloc-santon">
 						<div class="bloc-santon-inner">
 							<a href="" title="">
 								<img src="./assets/img/santons/nativite/santon3.jpg" alt="santon 3">
@@ -64,7 +64,7 @@
 							</a>
 						</div>
 					</div>
-					<div class="col-md-3 col-sm-6 col-xs-12 bloc-santon">
+					<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 bloc-santon">
 						<div class="bloc-santon-inner">
 							<a href="" title="">
 								<img src="./assets/img/santons/nativite/ange.jpg" alt="santon ange">
@@ -76,7 +76,7 @@
 							</a>
 						</div>
 					</div>
-					<div class="col-md-3 col-sm-6 col-xs-12 bloc-santon">
+					<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 bloc-santon">
 						<div class="bloc-santon-inner">
 							<a href="" title="">
 								<img src="./assets/img/santons/nativite/mouton.jpg" alt="santon mouton">
@@ -88,7 +88,7 @@
 							</a>
 						</div>
 					</div>
-					<div class="col-md-3 col-sm-6 col-xs-12 bloc-santon">
+					<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 bloc-santon">
 						<div class="bloc-santon-inner">
 							<a href="" title="">
 								<img src="./assets/img/santons/nativite/vache.jpg" alt="santon vache">
@@ -100,7 +100,7 @@
 							</a>
 						</div>
 					</div>
-					<div class="col-md-3 col-sm-6 col-xs-12 bloc-santon">
+					<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 bloc-santon">
 						<div class="bloc-santon-inner">
 							<a href="" title="">
 								<img src="./assets/img/santons/nativite/santon3.jpg" alt="santon 3">
@@ -112,7 +112,7 @@
 							</a>
 						</div>
 					</div>
-					<div class="col-md-3 col-sm-6 col-xs-12 bloc-santon">
+					<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 bloc-santon">
 						<div class="bloc-santon-inner">
 							<a href="" title="">
 								<img src="./assets/img/santons/nativite/ange.jpg" alt="santon ange">
@@ -124,7 +124,7 @@
 							</a>
 						</div>
 					</div>
-					<div class="col-md-3 col-sm-6 col-xs-12 bloc-santon">
+					<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 bloc-santon">
 						<div class="bloc-santon-inner">
 							<a href="" title="">
 								<img src="./assets/img/santons/nativite/mouton.jpg" alt="santon mouton">
@@ -136,7 +136,7 @@
 							</a>
 						</div>
 					</div>
-					<div class="col-md-3 col-sm-6 col-xs-12 bloc-santon">
+					<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 bloc-santon">
 						<div class="bloc-santon-inner">
 							<a href="" title="">
 								<img src="./assets/img/santons/nativite/vache.jpg" alt="santon vache">
@@ -148,7 +148,7 @@
 							</a>
 						</div>
 					</div>
-					<div class="col-md-3 col-sm-6 col-xs-12 bloc-santon">
+					<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 bloc-santon">
 						<div class="bloc-santon-inner">
 							<a href="" title="">
 								<img src="./assets/img/santons/nativite/santon3.jpg" alt="santon 3">
@@ -160,7 +160,7 @@
 							</a>
 						</div>
 					</div>
-					<div class="col-md-3 col-sm-6 col-xs-12 bloc-santon">
+					<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 bloc-santon">
 						<div class="bloc-santon-inner">
 							<a href="" title="">
 								<img src="./assets/img/santons/nativite/ange.jpg" alt="santon ange">

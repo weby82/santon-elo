@@ -156,6 +156,9 @@ section img{
     margin-bottom: 30px;
     color: #647277;
 }
+#section-liste{
+	padding: 0;
+}
 .col-nav-left li a{
 	color: #000;
 	font-weight: 600;
