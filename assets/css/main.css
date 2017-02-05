@@ -1,3 +1,46 @@
+@font-face {
+	font-family: 'palanquin';
+	src: url('../fonts/Palanquin-ExtraLight.ttf');
+	src: url('../fonts/Palanquin-ExtraLight.ttf') format('truetype');
+	font-weight: 200;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'palanquin';
+	src: url('../fonts/Palanquin-Light.ttf');
+	src: url('../fonts/Palanquin-Light.ttf') format('truetype');
+	font-weight: 300;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'palanquin';
+	src: url('../fonts/Palanquin-Regular.ttf');
+	src: url('../fonts/Palanquin-Regular.ttf') format('truetype');
+	font-weight: 400;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'palanquin';
+	src: url('../fonts/Palanquin-Medium.ttf');
+	src: url('../fonts/Palanquin-Medium.ttf') format('truetype');
+	font-weight: 500;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'palanquin';
+	src: url('../fonts/Palanquin-SemiBold.ttf');
+	src: url('../fonts/Palanquin-SemiBold.ttf') format('truetype');
+	font-weight: 600;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'palanquin';
+	src: url('../fonts/Palanquin-Bold.ttf');
+	src: url('../fonts/Palanquin-Bold.ttf') format('truetype');
+	font-weight: 700;
+	font-style: normal;
+}
+
 body{
 	background: #F3ECD9;
 }
@@ -10,20 +53,34 @@ footer{
 	margin-top: 50px;
 }
 
+h1, h2, h3, h4, .navbar-brand, .navbar li a, .btn-default, .col-nav-left li a{
+	font-family: 'palanquin', helvetica, sans-serif;
+}
+h2{
+	color: #647277;
+}
 /*****************************************************
 		Bouton
 ***************************************************/
 .btn-default{
 	background-color: #BAD1D1;
 	color: #fff;
-	border-color: #6E8A94;
+	border-color: #BAD1D1;
 }
 
 .btn-default:hover{
 	background-color: #6E8A94;
+	border-color: #6E8A94;
 	color: #fff;
 
 }
+
+.navbar-form .btn-default:hover{
+	background-color: #6E8A94;
+	color: #fff;
+	border-color: #BAD1D1;
+}
+
 /*****************************************************
 		Navbar
 *********************************************************/
@@ -33,6 +90,7 @@ footer{
 .navbar-brand{
 	color: #fff;
 	font-size: 2.3em;
+	font-weight: 600;
 }
 .navbar{
 	background: #FCB3B3;
@@ -41,9 +99,9 @@ footer{
 	border: 0 none;
 	border-radius: 0;
 }
-.nav li a{
+.navbar li a{
 	color: #fff;
-	font-weight: bold;
+	font-weight: 500;
 	text-transform: uppercase;
 	white-space: nowrap;
 }
@@ -85,6 +143,61 @@ footer{
 section{
 	margin-bottom: 40px;
 }
-article .article-inner img{
+section img{
 	width: 100%;
+}
+
+/***********************************************
+			Categorie Liste santon
+**************************************************/
+.container h2{
+	padding-bottom: 10px;
+    border-bottom: 1px solid #647277;
+    margin-bottom: 30px;
+    color: #647277;
+}
+.col-nav-left li a{
+	color: #000;
+	font-weight: 600;
+}
+.col-nav-left h3{
+	margin-top: 0;
+}
+.col-nav-left li a:hover{
+	color: #fff;
+}
+.bloc-santon{
+	margin-bottom: 20px;
+}
+.bloc-santon-inner{
+	text-align: center;
+	background: #fff;
+	padding: 0 0 20px 0;
+	-webkit-box-shadow: 1px 1px 4px 1px rgba(0,0,0,0.2);
+	-moz-box-shadow: 1px 1px 4px 1px rgba(0,0,0,0.2);
+	box-shadow: 1px 1px 4px 1px rgba(0,0,0,0.2);
+	transition: all 0.5s ease;
+}
+.bloc-santon-inner:hover{
+	-webkit-box-shadow: 1px 1px 4px 1px rgba(0,0,0,0.3);
+	-moz-box-shadow: 1px 1px 4px 1px rgba(0,0,0,0.3);
+	box-shadow: 1px 1px 4px 1px rgba(0,0,0,0.3);
+	transform:scale(1.04,1.04);
+	transition: all 0.5s ease;
+}
+.bloc-santon-inner h3{
+	padding: 0 10px;
+	margin-top: 10px;
+	font-size: 1.3em;
+}
+.bloc-santon-inner h3 a{
+	text-decoration: none;
+	color: #000;
+	font-weight: 500;
+}
+.bloc-santon-inner h3 a:hover{
+	color:#6E8A94;
+}
+.bloc-santon-inner p{
+	padding: 0 10px;
 }
