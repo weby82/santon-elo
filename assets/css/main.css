@@ -111,6 +111,7 @@ h2{
 
 .nav>li>a:focus, .nav>li>a:hover, .nav li.active a{
 	background: #BAD1D1;
+	color: #647277;
 }
 
 .navbar-default .navbar-toggle{
