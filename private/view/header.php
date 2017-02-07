@@ -36,41 +36,41 @@
               </div>
             </form>
         </div>
-        <div class="row">
-            <nav class="navbar navbar-default">
-                <div class="container">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                        <div class="navbar-header">
-                          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                          </button>
-                        </div>
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                          <ul class="nav nav-justified">
+        
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                      </button>
+                    </div>
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                      <ul class="nav nav-justified">
 
-                            <li class="active">
-                                <a href="index.php">Accueil</a>
-                            </li>
-                           
-                            <li><a href="#">Catégorie</a></li>
-                            <li><a href="#">Actualités</a></li>
+                        <li class="active">
+                            <a href="index.php">Accueil</a>
+                        </li>
+                       
+                        <li><a href="#">Catégorie</a></li>
+                        <li><a href="#">Actualités</a></li>
 
-                            <li>
-                                <a href="connexion.php">Evènements</a>
-                            </li>
-                            <li>
-                                <a href="inscription.php">Livre d'or</a>
-                            </li>
-                            <li>
-                                <a href="contact.php">Contact</a>
-                            </li>
-                          </ul>
-                        </div>
+                        <li>
+                            <a href="connexion.php">Evènements</a>
+                        </li>
+                        <li>
+                            <a href="inscription.php">Livre d'or</a>
+                        </li>
+                        <li>
+                            <a href="contact.php">Contact</a>
+                        </li>
+                      </ul>
                     </div>
                 </div>
-            </nav>
-        </div>
+            </div>
+        </nav>
+  
     </header>

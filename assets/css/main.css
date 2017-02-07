@@ -157,8 +157,11 @@ section img{
     margin-bottom: 30px;
     color: #647277;
 }
-#section-liste{
+.section-content{
 	padding: 0;
+}
+.col-nav-left{
+	display: block;
 }
 .col-nav-left, .col-nav-left .nav a{
 	color:#647277;
@@ -189,6 +192,7 @@ section img{
 	box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.2);
 	transition: all 1s ease;
 }
+
 .bloc-santon-inner:hover{
 	background: #BAD1D1;
 	/*-webkit-box-shadow: 2px 1px 3px 2px rgba(0,0,0,0.2);
@@ -198,7 +202,7 @@ section img{
 	transition: all 0.5s ease;
 }
 .bloc-santon-inner .btn-default:hover{
-	font-size: 1.1em;
+	/*font-size: 1.1em;*/
 }
 .bloc-santon-inner:hover .btn-default{
 	background: #6E8A94;
@@ -208,6 +212,9 @@ section img{
 }
 .bloc-santon-inner:hover .btn-default:hover{
 	color: #fff;
+}
+.bloc-santon-inner .prix-santon{
+	font-size: 1.4em;
 }
 .bloc-santon-inner h3{
 	padding: 0 10px;
@@ -222,8 +229,79 @@ section img{
 	height: 2.6em;
 }
 .bloc-santon-inner h3 a:hover{
-	color:#6E8A94;
+	color:#647277;
 }
 .bloc-santon-inner p{
 	padding: 0 10px;
+}
+
+.ajout-panier span{
+	display: inline-block;
+	font-size: 0;
+	margin-left: 0px;
+	transition: 0.5s ease;
+
+}
+.ajout-panier:hover span{
+	margin-left: 10px;
+	font-size: 14px;
+}
+
+
+/**************************************************************
+		Detail santon
+**********************************************************/
+
+.detail-santon h3{
+	margin-top: 0;
+}
+
+#quantite-value{
+	width: 65px;
+	display: inline-block;
+}
+
+#buy-block .prix{
+	font-family: 'palanquin';
+	display: inline-block;
+	font-size: 1.9em;
+	margin-left: 50px;
+	line-height: 1em;
+
+}
+.prix-article{
+    vertical-align: top;
+}
+
+#buy-block .prix .euro{
+	font-size: 0.65em;
+	vertical-align: super;
+}
+
+.bouton-panier{
+	margin-left: 40px;
+}
+.form-inline .form-group{
+	display: inline-block;
+}
+
+@media screen and (max-width: 768px) {
+	
+	#buy-block .prix{
+		position: relative;
+	}
+	.prix-article{
+    	vertical-align: baseline;
+	}
+	#buy-block .prix .euro{
+		position: relative;
+		top:0.3em;
+	}
+}
+
+@media screen and (max-width: 992px) {
+
+	.col-nav-left{
+		display: none;
+	}
 }

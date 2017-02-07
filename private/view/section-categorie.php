@@ -27,7 +27,7 @@
 						</ul>
 					</nav>
 				</aside>
-				<section class="col-md-9 col-sm-12" id="section-liste">
+				<section class="col-md-9 col-sm-12 section-content">
 					<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 bloc-santon">
 						<div class="bloc-santon-inner">
 							<a href="" title="">
@@ -35,9 +35,11 @@
 							</a>
 							<h3><a href="#" title="">Mouton</a></h3>
 							<p class="prix-santon">12€</p>
+							
 							<a href="#" title="" class="ajout-panier btn btn-default">
-								Ajouter au panier
+								Ajouter au panier<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
 							</a>
+							
 						</div>
 					</div>
 					<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 bloc-santon">
@@ -48,7 +50,7 @@
 							<h3><a href="#" title="">Vache</a></h3>
 							<p class="prix-santon">12€</p>
 							<a href="#" title="" class="ajout-panier btn btn-default">
-								Ajouter au panier
+								Ajouter au panier<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
 							</a>
 						</div>
 					</div>
@@ -60,7 +62,7 @@
 							<h3><a href="#" title="">Santon 3</a></h3>
 							<p class="prix-santon">12€</p>
 							<a href="#" title="" class="ajout-panier btn btn-default">
-								Ajouter au panier
+								Ajouter au panier<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
 							</a>
 						</div>
 					</div>
@@ -72,7 +74,7 @@
 							<h3><a href="#" title="">Ange</a></h3>
 							<p class="prix-santon">12€</p>
 							<a href="#" title="" class="ajout-panier btn btn-default">
-								Ajouter au panier
+								Ajouter au panier<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
 							</a>
 						</div>
 					</div>
@@ -84,7 +86,7 @@
 							<h3><a href="#" title="">Mouton</a></h3>
 							<p class="prix-santon">12€</p>
 							<a href="#" title="" class="ajout-panier btn btn-default">
-								Ajouter au panier
+								Ajouter au panier<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
 							</a>
 						</div>
 					</div>
@@ -96,7 +98,7 @@
 							<h3><a href="#" title="">Vache</a></h3>
 							<p class="prix-santon">12€</p>
 							<a href="#" title="" class="ajout-panier btn btn-default">
-								Ajouter au panier
+								Ajouter au panier<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
 							</a>
 						</div>
 					</div>
@@ -108,7 +110,7 @@
 							<h3><a href="#" title="">Santon 3</a></h3>
 							<p class="prix-santon">12€</p>
 							<a href="#" title="" class="ajout-panier btn btn-default">
-								Ajouter au panier
+								Ajouter au panier<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
 							</a>
 						</div>
 					</div>
@@ -120,7 +122,7 @@
 							<h3><a href="#" title="">Ange</a></h3>
 							<p class="prix-santon">12€</p>
 							<a href="#" title="" class="ajout-panier btn btn-default">
-								Ajouter au panier
+								Ajouter au panier<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
 							</a>
 						</div>
 					</div>
@@ -132,7 +134,7 @@
 							<h3><a href="#" title="">Mouton</a></h3>
 							<p class="prix-santon">12€</p>
 							<a href="#" title="" class="ajout-panier btn btn-default">
-								Ajouter au panier
+								Ajouter au panier<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
 							</a>
 						</div>
 					</div>
@@ -144,7 +146,7 @@
 							<h3><a href="#" title="">Vache</a></h3>
 							<p class="prix-santon">12€</p>
 							<a href="#" title="" class="ajout-panier btn btn-default">
-								Ajouter au panier
+								Ajouter au panier<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
 							</a>
 						</div>
 					</div>
@@ -156,7 +158,7 @@
 							<h3><a href="#" title="">Santon 3</a></h3>
 							<p class="prix-santon">12€</p>
 							<a href="#" title="" class="ajout-panier btn btn-default">
-								Ajouter au panier
+								Ajouter au panier<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
 							</a>
 						</div>
 					</div>
@@ -168,7 +170,7 @@
 							<h3><a href="#" title="">Ange</a></h3>
 							<p class="prix-santon">12€</p>
 							<a href="#" title="" class="ajout-panier btn btn-default">
-								Ajouter au panier
+								Ajouter au panier<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
 							</a>
 						</div>
 					</div>
