@@ -1,4 +1,4 @@
-	<main>
+	<main id="section-detail-santon">
 		<div class="container">
 			<div class="container-inner">
 				<h2>Nativité</h2>
@@ -38,7 +38,8 @@
 						</div>
 						<p id="availability_statut">
 							<span id="dispo-label">Disponibilité :</span>
-							<span id="dispo-value"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> En stock</span>				
+							<span id="dispo-value"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> En stock</span>
+							<span id="dispo-value"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Indisponible</span>				
 						</p>
 						<div class="detail-ajout-panier">
 							<form id="buy-block" class="form-inline" action="" method="POST">
@@ -49,7 +50,7 @@
 								<div class="prix form-group">
 									<span class="prix-article">12</span><span class="euro"> €</span>
 								</div>
-								<div class="form-group bouton-panier">
+								<div class="form-group pull-right bouton-panier">
 									<button type="submit" class="ajout-panier btn btn-default">Ajouter au panier<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></button>
 								</div>
 								
