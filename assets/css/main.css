@@ -112,7 +112,7 @@ h2{
 	padding: 15px 15px;
 }
 
-.nav>li>a:focus, .nav>li>a:hover, .nav li.active a, .nav li.active a:hover{
+.nav>li>a:focus, .nav>li>a:hover, .nav li.active a, #dropcategorie:hover, #dropcategorie>ul>li>a:hover{
 	background: #BAD1D1;
 	color: #647277;
 }
@@ -123,11 +123,42 @@ h2{
 .navbar-default .navbar-toggle .icon-bar{
 	background-color: #fff;
 }
-/*************************************************************
+
+#dropcategorie{
+	text-align: center;
+	padding: 15px 15px;
+}
+
+#dropcategorie ul{
+	background: #FCB3B3;
+}
+
+#dropcategorie a:focus{
+	background-color: #BAD1D1;
+}
+
+#dropcategorie>ul>li>a:hover{
+	color: white;
+}
+
+#panier {
+
+}
+
+/*********************************************************
+			Accueil - Carousel Principal
+*********************************************************/
+
+#carousel-accueil{
+	margin-bottom: 40px;
+}
+
+/*********************************************************
 			Accueil - carousel temoignage
 ******************************************************/
 #section-temoignage{
 	background: #FCB3B3;
+	margin-top: 70px;
 }
 #carousel-temoignage .item{
 	height: 300px;
@@ -150,7 +181,52 @@ section{
 section img{
 	width: 100%;
 }
+#section-last-ajout h2, #section-last-actu h2{
+	border-bottom: 1px solid black;
+	margin-bottom: 25px;
+	padding-bottom: 10px;
+}
 
+.lien-article {
+	text-align: right;
+}
+
+#section-last-actu .article-inner {
+	box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.2);
+	background-color: white;
+	background-clip: content-box;
+	transition: box-shadow 0.5s;
+	transition-timing-function: ease-in-out;
+}
+
+#section-last-ajout .article-inner {
+	text-align: center;
+	background: #fff;
+	padding: 0 0 20px 0;
+	min-height: 340px;
+	-webkit-box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.2);
+	-moz-box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.2);
+	box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.2);
+	transition: all 1s ease;
+}
+
+
+#section-last-actu .article-inner:hover{
+	background-color: #f4f4f2;
+	box-shadow: 8px 8px 5px rgba(0,0,0,0.2);
+}
+
+
+.article-inner p{
+	padding: 5px;
+}
+.articles-actu {
+	text-align: justify;
+}
+
+#section-last-ajout button{
+	margin-left: 25%;
+}
 /***********************************************
 			Categorie Liste santon
 **************************************************/
@@ -194,11 +270,13 @@ section img{
 	-moz-box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.2);
 	box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.2);
 	transition: all 1s ease;
+	margin-top: 20px;
 }
 
 .bloc-santon-inner:hover{
 	background: #BAD1D1;
-	
+	/*background: #BAD1D1;*/
+	box-shadow: 8px 8px 5px rgba(0,0,0,0.2);
 	transition: all 0.5s ease;
 }
 .bloc-santon-inner .btn-default:hover{
@@ -247,6 +325,29 @@ section img{
 	font-size: 14px;
 }
 
+/**************************************************
+				Footer
+**************************************************/
+
+footer{
+	color: white;
+}
+
+footer a{
+	color: white;
+}
+
+footer div ul li{
+	display: inline;
+}
+
+footer div ul{
+	padding-top: 30px;
+}
+
+footer div p{
+	float: right;
+}
 
 /**************************************************************
 		Detail santon

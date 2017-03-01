@@ -2,7 +2,9 @@
 		<div class="container">
 			<ul>
 				<li><a href="#!">Plan du site</a></li>
+				<li>|</li>
 				<li><a href="#!">CGU</a></li>
+				<li>|</li>
 				<li><a href="#!">Rejoignez-nous sur Facebook</a></li>
 			</ul>
 			<p>Copyright &copy;Santon Elo 2017</p>
