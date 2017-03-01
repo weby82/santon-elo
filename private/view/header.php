@@ -14,6 +14,7 @@
 
     <link rel="stylesheet" type="text/css" href="./assets/css/liinaa.css">
     <link rel="stylesheet" type="text/css" href="./assets/css/main.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/kelly.css">
 </head>
 <body>
    <!-- Création de l'en tête et du bandeau de navigation -->
