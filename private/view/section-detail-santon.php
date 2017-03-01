@@ -22,7 +22,7 @@
 								<a href="#">Mariage</a>
 							</li>
 							<li class="">
-								<a href="#">Commande spéciale</a>
+								<a href="#">Commande personnalisée</a>
 							</li>
 						</ul>
 					</nav>
@@ -45,7 +45,7 @@
 							<form id="buy-block" class="form-inline" action="" method="POST">
 								<div class="quantite form-group">
 									<label>Quantité</label>
-									<input class="form-control" id="quantite-value" type="number" name="quantite">
+									<input class="form-control" id="quantite-value" type="number" min="0" name="quantite">
 								</div>
 								<div class="prix form-group">
 									<span class="prix-article">12</span><span class="euro"> €</span>

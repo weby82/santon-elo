@@ -22,7 +22,7 @@
 								<a href="#">Mariage</a>
 							</li>
 							<li class="">
-								<a href="#">Commande spéciale</a>
+								<a href="#">Commande personnalisée</a>
 							</li>
 						</ul>
 					</nav>
