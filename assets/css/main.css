@@ -134,7 +134,7 @@ h2{
 }
 
 #dropcategorie a:focus{
-	background-color: #BAD1D1;
+	background-color: transparent;
 }
 
 #dropcategorie>ul>li>a:hover{
