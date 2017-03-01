@@ -434,3 +434,63 @@ footer div p{
 		display: none;
 	}
 }
+
+/******************************************************
+                  	CONTENU LISTE ARTICLES	
+*******************************************************/
+
+
+.trait {
+	border: 1px solid black;
+
+}
+
+h1 {
+	margin-left: 30px;
+}
+
+h1, h2, h3 {
+	font-family: 'Palanquin', sans-serif;
+}
+
+.img-responsive {
+	width: 100%;
+	
+}
+
+
+.list-article {
+	margin: 20px 50px;
+	
+}
+.list-article article h2{
+	margin-top:0;
+}
+.list-article-inner {
+	padding: 20px 50px 20px 30px;
+	overflow: auto;
+}
+.list-article article {
+	transition: box-shadow 0.3s, background-color 0.3s;
+	transition-timing-function: ease-in-out;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 15px;
+}
+
+
+.list-article .readmore {
+	float: right;
+}
+
+.list-article article:hover {
+	background-color: #f4f4f2;
+	border: 1px solid grey;
+	box-shadow: 10px 10px 5px #888888;	
+}
+
+
+@media screen and (min-width:992px) {
+	.list-article article .img-responsive{
+		max-width: 220px;
+	}
+}
