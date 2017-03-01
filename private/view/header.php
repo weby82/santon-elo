@@ -32,17 +32,8 @@
               <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 <a id="panier" href="panier.php">Panier</a>
                 <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-              </ul>
+              </button> 
             </div>
-
-
             <form class="navbar-form navbar-right" role="search">
               <div class="input-group">
                 <input type="text" class="form-control" placeholder="Rechercher">
@@ -79,7 +70,7 @@
                                   <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                  <li><a href="#">Noël/Natavité</a></li>
+                                  <li><a href="categorie-santons.php">Noël/Natavité</a></li>
                                   <li><a href="#">Baptême</a></li>
                                   <li><a href="#">Anniversaire</a></li>
                                   <li><a href="#">Communion</a></li>
@@ -88,7 +79,7 @@
                                 </ul>
                               </div>
                           </li> 
-                          <li><a href="#">Actualités</a></li>
+                          <li><a href="actualites.php">Actualités</a></li>
 
                           <li>
                               <a href="">Evènements</a>
