@@ -3,25 +3,25 @@
 		<section id="section-last-actu">
 			<div class="container">
 				<h2>Dernières Actualités</h2>
-				<article class="col-md-4 col-sm-6 col-xs-12">
+				<article class="col-md-4 col-sm-6 col-xs-12 articles-actu">
 					<div class="article-inner">
-						<img src="http://lorempixel.com/300/300/abstract/5/" alt="#">
+						<img src="http://lorempixel.com/300/300/people/1/" alt="#">
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo minima ex, culpa exercitationem fuga! Amet adipisci, unde modi temporibus, laborum quaerat in culpa aliquam cum, debitis eos, aspernatur quos ipsa.</p>
-						<p><a href="#!">Lire la suite</a></p>
+						<p class="lien-article"><a href="#!">Lire la suite</a></p>
 					</div>
 				</article>
-				<article class="col-md-4 col-sm-6 col-xs-12">
+				<article class="col-md-4 col-sm-6 col-xs-12 articles-actu">
 					<div class="article-inner">
-						<img src="http://lorempixel.com/300/300/abstract/5/" alt="#">
+						<img src="http://lorempixel.com/300/300/people/2/" alt="#">
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo minima ex, culpa exercitationem fuga! Amet adipisci, unde modi temporibus, laborum quaerat in culpa aliquam cum, debitis eos, aspernatur quos ipsa.</p>
-						<p><a href="#!">Lire la suite</a></p>
+						<p class="lien-article"><a href="#!">Lire la suite</a></p>
 					</div>
 				</article>
-				<article class="col-md-4 col-sm-6 col-xs-12">
+				<article class="col-md-4 col-sm-6 col-xs-12 articles-actu">
 					<div class="article-inner">
-						<img src="http://lorempixel.com/300/300/abstract/5/" alt="#">
+						<img src="http://lorempixel.com/300/300/people/3/" alt="#">
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo minima ex, culpa exercitationem fuga! Amet adipisci, unde modi temporibus, laborum quaerat in culpa aliquam cum, debitis eos, aspernatur quos ipsa.</p>
-						<p><a href="#!">Lire la suite</a></p>
+						<p class="lien-article"><a href="#!">Lire la suite</a></p>
 					</div>
 				</article>
 			</div>
@@ -30,35 +30,59 @@
 			<div class="container">
 				<h2>Derniers Ajout</h2>
 				<article class="col-md-3 col-sm-6 col-xs-12">
-					<div class="article-inner">
-						<img src="http://lorempixel.com/150/150/abstract/6/" alt="#">
-						<p>Santon 1</p>
-						<p>12€</p>
-						<button class="btn btn-default" type="button">Ajouter au panier</button>
+					<div class="bloc-santon-inner">
+						<a href="detail-santon.php" title="">
+							<img src="./assets/img/santons/nativite/mouton.jpg" alt="santon mouton">
+						</a>
+						<h3><a href="detail-santon.php" title="">Mouton</a></h3>
+						<p class="prix-santon">12€</p>
+							
+						<a href="#" title="" class="ajout-panier btn btn-default">
+							Ajouter au panier
+							<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+						</a>		
 					</div>
 				</article>
-				<article class="col-md-3 col-sm-6 col-xs-12">
-					<div class="article-inner">
-						<img src="http://lorempixel.com/150/150/abstract/6/" alt="#">
-						<p>Santon 2</p>
-						<p>12€</p>
-						<button class="btn btn-default" type="button">Ajouter au panier</button>
+				<article class="col-md-3 col-sm-6 col-xs-12 articles-ajout">
+					<div class="bloc-santon-inner">
+						<a href="detail-santon.php" title="">
+							<img src="./assets/img/santons/nativite/mouton.jpg" alt="santon mouton">
+						</a>
+						<h3><a href="detail-santon.php" title="">Mouton</a></h3>
+						<p class="prix-santon">12€</p>
+							
+						<a href="#" title="" class="ajout-panier btn btn-default">
+							Ajouter au panier
+							<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+						</a>		
 					</div>
 				</article>
-				<article class="col-md-3 col-sm-6 col-xs-12">
-					<div class="article-inner">
-						<img src="http://lorempixel.com/150/150/abstract/6/" alt="#">
-						<p>Santon 3</p>
-						<p>12€</p>
-						<button class="btn btn-default" type="button">Ajouter au panier</button>
+				<article class="col-md-3 col-sm-6 col-xs-12 articles-ajout">
+					<div class="bloc-santon-inner">
+						<a href="detail-santon.php" title="">
+							<img src="./assets/img/santons/nativite/mouton.jpg" alt="santon mouton">
+						</a>
+						<h3><a href="detail-santon.php" title="">Mouton</a></h3>
+						<p class="prix-santon">12€</p>
+							
+						<a href="#" title="" class="ajout-panier btn btn-default">
+							Ajouter au panier
+							<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+						</a>		
 					</div>
 				</article>
-				<article class="col-md-3 col-sm-6 col-xs-12">
-					<div class="article-inner">
-						<img src="http://lorempixel.com/150/150/abstract/6/" alt="#">
-						<p>Santon 4</p>
-						<p>12€</p>
-						<button class="btn btn-default" type="button">Ajouter au panier</button>
+				<article class="col-md-3 col-sm-6 col-xs-12 articles-ajout">
+					<div class="bloc-santon-inner">
+						<a href="detail-santon.php" title="">
+							<img src="./assets/img/santons/nativite/mouton.jpg" alt="santon mouton">
+						</a>
+						<h3><a href="detail-santon.php" title="">Mouton</a></h3>
+						<p class="prix-santon">12€</p>
+							
+						<a href="#" title="" class="ajout-panier btn btn-default">
+							Ajouter au panier
+							<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+						</a>		
 					</div>
 				</article>
 			</div>
