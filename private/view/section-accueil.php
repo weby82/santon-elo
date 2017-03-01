@@ -6,6 +6,7 @@
 				<article class="col-md-4 col-sm-6 col-xs-12 articles-actu">
 					<div class="article-inner">
 						<img src="http://lorempixel.com/300/300/people/1/" alt="#">
+						<h3>Titre</h3>
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo minima ex, culpa exercitationem fuga! Amet adipisci, unde modi temporibus, laborum quaerat in culpa aliquam cum, debitis eos, aspernatur quos ipsa.</p>
 						<p class="lien-article"><a href="#!">Lire la suite</a></p>
 					</div>
@@ -13,6 +14,7 @@
 				<article class="col-md-4 col-sm-6 col-xs-12 articles-actu">
 					<div class="article-inner">
 						<img src="http://lorempixel.com/300/300/people/2/" alt="#">
+						<h3>Titre</h3>
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo minima ex, culpa exercitationem fuga! Amet adipisci, unde modi temporibus, laborum quaerat in culpa aliquam cum, debitis eos, aspernatur quos ipsa.</p>
 						<p class="lien-article"><a href="#!">Lire la suite</a></p>
 					</div>
@@ -20,6 +22,7 @@
 				<article class="col-md-4 col-sm-6 col-xs-12 articles-actu">
 					<div class="article-inner">
 						<img src="http://lorempixel.com/300/300/people/3/" alt="#">
+						<h3>Titre</h3>
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo minima ex, culpa exercitationem fuga! Amet adipisci, unde modi temporibus, laborum quaerat in culpa aliquam cum, debitis eos, aspernatur quos ipsa.</p>
 						<p class="lien-article"><a href="#!">Lire la suite</a></p>
 					</div>
