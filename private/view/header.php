@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
-    <title>Santon Elo</title>
+    <title>Santon'Elo</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
      <!-- Bootstrap -->
@@ -12,10 +12,10 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="./assets/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="./assets/css/liinaa.css">
     <link rel="stylesheet" type="text/css" href="./assets/css/main.css">
     <link rel="stylesheet" type="text/css" href="./assets/css/kelly.css">
     <link rel="stylesheet" type="text/css" href="./assets/css/pier.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/liinaa.css">
 </head>
 <body>
    <!-- Création de l'en tête et du bandeau de navigation -->
@@ -23,7 +23,7 @@
     <header>
         <div class="container">
             <div class="navbar-header">
-              <a class="navbar-brand" href="index.php">Santon Elo</a>
+              <a class="navbar-brand" href="index.php">Santon'Elo</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
                   

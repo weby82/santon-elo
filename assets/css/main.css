@@ -485,7 +485,8 @@ h1, h2, h3 {
 .list-article article:hover {
 	background-color: #f4f4f2;
 	border: 1px solid grey;
-	box-shadow: 10px 10px 5px #888888;	
+	border-radius: 5px;
+	box-shadow: 10px 10px 5px grey;	
 }
 
 
