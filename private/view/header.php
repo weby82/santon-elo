@@ -1,3 +1,9 @@
+<?php
+/* Start session in a header so you don't need to start it on each single page....maybe on some :p*/
+if(session_status()==PHP_SESSION_NONE){session_start();}
+/* Require / request database file with methods and actions to be performed */
+require_once("private/database.php");    
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -12,11 +18,16 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="./assets/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="./assets/css/liinaa.css">
+    <script type="text/javascript" src="./assets/js/mainJSscript.js"></script>
+
+    
     <link rel="stylesheet" type="text/css" href="./assets/css/main.css">
     <link rel="stylesheet" type="text/css" href="./assets/css/kelly.css">
     <link rel="stylesheet" type="text/css" href="./assets/css/pier.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/liinaa.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/damien.css">
 </head>
+
 <body>
    <!-- Création de l'en tête et du bandeau de navigation -->
 
@@ -26,13 +37,25 @@
               <a class="navbar-brand" href="index.php">Santon Elo</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
-                  
 
-            <div class="dropdown navbar-right">
-              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                <a id="panier" href="panier.php">Panier</a>
-                <span class="caret"></span>
-              </button> 
+            <div class="navbar-right">
+                <a id="panier" class="shopping_cart_info btn btn-default" href="#">
+                  <i class='glyphicon glyphicon-shopping-cart'></i>            
+                  <span id='items_in_shopping_cart'>
+                      <?php 
+                          /* If there are items in the basket display total of items, else display 'empty'*/
+                          if(isset($_SESSION["items"])){   
+                              if(count($_SESSION["items"]) > 0){
+                                  echo count($_SESSION["items"]);
+                              }else{
+                                  echo "0";
+                              }
+                          }else{
+                              echo "0";
+                          }
+                      ?>
+                  </span>
+                </a>
             </div>
             <form class="navbar-form navbar-right" role="search">
               <div class="input-group">
@@ -70,7 +93,7 @@
                                   <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                  <li><a href="categorie-santons.php">Noël/Natavité</a></li>
+                                  <li><a href="./categorie-santons.php?categorie=nativite">Noël/Natavité</a></li>
                                   <li><a href="#">Baptême</a></li>
                                   <li><a href="#">Anniversaire</a></li>
                                   <li><a href="#">Communion</a></li>
@@ -95,5 +118,18 @@
                 </div>
             </div>
         </nav>
-  
+    
     </header>
+     <!-- Holds shopping cart info with selected items -->
+    <div class="shopping_cart_holder">
+        <a href="#" class="close_shopping_cart_holder" ><span class="glyphicon glyphicon-remove" aria-hidden="true"></a>
+        <h3>Mon panier</h3>
+        <div id="shopping_cart_output">
+        </div>
+    </div>
+    
+    <!--    Display Item here-->
+    <div class="item_display_holder"></div>
+
+    <!-- Display info about cart update in the middle of the screen -->
+    <div id='cart_update_info'></div>
