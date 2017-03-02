@@ -102,3 +102,14 @@ table tr td.itemInCartDisplay{
 }
 
 /*####################### DISPLAY INFO ABOUT UPDATED CART(in the middle of the page) #######################*/
+
+/*********************************************************************
+            bloc santon liste santon
+**************************************************************/
+
+.bloc-santon .item_disp_values{
+    margin:10px 0;
+}
+.bloc-santon .item_disp_values select{
+    padding: 4px;
+}
