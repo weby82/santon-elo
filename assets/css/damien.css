@@ -1,0 +1,103 @@
+/*####################### SHOPPING CART INFO BAR(The one that display total items in the cart) #######################*/ 
+.shopping_cart_info_holder{margin-bottom:20px; text-align: center;}
+.shopping_cart_info{
+	margin-top:8px;
+}
+.shopping_cart_info:hover{border:1px solid #dedede;}
+/*####################### //// SHOPPING CART INFO BAR #######################*/
+
+
+/*####################### THE SHOPPING CART #######################*/
+.shopping_cart_holder{ 
+	position: absolute;
+    right:0;
+    left:0;
+    z-index:999999;
+	display:none;
+    margin:0 auto;
+    margin:0 auto;    
+	margin-top: 30px;
+	padding: 5px;
+    max-width: 600px;
+    max-width: 600px;
+    border:1px solid #dedede;
+	border-radius: 4px;
+	background: #fff;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+	color: #000;
+}
+
+table tr td.itemInCartDisplay{
+    vertical-align: middle;
+}
+.shopping_cart_holder ul.cart-products-loaded{margin: 0;padding: 0;list-style: none;}
+/* Close viewing shopping cart */
+.shopping_cart_holder .close_shopping_cart_holder{
+    float: right;
+    padding: 2px 5px;
+    color: #647277;
+    font-size: 15px;
+}
+.shopping_cart_holder .close_shopping_cart_holder:hover{border:collapse;background-color: #647277;color: #fff; border-radius: 22px;}
+#shopping_cart_output ul.cart-products-loaded li{margin-bottom: 1px;padding: 5px;background: #888;}
+.shopping_cart_holder .remove_item_from_cart{
+    float: right;
+    margin-left: 30px;
+    padding: 0 10px;
+    color: #647277;
+    text-decoration: none;
+    font-size: 18px;
+}
+.shopping_cart_holder .remove_item_from_cart:hover{font-weight:600;}
+.cart-products-total{padding: 5px 0px 0px 5px;text-align: right;font-weight: bold;}
+.shopping_cart_holder h3{margin-bottom:15px;padding: 0px 0px 5px 0px;}
+
+/* Checkout button */
+.shopping_cart_holder .checkoutButton{
+}
+/* Checkout button hover */
+.shopping_cart_holder .checkoutButton:hover{font-weight: 700;}
+.itemInCardRow{border-top: 1px solid #ddd;border-bottom: 1px solid #ddd;}
+.quantity_change{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    background-color: #6E8A94;
+    text-align: center;
+    line-height: 20px;
+    color: #fff;
+}
+.quantity_change:hover{
+    text-decoration: none;
+    background-color: #BAD1D1;
+}
+/*####################### //// THE SHOPPING HOLDER #######################*/
+
+/*####################### DISPLAY INFO ABOUT UPDATED CART(in the middle of the page) #######################*/
+#cart_update_info { 
+    position:fixed;    
+    top: 50%;
+    left: 50%;    
+    z-index:1000000;
+    margin-left: -8em;
+    width:10em;
+    height:auto;
+}
+#new_item_added{
+    position:fixed;
+    margin:0 auto;
+    padding:5px;
+    max-width: 250px;
+    height: auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f3f3f3;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.32);
+    
+    text-align:center;
+    text-decoration: none;
+/*    font-family: Arial;*/
+    font-size: 20px;
+}
+/*####################### DISPLAY INFO ABOUT UPDATED CART(in the middle of the page) #######################*/

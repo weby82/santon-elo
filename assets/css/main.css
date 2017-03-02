@@ -59,7 +59,7 @@ footer{
 h1, h2, h3, h4, .navbar-brand, .navbar li a, .btn-default, .col-nav-left li a{
 	font-family: 'palanquin', helvetica, sans-serif;
 }
-h2{
+h2,h3{
 	color: #647277;
 }
 /*****************************************************
