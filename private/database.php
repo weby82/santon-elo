@@ -5,6 +5,7 @@
 /* Request MySQL Conf file with credentials */	
 require_once("dbConf.php");
 
+
 class MySQLDatabase
 {
     private $connection;

@@ -19,7 +19,6 @@
 </head>
 <body>
    <!-- Création de l'en tête et du bandeau de navigation -->
-
     <header>
         <div class="container">
             <div class="navbar-header">

@@ -28,5 +28,4 @@ defined("DB_PASSWORD") ? null : define ("DB_PASSWORD", "");
 /** Database Charset to use in creating database tables. */
 defined('DB_CHARSET') ? null : define('DB_CHARSET', 'utf8');
 
-
 ?>

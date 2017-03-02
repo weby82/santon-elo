@@ -70,6 +70,7 @@ if(isset($_POST["load_cart_items"])){
             $total += ($item["item_price"] * $item["item_qty"]);            
             }  // Close foreach loop
         ?>
+        
             <!-- This part displays Checkout button and price total -->
             <tr>                 
                 <td class='itemInCartDisplay' colspan='4'>

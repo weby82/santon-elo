@@ -29,6 +29,7 @@
 					</nav>
 				</aside>
 
+
 				<?php    
 			        /* FETCH ITEMS ACCORDING TO CATEGORIES CHOSEN BY USER */
 			        if(isset($_GET['santon_id'])){

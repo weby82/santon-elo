@@ -9,6 +9,7 @@
 
 /* Display aded products in the shopping cart */
 ?>
+
     <main>
         <div class="container">
             <div class="container-inner">
