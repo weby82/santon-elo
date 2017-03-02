@@ -6,23 +6,23 @@ function envoyerRequeteSQL ($requeteSQL, $tabToken){
 	$userDB		= $GLOBALS["userDB"];
 	$passwordDB = $GLOBALS["passwordDB"];
 
-	$dsn 		= "mysql:host=$hostnameDB;dbname=$databaseDB;charset=utf-8";
+	$dsn 		= "mysql:host=$hostnameDB;dbname=$databaseDB;charset=utf8";
 
 	try
 	{
-		$objetPDO	= new PDO($dsn, $userDB, $passwordDB);
+		$objetPDO    = new PDO($dsn, $userDB, $passwordDB);
 
-		$objetPDO -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$objetPDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 
 		$objetPDOStatement = $objetPDO->prepare($requeteSQL);
 
-		$objetPDOStatement -> execute($tabToken);
+		$objetPDOStatement->execute($tabToken);
 
-		$objetPDOStatement -> setFetchMode(PDO::FETCH_ASSOC);
+		$objetPDOStatement->setFetchMode(PDO::FETCH_ASSOC);
 	}
 	catch (PDOException $e)
 	{
-		echo $e -> getMessage();
+		echo $e->getMessage();
 	}
 
 	return $objetPDOStatement;
