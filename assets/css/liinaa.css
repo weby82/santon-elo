@@ -1,0 +1,13 @@
+/*****************************************************
+		Formulaire de contact
+***************************************************/
+
+
+form .colonne-gauche input{
+	margin-bottom: 11px;
+}
+
+#formulaire button{
+	padding: 6px 25px;
+	font-size: 16px;
+}

@@ -1,3 +1,4 @@
+	
 	<main id="section-detail-santon">
 		<div class="container">
 			<div class="container-inner">
@@ -27,6 +28,23 @@
 						</ul>
 					</nav>
 				</aside>
+
+				<?php    
+			        /* FETCH ITEMS ACCORDING TO CATEGORIES CHOSEN BY USER */
+			        if(isset($_GET['santon_id'])){
+			            $choixSanton = $_GET['santon_id'];        
+			            /* If you want to display all items click on ShareMyWeb Logo */
+			            if($menuCategory =="main"){
+			                $items = $database->find_by_query("SELECT * FROM santon");    
+			            /* Categories accordingly */
+			            }else{            
+			                $items = $database->find_by_query("SELECT * FROM santon WHERE id='{$choixSanton}'");    
+			            }
+			        }else{
+			            $items = $database->find_by_query("SELECT * FROM santon");    
+			        }
+
+			    ?>  
 				<section class="col-md-9 col-sm-12 section-content">
 					<figure class="col-md-4 col-sm-3 col-xs-12">
 						<img src="./assets/img/santons/nativite/mouton.jpg">

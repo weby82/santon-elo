@@ -7,7 +7,7 @@
 						<h3>Catégories</h3></h3>
 						<ul class="nav nav-pills nav-stacked">
 							<li class="active">
-								<a href="#">Nativité</a>
+								<a href="./categorie-santons.php?categorie=nativite">Nativité</a>
 							</li>
 							<li class="">
 								<a href="#">Baptême</a>
@@ -27,155 +27,58 @@
 						</ul>
 					</nav>
 				</aside>
+				<?php    
+			        /* FETCH ITEMS ACCORDING TO CATEGORIES CHOSEN BY USER */
+			        if(isset($_GET['categorie'])){
+			            $menuCategory = $_GET['categorie'];        
+			            /* If you want to display all items click on ShareMyWeb Logo */
+			            if($menuCategory =="main"){
+			                $items = $database->find_by_query("SELECT * FROM santon");    
+			            /* Categories accordingly */
+			            }else{            
+			                $items = $database->find_by_query("SELECT * FROM santon WHERE categorie='{$menuCategory}'");    
+			            }
+			        }else{
+			            $items = $database->find_by_query("SELECT * FROM santon");    
+			        }
+
+			    ?>  
+
 				<section class="col-md-9 col-sm-12 section-content">
+					<?php foreach($items as $item) { ?>
 					<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 bloc-santon">
-						<div class="bloc-santon-inner">
-							<a href="detail-santon.php" title="">
-								<img src="./assets/img/santons/nativite/mouton.jpg" alt="santon mouton">
-							</a>
-							<h3><a href="detail-santon.php" title="">Mouton</a></h3>
-							<p class="prix-santon">12€</p>
-							
-							<a href="#" title="" class="ajout-panier btn btn-default">
-								Ajouter au panier<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
-							</a>
-							
-						</div>
+						<form class="item_form">
+							<div class="bloc-santon-inner">
+								<a href="detail-santon.php?santon_id=<?php echo $item["id"]; ?>" title="<?php echo $item["nom"]; ?>">
+									<img src="<?php echo $item["photo"]; ?>" alt="santon <?php echo $item["nom"]; ?>">
+								</a>
+								<h3><a href="detail-santon.php?santon_id=<?php echo $item["id"]; ?>" title="<?php echo $item["nom"]; ?>"><?php echo $item["nom"]; ?></a></h3>
+								<p class="prix-santon"><?php echo $item["prix"]; ?> €</p>
+								<div class="item_disp_values">
+	                                <div>Quantity:
+	                                    <select name="item_qty">
+	                                        <?php
+	                                            // Choose itemquantity
+	                                            $maxQty=10;
+	                                            for($i=1;$i<=$maxQty;$i++){
+	                                                echo "<option value='{$i}'>$i</option>";
+	                                            }
+	                                        ?>
+	                                    </select>
+	                                </div>
+                                </div>
+								<input name="item_id" type="hidden" value="<?php echo $item["id"]; ?>">
+								<button type="submit" class="add_item_to_cart ajout-panier btn btn-default">
+									Ajouter au panier<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+								</button>
+								
+							</div>
+						</form>
 					</div>
-					<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 bloc-santon">
-						<div class="bloc-santon-inner">
-							<a href="detail-santon.php" title="">
-								<img src="./assets/img/santons/nativite/vache.jpg" alt="santon vache">
-							</a>
-							<h3><a href="detail-santon.php" title="">Vache</a></h3>
-							<p class="prix-santon">12€</p>
-							<a href="#" title="" class="ajout-panier btn btn-default">
-								Ajouter au panier<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
-							</a>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 bloc-santon">
-						<div class="bloc-santon-inner">
-							<a href="detail-santon.php" title="">
-								<img src="./assets/img/santons/nativite/santon3.jpg" alt="santon 3">
-							</a>
-							<h3><a href="detail-santon.php" title="">Santon 3</a></h3>
-							<p class="prix-santon">12€</p>
-							<a href="#" title="" class="ajout-panier btn btn-default">
-								Ajouter au panier<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
-							</a>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 bloc-santon">
-						<div class="bloc-santon-inner">
-							<a href="detail-santon.php" title="">
-								<img src="./assets/img/santons/nativite/ange.jpg" alt="santon ange">
-							</a>
-							<h3><a href="detail-santon.php" title="">Ange</a></h3>
-							<p class="prix-santon">12€</p>
-							<a href="#" title="" class="ajout-panier btn btn-default">
-								Ajouter au panier<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
-							</a>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 bloc-santon">
-						<div class="bloc-santon-inner">
-							<a href="detail-santon.php" title="">
-								<img src="./assets/img/santons/nativite/mouton.jpg" alt="santon mouton">
-							</a>
-							<h3><a href="detail-santon.php" title="">Mouton</a></h3>
-							<p class="prix-santon">12€</p>
-							<a href="#" title="" class="ajout-panier btn btn-default">
-								Ajouter au panier<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
-							</a>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 bloc-santon">
-						<div class="bloc-santon-inner">
-							<a href="detail-santon.php" title="">
-								<img src="./assets/img/santons/nativite/vache.jpg" alt="santon vache">
-							</a>
-							<h3><a href="detail-santon.php" title="">Vache</a></h3>
-							<p class="prix-santon">12€</p>
-							<a href="#" title="" class="ajout-panier btn btn-default">
-								Ajouter au panier<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
-							</a>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 bloc-santon">
-						<div class="bloc-santon-inner">
-							<a href="detail-santon.php" title="">
-								<img src="./assets/img/santons/nativite/santon3.jpg" alt="santon 3">
-							</a>
-							<h3><a href="detail-santon.php" title="">Santon 3</a></h3>
-							<p class="prix-santon">12€</p>
-							<a href="#" title="" class="ajout-panier btn btn-default">
-								Ajouter au panier<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
-							</a>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 bloc-santon">
-						<div class="bloc-santon-inner">
-							<a href="detail-santon.php" title="">
-								<img src="./assets/img/santons/nativite/ange.jpg" alt="santon ange">
-							</a>
-							<h3><a href="detail-santon.php" title="">Ange</a></h3>
-							<p class="prix-santon">12€</p>
-							<a href="#" title="" class="ajout-panier btn btn-default">
-								Ajouter au panier<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
-							</a>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 bloc-santon">
-						<div class="bloc-santon-inner">
-							<a href="detail-santon.php" title="">
-								<img src="./assets/img/santons/nativite/mouton.jpg" alt="santon mouton">
-							</a>
-							<h3><a href="detail-santon.php" title="">Mouton</a></h3>
-							<p class="prix-santon">12€</p>
-							<a href="#" title="" class="ajout-panier btn btn-default">
-								Ajouter au panier<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
-							</a>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 bloc-santon">
-						<div class="bloc-santon-inner">
-							<a href="detail-santon.php" title="">
-								<img src="./assets/img/santons/nativite/vache.jpg" alt="santon vache">
-							</a>
-							<h3><a href="detail-santon.php" title="">Vache</a></h3>
-							<p class="prix-santon">12€</p>
-							<a href="#" title="" class="ajout-panier btn btn-default">
-								Ajouter au panier<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
-							</a>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 bloc-santon">
-						<div class="bloc-santon-inner">
-							<a href="detail-santon.php" title="">
-								<img src="./assets/img/santons/nativite/santon3.jpg" alt="santon 3">
-							</a>
-							<h3><a href="detail-santon.php" title="">Santon 3</a></h3>
-							<p class="prix-santon">12€</p>
-							<a href="#" title="" class="ajout-panier btn btn-default">
-								Ajouter au panier<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
-							</a>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 bloc-santon">
-						<div class="bloc-santon-inner">
-							<a href="detail-santon.php" title="">
-								<img src="./assets/img/santons/nativite/ange.jpg" alt="santon ange">
-							</a>
-							<h3><a href="detail-santon.php" title="">Ange</a></h3>
-							<p class="prix-santon">12€</p>
-							<a href="#" title="" class="ajout-panier btn btn-default">
-								Ajouter au panier<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
-							</a>
-						</div>
-					</div>
+					<?php } ?>
+					
 				</section>
 			</div>
 		</div>	
-	
+		 <div class="push"></div>
 	</main>
