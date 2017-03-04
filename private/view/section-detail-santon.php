@@ -5,69 +5,105 @@
 				<h2>Nativité</h2>
 				<aside class="col-md-3 col-sm-12 col-nav-left">
 					<nav>
-						<h3>Catégories</h3></h3>
+						<h3>Catégories</h3>
 						<ul class="nav nav-pills nav-stacked">
-							<li class="active">
-								<a href="#">Nativité</a>
-							</li>
-							<li class="">
-								<a href="#">Baptême</a>
-							</li>
-							<li class="">
-								<a href="#">Anniversaire</a>
-							</li>
-							<li class="">
-								<a href="#">Communion</a>
-							</li>
-							<li class="">
-								<a href="#">Mariage</a>
-							</li>
-							<li class="">
-								<a href="#">Commande personnalisée</a>
-							</li>
+							<li <?php if($navActive == "categorie" && $_REQUEST["categorie"] == "nativite") { echo "class='active'"; }?>>
+                                <a href="./categorie-santons.php?categorie=nativite">Noël/Natavité</a>
+                            </li>
+                            <li <?php if($navActive == "categorie" && $_REQUEST["categorie"] == "bapteme") { echo "class='active'"; }?>>
+                                <a href="./categorie-santons.php?categorie=bapteme">Baptême</a>
+                            </li>
+                            <li <?php if($navActive == "categorie" && $_REQUEST["categorie"] == "anniversaire") { echo "class='active'"; }?>>
+                                <a href="./categorie-santons.php?categorie=anniversaire">Anniversaire</a>
+                            </li>
+                            <li <?php if($navActive == "categorie" && $_REQUEST["categorie"] == "communion") { echo "class='active'"; }?>>
+                                <a href="./categorie-santons.php?categorie=communion">Communion</a>
+                            </li>
+                            <li <?php if($navActive == "categorie" && $_REQUEST["categorie"] == "mariage") { echo "class='active'"; }?>>
+                                <a href="./categorie-santons.php?categorie=mariage">Mariage</a>
+                            </li>
+                            <li <?php if($navActive == "categorie" && $_REQUEST["categorie"] == "speciale") { echo "class='active'"; }?>>
+                                <a href="./categorie-santons.php?categorie=speciale">Commande spéciale</a>
+                            </li>
 						</ul>
 					</nav>
 				</aside>
 
 
-				<?php    
-			        /* FETCH ITEMS ACCORDING TO CATEGORIES CHOSEN BY USER */
-			        if(isset($_GET['santon_id'])){
-			            $choixSanton = $_GET['santon_id'];        
-			            /* If you want to display all items click on ShareMyWeb Logo */
-			            if($menuCategory =="main"){
-			                $items = $database->find_by_query("SELECT * FROM santon");    
-			            /* Categories accordingly */
-			            }else{            
-			                $items = $database->find_by_query("SELECT * FROM santon WHERE id='{$choixSanton}'");    
-			            }
-			        }else{
-			            $items = $database->find_by_query("SELECT * FROM santon");    
-			        }
+				<?php
+	// Boucle pour récupérer les ligne de la table annonce
+	// construire le code html pour afficher les infos
 
-			    ?>  
+	// Requete SQL pour lire les info dans la table annonce
+
+$idsanton = $_REQUEST["santon_id"];
+
+// je recupere les info de la table utilisateur et d'annonce grace à la jointure INNER JOIN
+
+$requeteSQL = "SELECT * FROM santon  WHERE id = :idsanton ";
+$tabToken = [":idsanton" => $idsanton];
+
+// Envoyer la requete
+$objetPDOStatement = envoyerRequeteSQL($requeteSQL, $tabToken);
+
+// on ne fait pas une boucle while
+// while( $tabLigne = $objetPDOStatement->fetch() )
+// car on veut seulement savoir si il y a une ligne sélectionnée
+
+if ( $tabLigne = $objetPDOStatement->fetch()){
+
+	// récuperer les colonne de chaque ligne
+
+	$nomSanton 					= $tabLigne["nom"];
+	$descriptionSanton				= $tabLigne["description"];
+	$categorieSanton				= $tabLigne["categorie"];
+	$prixSanton						= $tabLigne["prix"];
+	$photoSanton					= $tabLigne["photo"];
+	$stockSanton					= $tabLigne["stock"];
+
+
+		
+}
+	// Construire le code HTML
+?>
 				<section class="col-md-9 col-sm-12 section-content">
 					<figure class="col-md-4 col-sm-3 col-xs-12">
-						<img src="./assets/img/santons/nativite/mouton.jpg">
+						<img src="<?php echo $photoSanton ?>">
 					</figure>
 					<div class="col-md-8 col-sm-9 col-xs-12 detail-santon">
-						<h3>Santon 1</h3>
+						<h3><?php echo $nomSanton ?></h3>
 						<div id="description">
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae, eligendi fugiat necessitatibus illo deleniti, dignissimos voluptates nam incidunt est impedit animi eum vel consectetur non nulla provident sunt, architecto deserunt.</p>
+							<p><?php echo $descriptionSanton ?></p>
 						</div>
 						<p id="availability_statut">
 							<span id="dispo-label">Disponibilité :</span>
-							<span id="dispo-value"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> En stock</span>
-							<span id="dispo-value"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Indisponible</span>				
+							<?php
+								if($stockSanton == "OUI"){
+							?>
+								<span id="dispo-value"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> En stock</span>	
+							<?php
+								}else{
+							?>
+								<span id="dispo-value"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Indisponible</span>	
+							<?php } ?>			
 						</p>
 						<div class="detail-ajout-panier">
 							<form id="buy-block" class="form-inline" action="" method="POST">
 								<div class="quantite form-group">
 									<label>Quantité</label>
-									<input class="form-control" id="quantite-value" type="number" min="0" name="quantite">
+									<select name="item_qty" class="form-control">
+	                                        <?php
+	                                            // Choose itemquantity
+	                                            $maxQty=10;
+	                                            for($i=1;$i<=$maxQty;$i++){
+	                                                echo "<option value='{$i}'>$i</option>";
+	                                            }
+	                                        ?>
+	                                    </select>
+									
 								</div>
 								<div class="prix form-group">
-									<span class="prix-article">12</span><span class="euro"> €</span>
+									<span class="prix-article"><?php echo $prixSanton ?></span><span class="euro"> €</span>
 								</div>
 								<div class="form-group pull-right bouton-panier">
 									<button type="submit" class="ajout-panier btn btn-default">Ajouter au panier<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></button>

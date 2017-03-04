@@ -93,22 +93,22 @@ require_once("private/database.php");
                               <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                <li <?php if($navActive == "categorie" && $_REQUEST["categorie"] == "nativite") { echo "class='active'"; }?>>
+                                <li <?php if($_REQUEST["categorie"] == "nativite") { echo "class='active'"; }?>>
                                     <a href="./categorie-santons.php?categorie=nativite">Noël/Natavité</a>
                                 </li>
-                                <li <?php if($navActive == "categorie" && $_REQUEST["categorie"] == "bapteme") { echo "class='active'"; }?>>
+                                <li <?php if($_REQUEST["categorie"] == "bapteme") { echo "class='active'"; }?>>
                                     <a href="./categorie-santons.php?categorie=bapteme">Baptême</a>
                                 </li>
-                                <li <?php if($navActive == "categorie" && $_REQUEST["categorie"] == "anniversaire") { echo "class='active'"; }?>>
+                                <li <?php if($_REQUEST["categorie"] == "anniversaire") { echo "class='active'"; }?>>
                                     <a href="./categorie-santons.php?categorie=anniversaire">Anniversaire</a>
                                 </li>
-                                <li <?php if($navActive == "categorie" && $_REQUEST["categorie"] == "communion") { echo "class='active'"; }?>>
+                                <li <?php if($_REQUEST["categorie"] == "communion") { echo "class='active'"; }?>>
                                     <a href="./categorie-santons.php?categorie=communion">Communion</a>
                                 </li>
-                                <li <?php if($navActive == "categorie" && $_REQUEST["categorie"] == "mariage") { echo "class='active'"; }?>>
+                                <li <?php if($_REQUEST["categorie"] == "mariage") { echo "class='active'"; }?>>
                                     <a href="./categorie-santons.php?categorie=mariage">Mariage</a>
                                 </li>
-                                <li <?php if($navActive == "categorie" && $_REQUEST["categorie"] == "speciale") { echo "class='active'"; }?>>
+                                <li <?php if($_REQUEST["categorie"] == "speciale") { echo "class='active'"; }?>>
                                     <a href="./categorie-santons.php?categorie=speciale">Commande spéciale</a>
                                 </li>
                             </ul>

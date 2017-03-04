@@ -4,7 +4,7 @@
 				<h2>Nativité</h2>
 				<aside class="col-md-3 col-sm-12 col-nav-left">
 					<nav>
-						<h3>Catégories</h3></h3>
+						<h3>Catégories</h3>
 						<ul class="nav nav-pills nav-stacked">
 							<li <?php if($navActive == "categorie" && $_REQUEST["categorie"] == "nativite") { echo "class='active'"; }?>>
                                 <a href="./categorie-santons.php?categorie=nativite">Noël/Natavité</a>
@@ -50,10 +50,10 @@
 					<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 bloc-santon">
 						<form class="item_form">
 							<div class="bloc-santon-inner">
-								<a href="detail-santon.php?santon_id=<?php echo $item["id"]; ?>" title="<?php echo $item["nom"]; ?>">
+								<a href="detail-santon.php?categorie=<?php echo $_REQUEST["categorie"]; ?>&santon_id=<?php echo $item["id"]; ?>" title="<?php echo $item["nom"]; ?>">
 									<img src="<?php echo $item["photo"]; ?>" alt="santon <?php echo $item["nom"]; ?>">
 								</a>
-								<h3><a href="detail-santon.php?santon_id=<?php echo $item["id"]; ?>" title="<?php echo $item["nom"]; ?>"><?php echo $item["nom"]; ?></a></h3>
+								<h3><a href="detail-santon.php?categorie=<?php echo $_REQUEST["categorie"]; ?>&santon_id=<?php echo $item["id"]; ?>" title="<?php echo $item["nom"]; ?>"><?php echo $item["nom"]; ?></a></h3>
 								<p class="prix-santon"><?php echo $item["prix"]; ?> €</p>
 								<div class="item_disp_values">
 	                                <div>Quantity:
