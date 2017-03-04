@@ -149,6 +149,7 @@ h2{
 #dropcategorie > ul > li > a:hover, #dropcategorie > ul > .active > a {
 	color: white;
 	top: -10px;
+	box-shadow: none;
 }
 
 #panier {
