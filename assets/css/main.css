@@ -113,7 +113,7 @@ h2{
 	border-radius: 20px;
 }
 
-.nav>li>a:focus, .nav>li>a:hover, .nav li.active > a, #dropcategorie > a:hover, #dropcategorie>ul>li>a:hover, li.active #dropcategorie > a, #dropcategorie > a:focus, li.active #dropcategorie > a:focus {
+.navbar>li>a:focus, .navbar>li>a:hover, .navbar li.active > a, #dropcategorie > a:hover, #dropcategorie>ul>li>a:hover, li.active #dropcategorie > a, #dropcategorie > a:focus, li.active #dropcategorie > a:focus {
 	background: #FCB3B3;
 	color: #fff;
 	border-radius: 20px;

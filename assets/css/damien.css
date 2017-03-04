@@ -14,8 +14,8 @@
      border-radius: 20px;
 
 }
-.col-nav-left .active, .col-nav-left li:hover{
-
+.col-nav-left .active a, .col-nav-left li a:hover{
+    background: #FCB3B3;
 }
 
 /*####################### SHOPPING CART INFO BAR(The one that display total items in the cart) #######################*/ 
