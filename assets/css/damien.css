@@ -1,3 +1,10 @@
+/*******************************
+    menu categorie de gauche
+*********************************/
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover{
+    background: #BAD1D1;
+}
+
 /*####################### SHOPPING CART INFO BAR(The one that display total items in the cart) #######################*/ 
 .shopping_cart_info_holder{margin-bottom:20px; text-align: center;}
 .shopping_cart_info{

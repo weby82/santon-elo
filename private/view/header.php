@@ -80,22 +80,34 @@ require_once("private/database.php");
                   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav nav-justified">
 
-                          <li class="active">
+                          <li <?php if($navActive == "accueil") { echo "class='active'"; }?>>
                               <a href="index.php">Accueil</a>
                           </li>
-                          <li>
+                          <li <?php if($navActive == "categorie") { echo "class='active'"; }?>>
                               <div id="dropcategorie" class="dropdown">
                                 <a href="#" class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                   Catégories
                                   <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                  <li><a href="categorie-santons.php">Noël/Natavité</a></li>
-                                  <li><a href="#">Baptême</a></li>
-                                  <li><a href="#">Anniversaire</a></li>
-                                  <li><a href="#">Communion</a></li>
-                                  <li><a href="#">Mariage</a></li>
-                                  <li><a href="#">Commande spéciale</a></li>
+                                    <li <?php if($navActive == "categorie" && $_REQUEST["categorie"] == "nativite") { echo "class='active'"; }?>>
+                                        <a href="./categorie-santons.php?categorie=nativite">Noël/Natavité</a>
+                                    </li>
+                                    <li <?php if($navActive == "categorie" && $_REQUEST["categorie"] == "bapteme") { echo "class='active'"; }?>>
+                                        <a href="./categorie-santons.php?categorie=bapteme">Baptême</a>
+                                    </li>
+                                    <li <?php if($navActive == "categorie" && $_REQUEST["categorie"] == "anniversaire") { echo "class='active'"; }?>>
+                                        <a href="./categorie-santons.php?categorie=anniversaire">Anniversaire</a>
+                                    </li>
+                                    <li <?php if($navActive == "categorie" && $_REQUEST["categorie"] == "communion") { echo "class='active'"; }?>>
+                                        <a href="./categorie-santons.php?categorie=communion">Communion</a>
+                                    </li>
+                                    <li <?php if($navActive == "categorie" && $_REQUEST["categorie"] == "mariage") { echo "class='active'"; }?>>
+                                        <a href="./categorie-santons.php?categorie=mariage">Mariage</a>
+                                    </li>
+                                    <li <?php if($navActive == "categorie" && $_REQUEST["categorie"] == "speciale") { echo "class='active'"; }?>>
+                                        <a href="./categorie-santons.php?categorie=speciale">Commande spéciale</a>
+                                    </li>
                                 </ul>
                               </div>
                           </li> 

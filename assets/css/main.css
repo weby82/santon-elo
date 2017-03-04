@@ -108,11 +108,13 @@ h2{
 	text-transform: uppercase;
 	white-space: nowrap;
 }
-.nav > li > a{
+.nav > li > a, #dropcategorie > a{
 	padding: 15px 15px;
 }
-
-.nav>li>a:focus, .nav>li>a:hover, .nav li.active a, #dropcategorie:hover, #dropcategorie>ul>li>a:hover{
+ #dropcategorie > a{
+ 	display: block;
+ }
+.nav>li>a:focus, .nav>li>a:hover, .nav li.active > a, #dropcategorie:hover, #dropcategorie>ul>li>a:hover, li.active #dropcategorie > a{
 	background: #BAD1D1;
 	color: #647277;
 }
@@ -126,7 +128,6 @@ h2{
 
 #dropcategorie{
 	text-align: center;
-	padding: 15px 15px;
 }
 
 #dropcategorie ul{

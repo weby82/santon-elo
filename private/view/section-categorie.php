@@ -6,24 +6,24 @@
 					<nav>
 						<h3>Catégories</h3></h3>
 						<ul class="nav nav-pills nav-stacked">
-							<li class="active">
-								<a href="./categorie-santons.php?categorie=nativite">Nativité</a>
-							</li>
-							<li class="">
-								<a href="#">Baptême</a>
-							</li>
-							<li class="">
-								<a href="#">Anniversaire</a>
-							</li>
-							<li class="">
-								<a href="#">Communion</a>
-							</li>
-							<li class="">
-								<a href="#">Mariage</a>
-							</li>
-							<li class="">
-								<a href="#">Commande personnalisée</a>
-							</li>
+							<li <?php if($navActive == "categorie" && $_REQUEST["categorie"] == "nativite") { echo "class='active'"; }?>>
+                                <a href="./categorie-santons.php?categorie=nativite">Noël/Natavité</a>
+                            </li>
+                            <li <?php if($navActive == "categorie" && $_REQUEST["categorie"] == "bapteme") { echo "class='active'"; }?>>
+                                <a href="./categorie-santons.php?categorie=bapteme">Baptême</a>
+                            </li>
+                            <li <?php if($navActive == "categorie" && $_REQUEST["categorie"] == "anniversaire") { echo "class='active'"; }?>>
+                                <a href="./categorie-santons.php?categorie=anniversaire">Anniversaire</a>
+                            </li>
+                            <li <?php if($navActive == "categorie" && $_REQUEST["categorie"] == "communion") { echo "class='active'"; }?>>
+                                <a href="./categorie-santons.php?categorie=communion">Communion</a>
+                            </li>
+                            <li <?php if($navActive == "categorie" && $_REQUEST["categorie"] == "mariage") { echo "class='active'"; }?>>
+                                <a href="./categorie-santons.php?categorie=mariage">Mariage</a>
+                            </li>
+                            <li <?php if($navActive == "categorie" && $_REQUEST["categorie"] == "speciale") { echo "class='active'"; }?>>
+                                <a href="./categorie-santons.php?categorie=speciale">Commande spéciale</a>
+                            </li>
 						</ul>
 					</nav>
 				</aside>
