@@ -111,15 +111,16 @@ require_once("private/database.php");
                                 </ul>
                               </div>
                           </li> 
-                          <li><a href="actualites.php">Actualités</a></li>
-
-                          <li>
+                          <li <?php if($navActive == "actualites") { echo "class='active'"; }?>>
+                            <a href="actualites.php">Actualités</a>
+                          </li>
+                          <li <?php if($navActive == "evenements") { echo "class='active'"; }?>>
                               <a href="">Evènements</a>
                           </li>
-                          <li>
+                          <li <?php if($navActive == "livre") { echo "class='active'"; }?>>
                               <a href="">Livre d'or</a>
                           </li>
-                          <li>
+                          <li <?php if($navActive == "contact") { echo "class='active'"; }?>>
                               <a href="contact.php">Contact</a>
                           </li>
                       </ul>
