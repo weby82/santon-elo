@@ -2,7 +2,19 @@
     menu categorie de gauche
 *********************************/
 .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover{
-    background: #BAD1D1;
+    background: #FCB3B3;
+
+}
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form{
+    border: 0 none;
+}
+.col-nav-left li a{
+     border-radius: 20px;
+     
+}
+.col-nav-left .active, .col-nav-left li:hover{
+
 }
 
 /*####################### SHOPPING CART INFO BAR(The one that display total items in the cart) #######################*/ 

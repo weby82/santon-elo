@@ -96,36 +96,46 @@ h2{
     font-weight: 300;
 }
 .navbar{
-	background: #FCB3B3;
+	background: #F7F2E6;
 	min-height: auto;
-	margin-bottom: 0;
 	border: 0 none;
 	border-radius: 0;
+	margin-bottom: 15px;
+}
+.navbar ul > li{
+	padding: 0 5px;
 }
 .navbar li a{
-	color: #fff;
+	color: #647277;
 	font-weight: 500;
 	text-transform: uppercase;
 	white-space: nowrap;
+	border-radius: 20px;
+}
+
+.nav>li>a:focus, .nav>li>a:hover, .nav li.active > a, #dropcategorie > a:hover, #dropcategorie>ul>li>a:hover, li.active #dropcategorie > a, #dropcategorie > a:focus, li.active #dropcategorie > a:focus {
+	background: #FCB3B3;
+	color: #fff;
+	border-radius: 20px;
+	text-decoration: none;
+	top: -10px;
+	transition: all .5s ease;
+	box-shadow: 0px -1px 2px rgba(0,0,0,0.2);
+}
+
+.navbar-default .navbar-toggle{
+	border-color: #FCB3B3;
+}
+.navbar-default .navbar-toggle .icon-bar{
+	background-color: #FCB3B3;
 }
 .nav > li > a, #dropcategorie > a{
 	padding: 15px 15px;
 }
  #dropcategorie > a{
  	display: block;
+ 	position: relative;
  }
-.nav>li>a:focus, .nav>li>a:hover, .nav li.active > a, #dropcategorie:hover, #dropcategorie>ul>li>a:hover, li.active #dropcategorie > a{
-	background: #BAD1D1;
-	color: #647277;
-}
-
-.navbar-default .navbar-toggle{
-	border-color: #fff;
-}
-.navbar-default .navbar-toggle .icon-bar{
-	background-color: #fff;
-}
-
 #dropcategorie{
 	text-align: center;
 }
@@ -134,12 +144,11 @@ h2{
 	background: #FCB3B3;
 }
 
-#dropcategorie a:focus{
-	background-color: transparent;
-}
 
-#dropcategorie>ul>li>a:hover{
+
+#dropcategorie > ul > li > a:hover, #dropcategorie > ul > .active > a {
 	color: white;
+	top: -10px;
 }
 
 #panier {
@@ -233,7 +242,7 @@ section img{
 **************************************************/
 .container h2{
 	padding-bottom: 10px;
-    border-bottom: 1px solid #647277;
+    border-bottom: 1px dotted #647277;
     margin-bottom: 30px;
     color: #647277;
 }
@@ -250,7 +259,6 @@ section img{
 	font-weight: 600;
 }
 .col-nav-left li a:hover, .col-nav-left li.active a, .col-nav-left li.active a:hover, .col-nav-left li a:focus{
-	border-radius: 0;
 	color: #fff;
 }
 .col-nav-left h3{
