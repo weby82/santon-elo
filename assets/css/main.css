@@ -104,6 +104,7 @@ h2{
 }
 .navbar ul > li{
 	padding: 0 5px;
+	margin-bottom:5px;
 }
 .navbar li a{
 	color: #647277;
@@ -118,9 +119,9 @@ h2{
 	color: #fff;
 	border-radius: 20px;
 	text-decoration: none;
-	top: -10px;
+	top:0;
 	transition: all .5s ease;
-	box-shadow: 0px -1px 2px rgba(0,0,0,0.2);
+	
 }
 
 .navbar-default .navbar-toggle{
@@ -236,7 +237,7 @@ section img{
 }
 
 #section-last-ajout button{
-	margin-left: 25%;
+
 }
 /***********************************************
 			Categorie Liste santon
@@ -384,7 +385,6 @@ footer div p{
 	font-family: 'palanquin';
 	display: inline-block;
 	font-size: 1.9em;
-	margin-left: 50px;
 	line-height: 1em;
 
 }
@@ -403,9 +403,18 @@ footer div p{
 	font-weight: 600;
 }
 .bouton-panier{
-	margin-left: 40px;
+	margin-top: 5px;
+    width: 100%;
+    text-align: center;
 }
-.form-inline .form-group{
+
+@media screen and (min-width:480px){
+	.bouton-panier{
+    width: auto;
+    text-align: right;
+	}
+}
+#buy-block.form-group{
 	display: inline-block;
 }
 #dispo-value .glyphicon-ok{
@@ -419,6 +428,7 @@ footer div p{
     background: #fff;
     border-radius: 5px;
     margin-top: 30px;
+    overflow: auto;
     -webkit-box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.1);
 	-moz-box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.1);
 	box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.1);
@@ -493,9 +503,31 @@ h1, h2, h3 {
 	// box-shadow: 10px 10px 5px #888888;	
 }
 
+@media screen and (min-width:768px){
+	
+	/*****************************************
+		menu top
+	***************************************/
+	.navbar>li>a:focus, .navbar ul>li>a:hover, .navbar li.active > a, #dropcategorie > a:hover, #dropcategorie>ul>li>a:hover, li.active #dropcategorie > a, #dropcategorie > a:focus, li.active #dropcategorie > a:focus {
+		top: -10px;
+		box-shadow: 0px -1px 2px rgba(0,0,0,0.2);
+	}
+
+	.navbar ul > li{
+		margin-bottom:0;
+	}
+}
 
 @media screen and (min-width:992px) {
 	.list-article article .img-responsive{
 		max-width: 220px;
+	}
+
+	/************************************
+			Page detail santon
+	************************************/
+
+	.bouton-panier{
+		margin-top: 0;
 	}
 }

@@ -29,66 +29,72 @@
 				</article>
 			</div>
 		</section>
+
 		<section id="section-last-ajout">
 			<div class="container">
 				<h2>Derniers Ajout</h2>
-				<article class="col-md-3 col-sm-6 col-xs-12">
-					<div class="bloc-santon-inner">
-						<a href="detail-santon.php" title="">
-							<img src="./assets/img/santons/nativite/mouton.jpg" alt="santon mouton">
-						</a>
-						<h3><a href="detail-santon.php" title="">Mouton</a></h3>
-						<p class="prix-santon">12€</p>
-							
-						<a href="#" title="" class="ajout-panier btn btn-default">
-							Ajouter au panier
-							<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
-						</a>		
-					</div>
-				</article>
-				<article class="col-md-3 col-sm-6 col-xs-12 articles-ajout">
-					<div class="bloc-santon-inner">
-						<a href="detail-santon.php" title="">
-							<img src="./assets/img/santons/nativite/mouton.jpg" alt="santon mouton">
-						</a>
-						<h3><a href="detail-santon.php" title="">Mouton</a></h3>
-						<p class="prix-santon">12€</p>
-							
-						<a href="#" title="" class="ajout-panier btn btn-default">
-							Ajouter au panier
-							<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
-						</a>		
-					</div>
-				</article>
-				<article class="col-md-3 col-sm-6 col-xs-12 articles-ajout">
-					<div class="bloc-santon-inner">
-						<a href="detail-santon.php" title="">
-							<img src="./assets/img/santons/nativite/mouton.jpg" alt="santon mouton">
-						</a>
-						<h3><a href="detail-santon.php" title="">Mouton</a></h3>
-						<p class="prix-santon">12€</p>
-							
-						<a href="#" title="" class="ajout-panier btn btn-default">
-							Ajouter au panier
-							<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
-						</a>		
-					</div>
-				</article>
-				<article class="col-md-3 col-sm-6 col-xs-12 articles-ajout">
-					<div class="bloc-santon-inner">
-						<a href="detail-santon.php" title="">
-							<img src="./assets/img/santons/nativite/mouton.jpg" alt="santon mouton">
-						</a>
-						<h3><a href="detail-santon.php" title="">Mouton</a></h3>
-						<p class="prix-santon">12€</p>
-							
-						<a href="#" title="" class="ajout-panier btn btn-default">
-							Ajouter au panier
-							<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
-						</a>		
-					</div>
-				</article>
-			</div>
+		<?php
+
+	// Requete SQL pour lire les info dans la table santon
+
+// je recupere les info de la table santon
+
+$requeteSQL = "SELECT * FROM santon ORDER BY date_ajout DESC LIMIT  0,8";
+
+$tabToken = [];
+
+// Envoyer la requete
+$objetPDOStatement = envoyerRequeteSQL($requeteSQL, $tabToken);
+
+// on  fait une boucle while pour recuperer les éléments
+// while( $tabLigne = $objetPDOStatement->fetch() )
+
+while ( $tabLigne = $objetPDOStatement->fetch()){
+
+	// récuperer les colonne de chaque ligne
+
+	$id 							= $tabLigne["id"];
+	$nomSanton 						= $tabLigne["nom"];
+	$categorieSanton				= $tabLigne["categorie"];
+	$prixSanton						= $tabLigne["prix"];
+	$photoSanton					= $tabLigne["photo"];
+	$stockSanton					= $tabLigne["stock"];
+
+
+	// Construire le code HTML
+?>
+					<article class="col-lg-3 col-md-3 col-sm-4 col-xs-12 bloc-santon">
+						<form class="item_form">
+							<div class="bloc-santon-inner">
+								<a href="detail-santon.php?categorie=<?php echo $categorieSanton; ?>&santon_id=<?php echo $id; ?>" title="<?php echo $nomSanton; ?>">
+									<img src="<?php echo $photoSanton; ?>" alt="santon <?php echo $nomSanton; ?>">
+								</a>
+								<h3><a href="detail-santon.php?categorie=<?php echo $categorieSanton; ?>&santon_id=<?php echo $id; ?>" title="<?php echo $item["nom"]; ?>"><?php echo $nomSanton; ?></a></h3>
+								<p class="prix-santon"><?php echo $prixSanton; ?> €</p>
+								<div class="item_disp_values">
+	                                <div>Quantity:
+	                                    <select name="item_qty">
+	                                        <?php
+	                                            // Choose itemquantity
+	                                            $maxQty=10;
+	                                            for($i=1;$i<=$maxQty;$i++){
+	                                                echo "<option value='{$i}'>$i</option>";
+	                                            }
+	                                        ?>
+	                                    </select>
+	                                </div>
+                                </div>
+								<input name="item_id" type="hidden" value="<?php echo $id; ?>">
+								<button type="submit" class="add_item_to_cart ajout-panier btn btn-default">
+									Ajouter au panier<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+								</button>
+								
+							</div>
+						</form>
+					</article>
+<?php } // fin boucle ?>
+
+				</div>
 		</section>
 
 		<section id="section-temoignage">

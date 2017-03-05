@@ -89,7 +89,7 @@ if ( $tabLigne = $objetPDOStatement->fetch()){
 						</p>
 						<div class="detail-ajout-panier">
 							<form id="buy-block" class="form-inline" action="" method="POST">
-								<div class="quantite form-group">
+								<div class="quantite form-group col-md-5">
 									<label>Quantité</label>
 									<select name="item_qty" class="form-control">
 	                                        <?php
@@ -102,10 +102,10 @@ if ( $tabLigne = $objetPDOStatement->fetch()){
 	                                    </select>
 									
 								</div>
-								<div class="prix form-group">
+								<div class="prix form-group col-md-2">
 									<span class="prix-article"><?php echo $prixSanton ?></span><span class="euro"> €</span>
 								</div>
-								<div class="form-group pull-right bouton-panier">
+								<div class="form-group pull-right bouton-panier col-md-5">
 									<button type="submit" class="ajout-panier btn btn-default">Ajouter au panier<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></button>
 								</div>
 								

@@ -1,3 +1,22 @@
+/*******************************************************
+            Page detail santon
+*****************************************************/
+.detail-ajout-panier form{
+    margin-bottom:0;
+}
+.detail-ajout-panier .form-group{
+    margin-bottom: 0;
+    display: inline-block;
+}
+.quantite select.form-control{
+    display: inline-block;
+    width: auto;
+}
+
+#section-detail-santon figure{
+    margin-bottom: 15px;
+}
+
 
 /*******************************
     menu categorie de gauche
