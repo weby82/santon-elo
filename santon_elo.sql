@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Jeu 02 Mars 2017 à 12:08
+-- Généré le :  Lun 06 Mars 2017 à 09:58
 -- Version du serveur :  10.1.19-MariaDB
 -- Version de PHP :  5.5.38
 
@@ -76,18 +76,19 @@ CREATE TABLE `santon` (
   `categorie` varchar(255) NOT NULL,
   `prix` decimal(10,0) NOT NULL,
   `photo` varchar(255) NOT NULL,
-  `stock` varchar(10) NOT NULL
+  `stock` varchar(10) NOT NULL,
+  `date_ajout` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `santon`
 --
 
-INSERT INTO `santon` (`id`, `nom`, `description`, `categorie`, `prix`, `photo`, `stock`) VALUES
-(1, 'Mouton', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae, eligendi fugiat necessitatibus illo deleniti, dignissimos voluptates nam incidunt est impedit animi eum vel consectetur non nulla provident sunt, architecto deserunt.', 'Nativité', '12', './assets/img/santons/nativite/mouton.jpg', 'OUI'),
-(2, 'Vache', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae, eligendi fugiat necessitatibus illo deleniti, dignissimos voluptates nam incidunt est impedit animi eum vel consectetur non nulla provident sunt, architecto deserunt.', 'Nativité', '12', './assets/img/santons/nativite/vache.jpg', ''),
-(3, 'Vierge', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae, eligendi fugiat necessitatibus illo deleniti, dignissimos voluptates nam incidunt est impedit animi eum vel consectetur non nulla provident sunt, architecto deserunt.', 'Nativité', '12', './assets/img/santons/nativite/santon3.jpg', 'OUI'),
-(4, 'Ange', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae, eligendi fugiat necessitatibus illo deleniti, dignissimos voluptates nam incidunt est impedit animi eum vel consectetur non nulla provident sunt, architecto deserunt.', 'Nativité', '12', './assets/img/santons/nativite/ange.jpg', 'OUI');
+INSERT INTO `santon` (`id`, `nom`, `description`, `categorie`, `prix`, `photo`, `stock`, `date_ajout`) VALUES
+(1, 'Mouton', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae, eligendi fugiat necessitatibus illo deleniti, dignissimos voluptates nam incidunt est impedit animi eum vel consectetur non nulla provident sunt, architecto deserunt.', 'nativite', '12', './assets/img/santons/nativite/mouton.jpg', 'OUI', '2017-03-03 00:00:00'),
+(2, 'Vache', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae, eligendi fugiat necessitatibus illo deleniti, dignissimos voluptates nam incidunt est impedit animi eum vel consectetur non nulla provident sunt, architecto deserunt.', 'nativite', '12', './assets/img/santons/nativite/vache.jpg', 'NON', '2017-03-03 09:21:00'),
+(3, 'Vierge', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae, eligendi fugiat necessitatibus illo deleniti, dignissimos voluptates nam incidunt est impedit animi eum vel consectetur non nulla provident sunt, architecto deserunt.', 'nativite', '12', './assets/img/santons/nativite/santon3.jpg', 'OUI', '2017-03-05 11:13:00'),
+(4, 'Ange', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae, eligendi fugiat necessitatibus illo deleniti, dignissimos voluptates nam incidunt est impedit animi eum vel consectetur non nulla provident sunt, architecto deserunt.', 'nativite', '12', './assets/img/santons/nativite/ange.jpg', 'OUI', '2017-03-05 15:00:00');
 
 -- --------------------------------------------------------
 
