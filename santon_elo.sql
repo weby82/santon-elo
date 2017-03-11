@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Lun 06 Mars 2017 à 09:58
+-- Généré le :  Sam 11 Mars 2017 à 13:42
 -- Version du serveur :  10.1.19-MariaDB
--- Version de PHP :  5.5.38
+-- Version de PHP :  5.6.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `santon_elo`
 --
+CREATE DATABASE IF NOT EXISTS `santon_elo` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `santon_elo`;
 
 -- --------------------------------------------------------
 
@@ -85,10 +87,10 @@ CREATE TABLE `santon` (
 --
 
 INSERT INTO `santon` (`id`, `nom`, `description`, `categorie`, `prix`, `photo`, `stock`, `date_ajout`) VALUES
-(1, 'Mouton', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae, eligendi fugiat necessitatibus illo deleniti, dignissimos voluptates nam incidunt est impedit animi eum vel consectetur non nulla provident sunt, architecto deserunt.', 'nativite', '12', './assets/img/santons/nativite/mouton.jpg', 'OUI', '2017-03-03 00:00:00'),
-(2, 'Vache', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae, eligendi fugiat necessitatibus illo deleniti, dignissimos voluptates nam incidunt est impedit animi eum vel consectetur non nulla provident sunt, architecto deserunt.', 'nativite', '12', './assets/img/santons/nativite/vache.jpg', 'NON', '2017-03-03 09:21:00'),
-(3, 'Vierge', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae, eligendi fugiat necessitatibus illo deleniti, dignissimos voluptates nam incidunt est impedit animi eum vel consectetur non nulla provident sunt, architecto deserunt.', 'nativite', '12', './assets/img/santons/nativite/santon3.jpg', 'OUI', '2017-03-05 11:13:00'),
-(4, 'Ange', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae, eligendi fugiat necessitatibus illo deleniti, dignissimos voluptates nam incidunt est impedit animi eum vel consectetur non nulla provident sunt, architecto deserunt.', 'nativite', '12', './assets/img/santons/nativite/ange.jpg', 'OUI', '2017-03-05 15:00:00');
+(1, 'Mouton', 'Un Mouton. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae, eligendi fugiat necessitatibus illo deleniti, dignissimos voluptates nam incidunt est impedit animi eum vel consectetur non nulla provident sunt, architecto deserunt.', 'nativite', '12', './assets/img/santons/nativite/mouton.jpg', 'OUI', '2017-03-02 05:12:24'),
+(2, 'Vache', 'Une Vache. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae, eligendi fugiat necessitatibus illo deleniti, dignissimos voluptates nam incidunt est impedit animi eum vel consectetur non nulla provident sunt, architecto deserunt.', 'nativite', '12', './assets/img/santons/nativite/vache.jpg', 'NON', '2017-03-02 06:12:24'),
+(3, 'Vierge', 'La vierge. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae, eligendi fugiat necessitatibus illo deleniti, dignissimos voluptates nam incidunt est impedit animi eum vel consectetur non nulla provident sunt, architecto deserunt.', 'nativite', '12', './assets/img/santons/nativite/santon3.jpg', 'OUI', '2017-03-02 07:12:24'),
+(4, 'Ange', 'Un ange. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae, eligendi fugiat necessitatibus illo deleniti, dignissimos voluptates nam incidunt est impedit animi eum vel consectetur non nulla provident sunt, architecto deserunt.', 'nativite', '12', './assets/img/santons/nativite/ange.jpg', 'OUI', '2017-03-04 09:12:24');
 
 -- --------------------------------------------------------
 
