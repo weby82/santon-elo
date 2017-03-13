@@ -42,7 +42,7 @@
 }
 
 body{
-	background: #f7f2e6;
+	background: #fffaee;
 }
 header{
 	background: #6E8A94;
@@ -96,7 +96,7 @@ h2{
     font-weight: 300;
 }
 .navbar{
-	background: #F7F2E6;
+	background: #fffaee;
 	min-height: auto;
 	border: 0 none;
 	border-radius: 0;
