@@ -88,7 +88,7 @@ require_once("private/database.php");
                       </li>
                       <li <?php if($navActive == "categorie") { echo "class='active'"; }?>>
                           <div id="dropcategorie" class="dropdown">
-                            <a href="#" class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            <a href="#" class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                               Catégories
                               <span class="caret"></span>
                             </a>
@@ -127,9 +127,8 @@ require_once("private/database.php");
                           <a href="contact.php">Contact</a>
                       </li>
                   </ul>
-                </div>
-            </div>
-        </div>
+              </div>
+          </div>
     </nav>
   
  <!-- Holds shopping cart info with selected items -->
