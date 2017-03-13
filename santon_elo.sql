@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Sam 11 Mars 2017 à 13:42
+-- Généré le :  Lun 13 Mars 2017 à 11:48
 -- Version du serveur :  10.1.19-MariaDB
--- Version de PHP :  5.6.28
+-- Version de PHP :  5.5.38
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -35,6 +35,15 @@ CREATE TABLE `actualite` (
   `photo` varchar(255) NOT NULL,
   `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `actualite`
+--
+
+INSERT INTO `actualite` (`id`, `titre`, `contenu`, `photo`, `date`) VALUES
+(1, 'Titre de l''article 1', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\n                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\n                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\n                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\n                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\n                                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'http://lorempixel.com/150/150/abstract/6/', '2017-03-13'),
+(2, 'Titre de l''article 2', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\n                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\n                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\n                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\n                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\n                                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'http://lorempixel.com/150/150/abstract/7/', '2017-03-08'),
+(3, 'Titre de l''article 3', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\n                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\n                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\n                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\n                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\n                                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'http://lorempixel.com/150/150/abstract/4/', '2017-03-03');
 
 -- --------------------------------------------------------
 
@@ -87,10 +96,10 @@ CREATE TABLE `santon` (
 --
 
 INSERT INTO `santon` (`id`, `nom`, `description`, `categorie`, `prix`, `photo`, `stock`, `date_ajout`) VALUES
-(1, 'Mouton', 'Un Mouton. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae, eligendi fugiat necessitatibus illo deleniti, dignissimos voluptates nam incidunt est impedit animi eum vel consectetur non nulla provident sunt, architecto deserunt.', 'nativite', '12', './assets/img/santons/nativite/mouton.jpg', 'OUI', '2017-03-02 05:12:24'),
-(2, 'Vache', 'Une Vache. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae, eligendi fugiat necessitatibus illo deleniti, dignissimos voluptates nam incidunt est impedit animi eum vel consectetur non nulla provident sunt, architecto deserunt.', 'nativite', '12', './assets/img/santons/nativite/vache.jpg', 'NON', '2017-03-02 06:12:24'),
-(3, 'Vierge', 'La vierge. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae, eligendi fugiat necessitatibus illo deleniti, dignissimos voluptates nam incidunt est impedit animi eum vel consectetur non nulla provident sunt, architecto deserunt.', 'nativite', '12', './assets/img/santons/nativite/santon3.jpg', 'OUI', '2017-03-02 07:12:24'),
-(4, 'Ange', 'Un ange. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae, eligendi fugiat necessitatibus illo deleniti, dignissimos voluptates nam incidunt est impedit animi eum vel consectetur non nulla provident sunt, architecto deserunt.', 'nativite', '12', './assets/img/santons/nativite/ange.jpg', 'OUI', '2017-03-04 09:12:24');
+(1, 'Mouton', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae, eligendi fugiat necessitatibus illo deleniti, dignissimos voluptates nam incidunt est impedit animi eum vel consectetur non nulla provident sunt, architecto deserunt.', 'nativite', '12', './assets/img/santons/nativite/mouton.jpg', 'OUI', '2017-03-03 00:00:00'),
+(2, 'Vache', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae, eligendi fugiat necessitatibus illo deleniti, dignissimos voluptates nam incidunt est impedit animi eum vel consectetur non nulla provident sunt, architecto deserunt.', 'nativite', '12', './assets/img/santons/nativite/vache.jpg', 'NON', '2017-03-03 09:21:00'),
+(3, 'Vierge', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae, eligendi fugiat necessitatibus illo deleniti, dignissimos voluptates nam incidunt est impedit animi eum vel consectetur non nulla provident sunt, architecto deserunt.', 'nativite', '12', './assets/img/santons/nativite/santon3.jpg', 'OUI', '2017-03-05 11:13:00'),
+(4, 'Ange', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae, eligendi fugiat necessitatibus illo deleniti, dignissimos voluptates nam incidunt est impedit animi eum vel consectetur non nulla provident sunt, architecto deserunt.', 'nativite', '12', './assets/img/santons/nativite/ange.jpg', 'OUI', '2017-03-05 15:00:00');
 
 -- --------------------------------------------------------
 
@@ -147,7 +156,7 @@ ALTER TABLE `utilisateur`
 -- AUTO_INCREMENT pour la table `actualite`
 --
 ALTER TABLE `actualite`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT pour la table `evenement`
 --

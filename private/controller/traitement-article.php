@@ -6,8 +6,7 @@
 
 <?php
 
-	$requeteSQL = "SELECT id, titre, contenu, photo 
-				   FROM actualite";
+	$requeteSQL = "SELECT * FROM actualite";
 
 
 	$tabToken =	[];
