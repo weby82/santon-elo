@@ -22,7 +22,8 @@
     menu categorie de gauche
 *********************************/
 .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover{
-    background: #FCB3B3;
+    background: #fdd4d4;
+    color: #647277;
 
 }
 
@@ -34,7 +35,8 @@
 
 }
 .col-nav-left .active a, .col-nav-left li a:hover{
-    background: #FCB3B3;
+    background: #fdd4d4;
+    color: #647277;
 }
 
 /*####################### SHOPPING CART INFO BAR(The one that display total items in the cart) #######################*/ 

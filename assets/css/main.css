@@ -114,9 +114,9 @@ h2{
 	border-radius: 20px;
 }
 
-.navbar>li>a:focus, .navbar ul>li>a:hover, .navbar li.active > a, #dropcategorie > a:hover, #dropcategorie>ul>li>a:hover, li.active #dropcategorie > a, #dropcategorie > a:focus, li.active #dropcategorie > a:focus {
-	background: #FCB3B3;
-	color: #fff;
+.navbar>li>a:focus, .navbar ul>li>a:hover, .navbar li.active > a, #dropcategorie > a:hover, li.active #dropcategorie > a, li.active #dropcategorie > a:focus {
+	background: #fdd4d4;
+	color: #647277;
 	border-radius: 20px;
 	text-decoration: none;
 	top:0;
@@ -125,10 +125,10 @@ h2{
 }
 
 .navbar-default .navbar-toggle{
-	border-color: #FCB3B3;
+	border-color: #fdd4d4;
 }
 .navbar-default .navbar-toggle .icon-bar{
-	background-color: #FCB3B3;
+	background-color: #fdd4d4;
 }
 .nav > li > a, #dropcategorie > a{
 	padding: 15px 15px;
@@ -142,13 +142,14 @@ h2{
 }
 
 #dropcategorie ul{
-	background: #FCB3B3;
+	background: #fdd4d4;
 }
 
 
 
-#dropcategorie > ul > li > a:hover, #dropcategorie > ul > .active > a {
-	color: white;
+#dropcategorie > ul > li > a:hover, #dropcategorie > ul > .active > a, #dropcategorie > a:focus {
+	color: #fff;
+	background-color: #647277;
 	top: -10px;
 	box-shadow: none;
 }
@@ -169,7 +170,7 @@ h2{
 			Accueil - carousel temoignage
 ******************************************************/
 #section-temoignage{
-	background: #FCB3B3;
+	background: #fdd4d4;
 	margin-top: 70px;
 }
 #carousel-temoignage .item{
