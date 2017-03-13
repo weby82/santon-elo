@@ -1,5 +1,5 @@
 <?php 
-
+$navActive = "actualites";
 require_once('private/starter.php');
 require_once('private/functions.php');
 require_once('private/view/header.php');

@@ -1,4 +1,5 @@
 <?php 
+    $navActive = "";
     /* Get header, navigation pane/bar, database_objects file */
    require_once ("./private/view/header.php");// also checks if session was started 
     /* If session 'items' is not set, redirect back to index.php */
