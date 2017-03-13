@@ -114,7 +114,7 @@ h2{
 	border-radius: 20px;
 }
 
-.navbar>li>a:focus, .navbar ul>li>a:hover, .navbar li.active > a, #dropcategorie > a:hover, li.active #dropcategorie > a, li.active #dropcategorie > a:focus {
+.navbar>li>a:focus, .navbar ul>li>a:hover, .navbar li.active > a, #dropcategorie > a:hover, li.active #dropcategorie > a,#dropcategorie.open>a , li.active #dropcategorie > a:focus {
 	background: #fdd4d4;
 	color: #647277;
 	border-radius: 20px;
@@ -147,7 +147,7 @@ h2{
 
 
 
-#dropcategorie > ul > li > a:hover, #dropcategorie > ul > .active > a, #dropcategorie > a:focus {
+#dropcategorie > ul > li > a:hover, #dropcategorie > ul > .active > a, #dropcategorie ul li > a:focus {
 	color: #fff;
 	background-color: #647277;
 	top: -10px;
