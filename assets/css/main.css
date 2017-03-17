@@ -90,7 +90,7 @@ h2{
 .navbar-form{
 	margin-bottom: 15px;
 }
-.navbar-brand{
+.navbar-brand, .navbar-brand:hover{
 	color: #fff;
 	font-size: 2.9em;
     font-weight: 300;
@@ -112,6 +112,7 @@ h2{
 	text-transform: uppercase;
 	white-space: nowrap;
 	border-radius: 20px;
+	border: 4px solid transparent;
 }
 
 .navbar>li>a:focus, .navbar ul>li>a:hover, .navbar li.active > a, #dropcategorie > a:hover, li.active #dropcategorie > a,#dropcategorie.open>a , li.active #dropcategorie > a:focus {
@@ -119,8 +120,8 @@ h2{
 	color: #647277;
 	border-radius: 20px;
 	text-decoration: none;
-	top:0;
 	transition: all .5s ease;
+	transform: translateY(0);
 	
 }
 
@@ -145,13 +146,19 @@ h2{
 	background: #fdd4d4;
 }
 
-
-
+#dropcategorie > ul > li{
+	margin-bottom: 5px;
+}
+#dropcategorie > ul > li > a{
+	border:0 none;
+}
 #dropcategorie > ul > li > a:hover, #dropcategorie > ul > .active > a, #dropcategorie ul li > a:focus {
 	color: #fff;
 	background-color: #647277;
-	top: -10px;
 	box-shadow: none;
+	transform: translateY(0);
+	border:0 none;
+	
 }
 
 #panier {
@@ -510,8 +517,8 @@ h1, h2, h3 {
 		menu top
 	***************************************/
 	.navbar>li>a:focus, .navbar ul>li>a:hover, .navbar li.active > a, #dropcategorie > a:hover, li.active #dropcategorie > a, #dropcategorie > a:focus, li.active #dropcategorie > a:focus {
-		top: -10px;
-		box-shadow: 0px -1px 2px rgba(0,0,0,0.2);
+		transform: translateY(-10px);
+		border: 4px solid #fffaee;
 	}
 
 	.navbar ul > li{
