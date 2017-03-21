@@ -1,0 +1,19 @@
+@media screen and (min-width:992px) {
+	.list-article {
+	margin: 20px 50px;
+	
+	}
+
+	.list-article-inner {
+	padding: 20px 50px 20px 30px;
+
+	}
+}
+
+.list-article article:hover {
+	background-color: #f4f4f2;
+	border: 1px solid grey;
+	box-shadow: 10px 10px 5px #888888;	
+}
+
+	
