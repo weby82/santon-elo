@@ -58,14 +58,15 @@
 					<?php 
 						foreach($items as $item) { 
 						$id = $item["id"];
+						$nomUrl = $item["nom_url"];
 					?>
 					<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 bloc-santon">
 						<form class="item_form">
 							<div class="bloc-santon-inner">
-								<a href="<?php echo $this->url('vitrine_afficher_santon', [ 'categorie' => $categorie, 'id' => $id ]);?>" title="<?php echo $item["nom"]; ?>">
+								<a href="<?php echo $this->url('vitrine_afficher_santon', [ 'categorie' => $categorie, 'nomUrl' => $nomUrl ]);?>" title="<?php echo $item["nom"]; ?>">
 									<img src="<?php echo $item["photo"]; ?>" alt="santon <?php echo $item["nom"]; ?>">
 								</a>
-								<h3><a href="<?php echo $this->url('vitrine_afficher_santon', [ 'categorie' => $categorie, 'id' => $id ]);?>" title="<?php echo $item["nom"]; ?>" title="<?php echo $item["nom"]; ?>"><?php echo $item["nom"]; ?></a></h3>
+								<h3><a href="<?php echo $this->url('vitrine_afficher_santon', [ 'categorie' => $categorie, 'nomUrl' => $nomUrl ]);?>" title="<?php echo $item["nom"]; ?>" title="<?php echo $item["nom"]; ?>"><?php echo $item["nom"]; ?></a></h3>
 								<p class="prix-santon"><?php echo $item["prix"]; ?> €</p>
 								<div class="item_disp_values">
 	                                <div>Quantité:

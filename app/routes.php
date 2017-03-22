@@ -9,8 +9,9 @@
 		//Liste santon d'une categorie
 		['GET|POST', '/categorie/[:categorie]', 'VitrineDamien#categorie', 'vitrine_categorie'],
 
+
 		// Detail d'un santon
-		['GET|POST', '/categorie/[:categorie]/[:id]', 'VitrineDamien#santon', 'vitrine_afficher_santon'],
+		['GET|POST', '/categorie/[:categorie]/[:nomUrl]', 'VitrineDamien#santon', 'vitrine_afficher_santon'],
 
 		// Liste des actualités
 		['GET|POST', '/actualites', 'VitrineKelly#actualites', 'vitrine_actualites'],

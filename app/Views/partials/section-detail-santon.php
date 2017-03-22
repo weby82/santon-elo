@@ -47,7 +47,7 @@
 
 $objetSantonModel = new \Model\SantonModel;
 	
-$tabLigne = $objetSantonModel->find($id);
+$tabLigne = $objetSantonModel->findColumn($nomUrl, "nom_url");
 
 //$objetPDOStatement = envoyerRequeteSQL($requeteSQL, $tabToken);
 

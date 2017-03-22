@@ -4,7 +4,7 @@
 
 
 	$this->insert('partials/header', ["navActive" => $navActive, "categorie" => $categorie]);
-	$this->insert('partials/section-detail-santon',  ["id" => $id, "categorie" => $categorie, "navActive" => $navActive]);
+	$this->insert('partials/section-detail-santon',  [ "categorie" => $categorie,"nomUrl" => $nomUrl, "navActive" => $navActive]);
 	$this->insert('partials/footer');
 	
 	// require_once('private/starter.php');

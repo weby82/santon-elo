@@ -11,4 +11,14 @@ class SantonModel extends Model{ // on fait l'héritage de la classe parente Mod
 
 	// On peut si besoin ajouter des méthodes qui vont faire des requetes SQL spécifique
 	// Pour la table newsletter
+
+	public function findColumn($valeurColonne, $colonne = "id")
+	{
+		$sql = 'SELECT * FROM ' . $this->table . ' WHERE ' . $colonne .'  = :valeurColonne LIMIT 1';
+		$sth = $this->dbh->prepare($sql);
+		$sth->bindValue(':valeurColonne', $valeurColonne);
+		$sth->execute();
+
+		return $sth->fetch();
+	}
 } 
