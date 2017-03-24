@@ -19,17 +19,19 @@ foreach ($tabLigneActu as $index => $tabColonneActu) {
 	$contenuActu		= $tabColonneActu["contenu"];
 	$photoActu			= $tabColonneActu["photo"];
 
-
+	$urlPhoto			= $this->assetUrl($photoActu);
+	
+	$urlActu = $this->url('vitrine_afficher_actualite', ['id' => $idActu]);
 
 	// Construire le code HTML
 ?>
 				<article class="col-md-4 col-sm-6 col-xs-12 articles-actu">
 					<div class="article-inner">
-						<img src="http://lorempixel.com/300/300/people/1/" alt="#">
+						<img src="<?php echo $urlPhoto ?>" alt="#">
 						<div class="desc-actu">
-							<h3>Titre</h3>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo minima ex, culpa exercitationem fuga! Amet adipisci, unde modi temporibus, laborum quaerat in culpa aliquam cum, debitis eos, aspernatur quos ipsa.</p>
-							<p class="lien-article"><a class="btn btn-default" href="#!">Lire la suite</a></p>
+							<h3><?php echo $titreActu ?></h3>
+							<p><?php echo $contenuActu ?></p>
+							<p class="lien-article"><a class="btn btn-default" href="<?php echo $urlActu ?>">Lire la suite</a></p>
 						</div>
 					</div>
 				</article>

@@ -12,30 +12,34 @@
 
 		  <!-- Wrapper for slides -->
 		  <div class="carousel-inner" role="listbox">
-		    <div class="item active">
-		      <img src="http://lorempixel.com/1920/300/abstract/1/" alt="Santon 1">
+
+<?php
+$objetCarouselModel = new \Model\CarouselModel;
+	
+$tabLigne = $objetCarouselModel->findAll("id", "DESC", 4, 0);
+
+// on  fait une boucle foreach pour recuperer les éléments
+foreach ($tabLigne as $index => $tabColonne) {
+
+	// récuperer les colonne de chaque ligne
+	$id 			= $tabColonne["id"];
+	$photo			= $tabColonne["photo"];
+	$nom			= $tabColonne["nom"];
+	$urlPhoto		= $this->assetUrl($photo);
+	
+
+
+	// Construire le code HTML
+?>
+
+		    <div class="item <?php if($id == 1){ echo 'active';} ?>">
+		      <img src="<?php echo $urlPhoto ?>" alt="<?php echo $nom ?>">
 		      <div class="carousel-caption">
-		        <p>Image 1</p>
 		      </div>
 		    </div>
-		    <div class="item">
-		      <img src="http://lorempixel.com/1920/300/abstract/2/" alt="Santon 2">
-		      <div class="carousel-caption">
-		        <p>Image 2</p>
-		      </div>
-		    </div>
-		    <div class="item">
-		      <img src="http://lorempixel.com/1920/300/abstract/3/" alt="Santon 3">
-		      <div class="carousel-caption">
-		        <p>Image 3</p>
-		      </div>
-		    </div>
-		    <div class="item">
-		      <img src="http://lorempixel.com/1920/300/abstract/4/" alt="Santon 4">
-		      <div class="carousel-caption">
-		        <p>Image 4</p>
-		      </div>
-		    </div>
+<?php
+}
+?>	   
 		    
 		  </div>
 
