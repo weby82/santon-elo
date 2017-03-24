@@ -39,7 +39,7 @@ if(session_status()==PHP_SESSION_NONE){session_start();}
             <!-- Collect the nav links, forms, and other content for toggling -->
                   
 
-            <div class="dropdown navbar-right">
+            <div class="navbar-right cart-btn">
               <a href="#" class="shopping_cart_info btn btn-default" title="Shopping cart item total">             
                 <i class='glyphicon glyphicon-shopping-cart' ></i>            
                 <span id='items_in_shopping_cart'>

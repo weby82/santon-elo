@@ -46,7 +46,8 @@ body{
 }
 header{
 	background: #6E8A94;
-	padding-top: 40px;
+	padding-top: 25px;
+	padding-bottom: 20px;
 }
 main{
 	min-height: 640px;
@@ -92,7 +93,7 @@ h2{
 }
 .navbar-brand, .navbar-brand:hover{
 	color: #fff;
-	font-size: 2.9em;
+	font-size: 3.4em;
     font-weight: 300;
 }
 .navbar{
@@ -101,6 +102,13 @@ h2{
 	border: 0 none;
 	border-radius: 0;
 	margin-bottom: 15px;
+}
+.container>.navbar-header{
+	width: 80%;
+	display: inline-block;
+}
+.navbar-right.cart-btn{
+	float: right;
 }
 .navbar ul > li{
 	padding: 0 5px;
@@ -201,11 +209,7 @@ section{
 section img{
 	width: 100%;
 }
-#section-last-ajout h2, #section-last-actu h2{
-	border-bottom: 1px solid black;
-	margin-bottom: 25px;
-	padding-bottom: 10px;
-}
+
 
 .lien-article {
 	text-align: right;
@@ -543,6 +547,11 @@ h1, h2, h3 {
 
 	.navbar ul > li{
 		margin-bottom:0;
+	}
+
+	.container>.navbar-header{
+		width: auto;
+		display: inline-block;
 	}
 }
 
