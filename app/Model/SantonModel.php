@@ -21,4 +21,14 @@ class SantonModel extends Model{ // on fait l'héritage de la classe parente Mod
 
 		return $sth->fetch();
 	}
+
+	public function findAllColumn($valeurColonne, $colonne = "id")
+	{
+		$sql = 'SELECT * FROM ' . $this->table . ' WHERE ' . $colonne .'  = :valeurColonne ';
+		$sth = $this->dbh->prepare($sql);
+		$sth->bindValue(':valeurColonne', $valeurColonne);
+		$sth->execute();
+
+		return $sth->fetchAll();
+	}
 } 

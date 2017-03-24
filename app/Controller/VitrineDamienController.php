@@ -40,6 +40,12 @@ class VitrineDamienController
 		$this->show('page/categorie-santons', ["categorie" => $categorie]);
 	}
 
+	public function categorieDefault()
+	{
+	
+		$this->redirectToRoute('vitrine_categorie', ['categorie' => "nativite"]);
+	}
+
 	public function santon($categorie, $nomUrl)
 	{
 		//mecanique du framwork W

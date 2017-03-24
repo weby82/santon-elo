@@ -3,30 +3,39 @@
 		<section id="section-last-actu">
 			<div class="container">
 				<h2>Dernières Actualités</h2>
+<?php
+$objetActuModel = new \Model\ActualiteModel;
+	
+$tabLigneActu = $objetActuModel->findAll("date", "DESC", 3, 0);
+
+// on  fait une boucle foreach pour recuperer les éléments
+
+foreach ($tabLigneActu as $index => $tabColonneActu) {
+
+	// récuperer les colonne de chaque ligne
+
+	$idActu 			= $tabColonneActu["id"];
+	$titreActu 			= $tabColonneActu["titre"];
+	$contenuActu		= $tabColonneActu["contenu"];
+	$photoActu			= $tabColonneActu["photo"];
+
+
+
+	// Construire le code HTML
+?>
 				<article class="col-md-4 col-sm-6 col-xs-12 articles-actu">
 					<div class="article-inner">
 						<img src="http://lorempixel.com/300/300/people/1/" alt="#">
-						<h3>Titre</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo minima ex, culpa exercitationem fuga! Amet adipisci, unde modi temporibus, laborum quaerat in culpa aliquam cum, debitis eos, aspernatur quos ipsa.</p>
-						<p class="lien-article"><a href="#!">Lire la suite</a></p>
+						<div class="desc-actu">
+							<h3>Titre</h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo minima ex, culpa exercitationem fuga! Amet adipisci, unde modi temporibus, laborum quaerat in culpa aliquam cum, debitis eos, aspernatur quos ipsa.</p>
+							<p class="lien-article"><a class="btn btn-default" href="#!">Lire la suite</a></p>
+						</div>
 					</div>
 				</article>
-				<article class="col-md-4 col-sm-6 col-xs-12 articles-actu">
-					<div class="article-inner">
-						<img src="http://lorempixel.com/300/300/people/2/" alt="#">
-						<h3>Titre</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo minima ex, culpa exercitationem fuga! Amet adipisci, unde modi temporibus, laborum quaerat in culpa aliquam cum, debitis eos, aspernatur quos ipsa.</p>
-						<p class="lien-article"><a href="#!">Lire la suite</a></p>
-					</div>
-				</article>
-				<article class="col-md-4 col-sm-6 col-xs-12 articles-actu">
-					<div class="article-inner">
-						<img src="http://lorempixel.com/300/300/people/3/" alt="#">
-						<h3>Titre</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo minima ex, culpa exercitationem fuga! Amet adipisci, unde modi temporibus, laborum quaerat in culpa aliquam cum, debitis eos, aspernatur quos ipsa.</p>
-						<p class="lien-article"><a href="#!">Lire la suite</a></p>
-					</div>
-				</article>
+<?php
+}
+?>
 			</div>
 		</section>
 

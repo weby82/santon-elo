@@ -9,6 +9,9 @@
 		//Liste santon d'une categorie
 		['GET|POST', '/categorie/[:categorie]', 'VitrineDamien#categorie', 'vitrine_categorie'],
 
+		//Liste santon d'une categorie
+		['GET|POST', '/categorie/', 'VitrineDamien#categorieDefault', 'vitrine_default_categorie'],
+
 
 		// Detail d'un santon
 		['GET|POST', '/categorie/[:categorie]/[:nomUrl]', 'VitrineDamien#santon', 'vitrine_afficher_santon'],
