@@ -63,6 +63,12 @@ h1, h2, h3, h4, .navbar-brand, .navbar li a, .btn-default, .col-nav-left li a{
 h2{
 	color: #647277;
 }
+a{
+	color: #6E8A94;
+}
+a:hover{
+	color: #6E8A94;
+}
 /*****************************************************
 		Bouton
 ***************************************************/

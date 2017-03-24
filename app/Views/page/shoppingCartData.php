@@ -16,9 +16,12 @@ if(isset($_POST["item_id"]) && isset($_POST['item_qty'])){
     
     /* Foreach item -> Remaining data about items fetched from database */
 	foreach($items as $item){
+
 		$added_item["item_name"] = $item['nom']; 
 		$added_item["item_price"] = $item['prix'];
         $added_item["item_image"] = $item['photo'];
+        $added_item["item_url"]   = $item["nom_url"];
+        $added_item["item_categorie"]   = $item["categorie"];
 		
         /* Update item session array with newly added items - items that already exist in the basket will be overwritten */
 		$_SESSION["items"][$added_item['item_id']] = $added_item;        
@@ -38,7 +41,9 @@ if(isset($_POST["load_cart_items"])){
         $total=0; // define total so the script won't throw silly error of a type 'Undefined variable: total in....'
         
         /* Loop through item session array and display data */		
-        foreach($_SESSION["items"] as $item){ 		
+        foreach($_SESSION["items"] as $item){ 
+
+        		
         ?>			
             <tr class='itemInCardRow'>            
                 <td class='itemInCartDisplay'>
@@ -46,7 +51,7 @@ if(isset($_POST["load_cart_items"])){
                 </td>
 
                 <td class='itemInCartDisplay'>
-                    <a href="./detail-santon.php?santon_id=<?php echo $item["item_id"] ?>" title="<?php echo $item["item_name"] ?>">
+                    <a href="<?php echo $this->url('vitrine_afficher_santon', [ 'categorie' => $categorie, 'nomUrl' => $nomUrl ]);?>" title="<?php echo $item["item_name"] ?>">
                         <?php echo $item["item_name"] ?> 
                     </a>          
                 </td>
