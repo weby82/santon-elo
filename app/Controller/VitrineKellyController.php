@@ -19,5 +19,14 @@ class VitrineKellyController
 		$this->show('page/actualites');
 	}
 
+	public function actualite($id)
+	{
+		$this->show('page/detail-actualite', ["id" => $id]);
+	}
+
+	public function evenements()
+	{
+		$this->show('page/evenements');
+	}
 
 }

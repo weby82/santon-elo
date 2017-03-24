@@ -4,16 +4,19 @@
 	
 	}
 
-	.list-article-inner {
-	padding: 20px 50px 20px 30px;
+h3 {
+	padding-left: 5px;
+}
 
-	}
+.list-article-inner{
+	font-family: 'Montserrat', sans-serif;
+	font-size: 15px;
+	margin-top: 20px;
 }
 
 .list-article article:hover {
-	background-color: #f4f4f2;
-	border: 1px solid grey;
-	box-shadow: 10px 10px 5px #888888;	
+	border: none !important;
+	box-shadow: 8px 8px 5px rgba(0,0,0,0.2) !important;	
 }
 
 	

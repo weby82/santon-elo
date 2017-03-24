@@ -6,34 +6,43 @@
 
 <?php
 
-	$objetSantonModel = new \Model\ActualiteModel;
+	$objetArticleModel = new \Model\ActualiteModel;
 	
-	$tabLigne = $objetSantonModel->findAll("date", "DESC");
-
+	$tabLigne = $objetArticleModel->findAll("date", "DESC");
+	$countArticle = 0;
 	foreach($tabLigne as $index => $tabColonne) {
 	
-		$idLigneCourante = $tabColonne["id"];
+		$id = $tabColonne["id"];
 		$titreLigneCourante = $tabColonne["titre"];
 		$contenuLigneCourante = $tabColonne["contenu"];
 		$photoLigneCourante = $tabColonne["photo"];
 
 		$contenuLigneCourante = substr($contenuLigneCourante, 0, 500);
+		$countArticle++;
 
-		echo
-<<<CODEHTML
+		if($countArticle % 2 == 0){
+			$pair = "pull-right";
+			$offset = 3;
+		}else{
+			$pair ="";
+			$offset = 2;
+		}
+ 		
+		$url = $this->url('vitrine_afficher_actualite', ['id' => $id]);
+?>
 		<article>
-            <div class="list-article-inner">
-                <figure class="col-md-4">
-                    <img src="$photoLigneCourante" alt="image 1" class="img-responsive">
+            <div class="list-article-inner col-md-8 col-md-offset-<?php echo $offset; ?>" >
+                <figure class="col-md-4 <?php echo $pair; ?>">
+                    <img src="<?php echo $photoLigneCourante; ?>" alt="image 1" class="img-responsive img-circle">
                 </figure>
                 <div class="col-md-8 div-article">
-                    <h3>$titreLigneCourante</h3>
-                    <p>$contenuLigneCourante ...</p>
-                    <a class="readmore" href="#">Lire la suite</a>
+                    <h3><?php echo $titreLigneCourante; ?></h3>
+                    <p><?php echo $contenuLigneCourante; ?> ...</p>
+                    <a class="readmore" href="<?php echo $url; ?>">Lire la suite</a>
                 </div>
             </div>
         </article>
-CODEHTML;
+<?php
 
 	}
 ?>

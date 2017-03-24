@@ -16,6 +16,9 @@
 		// Liste des actualités
 		['GET|POST', '/actualites', 'VitrineKelly#actualites', 'vitrine_actualites'],
 
+		//Détail actualité
+		['GET|POST', '/actualite/[:id]', 'VitrineKelly#actualite', 'vitrine_afficher_actualite'],
+
 		//Liste des evenements
 		['GET|POST', '/evenements', 'VitrineKelly#evenements', 'vitrine_evenements'],
 
@@ -27,4 +30,6 @@
 
 		//Affichage panier
 		['GET|POST', '/panier', 'VitrineDamien#panier', 'vitrine_panier'],
+
+		
 	);
