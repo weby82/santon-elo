@@ -1,8 +1,8 @@
 <main id="section-detail-santon">
 		<div class="container">
 			<div class="container-inner">
-				<h2>Actualité</h2>
-				<section class="detail-article">
+			
+				
 	<?php
 
 	$objetActualiteModel = new \Model\ActualiteModel;
@@ -18,16 +18,19 @@
 
 		$contenuLigneCourante = substr($contenuLigneCourante, 0, 500);
 
+		$urlPhoto = $this->assetUrl($photoLigneCourante);
+
 		echo
 <<<CODEHTML
+	<h2>$titreLigneCourante</h2>
+		<section class="detail-actualite">
 		<article>
-            <div class="list-article-inner col_md-8 col-md-offset-3">
-                <figure class="col-md-3">
-                    <img src="$photoLigneCourante" alt="image 1" class="img-responsive img-circle">
+            <div class="list-detail-actualite-inner">
+                <figure class="col-md-4">
+                    <img src="$urlPhoto" alt="image 1" class="img-responsive img-circle img-actualite">
                 </figure>
-                <div class="col-md-9 div-article">
-                    <h3>$titreLigneCourante</h3>
-                    <p>$contenuLigneCourante ...</p>
+                <div class="col-md-8 div-actualite">
+                    <p>$contenuLigneCourante</p>
                 </div>
             </div>
         </article>
