@@ -1,22 +1,96 @@
-@media screen and (min-width:992px) {
-	.list-article {
-	margin: 20px 50px;
-	
+@media screen and (min-width:585px) and (max-width:992px) {
+	/* Page d'actualité */
+	.list-actualite {
+		margin: 20px 50px;		
 	}
 
-h3 {
-	padding-left: 5px;
+	.img-responsive {
+		width: 50%;
+		margin-left: 20%;
+
+	}
 }
 
-.list-article-inner{
-	font-family: 'Montserrat', sans-serif;
+@media screen and (min-width:992px) {
+
+	/* detail actualité */
+	.div-actualite {
+		font-size: 16px;
+		margin-top: 8%;
+	}
+
+	.detail-actualite {
+		margin-top: 8%;
+		margin-right: 10%;
+	}
+
+	.img-actualite {
+		width: 80%;
+		float: right;
+	}
+
+}
+
+
+/* liste actualité */
+.list-actualite-inner{
 	font-size: 15px;
-	margin-top: 20px;
 }
 
-.list-article article:hover {
-	border: none !important;
-	box-shadow: 8px 8px 5px rgba(0,0,0,0.2) !important;	
+.list-actualite article {
+	margin-top: 8%;
 }
 
-	
+.list-actualite .article-detail:after{
+	content: " ";
+	display: block;
+	border-bottom: 1px dotted #647277;
+	width: 30%;
+	padding-top: 15px;
+	margin: 0 auto;
+}
+
+.list-actualite article:last-child .article-detail:after{
+	border-bottom: 0 none;
+	padding-top: 0;
+}
+
+.btn {
+	background-color: #BAD1D1;
+	color: #fff;
+	border-color: #BAD1D1;
+}
+
+.btn:hover{
+	background-color: #6E8A94;
+	border-color: #6E8A94;
+	color: #fff;
+
+}
+
+
+/* évenement */
+
+.list-evenement .div-evenement:after{
+	content: " ";
+	display: block;
+	border-bottom: 1px dotted #647277;
+	width: 30%;
+	padding-top: 15px;
+	margin: 0 auto;
+}
+
+.list-evenement article:last-child .div-evenement:after{
+	border-bottom: 0 none;
+	padding-top: 0;
+}
+
+.list-evenement-inner{
+	margin-top: 8%;
+}
+
+.calendrier {
+	color: #647277;
+	font-weight: bold;
+	margin-bottom: 2%;
+}

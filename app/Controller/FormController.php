@@ -15,7 +15,7 @@ class FormController extends Controller
     // EN PHP
     // $toto = verifierSaisie("toto");
 
-    public function verifierSaisie ($name)
+    public function verifierSaisie ($name, $prenom, $sujet, $message)
     {
         $valeurSaisie = ""; // AU DEBUT ON A LA CHAINE VIDE
         

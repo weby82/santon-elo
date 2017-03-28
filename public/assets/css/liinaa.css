@@ -3,11 +3,181 @@
 ***************************************************/
 
 
-form .colonne-gauche input{
-	margin-bottom: 11px;
+form .colonne-gauche input label{
+	margin-bottom: 50px;
 }
 
 #formulaire button{
 	padding: 6px 25px;
 	font-size: 16px;
 }
+
+
+// Material design SECTION CONTACT FORM 
+
+form {
+	width: 380px;
+	margin: 4em auto;
+	padding: 3em 2em 2em 2em;
+	background: #fafafa;
+	border: 1px solid #ebebeb;
+	box-shadow: rgba(0,0,0,0.14902) 0px 1px 1px 0px,rgba(0,0,0,0.09804) 0px 1px 2px 0px;
+}
+
+.group { 
+	position: relative; 
+	margin-bottom: 35px; 
+}
+
+input, textarea {
+	font-size: 13px;
+	padding: 13px 8px 8px 6px;
+	-webkit-appearance: none;
+	display: block;
+	background: white;
+	color: #636363;
+	width: 100%;
+	border: 0.01em solid rgba(219,211,202,0.5);
+	border-radius: 6px;
+	// border-bottom: 1px solid grey;
+}
+
+input:focus, textarea:focus { outline: none; }
+
+
+/* Label */
+
+label {
+	color: #999;
+	font-size: 18px;
+	font-weight: normal;
+	position: absolute;
+	pointer-events: none;
+	left: 5%;
+	top: 10px;
+	transition: all 0.2s ease;
+}
+
+/* Textarea */
+textarea {
+	height: 270px;
+}
+
+textarea ~ label {
+	left: 12%;
+}
+
+
+/* active */
+
+input:focus ~ label, input.used ~ label, textarea:focus ~ label, textarea .used ~ label {
+	top: -25px;
+  transform: scale(.75); left: 1%;
+	/* font-size: 14px; */
+	color: #647277;
+}
+
+
+/* Underline */
+
+.bar {
+	position: relative;
+	display: block;
+	width: 100%;
+}
+
+.bar:before, .bar:after {
+	content: '';
+	height: 2px; 
+	width: 0;
+	bottom: 1px; 
+	position: absolute;
+	background: #fdd4d4; 
+	transition: all 0.2s ease;
+}
+
+.bar:before { left: 50%; }
+
+.bar:after { right: 50%; }
+
+
+/* active */
+
+input:focus ~ .bar:before, input:focus ~ .bar:after, textarea:focus ~ .bar:before, textarea:focus ~ .bar:after  { width: 50%; }
+
+
+/* Highlight */
+
+.highlight {
+	position: absolute;
+	height: 60%; 
+	width: 100px; 
+	top: 25%; 
+	left: 0;
+	pointer-events: none;
+	opacity: 0.5;
+}
+
+
+/* active */
+
+input:focus ~ .highlight, textarea:focus ~ .highlight  {
+	animation: inputHighlighter 0.3s ease;
+}
+
+
+/* Animations */
+
+@keyframes inputHighlighter {
+	from { background: #4a89dc; }
+	to 	{ width: 0; background: transparent; }
+}
+
+
+
+/* Ripples container */
+
+.ripples {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: transparent;
+}
+
+
+/* Ripples circle */
+
+.ripplesCircle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.ripples.is-active .ripplesCircle {
+  animation: ripples .4s ease-in;
+}
+
+
+/* Ripples animation */
+
+@keyframes ripples {
+  0% { opacity: 0; }
+
+  25% { opacity: 1; }
+
+  100% {
+    width: 200%;
+    padding-bottom: 200%;
+    opacity: 0;
+  }
+}
+
