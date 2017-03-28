@@ -1,6 +1,6 @@
 
 	<!--Création du Carousel -->
-	<div class="row">
+
 		<div id="carousel-accueil" class="carousel slide" data-ride="carousel">
 		  <!-- Indicators -->
 		  <ol class="carousel-indicators">
@@ -53,4 +53,3 @@ foreach ($tabLigne as $index => $tabColonne) {
 		    <span class="sr-only">Next</span>
 		  </a>
 		</div>
-	</div>

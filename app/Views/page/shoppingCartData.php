@@ -15,16 +15,18 @@ if(isset($_POST["item_id"]) && isset($_POST['item_qty'])){
     $items = $database->find_by_query("SELECT * FROM santon WHERE id='{$added_item["item_id"]}' LIMIT 1");
     
     /* Foreach item -> Remaining data about items fetched from database */
-	foreach($items as $item){
+	foreach($items as $itemPanier){
 
-		$added_item["item_name"] = $item['nom']; 
-		$added_item["item_price"] = $item['prix'];
-        $added_item["item_image"] = $item['photo'];
-        $added_item["item_url"]   = $item["nom_url"];
-        $added_item["item_categorie"]   = $item["categorie"];
+		$added_item["item_name"] = $itemPanier['nom']; 
+		$added_item["item_price"] = $itemPanier['prix'];
+        $added_item["item_image"] = $itemPanier['photo'];
+        $added_item["item_url"]   = $itemPanier["nom_url"];
+        $added_item["item_categorie"]   = $itemPanier["categorie"];
 		
         /* Update item session array with newly added items - items that already exist in the basket will be overwritten */
-		$_SESSION["items"][$added_item['item_id']] = $added_item;        
+		$_SESSION["items"][$added_item['item_id']] = $added_item;  
+
+
 	}	
     /* Calculate number of items in cart and output it in json format */
     exit(json_encode(array('items_in_cart'=>count($_SESSION['items']))));  
@@ -35,6 +37,7 @@ if(isset($_POST["load_cart_items"])){
 
     /* If item session is already set and if there are any items added to the session */
 	if(isset($_SESSION["items"]) && count($_SESSION["items"])>0){
+
     ?>
         <table class='table'> <!--Start table that will holds all data in the shopping cart --> 
         <?php
@@ -42,7 +45,6 @@ if(isset($_POST["load_cart_items"])){
         
         /* Loop through item session array and display data */		
         foreach($_SESSION["items"] as $item){ 
-
         		
         ?>			
             <tr class='itemInCardRow'>            
@@ -51,7 +53,7 @@ if(isset($_POST["load_cart_items"])){
                 </td>
 
                 <td class='itemInCartDisplay'>
-                    <a href="<?php echo $this->url('vitrine_afficher_santon', [ 'categorie' => $categorie, 'nomUrl' => $nomUrl ]);?>" title="<?php echo $item["item_name"] ?>">
+                    <a href="<?php echo $this->url('vitrine_afficher_santon', [ 'categorie' => $item["item_categorie"], 'nomUrl' => $item["item_url"] ]);?>" title="<?php echo $item["item_name"] ?>">
                         <?php echo $item["item_name"] ?> 
                     </a>          
                 </td>

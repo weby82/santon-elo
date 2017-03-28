@@ -50,8 +50,6 @@ foreach ($tabLigneActu as $index => $tabColonneActu) {
 
 // je recupere les info de la table santon
 
-
-
 $objetSantonModel = new \Model\SantonModel;
 	
 $tabLigne = $objetSantonModel->findAll("date_ajout", "DESC", 8, 0);
@@ -120,56 +118,50 @@ foreach ($tabLigne as $index => $tabColonne) {
 
 				  <!-- Wrapper for slides -->
 				  <div class="carousel-inner" role="listbox">
-				    <div class="item active">
+<?php
+
+	// Requete SQL pour lire les info dans la table guestBook
+
+// je recupere les info de la table guestBook
+
+$objetLivreModel = new \Model\GuestbookModel;
+	
+$tabLigne = $objetLivreModel->findAll("date", "DESC", 4, 0);
+
+// on  fait une boucle foreach pour recuperer les éléments
+$countLivre = 0;
+foreach ($tabLigne as $index => $tabColonneLivre) {
+
+	// récuperer les colonne de chaque ligne
+
+	$id 							= $tabColonneLivre["id"];
+	$nomLivre 						= $tabColonneLivre["nom_client"];
+	$descriptionLivre				= $tabColonneLivre["description"];
+
+	$countLivre++;
+
+	
+
+
+
+	// Construire le code HTML
+?>
+				    <div class="item <?php if($countLivre == 1) echo "active"; ?>">
 				      <div class="temoignage">
 					      <p>
-					      Superbe réalisation, exactement ce qu'il me fallait !
-					      Je la recommande vivement
+					      <?php echo $descriptionLivre  ?>
 					      </p>
 					      <p class="nom-temoignage">
-					      Monsieur Bob
+					      <?php echo $nomLivre  ?>
 					      </p>
 				      </div>
 				      <div class="carousel-caption">  
 				      </div>
 				    </div>
-				    <div class="item">
-				      <div class="temoignage">
-					      <p>
-					      J'ai commandé 4 santons, ils sont magnifique, j'adore sont travail. super détail 
-					      </p>
-					      <p class="nom-temoignage">
-					      Madame Xavier
-					      </p>
-				      </div>
-				      <div class="carousel-caption">
-				      </div>
-				    </div>
-				    <div class="item">
-				      <div class="temoignage">
-					      <p>
-					      Les santons sont très beau, j'ai fait une commande personnalisé pour mon mariage, je suis ravie
-					      </p>
-					      <p class="nom-temoignage">
-					      Madame Houlala
-					      </p>
-				      </div>
-				      <div class="carousel-caption">
-				      </div>
-				    </div>
-				    <div class="item">
-				      <div class="temoignage">
-					      <p>
-					      Superbe réalisation, exactement ce qu'il me fallait !
-					      Je la recommande vivement
-					      </p>
-					      <p class="nom-temoignage">
-					      Monsieur Youpi
-					      </p>
-				      </div>
-				      <div class="carousel-caption">
-				      </div>
-				    </div>
+<?php
+}
+?>
+				   
 				    
 				  </div>
 

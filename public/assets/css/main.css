@@ -109,7 +109,7 @@ a:hover{
 	border-radius: 0;
 	margin-bottom: 15px;
 }
-.container>.navbar-header{
+header .container>.navbar-header{
 	width: 80%;
 	display: inline-block;
 }
@@ -144,6 +144,9 @@ a:hover{
 }
 .navbar-default .navbar-toggle .icon-bar{
 	background-color: #fdd4d4;
+}
+.navbar-default .navbar-toggle:hover .icon-bar,.navbar-default .navbar-toggle:focus .icon-bar, .navbar-default .navbar-toggle:active .icon-bar {
+	background-color: white;
 }
 .nav > li > a, #dropcategorie > a{
 	padding: 15px 15px;
@@ -195,12 +198,12 @@ a:hover{
 	margin-top: 70px;
 }
 #carousel-temoignage .item{
-	height: 300px;
+	height: auto;
 }
 #carousel-temoignage .temoignage{
 	text-align: center;
     font-size: 1.6em;
-        padding: 85px 140px;
+    padding: 85px 20px;
 }
 #carousel-temoignage .carousel-control{
 	background: none;
@@ -220,7 +223,9 @@ section img{
 .lien-article {
 	text-align: right;
 }
-
+#section-last-actu .articles-actu{
+	margin-bottom: 25px;
+}
 #section-last-actu .article-inner {
 	box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.2);
 	background-color: white;
@@ -559,11 +564,29 @@ h1, h2, h3 {
 		width: auto;
 		display: inline-block;
 	}
+
+	/********* Header ***********************/
+
+	.navbar-right.cart-btn {
+   	 	padding: 0 15px;
+   	 	margin-right: 0;
+	}
 }
 
 @media screen and (min-width:992px) {
+
+	
 	.list-article article .img-responsive{
 		max-width: 220px;
+	}
+
+	/************** carousel **************************/
+	#carousel-temoignage .item{
+		height: 300px;
+	}
+
+	#carousel-temoignage .temoignage{
+        padding: 85px 140px;
 	}
 
 	/************************************

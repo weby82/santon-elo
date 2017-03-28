@@ -39,6 +39,23 @@
     color: #647277;
 }
 
+
+/***************************************************
+        Page accueil livre or
+**************************************************/
+#carousel-temoignage .temoignage:before{
+    content: "\"";
+    font-size:4em;
+    display: inline-block;
+    position: relative;
+    float: left;
+    color: white;
+    font-weight: bold;
+    font-family: 'palanquin', helvetica, sans-serif;
+    top: -50px;
+}
+
+
 /*####################### SHOPPING CART INFO BAR(The one that display total items in the cart) #######################*/ 
 .shopping_cart_info_holder{margin-bottom:20px; text-align: center;}
 .shopping_cart_info{
@@ -153,4 +170,25 @@ table tr td.itemInCartDisplay{
 }
 .bloc-santon .item_disp_values select{
     padding: 4px;
+}
+
+/**********************************************************************
+            Admin - Accueil
+**********************************************************************/
+
+#admin-accueil .btn-block{
+    padding: 50px 15px;
+    margin-bottom: 15px;
+    font-size: 2em;
+    color: #fff;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    background-color: #BAD1D1;
+    text-align: center;
+    text-decoration: none;
+    transition: all .5s ease;
+}
+#admin-accueil .btn-block:hover{
+    background-color: #6E8A94;
 }

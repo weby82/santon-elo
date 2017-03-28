@@ -1,6 +1,8 @@
 <?php
 	
 	$w_routes = array(
+
+		//////////////////////FRONT////////////////////////////
 		['GET', '/', 'VitrineDamien#accueil', 'vitrine_accueil'],
 
 		//Page de contact
@@ -34,5 +36,10 @@
 		//Affichage panier
 		['GET|POST', '/panier', 'VitrineDamien#panier', 'vitrine_panier'],
 
+
+		///////////////////////////Backoffice//////////////////////////////
+
+
+		['GET', '/admin', 'AdminDamien#accueil', 'admin_accueil'],
 		
 	);
