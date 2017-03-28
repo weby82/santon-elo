@@ -1,12 +1,12 @@
 <!-- Création du main avec actualités et dernier ajouts -->
-	<main>
+	<main class="admin">
 		<section id="admin-accueil">
 			<div class="container">
 				<h2>Administration - Accueil</h2>
 
 				<div class="row bloc-menu">
 					<div class="col-md-3 col-xs-6">
-						<a class="btn-block" href="" title="Modifier les santons">
+						<a class="btn-block" href="<?php echo $this->url('admin_gerer_santons', ['categorie' => 'nativite']); ?>" title="Modifier les santons">
 							Modifier les santons
 						</a>
 					</div>

@@ -110,7 +110,7 @@ a:hover{
 	margin-bottom: 15px;
 }
 header .container>.navbar-header{
-	width: 80%;
+	width: 65%;
 	display: inline-block;
 }
 .navbar-right.cart-btn{
@@ -287,7 +287,7 @@ section img{
 	padding: 0;
 }
 .col-nav-left{
-	display: block;
+	display: none;
 }
 .col-nav-left, .col-nav-left .nav a{
 	color:#647277;
@@ -493,9 +493,7 @@ footer div p{
 
 @media screen and (max-width: 992px) {
 
-	.col-nav-left{
-		display: none;
-	}
+	
 }
 
 /******************************************************
@@ -578,6 +576,10 @@ h1, h2, h3 {
 	
 	.list-article article .img-responsive{
 		max-width: 220px;
+	}
+
+	.col-nav-left{
+		display: block;
 	}
 
 	/************** carousel **************************/

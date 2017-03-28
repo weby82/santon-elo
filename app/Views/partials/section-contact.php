@@ -4,7 +4,7 @@
 			<div class="container-inner">
 				<h2>Formulaire de contact</h2>
 							
-					<form method="GET" id="formulaire">
+					<form method="GET" id="formulaire" class="formulaire">
 
 	        			<div class="colonne-gauche col-md-6 col-xs-12 ">
 						  <div class="group colonne-gauche">

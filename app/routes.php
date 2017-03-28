@@ -39,7 +39,22 @@
 
 		///////////////////////////Backoffice//////////////////////////////
 
+		// Page de login
+		['GET|POST', '/admin/login', 'AdminDamien#login', 'login'],
 
-		['GET', '/admin', 'AdminDamien#accueil', 'admin_accueil'],
+		// Déconnexion / Logout
+		['GET|POST', '/admin/logout', 'AdminDamien#logout', 'logout'],
 		
+		// Page d'accueil
+		['GET|POST', '/admin/accueil', 'AdminDamien#accueil', 'admin_accueil'],
+		
+		//Modification / création / suppression des Santons
+		['GET|POST', '/admin/santons/', 'AdminDamien#santonsDefault', 'admin_santons_default'],
+
+		//Modification / suppression des Santons
+		['GET|POST', '/admin/santons/[:categorie]', 'AdminDamien#gererSantons', 'admin_gerer_santons'],
+
+		// création de Santon
+		['GET|POST', '/admin/ajouter-santon', 'AdminDamien#ajouterSanton', 'admin_ajouter_santon'],
+
 	);

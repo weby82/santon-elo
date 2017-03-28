@@ -4,7 +4,7 @@ console.log('js ok');
 
 $(window, document, undefined).ready(function() {
 
-  $('input').blur(function() {
+  $('input, textarea').blur(function() {
     var $this = $(this);
     if ($this.val())
       $this.addClass('used');

@@ -3,8 +3,7 @@
 namespace Controller;
 
 use \W\Controller\Controller;
-use \Model\NewsletterModel;
-use \Model\ArtistesModel;
+use \Model\SantonModel;
 
 class FormController extends Controller
 {
@@ -15,7 +14,7 @@ class FormController extends Controller
     // EN PHP
     // $toto = verifierSaisie("toto");
 
-    public function verifierSaisie ($name, $prenom, $sujet, $message)
+    public function verifierSaisie ($name)
     {
         $valeurSaisie = ""; // AU DEBUT ON A LA CHAINE VIDE
         
@@ -209,5 +208,141 @@ class FormController extends Controller
 
     }
 
+    //SETTER
+    function setVar($nomVariable,$valeurVariable){
+        $this->tabVariableView[$nomVariable] = $valeurVariable;
+    }
+
+   // METHODE
+    // Je surcharge la methode show() de la classe parent Controller
+    public function show($file, array $data = array()){
+        
+        //incluant le chemin vers nos vues
+        $engine = new \League\Plates\Engine(self::PATH_VIEWS);
+
+        //charge nos extensions (nos fonctions personnalisées)
+        $engine->loadExtension(new \W\View\Plates\PlatesExtensions());
+
+        $app = getApp();
+
+        // Rend certaines données disponibles à tous les vues
+        // accessible avec $w_user & $w_current_route dans les fichiers de vue
+        $engine->addData(
+            [
+                'w_user'          => $this->getUser(),
+                'w_current_route' => $app->getCurrentRoute(),
+                'w_site_name'     => $app->getConfig('site_name'),
+            ]
+        );
+
+        // Je peux ajouter des variables qui seront disponible dans tout les fichier view
+        // $this->tabVariableView = [
+        //                     "var1" => date("Y"),
+        //                     ];
+        
+        // $this->setVar("var1", date('Y'));
+
+        //$engine->addData($this->tabVariableView);
+
+        // On peut ajouter des fonctions supplementaire dans la partie view
+        // $engine->registerFunction('afficherDate', function(){
+        //     echo date("Y");
+        // });
+
+        $engine->registerFunction('afficherVarGlob', function($nomVar){
+            if (isset($GLOBALS["$nomVar"])){echo $GLOBALS["$nomVar"];};
+        });
+
+
+        // Retire l'éventuelle extension .php
+        $file = str_replace('.php', '', $file);
+
+        // Affiche le template
+        echo $engine->render($file, $data);
+        die();
+    }
+
+    public function loginTraitement(){
+
+        // REcuperer les infos du formulaire
+
+        $identifiant = $this->verifierSaisie("identifiant");
+        $password = $this->verifierSaisie("password");
+
+        //securite
+        if (($identifiant != "") && ($password != "")){
+
+            //on crée un objet de la classe \W\Security\AuthentificationModel
+            //ce qui nous permet d'utiliser la methode isValidLoginInfo
+            $objetAuthentificationModel = new \W\Security\AuthentificationModel;
+
+            $idUser = $objetAuthentificationModel->isValidLoginInfo($identifiant, $password);
+
+            if($idUser > 0){
+
+                // recuperer les infos de l'utilisateur
+                //requete base de donnée pour les recuperer
+                //je crée un objet de la classe \W\Model\UsersModel
+                $objetUsersModel = new \W\Model\UsersModel;
+                // je retrouve les infos de la ligne grace à la colonne ID
+                // La classe UsersModel herite de la classe Model je peu donc faire un find pour recupeerr les infos
+                $tabUser = $objetUsersModel->find($idUser);
+
+                // Je vais ajouter des infos dans la session
+                $objetAuthentificationModel->logUserIn($tabUser);
+
+                // recuperer l'username
+                $username = $tabUser["username"];
+
+
+                $GLOBALS["loginRetour"] = "Bienvenue $username";
+
+                $this->redirectToRoute("admin_accueil");
+            }
+            else{
+                 $GLOBALS["loginRetour"] = "Identifiant incorrects ";
+            }
+        }else{
+
+            $GLOBALS["loginRetour"] = "Identifiant incorrects ";
+        }
+    }
+
+
+    public function santonCreateTraitement(){
+        // Récupérer les infos du formulaire
+        $nom          = $this->verifierSaisie("nom"); 
+        $nomUrl       = $this->verifierSaisie("nom_url"); 
+        $categorie    = $this->verifierSaisie("categorie"); 
+        $photo        = $this->verifierSaisie("photo"); 
+        $description  = $this->verifierSaisie("description");
+        $dateAjout     = date("Y-m-d H:i:s");
+        //vérifier si les infos sont correcte
+        if(($nom != "") && ($nomUrl != "") && ($photo != "") && ($description != "")){
+
+             //si ok on ajoute une ligne dans la table artiste
+            //avec le framwork W
+            //je dois créer un objet de la classe ArtistesModel
+            //(car la table mysql s'appel artistes)
+            //ne pas oublier de rajouter use \Model\ArtistesModel
+            $objetSantonModel = new SantonModel;
+            //on peu utiliser la méthode insert
+            $objetSantonModel->insert(["nom" => $nom, 
+                                        "nom_url" => $nomUrl, 
+                                        "categorie" => $categorie, 
+                                        "photo" => $photo,
+                                        "description" => $description,
+                                        "date_ajout" => $dateAjout
+                                        ]);
+
+            //Message de retour
+            $GLOBALS["santonCreateRetour"] = "<p class='bg-success'>Santon $nom Ajouté</p>";
+        }
+        else{
+            //Message de retour
+            $GLOBALS["santonCreateRetour"] = "Information manquante";
+        }
+       
+    }
 
 }

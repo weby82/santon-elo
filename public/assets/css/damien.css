@@ -1,3 +1,8 @@
+
+main.admin{
+    min-height: 560px;
+}
+
 /*******************************************************
             Page detail santon
 *****************************************************/
@@ -191,4 +196,81 @@ table tr td.itemInCartDisplay{
 }
 #admin-accueil .btn-block:hover{
     background-color: #6E8A94;
+}
+/****************************************************************
+                    Admin - Login
+*****************************************************************/
+.login-block{
+    background-color: #fdd4d4;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    margin-top: 50px;
+}
+.login-block-inner{
+    padding: 25px 15px;
+}
+.login-block h2{
+    text-align: center;
+}
+.login-block form .group{
+    margin-bottom: 30px;
+}
+
+.login-block .bar:before, .login-block .bar:after {
+    background: #BAD1D1; 
+}
+
+/****************************************************************
+                    Admin - Santon
+*****************************************************************/
+.table-img{
+    max-width: 50px;
+
+}
+.table tbody tr td{
+    vertical-align: middle;
+}
+
+.admin .col-nav-left{
+    display: block;
+}
+
+.admin .col-nav-left .nav>li{
+    display: inline-block;
+}
+
+#formAjoutSanton .formulaire{
+    margin-top: 35px;
+}
+#formAjoutSanton form label{
+    left:2%;
+}
+
+#formAjoutSanton input:focus ~ label, #formAjoutSanton input.used ~ label, #formAjoutSanton textarea:focus ~ label, #formAjoutSanton textarea.used ~ label{
+    left:0;
+}
+
+#formAjoutSanton select{
+    color: #999;
+    font-size: 18px;
+    font-weight: normal;
+    padding: 13px 8px 8px 6px;
+    height: auto;
+    border: 0.01em solid rgba(219,211,202,0.5);
+    border-radius: 6px;
+}
+#formAjoutSanton select:focus{
+        box-shadow: 0 0 6px rgb(253, 212, 212);
+}
+
+/************** Ecran ordinateur ********************/
+@media screen and (min-width:992px) {
+    
+    /*************** Admin santon *************/
+
+    .admin .col-nav-left .nav>li{
+        display: block;
+    }
+
 }
