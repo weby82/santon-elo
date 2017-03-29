@@ -33,7 +33,7 @@ if(session_status()==PHP_SESSION_NONE){session_start();}
     <header>
         <div class="container">
             <div class="navbar-header">
-              <a class="navbar-brand" href="index.php">Santon'Elo</a>
+              <a class="navbar-brand" href="<?php echo $this->url('vitrine_accueil'); ?>">Santon'Elo</a>
             </div>
                       
         </div>     
@@ -57,7 +57,7 @@ if(session_status()==PHP_SESSION_NONE){session_start();}
                           <a href="<?php echo $this->url('admin_accueil'); ?>">Accueil</a>
                       </li>
                        <li <?php if($navActive == "santon") { echo "class='active'"; }?>>
-                          <a href="<?php // echo $this->url('admin_santon'); ?>">Santons</a>
+                          <a href="<?php echo $this->url('admin_gerer_santons', ['categorie' => 'nativite']);?>">Santons</a>
                       </li>
                       <li <?php if($navActive == "actualites") { echo "class='active'"; }?>>
                         <a href="<?php // echo $this->url('admin_actualites'); ?>">Actualités</a>
@@ -68,6 +68,20 @@ if(session_status()==PHP_SESSION_NONE){session_start();}
                       <li <?php if($navActive == "livre") { echo "class='active'"; }?>>
                           <a href="<?php // echo $this->url('admin_livre'); ?>">Livre d'or</a>
                       </li>
+
+ <?php
+  // si je suis connecté je vois que le lien de logout
+  if (isset($w_user["id"]) && ($w_user["id"] > 0)):
+
+?>
+        <li><a href="<?php echo $this->url('logout'); ?>">Logout</a></li>
+<?php
+  else :
+?>
+        <li><a href="<?php echo $this->url('login'); ?>">Login</a></li>
+<?php
+  endif;
+?>
                   </ul>
               </div>
           </div>
