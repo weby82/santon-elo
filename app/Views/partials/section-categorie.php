@@ -51,12 +51,14 @@
 						$nom 		= $valeur["nom"];
 						$prix 		= $valeur["prix"];
 						$photo 	= $valeur["photo"];
+
+						$urlPhoto			= $this->assetUrl($photo);
 					?>
 					<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 bloc-santon">
 						<form class="item_form">
 							<div class="bloc-santon-inner">
 								<a href="<?php echo $this->url('vitrine_afficher_santon', [ 'categorie' => $categorie, 'nomUrl' => $nomUrl ]);?>" title="<?php echo $nom; ?>">
-									<img src="<?php echo $photo; ?>" alt="santon <?php echo $nom; ?>">
+									<img src="<?php echo $urlPhoto; ?>" alt="santon <?php echo $nom; ?>">
 								</a>
 								<h3><a href="<?php echo $this->url('vitrine_afficher_santon', [ 'categorie' => $categorie, 'nomUrl' => $nomUrl ]);?>" title="<?php echo $nom; ?>" title="<?php echo $nom; ?>"><?php echo $nom; ?></a></h3>
 								<p class="prix-santon"><?php echo $prix; ?> €</p>

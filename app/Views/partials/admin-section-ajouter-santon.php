@@ -34,8 +34,7 @@
 							</div>
 							<div class="group">
 							<!-- Temporaire, a remplacer par un upload -->
-								<input type="text" name="photo" required ><span class="highlight"></span><span class="bar"></span>
-						    	<label>Photo</label>
+								<input type="file" name="photo" required placeholder="Ajouter une photo" />
 							</div>
 							<div class="group">							
 								<textarea rows="5" name="description" required ></textarea><span class="highlight"></span><span class="bar"></span>
