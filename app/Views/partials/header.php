@@ -34,7 +34,7 @@ if(session_status()==PHP_SESSION_NONE){session_start();}
     <header>
         <div class="container">
             <div class="navbar-header">
-              <a class="navbar-brand" href="index.php">Santon'Elo</a>
+              <a class="navbar-brand" href="<?php echo $this->url('vitrine_accueil'); ?>">Santon'Elo</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
                   
