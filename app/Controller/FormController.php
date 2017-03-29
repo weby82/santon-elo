@@ -13,7 +13,54 @@ class FormController extends Controller
     // <input name="toto" />
     // EN PHP
     // $toto = verifierSaisie("toto");
-
+     function __construct ()
+    {
+        // CETTE METHODE SERA APPELEE PAR TOUTES LES ROUTES
+        // CAR LA ROUTE PRECISE QUELLE CLASSE ET QUELLE METHODE APPELER
+        // DONC LE FRAMEWORK W DOIT CREER UN OBJET DE CETTE CLASSE
+        // AVANT D'ACTIVER LA METHODE
+        // ET LES CLASSES DANS LES ROUTES HERITENT DE CETTE CLASSE
+        // FormController
+        // DONC LA METHODE __construct DE LA CLASSE FormController
+        // EST AUSSI APPELEE A LA CREATION DE L'OBJET...
+        
+        // ON PEUT DONC AJOUTER ICI LE CODE QU'ON VEUT ACTIVER
+        // POUR TOUTES LES ROUTES...
+        
+        // APPELER LE CONSTRUCTEUR DU parent
+        // POUR CONTINUER A GARDER LA MECANIQUE DU FRAMEWORK W
+        // parent::__construct();
+        
+        // TRAITEMENT DU FORMULAIRE
+        $idFormClasse  = $this->verifierSaisie("idFormClasse");
+        $idFormMethode = $this->verifierSaisie("idFormMethode");
+        
+        // UN PEU DE SECURITE...
+        // JE VAIS COMPLETER LE CHEMIN VERS LE NAMESPACE DE LA CLASSE
+        $idFormClasse  = "\Controller\Traitement\\$idFormClasse";
+        
+        if ( ($idFormClasse != "") && ($idFormMethode != "") )
+        {
+            // ON A UN FORMULAIRE A TRAITER
+            // ON CHERCHE SI IL Y A UNE CLASSE AVEC LA METHODE DEMANDEE
+            // http://php.net/manual/fr/function.method-exists.php
+            if (method_exists($idFormClasse, $idFormMethode))
+            {
+                // ON PEUT APPELER LA METHODE
+                // ON CREE UN OBJET
+                // ET AVEC L'OBJET ON APPELLE LA METHODE
+                
+                // ASTUCE:
+                // CREATION DYNAMIQUE D'OBJET
+                // ET APPEL DYNAMIQUE A UNE METHODE
+                // http://php.net/manual/fr/language.oop5.basic.php
+                $objet = new $idFormClasse;
+                // $this EST L'OBJET DE CLASSE FormController
+                $objet->$idFormMethode($this);
+            }
+        }
+        
+    }
     public function verifierSaisie ($name)
     {
         $valeurSaisie = ""; // AU DEBUT ON A LA CHAINE VIDE
@@ -60,6 +107,25 @@ class FormController extends Controller
         
         return $resultat;
     }
+
+
+    // PAGINATION
+    function calculerNombreLigne ($nomTable)
+{
+    $resultat = 0;
+    
+    // ON VA CALCULER LE NOMBRE DE LIGNE DANS LA TABLE $nomTable
+    // https://sql.sh/fonctions/agregation/count
+    $requeteSQL = "SELECT COUNT(id) FROM $nomTable";
+    $tabToken = [];
+    
+    $objetPDOStatement = envoyerRequeteSQL($requeteSQL, $tabToken);
+    // http://php.net/manual/fr/pdostatement.fetchcolumn.php
+    $resultat = $objetPDOStatement->fetchColumn();
+    $resultat = intval($resultat);
+    
+    return $resultat;
+}
 
 
     // Verifier le champ d'upload

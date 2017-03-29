@@ -1,6 +1,55 @@
 	<main>
 		<div class="container">
 			<h2>Livre d'or</h2>
+
+			<nav id="navigation-page">
+    <ul>
+
+
+
+<!-- PAGINATION -->
+<?php
+
+$nbParPage      = 6;
+$nombreTotal    = calculerNombreLigne("annonce");
+
+// http://php.net/manual/fr/function.intval.php
+// JE VAIS RECUPERER LA VALEUR DE $indexDepart DANS L'URL
+// ?indexDepart=6
+
+$indexDepart        = intval(verifierSaisie("indexDepart"));
+$numeroPageActuelle = 1 + ($indexDepart / $nbParPage);
+// 0 => PAGE 1
+// 1 => PAGE 1
+// 2 => PAGE 1
+// 3 => PAGE 2
+// 4 => PAGE 2
+// 5 => PAGE 2
+// 6 => PAGE 3
+
+// ON VA FAIRE UNE BOUCLE
+$indexBoucle = 1;
+// http://php.net/manual/fr/function.ceil.php
+while($indexBoucle <= ceil($nombreTotal/$nbParPage))
+{
+    $indexCourant = ($indexBoucle -1) * $nbParPage;
+    // 1 => ( 1-1) * 3 => 0
+    // 2 => ( 2-1) * 3 => 3
+    // 3 => ( 3-1) * 3 => 6
+   echo
+<<<CODEHTML
+        <li><a href="?indexDepart=$indexCourant#navigation-page">PAGE $indexBoucle</a></li>
+
+CODEHTML;
+
+    // ATTENTION, NE PAS OUBLIER
+    $indexBoucle++; 
+}
+?>
+
+
+
+
 <?php
 $objetGuestbookModel = new \Model\GuestbookModel;
 	

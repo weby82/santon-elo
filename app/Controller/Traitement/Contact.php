@@ -20,6 +20,7 @@ class Contact{
 										&& ($sujet != "")
 										&& ($message != "") ){
 
+			
 			// message pour l'utilisateur
 			// $GLOBALS["contactRetour"] = "<p class='bg-success'>Merci $prenom, votre message est bien envoyé !</p>";
 			$GLOBALS["contactRetour"] = "<span class='glyphicon glyphicon-ok' aria-hidden='true'></span> Merci $prenom, votre message a bien été envoyé !</p>";
