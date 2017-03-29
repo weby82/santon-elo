@@ -58,8 +58,6 @@
 		['GET|POST', '/admin/ajouter-santon', 'AdminDamien#ajouterSanton', 'admin_ajouter_santon'],
 
 
-		['GET', '/admin', 'AdminDamien#accueil', 'admin_accueil'],
-
 		['GET', '/admin/liste/actualite', 'AdminKelly#actualites', 'admin_actualites'],
 
 		['GET', '/admin/actualites', 'AdminKelly#actualites', 'admin_gerer_actualites'],
