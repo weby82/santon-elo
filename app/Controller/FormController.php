@@ -61,6 +61,7 @@ class FormController extends Controller
         }
         
     }
+    
     public function verifierSaisie ($name)
     {
         $valeurSaisie = ""; // AU DEBUT ON A LA CHAINE VIDE

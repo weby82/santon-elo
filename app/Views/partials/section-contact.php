@@ -5,6 +5,12 @@
 				<h2>Formulaire de contact</h2>
 							
 					<form method="GET" class="formulaire">
+
+						<!-- message de retour -->
+						<div class="retour">
+<?php if (isset($GLOBALS["contactRetour"])) echo $GLOBALS["contactRetour"]; ?>
+						</div>
+
 						<div class="row">
 		        			<div class="colonne-gauche col-md-6 col-xs-12 ">
 
@@ -55,11 +61,6 @@
  				 <!-- Côté traitement -->
 						<input type="hidden" name="idFormClasse" value="Contact">
 						<input type="hidden" name="idFormMethode" value="contactTraitement">
-
-					<!-- message de retour -->
-						<div class="retour">
-	<?php if (isset($GLOBALS["contactRetour"])) echo $GLOBALS["contactRetour"]; ?>
-						</div>
 
 					</form>
 
