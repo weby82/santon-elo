@@ -38,7 +38,9 @@ class AdminKellyController
     	// View
     	// Afficher la page
     	$this->show("page/admin-modifier-actualite", 
-    				["actualiteUpdateRetour" => $GLOBALS["actualiteUpdateRetour"] ]);
+    				["id" => $id, 
+    				 "actualiteUpdateRetour" => $GLOBALS["actualiteUpdateRetour"],
+    				]);
     }
     
     

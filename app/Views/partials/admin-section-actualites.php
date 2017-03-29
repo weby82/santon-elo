@@ -23,9 +23,9 @@
                     <thead>
                         <tr>
                             <th>Photo</th>
-                            <th>titre</th>
-                            <th>contenu</th>
-                            <th>id</th>
+                            <th>Titre</th>
+                            <th>Contenu</th>
+                            <th>Id</th>
                             <th>Action</th>
                         </tr>
                     </thead>
