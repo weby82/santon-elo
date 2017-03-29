@@ -224,6 +224,9 @@ table tr td.itemInCartDisplay{
 /****************************************************************
                     Admin - Santon
 *****************************************************************/
+.retour{
+    margin-bottom: 20px;
+}
 .table-img{
     max-width: 50px;
 

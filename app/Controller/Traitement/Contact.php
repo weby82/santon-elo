@@ -23,12 +23,12 @@ class Contact{
 			
 			// message pour l'utilisateur
 			// $GLOBALS["contactRetour"] = "<p class='bg-success'>Merci $prenom, votre message est bien envoyé !</p>";
-			$GLOBALS["contactRetour"] = "<span class='glyphicon glyphicon-ok' aria-hidden='true'></span> Merci $prenom, votre message a bien été envoyé !</p>";
+			$GLOBALS["contactRetour"] = "<span class='glyphicon glyphicon-ok' aria-hidden='true'></span> Merci $prenom, votre message a bien été envoyé !";
 		}
 
 		else{
 			// $GLOBALS["contactRetour"] = "Il manque des informations";
-			$GLOBALS["contactRetour"] = "<span class='glyphicon glyphicon-alert' aria-hidden='true'></span> Il manque des informations !</p>";
+			$GLOBALS["contactRetour"] = "<span class='glyphicon glyphicon-alert' aria-hidden='true'></span> Il manque des informations !";
 		}
 
 
