@@ -12,6 +12,26 @@ form .colonne-gauche input label{
 	font-size: 16px;
 }
 
+.retour{
+	padding: 5px 5px 5px 10px;
+	font-size: 13px;
+	text-align: center;
+	color: #999;
+	font-size: 17px;
+}
+
+.glyphicon-ok{
+	font-size: 25px;
+	color: green;
+	padding-right: 10px;
+}
+
+.glyphicon-alert{
+	font-size: 25px;
+	color: red;
+	padding-right: 10px;
+}
+
 
 // Material design SECTION CONTACT FORM 
 
@@ -179,5 +199,75 @@ input:focus ~ .highlight, textarea:focus ~ .highlight  {
     padding-bottom: 200%;
     opacity: 0;
   }
+}
+
+
+/*****************************************************
+		Livre d'or
+***************************************************/
+
+
+.speech {
+  background-color:#fff;
+  border:solid 2px rgba(219,211,202,0.5);
+  border-radius:12px;
+  display:inline-block;
+  margin:.5em;
+  padding:.5em 1em;
+  position:relative;
+}
+
+.speech:before {
+  border:solid 12px transparent;
+  border-left:solid 12px rgba(219,211,202,0.5);
+  border-top:solid 12px rgba(219,211,202,0.5);
+  bottom:-24px;
+  content:"";
+  height:0;
+  left:24px;
+  position:absolute;
+  transform:skew(-15deg);
+  width:0;
+}
+
+.speech:after {
+  border:solid 10px transparent;
+  border-left:solid 10px #fff;
+  border-top:solid 10px #fff;
+  bottom:-19px;
+  content:"";
+  height:0;
+  left:27px;
+  position:absolute;
+  transform:skew(-15deg);
+  width:0;
+}
+
+#section-temoignage-or{
+	background: transparent;
+}
+
+.temoignage-or{
+	margin-left: 20px;
+	background: white;
+	margin-bottom: 20px; !important
+	padding: 10px;
+	font-size: 18px;
+	font-weight: normal;
+	width: 50%;
+	border: 0.01em solid rgba(219,211,202,0.5);
+	border-radius: 20px;
+	box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.1);
+}
+
+h4{
+	font-size: 22px;
+	color: #6E8A94;
+	padding-bottom: 1%;
+}
+
+.date-temoignage-or{
+	color: #6E8A94;
+	margin-left: 80%;
 }
 

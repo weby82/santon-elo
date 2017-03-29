@@ -15,6 +15,12 @@ class VitrineLiinaaController
 		$this->show('page/contact');
 	}
 
+	public function livre()
+	{
+		
+		$this->show('page/livre');
+	}
+
 
 
 
