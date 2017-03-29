@@ -130,11 +130,11 @@ class FormController extends Controller
 
     // Verifier le champ d'upload
     function verifierUpload ($nameInput)
-{
+    {
     $cheminOK = "";
     
     // POUR LE MESSAGE DE RETOUR
-    $idForm = verifierSaisie("idForm");
+    $idForm = $this->verifierSaisie("idForm");
     
     // CONTROLLER
     // VERIFIER SI IL Y A UN FICHIER UPLOADE
@@ -171,6 +171,7 @@ class FormController extends Controller
                 $type       = $tabInfoFichierUploade["type"];
                 $tmpName    = $tabInfoFichierUploade["tmp_name"];
                 $size       = $tabInfoFichierUploade["size"];
+                $categorie  = $_POST["categorie"];
                 
                 if ($size < 10 * 1024 * 1024) // 10 MEGAOCTETS
                 {
@@ -185,10 +186,8 @@ class FormController extends Controller
                     // IL FAUT VERIFIER SI L'EXTENSION EST AUTORISEE
                     $tabExtensionOK = 
                     [ 
-                        "jpeg", "jpg", "gif", "png", "svg", 
-                        "pdf", "txt", "doc", "docx", "xls", "ppt", "pptx", "odt", 
-                        "html", "css", "js", 
-                        "ttf", "otf"
+                        "jpeg", "jpg", "gif", "png", "svg"
+                        
                     ];
                     
                     // http://php.net/manual/fr/function.in-array.php
@@ -200,7 +199,11 @@ class FormController extends Controller
                         // TOUS LES CARACTERES QUI NE SONT DES LETTRES ENTRE a et z ou entre A et Z ou entre 0 et 9 ou qui ne sont -, _, .
                         // ALORS IL FAUT REMPLACER PAR LE CARACTERE "" (EN FAIT LES SUPPRIMER)
                         $nameOK     =  preg_replace("/[^a-zA-Z0-9-_\.]/", "", $name);
-                        $cheminOK   = "assets/uploads/$nameOK";
+
+
+                        $cheminAssets = $this->assetUrl();
+                        $cheminPhotoUrl = $cheminAssets . "img/santons/" . $categorie ."/";  
+                        $cheminOK   = $cheminPhotoUrl . $nameOK;
                         
                         // TRANSFORMER LE CHEMIN OK EN MINUSCULES
                         $cheminOK = strtolower($cheminOK);
@@ -230,59 +233,6 @@ class FormController extends Controller
     return $cheminOK;
 }
 
-    public function ajouterLigneTable ()
-    {
-        // A FAIRE PLUS TARD
-    }
-
-    public function newsletterTraitement ()
-    {
-        // CONTROLLER
-        // IL FAUT TRAITER LE FORMULAIRE DE NEWSLETTER
-        // RECUPERER LES INFOS
-        $email = $this->verifierSaisie("email");
-        
-        // SECURITE
-        // VERIFIER SI L'EMAIL EST CORRECT
-        if ($this->verifierEmail($email))
-        {
-            // OK
-            // ENREGISTRER L'EMAIL
-            // JE VAIS UTILISER LA BASE DE DONNEES MYSQL
-            // JE VEUX ENREGISTRER DANS LA TABLE newsletter
-            // LA VALEUR $email SERA DANS LA COLONNE "email"
-            $dateInscription = date("Y-m-d H:i:s");
-            
-            // ON DELEGUE LE TRAVAIL A UNE FONCTION DU MODEL
-            // LE TABLEAU ASSOCIATIF PERMET A PHP D'ASSOCIER LES TOKENS AUX VALEURS
-            // LE PLUS SIMPLE EST D'APPELER LES TOKENS AVEC LE MEME NOM QUE LA COLONNE
-            // COLONNE => toto => TOKEN => :toto
-            //$this->ajouterLigneTable("newsletter", [ "email" => $email, "date" => $dateInscription ]);
-                
-            // AVEC LE FRAMEWORK W
-            // ON VA STOCKER L'EMAIL ET LA DATE DANS LA TABLE newsletter
-            //On va passer par un objet de la partie Modele
-            // Pour se connecter à la table MYSQL newsletter
-            //il faut utiliser un objet de la classe NewsletterModel
-            // Ne pas oublier d'ajouter use Model\NewsletterModel
-            $objetNewsletterModel = new NewsletterModel;
-            // On utilise un tableau associatif insert(array $data, )
-            $objetNewsletterModel->insert(["email" => $email, "dateInscription" => $dateInscription]);
-            // ENVOYER UN EMAIL
-            // POUR PREVENIR LE WEBMASTER
-            // ...
-            
-            $GLOBALS["newsletterRetour"] = "MERCI DE VOTRE INSCRIPTION ($email)";
-            
-        }
-        else 
-        {
-            // KO
-            $GLOBALS["newsletterRetour"] = "ENTREZ UN EMAIL VALIDE";
-        }
-    
-        
-    }
 
 
     public function artisteUpdateTraitement(){
@@ -451,7 +401,7 @@ class FormController extends Controller
         $nom          = $this->verifierSaisie("nom"); 
         $nomUrl       = $this->verifierSaisie("nom_url"); 
         $categorie    = $this->verifierSaisie("categorie"); 
-        $photo        = $this->verifierSaisie("photo"); 
+        $photo        = $this->verifierUpload("photo"); 
         $description  = $this->verifierSaisie("description");
         $dateAjout     = date("Y-m-d H:i:s");
         //vérifier si les infos sont correcte
