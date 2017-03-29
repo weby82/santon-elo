@@ -3,7 +3,7 @@
 ***************************************************/
 
 
-form .colonne-gauche input label{
+form .colonne-gauche input .formulaire label{
 	margin-bottom: 50px;
 }
 
@@ -67,7 +67,7 @@ input:focus, textarea:focus { outline: none; }
 
 /* Label */
 
-label {
+.formulaire label {
 	color: #999;
 	font-size: 18px;
 	font-weight: normal;
@@ -83,14 +83,14 @@ textarea {
 	height: 270px;
 }
 
-textarea ~ label {
+.formulaire textarea ~ label {
 	left: 12%;
 }
 
 
 /* active */
 
-input:focus ~ label, input.used ~ label, textarea:focus ~ label, textarea.used ~ label {
+.formulaire input:focus ~ label, .formulaire input.used ~ label, .formulaire textarea:focus ~ label, .formulaire textarea.used ~ label {
 	top: -25px;
   transform: scale(.75); left: 1%;
 	/* font-size: 14px; */
@@ -207,7 +207,7 @@ input:focus ~ .highlight, textarea:focus ~ .highlight  {
 ***************************************************/
 
 
-.speech {
+.speech, .speech-right {
   background-color:#fff;
   border:solid 2px rgba(219,211,202,0.5);
   border-radius:12px;
@@ -224,9 +224,22 @@ input:focus ~ .highlight, textarea:focus ~ .highlight  {
   bottom:-24px;
   content:"";
   height:0;
-  left:24px;
+  left:90px;
   position:absolute;
   transform:skew(-15deg);
+  width:0;
+}
+
+.speech-right:before {
+  border:solid 12px transparent;
+  border-right:solid 12px rgba(219,211,202,0.5);
+  border-top:solid 12px rgba(219,211,202,0.5);
+  bottom:-24px;
+  content:"";
+  height:0;
+  right:90px;
+  position:absolute;
+  transform:skew(+15deg);
   width:0;
 }
 
@@ -237,9 +250,22 @@ input:focus ~ .highlight, textarea:focus ~ .highlight  {
   bottom:-19px;
   content:"";
   height:0;
-  left:27px;
+  left:93px;
   position:absolute;
   transform:skew(-15deg);
+  width:0;
+}
+
+.speech-right:after {
+  border:solid 10px transparent;
+  border-right:solid 10px #fff;
+  border-top:solid 10px #fff;
+  bottom:-19px;
+  content:"";
+  height:0;
+  right:93px;
+  position:absolute;
+  transform:skew(+15deg);
   width:0;
 }
 
@@ -271,3 +297,16 @@ h4{
 	margin-left: 80%;
 }
 
+
+// "
+// #carousel-temoignage .temoignage:before{
+//     content: "\"";
+//     font-size:4em;
+//     display: inline-block;
+//     position: relative;
+//     float: left;
+//     color: white;
+//     font-weight: bold;
+//     font-family: 'palanquin', helvetica, sans-serif;
+//     top: -50px;
+// }
