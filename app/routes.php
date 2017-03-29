@@ -58,14 +58,13 @@
 		['GET|POST', '/admin/ajouter-santon', 'AdminDamien#ajouterSanton', 'admin_ajouter_santon'],
 
 
-		['GET', '/admin', 'AdminDamien#accueil', 'admin_accueil'],
 
-		['GET', '/admin/liste/actualite', 'AdminKelly#actualites', 'admin_actualites'],
+		['GET|POST', '/admin/liste/actualite', 'AdminKelly#actualites', 'admin_actualites'],
 
-		['GET', '/admin/actualites', 'AdminKelly#actualites', 'admin_gerer_actualites'],
+		['GET|POST', '/admin/actualites', 'AdminKelly#gererActualite', 'admin_gerer_actualites'],
 
-		['GET', '/admin/modifier/actualite/[i:id]', 'AdminKelly#modifierActualites', 'admin_modifier_actualites'],
+		['GET|POST', '/admin/modifier/actualite', 'AdminKelly#modifierActualites', 'admin_modifier_actualites'],
 
-		['GET', '/admin/creer-actualite', 'AdminKelly#creerActualite', 'admin_creation_actualites'],
+		['GET|POST', '/admin/creer-actualite', 'AdminKelly#creerActualite', 'admin_creation_actualites'],
 
 	);

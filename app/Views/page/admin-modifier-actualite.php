@@ -9,7 +9,7 @@ $navActive = "actualites";
 // http://platesphp.com/templates/nesting/
 
 // ATTENTION: PAS DE .php A LA FIN
-$this->insert('partials/header', [ "titre" => $titre ]);
-$this->insert('partials/admin-section-modif-actualite', [ "id" => $id]);
+$this->insert('partials/header', ["navActive" => $navActive]);
+$this->insert('partials/admin-section-modif-actualite', ["id" => $id, "actualiteUpdateRetour" => $actualiteUpdateRetour]);
 $this->insert('partials/footer');
 

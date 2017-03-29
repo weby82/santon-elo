@@ -351,7 +351,7 @@ class FormController extends Controller
        $titre    = $this->verifierSaisie("titre"); 
        $contenu  = $this->verifierSaisie("contenu"); 
        $photo    = $this->verifierSaisie("photo"); 
-       $date     = $this->verifierSaisie("date"); 
+       $date     = date("Y-m-d H:i:s"); 
        //vérifier si les infos sont correcte
        if(($titre != "") && ($contenu != "") && ($photo != "") && ($date != "")){
 

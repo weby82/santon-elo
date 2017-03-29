@@ -45,8 +45,8 @@
                         <td><?php echo $contenu; ?></td>
                         <td><?php echo $id; ?></td>
                         <td>
-                            <a href=""><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
-                            <a href="" title="supprimer"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                            <a href="<?php echo $this->url('admin_modifier_actualites'); ?>"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                            <a href="<?php echo $this->url('admin_gerer_actualites'); ?>" title="supprimer"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
 
                         </td>                                                              
                                     

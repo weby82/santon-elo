@@ -13,7 +13,7 @@ class AdminKellyController
 	 */
 	public function actualites()
 	{
-	   
+	    $this->allowTo('admin');
 		$this->show('page/admin-actualites');
 	}
 
@@ -38,9 +38,7 @@ class AdminKellyController
     	// View
     	// Afficher la page
     	$this->show("page/admin-modifier-actualite", 
-    				["id" => $id, 
-    				 "actualiteUpdateRetour" => $GLOBALS["actualiteUpdateRetour"],
-    				]);
+    				["actualiteUpdateRetour" => $GLOBALS["actualiteUpdateRetour"] ]);
     }
     
     
