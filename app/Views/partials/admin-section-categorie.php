@@ -64,10 +64,11 @@
 						$nomUrl 	= $valeur["nom_url"];
 						$nom 		= $valeur["nom"];
 						$prix 		= $valeur["prix"];
-						$photo 	= $valeur["photo"];
+						$photo 		= $valeur["photo"];
+						$urlPhoto	= $this->assetUrl($photo);
 					?>
 							<tr>
-								<td><img class="table-img" src="<?php echo $photo; ?>" alt="<?php echo $nom; ?>"></td>
+								<td><img class="table-img" src="<?php echo $urlPhoto; ?>" alt="<?php echo $nom; ?>"></td>
 								<td><?php echo $nom; ?></td>
 								<td><?php echo $prix; ?> €</td>
 								<td><?php echo $id; ?></td>
