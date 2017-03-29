@@ -1,0 +1,312 @@
+/*****************************************************
+		Formulaire de contact
+***************************************************/
+
+
+form .colonne-gauche input .formulaire label{
+	margin-bottom: 50px;
+}
+
+#formulaire button{
+	padding: 6px 25px;
+	font-size: 16px;
+}
+
+.retour{
+	padding: 5px 5px 5px 10px;
+	font-size: 13px;
+	text-align: center;
+	color: #999;
+	font-size: 17px;
+}
+
+.glyphicon-ok{
+	font-size: 25px;
+	color: green;
+	padding-right: 10px;
+}
+
+.glyphicon-alert{
+	font-size: 25px;
+	color: red;
+	padding-right: 10px;
+}
+
+
+// Material design SECTION CONTACT FORM 
+
+form {
+	width: 380px;
+	margin: 4em auto;
+	padding: 3em 2em 2em 2em;
+	background: #fafafa;
+	border: 1px solid #ebebeb;
+	box-shadow: rgba(0,0,0,0.14902) 0px 1px 1px 0px,rgba(0,0,0,0.09804) 0px 1px 2px 0px;
+}
+
+.group { 
+	position: relative; 
+	margin-bottom: 35px; 
+}
+
+input, textarea {
+	font-size: 13px;
+	padding: 13px 8px 8px 6px;
+	-webkit-appearance: none;
+	display: block;
+	background: white;
+	color: #636363;
+	width: 100%;
+	border: 0.01em solid rgba(219,211,202,0.5);
+	border-radius: 6px;
+	// border-bottom: 1px solid grey;
+}
+
+input:focus, textarea:focus { outline: none; }
+
+
+/* Label */
+
+.formulaire label {
+	color: #999;
+	font-size: 18px;
+	font-weight: normal;
+	position: absolute;
+	pointer-events: none;
+	left: 5%;
+	top: 10px;
+	transition: all 0.2s ease;
+}
+
+/* Textarea */
+textarea {
+	height: 270px;
+}
+
+.formulaire textarea ~ label {
+	left: 12%;
+}
+
+
+/* active */
+
+.formulaire input:focus ~ label, .formulaire input.used ~ label, .formulaire textarea:focus ~ label, .formulaire textarea.used ~ label {
+	top: -25px;
+  transform: scale(.75); left: 1%;
+	/* font-size: 14px; */
+	color: #647277;
+}
+
+
+/* Underline */
+
+.bar {
+	position: relative;
+	display: block;
+	width: 100%;
+}
+
+.bar:before, .bar:after {
+	content: '';
+	height: 2px; 
+	width: 0;
+	bottom: 1px; 
+	position: absolute;
+	background: #fdd4d4; 
+	transition: all 0.2s ease;
+}
+
+.bar:before { left: 50%; }
+
+.bar:after { right: 50%; }
+
+
+/* active */
+
+input:focus ~ .bar:before, input:focus ~ .bar:after, textarea:focus ~ .bar:before, textarea:focus ~ .bar:after  { width: 50%; }
+
+
+/* Highlight */
+
+.highlight {
+	position: absolute;
+	height: 60%; 
+	width: 100px; 
+	top: 25%; 
+	left: 0;
+	pointer-events: none;
+	opacity: 0.5;
+}
+
+
+/* active */
+
+input:focus ~ .highlight, textarea:focus ~ .highlight  {
+	animation: inputHighlighter 0.3s ease;
+}
+
+
+/* Animations */
+
+@keyframes inputHighlighter {
+	from { background: #4a89dc; }
+	to 	{ width: 0; background: transparent; }
+}
+
+
+
+/* Ripples container */
+
+.ripples {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: transparent;
+}
+
+
+/* Ripples circle */
+
+.ripplesCircle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.ripples.is-active .ripplesCircle {
+  animation: ripples .4s ease-in;
+}
+
+
+/* Ripples animation */
+
+@keyframes ripples {
+  0% { opacity: 0; }
+
+  25% { opacity: 1; }
+
+  100% {
+    width: 200%;
+    padding-bottom: 200%;
+    opacity: 0;
+  }
+}
+
+
+/*****************************************************
+		Livre d'or
+***************************************************/
+
+
+.speech, .speech-right {
+  background-color:#fff;
+  border:solid 2px rgba(219,211,202,0.5);
+  border-radius:12px;
+  display:inline-block;
+  margin:.5em;
+  padding:.5em 1em;
+  position:relative;
+}
+
+.speech:before {
+  border:solid 12px transparent;
+  border-left:solid 12px rgba(219,211,202,0.5);
+  border-top:solid 12px rgba(219,211,202,0.5);
+  bottom:-24px;
+  content:"";
+  height:0;
+  left:90px;
+  position:absolute;
+  transform:skew(-15deg);
+  width:0;
+}
+
+.speech-right:before {
+  border:solid 12px transparent;
+  border-right:solid 12px rgba(219,211,202,0.5);
+  border-top:solid 12px rgba(219,211,202,0.5);
+  bottom:-24px;
+  content:"";
+  height:0;
+  right:90px;
+  position:absolute;
+  transform:skew(+15deg);
+  width:0;
+}
+
+.speech:after {
+  border:solid 10px transparent;
+  border-left:solid 10px #fff;
+  border-top:solid 10px #fff;
+  bottom:-19px;
+  content:"";
+  height:0;
+  left:93px;
+  position:absolute;
+  transform:skew(-15deg);
+  width:0;
+}
+
+.speech-right:after {
+  border:solid 10px transparent;
+  border-right:solid 10px #fff;
+  border-top:solid 10px #fff;
+  bottom:-19px;
+  content:"";
+  height:0;
+  right:93px;
+  position:absolute;
+  transform:skew(+15deg);
+  width:0;
+}
+
+#section-temoignage-or{
+	background: transparent;
+}
+
+.temoignage-or{
+	margin-left: 20px;
+	background: white;
+	margin-bottom: 20px; !important
+	padding: 10px;
+	font-size: 18px;
+	font-weight: normal;
+	width: 50%;
+	border: 0.01em solid rgba(219,211,202,0.5);
+	border-radius: 20px;
+	box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.1);
+}
+
+h4{
+	font-size: 22px;
+	color: #6E8A94;
+	padding-bottom: 1%;
+}
+
+.date-temoignage-or{
+	color: #6E8A94;
+	float: right;
+}
+
+
+// "
+// #carousel-temoignage .temoignage:before{
+//     content: "\"";
+//     font-size:4em;
+//     display: inline-block;
+//     position: relative;
+//     float: left;
+//     color: white;
+//     font-weight: bold;
+//     font-family: 'palanquin', helvetica, sans-serif;
+//     top: -50px;
+// }
