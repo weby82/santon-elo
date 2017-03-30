@@ -18,7 +18,7 @@
 								<input type="text" name="nom" required ><span class="highlight"></span><span class="bar"></span>
 						    	<label>Nom</label>
 							</div>
-							<div class="group">
+							<div class="group input-nom-url">
 								<input type="text" name="nom_url" required ><span class="highlight"></span><span class="bar"></span>
 						    	<label>URL (pas d'espace ni d'accent)</label>
 							</div>

@@ -133,6 +133,7 @@ class FormController extends Controller
     function verifierUpload ($nameInput)
     {
     $cheminOK = "";
+    $cheminUrlOk = "";
     
     // POUR LE MESSAGE DE RETOUR
     $idForm = $this->verifierSaisie("idForm");
@@ -173,6 +174,7 @@ class FormController extends Controller
                 $tmpName    = $tabInfoFichierUploade["tmp_name"];
                 $size       = $tabInfoFichierUploade["size"];
                 $categorie  = $_POST["categorie"];
+
                 
                 if ($size < 10 * 1024 * 1024) // 10 MEGAOCTETS
                 {
@@ -443,6 +445,82 @@ class FormController extends Controller
             $GLOBALS["santonCreateRetour"] = "<span class='glyphicon glyphicon-alert' aria-hidden='true'></span> Information manquante";
         }
        
+    }
+
+     public function santonUpdateTraitement(){
+        // Récupérer les infos du formulaire
+        $id             = $this->verifierSaisie("id");
+        $nom          = $this->verifierSaisie("nom"); 
+        $nomUrl       = $this->verifierSaisie("nom_url"); 
+        $prix           = $this->verifierSaisie("prix"); 
+        $categorie    = $this->verifierSaisie("categorie");   
+        $oldPhotoPath    = $this->verifierSaisie("oldPath"); 
+        $photo        = $this->verifierUpload("photo"); 
+        $description  = $this->verifierSaisie("description");
+        $dateAjout     = date("Y-m-d H:i:s");
+        //vérifier si les infos sont correcte
+        if(($nom != "") && ($nomUrl != "") && ($prix != "") && (($photo != "") || ($oldPhotoPath != "")) && ($description != "")){
+
+             //si ok on ajoute une ligne dans la table artiste
+            //avec le framwork W
+            //je dois créer un objet de la classe ArtistesModel
+            //(car la table mysql s'appel artistes)
+            //ne pas oublier de rajouter use \Model\ArtistesModel
+            $objetSantonModel = new SantonModel;
+            //on peu utiliser la méthode insert
+
+            if($photo != ""){
+            $objetSantonModel->update(["nom" => $nom, 
+                                        "nom_url" => $nomUrl, 
+                                        "prix" => $prix, 
+                                        "categorie" => $categorie, 
+                                        "photo" => $photo,
+                                        "description" => $description,
+                                        "date_ajout" => $dateAjout
+                                        ], $id);
+            }else{
+                $objetSantonModel->update(["nom" => $nom, 
+                                        "nom_url" => $nomUrl, 
+                                        "prix" => $prix, 
+                                        "categorie" => $categorie, 
+                                        "photo" => $oldPhotoPath,
+                                        "description" => $description,
+                                        "date_ajout" => $dateAjout
+                                        ], $id);
+            }
+
+            //Message de retour
+           $GLOBALS["santonUpdateRetour"] = "<span class='glyphicon glyphicon-ok' aria-hidden='true'></span> Santon $nom Modifié";
+        }
+        else{
+            //Message de retour
+            $GLOBALS["santonUpdateRetour"] = "<span class='glyphicon glyphicon-alert' aria-hidden='true'></span> Information manquante";
+        }
+       
+    }
+
+    public function santonDeleteTraitement(){
+        // Récuperer l'id
+        $id = $this->verifierSaisie("id");
+
+        // Il faut que l'id soit un nombre superieur à 0
+        //SECURITE : Convertir $id en nombre
+        $id = intval($id);
+
+        if ($id > 0){
+
+            // ON Va deleguer à un objet de la classe ArtisteModel
+            //le travail de supprimer la ligne correspondante à l'ID
+            //Vérifier qu'on a fait le use au debut du fichier
+            $objetsantonModel = new SantonModel;
+            $objetsantonModel->delete($id);
+
+            $GLOBALS["santonDeleteRetour"] = "<span class='glyphicon glyphicon-ok' aria-hidden='true'></span> Santon Supprimé";
+        }else{
+
+            $GLOBALS["santonDeleteRetour"] = "<span class='glyphicon glyphicon-alert' aria-hidden='true'></span> Erreur sur l'id du Santon à supprimer";
+        }
+
     }
 
 

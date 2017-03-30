@@ -57,6 +57,8 @@
 		// création de Santon
 		['GET|POST', '/admin/ajouter-santon', 'AdminDamien#ajouterSanton', 'admin_ajouter_santon'],
 
+		['GET|POST', '/admin/modifier-santon/[:id]', 'AdminDamien#updateSanton', 'admin_update_santon'],
+
 
 
 		['GET|POST', '/admin/liste/actualite', 'AdminKelly#actualites', 'admin_actualites'],

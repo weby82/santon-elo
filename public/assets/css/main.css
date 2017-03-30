@@ -97,7 +97,7 @@ a:hover{
 .navbar-form{
 	margin-bottom: 15px;
 }
-.navbar-brand, .navbar-brand:hover{
+.navbar-brand, .navbar-brand:hover, .navbar-brand:focus{
 	color: #fff;
 	font-size: 3.4em;
     font-weight: 300;
