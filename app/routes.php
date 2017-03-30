@@ -72,8 +72,6 @@
 		// Création des avis client
 		['GET|POST', '/admin/creer-livre', 'AdminLiinaa#creerLivre', 'admin_creer_livre'],
 		// Modifier l'avis client
-		['GET|POST', '/admin/modifier/livre', 'AdminLiinaa#modifierLivre', 'admin_modifier_livre'],
-		// Modifier l'avis client
-		['GET|POST', '/admin/modifier/livre', 'AdminLiinaa#modifierLivre', 'admin_modifier_livre'],
+ 		['GET|POST',	'/admin/modifier/livre',   'AdminLiinaa#modifierLivre',	'admin_modifier_livre'], 
 
 	);

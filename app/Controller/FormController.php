@@ -5,6 +5,7 @@ namespace Controller;
 use \W\Controller\Controller;
 use \Model\SantonModel;
 use W\View\Plates\PlatesExtensions;
+use \Model\GuestbookModel;
 
 class FormController extends Controller
 {
@@ -692,6 +693,51 @@ class FormController extends Controller
             $GLOBALS["livreCreateRetour"] = "<span class='glyphicon glyphicon-alert' aria-hidden='true'></span>";
         }
        
+    }
+
+
+    public function livreUpdateTraitement ()
+    {
+        // A COMPLETER
+        // RECUPERER LES INFOS DU FORMULAIRE
+        $id            = $this->verifierSaisie("id");
+        $nomClient            = $this->verifierSaisie("nom_client");
+        $description       = $this->verifierSaisie("description");
+        $date    = $this->verifierSaisie("date");
+        
+        // UPDATE 
+        $id             = $this->verifierSaisie("id");
+        // TRANSFORMER $id EN NOMBRE ENTIER
+        $id             = intval($id);
+        
+        // VERIFIER SI LES INFOS SONT CORRECTES
+        if ( ($id > 0)  // UPDATE 
+                && ($nomClient != "") && ($description != "") && ($date != ""))
+        {
+            // SI OK
+            // ALORS ON AJOUTE UNE LIGNE DANS LA TABLE livres
+            // AVEC LE FRAMEWORK W
+            // JE DOIS CREER UN OBJET DE LA CLASSE livresModel
+            // (...car la table mysql s'appelle livres)
+            // NE PAS OUBLIER DE RAJOUTER use \Model\livresModel
+            $objetGuestbookModel = new GuestbookModel;
+            // ON PEUT UTILISER LA METHODE insert
+            $objetGuestbookModel->update([   "nom_client"           => $nomClient, 
+                                            "description"      => $description, 
+                                            "date"   => $date,
+                                        ],
+                                        $id);   // UPDATE
+                                        
+            // MESSAGE DE RETOUR
+            $GLOBALS["livreUpdateRetour"] = "livre MODIFIE ($id)";
+
+        }
+        else
+        {
+            // MESSAGE DE RETOUR
+            $GLOBALS["livreUpdateRetour"] = "INFORMATION(S) MANQUANTES";
+            
+        }
     }
 
 }

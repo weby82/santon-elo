@@ -43,7 +43,7 @@
 								<td><?php echo $description; ?></td>
 								<td><?php echo $id; ?></td>
 								<td>
-									<a href="" title="modifier"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+									<a href="<?php echo $this->url('admin_modifier_livre'); ?>" title="modifier"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
 									<a href="" title="supprimer"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
 
 								</td>

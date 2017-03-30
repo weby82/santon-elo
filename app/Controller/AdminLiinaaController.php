@@ -64,5 +64,47 @@ class AdminLiinaaController
     }
 
 
+    
+	/**
+	 * Page de /admin/livres
+	 **/
+	public function gererLivre()
+	{
+		// SECURITE
+		// SEULEMENT LES ROLES admin PEUVENT VOIR CETTE PAGE 
+		$this->allowTo(['admin', 'super-admin']);
+
+	    // CONTROLLER
+	    // TRAITEMENT DU FORMULAIRE
+	    $GLOBALS["livreCreateRetour"] = "";
+	    $GLOBALS["livreDeleteRetour"] = "";
+	    
+	    // RECUPERER L'INFO idForm
+	    $idForm = $this->verifierSaisie("idForm");
+	    if ($idForm == "livreCreate")
+	    {
+	        // ACTIVER LE CODE POUR TRAITER LE FORMULAIRE newsletter
+	        $this->livreCreateTraitement();
+	    }
+	    if ($idForm == "livreDelete")
+	    {
+	        // ACTIVER LE CODE POUR TRAITER LE FORMULAIRE newsletter
+	        $this->livreDeleteTraitement();
+	    }
+	    
+	    // VIEW
+		// LA METHODE show EST DEFINIE 
+		// DANS LA CLASSE PARENTE Controller
+		// ON ACTIVE LA PARTIE VIEW
+		
+		// ON TRANSMET A LA VUE DES VARIABLES DEPUIS LE CONTROLEUR AVEC UN TABLEAU ASSOCIATIF
+		// LA CLE newsletterRetour VA ETRE TRANSFORME EN VARIABLE LOCALE $newsletterRetour
+		$this->show('page/admin-livre', 
+					[ 
+						"livreCreateRetour" => $GLOBALS["livreCreateRetour"], 
+						"livreDeleteRetour" => $GLOBALS["livreDeleteRetour"], 
+					]);
+	}
+
 
 }

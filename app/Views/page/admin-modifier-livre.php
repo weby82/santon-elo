@@ -10,6 +10,7 @@ $navActive = "livre";
 
 // ATTENTION: PAS DE .php A LA FIN
 $this->insert('partials/header', ["navActive" => $navActive]);
-$this->insert('partials/admin-section-modif-livre', ["id" => $id, "livreUpdateRetour" => $livreUpdateRetour]);
+$this->insert('partials/admin-section-modifier-livre', ["id" => $id, "livreUpdateRetour" => $livreUpdateRetour]);
 $this->insert('partials/footer');
+
 
