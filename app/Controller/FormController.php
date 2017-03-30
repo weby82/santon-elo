@@ -130,7 +130,7 @@ class FormController extends Controller
 
 
     // Verifier le champ d'upload
-    function verifierUpload ($nameInput)
+    function verifierUploadSanton ($nameInput)
     {
     $cheminOK = "";
     $cheminUrlOk = "";
@@ -248,66 +248,6 @@ class FormController extends Controller
 
 
 
-    public function artisteUpdateTraitement(){
-        // Récupérer les infos du formulaire
-        $id             = $this->verifierSaisie("id");
-        $nom            = $this->verifierSaisie("nom"); 
-        $genreArt       = $this->verifierSaisie("genreArt"); 
-        $cheminImage    = $this->verifierSaisie("cheminImage"); 
-        $bio            = $this->verifierSaisie("bio"); 
-        //vérifier si les infos sont correcte
-        // transformer $id en nombre entier
-        $id = intval($id);
-        if(($id > 0) && ($nom != "") && ($genreArt != "") && ($cheminImage != "") && ($bio != "")){
-
-             //si ok on ajoute une ligne dans la table artiste
-            //avec le framwork W
-            //je dois créer un objet de la classe ArtistesModel
-            //(car la table mysql s'appel artistes)
-            //ne pas oublier de rajouter use \Model\ArtistesModel
-            $objetArtistesModel = new ArtistesModel;
-            //on peu utiliser la méthode insert
-            $objetArtistesModel->update(["nom"          => $nom, 
-                                        "genreArt"      => $genreArt, 
-                                        "cheminImage"   => $cheminImage, 
-                                        "bio"           => $bio
-                                        ], $id);
-
-            //Message de retour
-            //avec affichage lien vers la fiche //generateUrl permet de generer l'url de la route dans une methode
-            $GLOBALS["artisteUpdateRetour"] = "Artiste Modifié. Voir la fiche de <a href='". $this->generateUrl('vitrine_afficher_artiste', ["id" => $id])."'>$nom</a>";
-        }
-        else{
-            //Message de retour
-            $GLOBALS["artisteUpdateRetour"] = "Information manquante";
-        }
-       
-    }
-
-    public function artisteDeleteTraitement(){
-        // Récuperer l'id
-        $id = $this->verifierSaisie("id");
-
-        // Il faut que l'id soit un nombre superieur à 0
-        //SECURITE : Convertir $id en nombre
-        $id = intval($id);
-
-        if ($id > 0){
-
-            // ON Va deleguer à un objet de la classe ArtisteModel
-            //le travail de supprimer la ligne correspondante à l'ID
-            //Vérifier qu'on a fait le use au debut du fichier
-            $objetArtistesModel = new ArtistesModel;
-            $objetArtistesModel->delete($id);
-
-            $GLOBALS["artisteDeleteRetour"] = "Artiste Supprimer";
-        }else{
-
-            $GLOBALS["artisteDeleteRetour"] = "ERREUR SUR L'ID DE L'ARTISTE A SUPPRIMER";
-        }
-
-    }
-
     //SETTER
     function setVar($nomVariable,$valeurVariable){
         $this->tabVariableView[$nomVariable] = $valeurVariable;
@@ -415,7 +355,7 @@ class FormController extends Controller
         $nomUrl       = $this->verifierSaisie("nom_url"); 
         $prix           = $this->verifierSaisie("prix"); 
         $categorie    = $this->verifierSaisie("categorie"); 
-        $photo        = $this->verifierUpload("photo"); 
+        $photo        = $this->verifierUploadSanton("photo"); 
         $description  = $this->verifierSaisie("description");
         $dateAjout     = date("Y-m-d H:i:s");
         //vérifier si les infos sont correcte
@@ -455,7 +395,7 @@ class FormController extends Controller
         $prix           = $this->verifierSaisie("prix"); 
         $categorie    = $this->verifierSaisie("categorie");   
         $oldPhotoPath    = $this->verifierSaisie("oldPath"); 
-        $photo        = $this->verifierUpload("photo"); 
+        $photo        = $this->verifierUploadSanton("photo"); 
         $description  = $this->verifierSaisie("description");
         $dateAjout     = date("Y-m-d H:i:s");
         //vérifier si les infos sont correcte

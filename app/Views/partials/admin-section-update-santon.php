@@ -4,7 +4,7 @@
 	<main class="admin">
 		<div class="container">
 			<div class="container-inner">
-				<h2>Ajouter un santon</h2>
+				<h2>Modifier un santon</h2>
 				
 				<section class="section-content" id="formAjoutSanton">
 
