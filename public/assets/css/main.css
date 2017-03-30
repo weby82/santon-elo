@@ -327,12 +327,15 @@ section img{
 	border-radius: 8px 8px 0 0;
 }
 
-.bloc-santon-inner:hover{
+.bloc-santon-inner:hover,
+.bloc-santon-inner:focus{
 	background: #BAD1D1;
 	/*background: #BAD1D1;*/
 	box-shadow: 8px 8px 5px rgba(0,0,0,0.2);
 	transition: all 0.5s ease;
-}
+	transform: scale(1.1);
+}	
+
 .bloc-santon-inner .btn-default:hover{
 	
 }
@@ -411,6 +414,8 @@ footer div p{
 	-webkit-box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.2);
 	-moz-box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.2);
 	box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.2);
+	border-radius: 50%;
+	width: 85%;
 
 }
 

@@ -44,8 +44,8 @@
 		</div>
 
 		<input type="hidden" name="idForm" value="actualiteUpdate">
-		
-					
+		<input type="hidden" name="id" value="$id">
+						
 		<div class="retour">
 			$actualiteUpdateRetour	
 		</div>
@@ -53,3 +53,12 @@
 	</form>
 CODEHTML;
 	}
+	else
+	{
+		echo "Actualité non trouvée";
+	}
+	?>
+
+		</div>
+	</section>
+</main>

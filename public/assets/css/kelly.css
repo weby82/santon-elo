@@ -71,9 +71,13 @@
 
 .img-circle {
 	box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.5);
+	transition: all 1s ease;
 }
 
-
+.img-responsive:hover, .img-responsive:focus {
+	transition: all 0.5s ease;
+	transform: scale(1.1);
+}
 
 /* évenement */
 
@@ -100,3 +104,27 @@
 	font-weight: bold;
 	margin-bottom: 2%;
 }
+
+
+/* admin évènement */
+.hauteur-msg {
+	height: 20%;
+}
+
+
+/* admin actualité */
+.btn-admin-actu {
+	margin-right: 8%;
+}
+
+
+/* détail santon image */
+.img-detail-santon {
+	transition: all 1s ease;
+}
+
+.img-detail-santon:hover, .img-detail-santon:focus{
+	transition: all 0.5s ease;
+	transform: scale(1.1);
+}
+

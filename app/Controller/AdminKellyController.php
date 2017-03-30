@@ -17,6 +17,15 @@ class AdminKellyController
 		$this->show('page/admin-actualites');
 	}
 
+	/**
+	 * Page d'actualité de l'admin
+	 */
+	public function evenements()
+	{
+	    $this->allowTo('admin');
+		$this->show('page/admin-evenements');
+	}
+
 	
 	/**
 	 * Page de /admin/modifier/artiste/[i:id]
@@ -25,11 +34,11 @@ class AdminKellyController
     {
     	// Le paramètre $id est fourni par le Framework W en extrayant l'info depuis l'url [i:id]
     	$GLOBALS["actualiteUpdateRetour"] = "";
-
+    	
 		//Contoller 
 		// Traitement du formulaire
-		$idForm = $this->verifierSaisie("idForm");
-		if ($idForm == "actualiteUpdate")
+		$id = $this->verifierSaisie("idForm");
+		if ($id == "actualiteUpdate")
 		{
 			// Activer le code pour traiter le formulaire
 			$this->actualiteUpdateTraitement();
@@ -38,7 +47,7 @@ class AdminKellyController
     	// View
     	// Afficher la page
     	$this->show("page/admin-modifier-actualite", 
-    				["id" => $id, 
+    				["idForm" => $id, 
     				 "actualiteUpdateRetour" => $GLOBALS["actualiteUpdateRetour"],
     				]);
     }
@@ -67,7 +76,7 @@ class AdminKellyController
 	    }
 		
 		// ON TRANSMET A LA VUE DES VARIABLES DEPUIS LE CONTROLEUR AVEC UN TABLEAU ASSOCIATIF
-		$this->show('page/admin-actualites');
+		$this->show('page/admin-actualites', ["actualiteDeleteRetour" => $GLOBALS["actualiteDeleteRetour"] ]);
 	}
 
 
@@ -85,5 +94,47 @@ class AdminKellyController
 
 		$this->show('page/admin-creation-actualite', ["actualiteCreateRetour" => $GLOBALS["actualiteCreateRetour"] ]);
 	}
+	
+
+	public function creerEvenement()
+	{
+		$this->allowTo('admin');
+
+		$GLOBALS["evenementCreateRetour"] = "";
+
+		$idForm = $this->verifierSaisie("idForm");
+		if($idForm == "evenementCreate")
+		{
+			$this->evenementCreateTraitement();
+		}
+
+		$this->show('page/admin-creation-evenement', ["evenementCreateRetour" => $GLOBALS["evenementCreateRetour"] ]);
+	}
+
+
+	 /**
+	 * Page de /admin/modifier/artiste/[i:id]
+	 */
+    public function modifierEvenement($id)
+    {
+    	// Le paramètre $id est fourni par le Framework W en extrayant l'info depuis l'url [i:id]
+    	$GLOBALS["evenementUpdateRetour"] = "";
+
+		//Contoller 
+		// Traitement du formulaire
+		$idForm = $this->verifierSaisie("idForm");
+		if ($idForm == "evenementUpdate")
+		{
+			// Activer le code pour traiter le formulaire
+			$this->evenementUpdateTraitement();
+		}
+
+    	// View
+    	// Afficher la page
+    	$this->show("page/admin-modifier-evenement", 
+    				["id" => $id, 
+    				 "evenementUpdateRetour" => $GLOBALS["evenementUpdateRetour"],
+    				]);
+    }
 
 }

@@ -68,13 +68,14 @@ foreach ($tabLigne as $index => $tabColonne) {
 
 
 
+	$urlPhotoSanton			= $this->assetUrl($photoSanton);
 	// Construire le code HTML
 ?>
 					<article class="col-lg-3 col-md-3 col-sm-4 col-xs-12 bloc-santon">
 						<form class="item_form">
 							<div class="bloc-santon-inner">
 								<a href="detail-santon.php?categorie=<?php echo $categorieSanton; ?>&santon_id=<?php echo $id; ?>" title="<?php echo $nomSanton; ?>">
-									<img src="<?php echo $photoSanton; ?>" alt="santon <?php echo $nomSanton; ?>">
+									<img src="<?php echo $urlPhotoSanton; ?>" alt="santon <?php echo $nomSanton; ?>">
 								</a>
 								<h3><a href="detail-santon.php?categorie=<?php echo $categorieSanton; ?>&santon_id=<?php echo $id; ?>" title="<?php echo $item["nom"]; ?>"><?php echo $nomSanton; ?></a></h3>
 								<p class="prix-santon"><?php echo $prixSanton; ?> €</p>

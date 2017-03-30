@@ -4,6 +4,8 @@ namespace Controller;
 
 use \W\Controller\Controller;
 use \Model\SantonModel;
+use \Model\ActualiteModel;
+use \Model\EvenementsModel;
 
 class FormController extends Controller
 {
@@ -235,120 +237,6 @@ class FormController extends Controller
         // A FAIRE PLUS TARD
     }
 
-    public function newsletterTraitement ()
-    {
-        // CONTROLLER
-        // IL FAUT TRAITER LE FORMULAIRE DE NEWSLETTER
-        // RECUPERER LES INFOS
-        $email = $this->verifierSaisie("email");
-        
-        // SECURITE
-        // VERIFIER SI L'EMAIL EST CORRECT
-        if ($this->verifierEmail($email))
-        {
-            // OK
-            // ENREGISTRER L'EMAIL
-            // JE VAIS UTILISER LA BASE DE DONNEES MYSQL
-            // JE VEUX ENREGISTRER DANS LA TABLE newsletter
-            // LA VALEUR $email SERA DANS LA COLONNE "email"
-            $dateInscription = date("Y-m-d H:i:s");
-            
-            // ON DELEGUE LE TRAVAIL A UNE FONCTION DU MODEL
-            // LE TABLEAU ASSOCIATIF PERMET A PHP D'ASSOCIER LES TOKENS AUX VALEURS
-            // LE PLUS SIMPLE EST D'APPELER LES TOKENS AVEC LE MEME NOM QUE LA COLONNE
-            // COLONNE => toto => TOKEN => :toto
-            //$this->ajouterLigneTable("newsletter", [ "email" => $email, "date" => $dateInscription ]);
-                
-            // AVEC LE FRAMEWORK W
-            // ON VA STOCKER L'EMAIL ET LA DATE DANS LA TABLE newsletter
-            //On va passer par un objet de la partie Modele
-            // Pour se connecter à la table MYSQL newsletter
-            //il faut utiliser un objet de la classe NewsletterModel
-            // Ne pas oublier d'ajouter use Model\NewsletterModel
-            $objetNewsletterModel = new NewsletterModel;
-            // On utilise un tableau associatif insert(array $data, )
-            $objetNewsletterModel->insert(["email" => $email, "dateInscription" => $dateInscription]);
-            // ENVOYER UN EMAIL
-            // POUR PREVENIR LE WEBMASTER
-            // ...
-            
-            $GLOBALS["newsletterRetour"] = "MERCI DE VOTRE INSCRIPTION ($email)";
-            
-        }
-        else 
-        {
-            // KO
-            $GLOBALS["newsletterRetour"] = "ENTREZ UN EMAIL VALIDE";
-        }
-    
-        
-    }
-
-
-    public function artisteUpdateTraitement(){
-        // Récupérer les infos du formulaire
-        $id             = $this->verifierSaisie("id");
-        $nom            = $this->verifierSaisie("nom"); 
-        $genreArt       = $this->verifierSaisie("genreArt"); 
-        $cheminImage    = $this->verifierSaisie("cheminImage"); 
-        $bio            = $this->verifierSaisie("bio"); 
-        //vérifier si les infos sont correcte
-        // transformer $id en nombre entier
-        $id = intval($id);
-        if(($id > 0) && ($nom != "") && ($genreArt != "") && ($cheminImage != "") && ($bio != "")){
-
-             //si ok on ajoute une ligne dans la table artiste
-            //avec le framwork W
-            //je dois créer un objet de la classe ArtistesModel
-            //(car la table mysql s'appel artistes)
-            //ne pas oublier de rajouter use \Model\ArtistesModel
-            $objetArtistesModel = new ArtistesModel;
-            //on peu utiliser la méthode insert
-            $objetArtistesModel->update(["nom"          => $nom, 
-                                        "genreArt"      => $genreArt, 
-                                        "cheminImage"   => $cheminImage, 
-                                        "bio"           => $bio
-                                        ], $id);
-
-            //Message de retour
-            //avec affichage lien vers la fiche //generateUrl permet de generer l'url de la route dans une methode
-            $GLOBALS["artisteUpdateRetour"] = "Artiste Modifié. Voir la fiche de <a href='". $this->generateUrl('vitrine_afficher_artiste', ["id" => $id])."'>$nom</a>";
-        }
-        else{
-            //Message de retour
-            $GLOBALS["artisteUpdateRetour"] = "Information manquante";
-        }
-       
-    }
-
-    public function artisteDeleteTraitement(){
-        // Récuperer l'id
-        $id = $this->verifierSaisie("id");
-
-        // Il faut que l'id soit un nombre superieur à 0
-        //SECURITE : Convertir $id en nombre
-        $id = intval($id);
-
-        if ($id > 0){
-
-            // ON Va deleguer à un objet de la classe ArtisteModel
-            //le travail de supprimer la ligne correspondante à l'ID
-            //Vérifier qu'on a fait le use au debut du fichier
-            $objetArtistesModel = new ArtistesModel;
-            $objetArtistesModel->delete($id);
-
-            $GLOBALS["artisteDeleteRetour"] = "Artiste Supprimer";
-        }else{
-
-            $GLOBALS["artisteDeleteRetour"] = "ERREUR SUR L'ID DE L'ARTISTE A SUPPRIMER";
-        }
-
-    }
-
-    //SETTER
-    function setVar($nomVariable,$valeurVariable){
-        $this->tabVariableView[$nomVariable] = $valeurVariable;
-    }
 
    // METHODE
     // Je surcharge la methode show() de la classe parent Controller
@@ -398,6 +286,7 @@ class FormController extends Controller
         echo $engine->render($file, $data);
         die();
     }
+
 
     public function loginTraitement(){
 
@@ -483,15 +372,14 @@ class FormController extends Controller
     }
 
 
-
     public function actualiteCreateTraitement(){
        // Récupérer les infos du formulaire
        $titre    = $this->verifierSaisie("titre"); 
        $contenu  = $this->verifierSaisie("contenu"); 
        $photo    = $this->verifierSaisie("photo"); 
-       $date     = date("Y-m-d H:i:s"); 
+       $dateAjout     = date("Y-m-d H:i:s"); 
        //vérifier si les infos sont correcte
-       if(($titre != "") && ($contenu != "") && ($photo != "") && ($date != "")){
+       if(($titre != "") && ($contenu != "") && ($photo != "")){
 
             //si ok on ajoute une ligne dans la table artiste
             //avec le framwork W
@@ -503,11 +391,11 @@ class FormController extends Controller
             $objetActualiteModel->insert(["titre"   => $titre, 
                                           "contenu" => $contenu, 
                                           "photo"   => $photo, 
-                                          "date"    => $date
+                                          "date"    => $dateAjout
                                         ]);
 
             //Message de retour
-            $GLOBALS["actualiteCreateRetour"] = "Actualite $titre Ajouté";
+            $GLOBALS["actualiteCreateRetour"] = "Actualite $titre créée";
         }
         else{
             //Message de retour
@@ -525,8 +413,8 @@ class FormController extends Controller
         $date        = $this->verifierSaisie("date"); 
         //vérifier si les infos sont correcte
         // transformer $id en nombre entier
-        $id = $this->verifierSaisie("id");
-        $id = intval($id);
+        $id          = $this->verifierSaisie("id");
+        $id          = intval($id);
 
 
         if(($id > 0) && ($titre != "") && ($contenu != "") && ($photo != "") && ($date != "")){
@@ -542,11 +430,12 @@ class FormController extends Controller
                                           "contenu"  => $contenu, 
                                           "photo"    => $photo, 
                                           "date"     => $date
-                                        ], $id);
+                                        ], 
+                                        $id);
 
             //Message de retour
             //avec affichage lien vers la fiche //generateUrl permet de generer l'url de la route dans une methode
-            $GLOBALS["actualiteUpdateRetour"] = "Actualité Modifié ($titre)";
+            $GLOBALS["actualiteUpdateRetour"] = "Actualité Modifié";
         }
         else{
             //Message de retour
@@ -607,12 +496,12 @@ class FormController extends Controller
             //ne pas oublier de rajouter use \Model\ArtistesModel
             $objetEvenementsModel = new EvenementsModel;
             //on peu utiliser la méthode insert
-            $objetEvenementsModel->insert(["titre"            => $titre, 
+            $objetEvenementsModel->insert(["titre"           => $titre, 
                                           "lieu"             => $lieu, 
                                           "date_event_start" => $dateStart,
                                           "date_event_end"   => $dateEnd,
                                           "photo"            => $photo, 
-                                          "date_publication"             => $date
+                                          "date_publication" => $date
                                         ]);
 
             //Message de retour
@@ -624,6 +513,7 @@ class FormController extends Controller
         }
        
     }
+
 
     public function evenementUpdateTraitement(){
         // Récupérer les infos du formulaire
@@ -674,6 +564,7 @@ class FormController extends Controller
         }
        
     }
+    
 
     public function evenementDeleteTraitement(){
         // Récuperer l'id
@@ -698,5 +589,6 @@ class FormController extends Controller
         }
 
     }
+
 
 }
