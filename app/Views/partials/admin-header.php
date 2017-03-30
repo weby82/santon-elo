@@ -66,7 +66,7 @@ if(session_status()==PHP_SESSION_NONE){session_start();}
                           <a href="<?php // echo $this->url('admin_evenements'); ?>">Evènements</a>
                       </li>
                       <li <?php if($navActive == "livre") { echo "class='active'"; }?>>
-                          <a href="<?php // echo $this->url('admin_livre'); ?>">Livre d'or</a>
+                          <a href="<?php echo $this->url('admin_livre'); ?>">Livre d'or</a>
                       </li>
 
  <?php

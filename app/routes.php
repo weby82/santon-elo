@@ -67,4 +67,13 @@
 
 		['GET|POST', '/admin/creer-actualite', 'AdminKelly#creerActualite', 'admin_creation_actualites'],
 
+		// Liste des avis client
+		['GET|POST', '/admin/livre', 'AdminLiinaa#livre', 'admin_livre'],
+		// Création des avis client
+		['GET|POST', '/admin/creer-livre', 'AdminLiinaa#creerLivre', 'admin_creer_livre'],
+		// Modifier l'avis client
+		['GET|POST', '/admin/modifier/livre', 'AdminLiinaa#modifierLivre', 'admin_modifier_livre'],
+		// Modifier l'avis client
+		['GET|POST', '/admin/modifier/livre', 'AdminLiinaa#modifierLivre', 'admin_modifier_livre'],
+
 	);

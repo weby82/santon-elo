@@ -26,14 +26,14 @@ foreach ($tabLigneActu as $index => $tabColonneActu) {
 	// Construire le code HTML
 ?>
 				<article class="col-md-4 col-sm-6 col-xs-12 articles-actu">
-					<div class="article-inner">
+					<!-- <div class="article-inner"> -->
 						<img src="<?php echo $urlPhoto ?>" alt="#">
 						<div class="desc-actu">
 							<h3><?php echo $titreActu ?></h3>
 							<p><?php echo $contenuActu ?></p>
 							<p class="lien-article"><a class="btn btn-default" href="<?php echo $urlActu ?>">Lire la suite</a></p>
 						</div>
-					</div>
+					<!-- </div> -->
 				</article>
 <?php
 }

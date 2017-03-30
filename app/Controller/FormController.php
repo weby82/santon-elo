@@ -4,6 +4,7 @@ namespace Controller;
 
 use \W\Controller\Controller;
 use \Model\SantonModel;
+use W\View\Plates\PlatesExtensions;
 
 class FormController extends Controller
 {
@@ -202,16 +203,26 @@ class FormController extends Controller
                         $nameOK     =  preg_replace("/[^a-zA-Z0-9-_\.]/", "", $name);
 
 
-                        $cheminAssets = $this->assetUrl();
-                        $cheminPhotoUrl = $cheminAssets . "img/santons/" . $categorie ."/";  
-                        $cheminOK   = $cheminPhotoUrl . $nameOK;
+                        $cheminPhotoUrl = "img/santons/" . $categorie ."/";
+                        $cheminMovePhoto = "assets/img/santons/" . $categorie ."/";
+                        // $cheminAssets = new PlatesExtensions;
+                        // $cheminAssetUrl = $cheminAssets->assetUrl();
+                          
+                        // $cheminOK   = $cheminAssetUrl . $nameOK;
+
+                        // url pour le chemin vers le dossier pour le deplacement de l'image
+                         $cheminMoveOK   = $cheminMovePhoto . $nameOK;
+
+                         // url pour la base de donnée
+                         $cheminUrlOk   =  $cheminPhotoUrl . $nameOK;
                         
                         // TRANSFORMER LE CHEMIN OK EN MINUSCULES
-                        $cheminOK = strtolower($cheminOK);
+                        $cheminUrlOk = strtolower($cheminUrlOk);
+                        $cheminMoveOK = strtolower($cheminMoveOK);
                         
                         // ON SORT LE FICHIER DE SA QUARANTAINE
                         // http://php.net/manual/fr/function.move-uploaded-file.php
-                        move_uploaded_file($tmpName, $cheminOK);
+                        move_uploaded_file($tmpName, $cheminMoveOK);
                         
                     }
                     else
@@ -231,7 +242,7 @@ class FormController extends Controller
         }
     }
         
-    return $cheminOK;
+    return $cheminUrlOk;
 }
 
 
@@ -401,12 +412,13 @@ class FormController extends Controller
         // Récupérer les infos du formulaire
         $nom          = $this->verifierSaisie("nom"); 
         $nomUrl       = $this->verifierSaisie("nom_url"); 
+        $prix           = $this->verifierSaisie("prix"); 
         $categorie    = $this->verifierSaisie("categorie"); 
         $photo        = $this->verifierUpload("photo"); 
         $description  = $this->verifierSaisie("description");
         $dateAjout     = date("Y-m-d H:i:s");
         //vérifier si les infos sont correcte
-        if(($nom != "") && ($nomUrl != "") && ($photo != "") && ($description != "")){
+        if(($nom != "") && ($nomUrl != "") && ($prix != "") && ($photo != "") && ($description != "")){
 
              //si ok on ajoute une ligne dans la table artiste
             //avec le framwork W
@@ -424,11 +436,11 @@ class FormController extends Controller
                                         ]);
 
             //Message de retour
-            $GLOBALS["santonCreateRetour"] = "<p class='bg-success'>Santon $nom Ajouté</p>";
+           $GLOBALS["santonCreateRetour"] = "<span class='glyphicon glyphicon-ok' aria-hidden='true'></span> Santon $nom Ajouté";
         }
         else{
             //Message de retour
-            $GLOBALS["santonCreateRetour"] = "Information manquante";
+            $GLOBALS["santonCreateRetour"] = "<span class='glyphicon glyphicon-alert' aria-hidden='true'></span> Information manquante";
         }
        
     }
@@ -648,6 +660,38 @@ class FormController extends Controller
             $GLOBALS["evenementDeleteRetour"] = "ERREUR SUR L'ID DE L'EVENEMENT A SUPPRIMER";
         }
 
+    }
+
+
+    // Création d'un avis client (livre)
+    public function livreCreateTraitement(){
+        // Récupérer les infos du formulaire 
+        $nom_client      = $this->verifierSaisie("nom_client"); 
+        $description     = $this->verifierSaisie("description");
+        $date            = date("Y-m-d H:i:s");
+        //vérifier si les infos sont correcte
+        if(($nom_client != "") && ($description != "") && ($date != "")){
+
+             //si ok on ajoute une ligne dans la table artiste
+            //avec le framwork W
+            //je dois créer un objet de la classe ArtistesModel
+            //(car la table mysql s'appel artistes)
+            //ne pas oublier de rajouter use \Model\ArtistesModel
+            $objetLivreModel = new GuestbookModel;
+            //on peu utiliser la méthode insert
+            $objetLivreModel->insert([  "nom_client"    => $nom_client, 
+                                        "description"   => $description, 
+                                        "date"          => $date
+                                    ]);
+
+            //Message de retour
+           $GLOBALS["livreCreateRetour"] = "<span class='glyphicon glyphicon-ok' aria-hidden='true'></span>";
+        }
+        else{
+            //Message de retour
+            $GLOBALS["livreCreateRetour"] = "<span class='glyphicon glyphicon-alert' aria-hidden='true'></span>";
+        }
+       
     }
 
 }
