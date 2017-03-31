@@ -33,7 +33,7 @@
 									<option value="anniversaire">Anniversaire</option>
 									<option value="communion">Communion</option>
 									<option value="mariage">Mariage</option>
-									<option value="commande-special">Commande spéciale</option>
+									<option value="commande-speciale">Commande spéciale</option>
 								</select>
 							</div>
 							<div class="group">

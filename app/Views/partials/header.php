@@ -23,11 +23,36 @@ if(session_status()==PHP_SESSION_NONE){session_start();}
     </script>
     <script type="text/javascript" src="<?php echo $this->assetUrl('js/mainJSscript.js') ?>"></script>
     
+    <!-- Include Unite Gallery core files -->
+    <script src='<?php echo $this->assetUrl('js/unitegallery.min.js') ?>' type='text/javascript'  ></script>
+    <link  href='<?php echo $this->assetUrl('css/unite-gallery.css') ?>' rel='stylesheet' type='text/css' />
+        
+    <!-- include Unite Gallery Theme Files -->
+        
+    <script src='<?php echo $this->assetUrl('js/ug-theme-tilesgrid.js') ?>' type='text/javascript'></script>
+
     <link rel="stylesheet" type="text/css" href="<?php echo $this->assetUrl('css/main.css') ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo $this->assetUrl('css/kelly.css') ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo $this->assetUrl('css/pier.css') ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo $this->assetUrl('css/liinaa.css') ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo $this->assetUrl('css/damien.css') ?>">
+
+    <script type="text/javascript">
+        
+        jQuery(document).ready(function(){
+          
+          jQuery("#gallery").unitegallery({
+            gallery_theme: "tilesgrid",
+
+            tile_width: 180,            //tile width
+            tile_height: 180,
+            gallery_width:"100%",
+            grid_num_rows:1,
+            theme_navigation_type: "bullets"
+          });
+        });
+        
+        </script>
 </head>
 <body>
    <!-- Création de l'en tête et du bandeau de navigation -->
@@ -112,8 +137,8 @@ if(session_status()==PHP_SESSION_NONE){session_start();}
                                 <li <?php if(isset($categorie) && $categorie == "mariage") { echo "class='active'"; }?>>
                                     <a href="<?php echo $this->url('vitrine_categorie', ['categorie' => 'mariage']); ?>">Mariage</a>
                                 </li>
-                                <li <?php if(isset($categorie) && $categorie == "speciale") { echo "class='active'"; }?>>
-                                    <a href="<?php echo $this->url('vitrine_categorie', ['categorie' => 'speciale']); ?>">Commande spéciale</a>
+                                <li <?php if(isset($categorie) && $categorie == "commande-speciale") { echo "class='active'"; }?>>
+                                    <a href="<?php echo $this->url('vitrine_commande_speciale', ['categorie' => 'commande-speciale']); ?>">Commande spéciale</a>
                                 </li>
                             </ul>
                           </div>

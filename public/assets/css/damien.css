@@ -295,6 +295,14 @@ table tr td.itemInCartDisplay{
     -webkit-border-radius: 50%;
     border-radius: 50%;
 }
+
+/**********************Gallery commande special****************************/
+
+#gallery .ug-thumb-wrapper{
+    -moz-border-radius: 50% !important;
+    -webkit-border-radius: 50% !important;
+    border-radius: 50% !important;
+}
 /************** Ecran ordinateur ********************/
 @media screen and (min-width:992px) {
     

@@ -65,7 +65,7 @@ class AdminDamienController
 	public function santonsDefault()
 	{
 	
-		$this->redirectToRoute('vitrine_categorie', ['categorie' => "nativite"]);
+		$this->redirectToRoute('admin_gerer_santons', ['categorie' => "nativite"]);
 	}
 
 	public function gererSantons($categorie)

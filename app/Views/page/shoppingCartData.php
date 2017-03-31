@@ -59,9 +59,9 @@ if(isset($_POST["load_cart_items"])){
                     </a>          
                 </td>
 
-                <td class='itemInCartDisplay'>
+                <td class='itemInCartDisplay' width="120px">
                     <a href='#' class='subtruct_itm_qty quantity_change' item_id="<?php echo $item["item_id"]; ?>">-</a>  
-                        <?php echo "<span class='quantity'>Qty ".$item["item_qty"]."</span>"; ?>    
+                        <?php echo "<span class='quantity'>Qte ".$item["item_qty"]."</span>"; ?>    
                     <a href='#' class='add_itm_qty quantity_change' item_id="<?php echo $item["item_id"]; ?>">+</a>        
                 </td>
 

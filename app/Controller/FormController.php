@@ -302,6 +302,37 @@ class FormController extends Controller
         die();
     }
 
+    // Front - form de commande special
+
+    public function commandeSpecialFormTraitement(){
+
+        // Récupération des informations du formulaire de contact
+        $nom            = $this->verifierSaisie("nom");
+        $prenom         = $this->verifierSaisie("prenom");
+        $email          = $this->verifierSaisie("email");
+        $sujet          = $this->verifierSaisie("sujet");
+        $message        = $this->verifierSaisie("message");
+
+        // Sécurité
+        if ( $this->verifierEmail($email)
+                                        && ($nom != "")
+                                        && ($prenom != "")
+                                        && ($sujet != "")
+                                        && ($message != "") ){
+
+            
+            // message pour l'utilisateur
+            // $GLOBALS["contactRetour"] = "<p class='bg-success'>Merci $prenom, votre message est bien envoyé !</p>";
+            $GLOBALS["commandeSpecialRetour"] = "<span class='glyphicon glyphicon-ok' aria-hidden='true'></span> Merci $prenom, votre message a bien été envoyé !";
+        }
+
+        else{
+            // $GLOBALS["contactRetour"] = "Il manque des informations";
+            $GLOBALS["commandeSpecialRetour"] = "<span class='glyphicon glyphicon-alert' aria-hidden='true'></span> Il manque des informations !";
+        }
+
+    }
+
     public function loginTraitement(){
 
         // REcuperer les infos du formulaire

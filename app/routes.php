@@ -18,6 +18,9 @@
 		// Detail d'un santon
 		['GET|POST', '/categorie/[:categorie]/[:nomUrl]', 'VitrineDamien#santon', 'vitrine_afficher_santon'],
 
+		//Commande special
+		['GET|POST', '/commande-speciale', 'VitrineDamien#commandeSpeciale', 'vitrine_commande_speciale'],
+
 		// Liste des actualités
 		['GET|POST', '/actualites', 'VitrineKelly#actualites', 'vitrine_actualites'],
 

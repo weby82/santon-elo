@@ -58,7 +58,7 @@
 									<option value="anniversaire"  <?php if($categorie == "anniversaire") echo "selected" ?>>Anniversaire</option>
 									<option value="communion" <?php if($categorie == "communion") echo "selected" ?>>Communion</option>
 									<option value="mariage" <?php if($categorie == "mariage") echo "selected" ?>>Mariage</option>
-									<option value="commande-special" <?php if($categorie == "commande-special") echo "selected" ?>>Commande spéciale</option>
+									<option value="commande-speciale" <?php if($categorie == "commande-speciale") echo "selected" ?>>Commande spéciale</option>
 								</select>
 								<label>Catégorie</label>
 							</div>
