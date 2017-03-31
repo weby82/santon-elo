@@ -302,6 +302,13 @@ table tr td.itemInCartDisplay{
     -moz-border-radius: 50% !important;
     -webkit-border-radius: 50% !important;
     border-radius: 50% !important;
+    overflow: hidden;
+}
+#gallery .ug-thumb-wrapper:hover img{
+
+ transform: scale(1.40) rotate(30deg);
+ transition: all 1s ease !important;
+
 }
 /************** Ecran ordinateur ********************/
 @media screen and (min-width:992px) {
