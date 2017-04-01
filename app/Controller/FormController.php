@@ -4,6 +4,7 @@ namespace Controller;
 
 use \W\Controller\Controller;
 use \Model\SantonModel;
+use W\View\Plates\PlatesExtensions;
 
 class FormController extends Controller
 {
@@ -129,9 +130,10 @@ class FormController extends Controller
 
 
     // Verifier le champ d'upload
-    function verifierUpload ($nameInput)
+    function verifierUploadSanton ($nameInput)
     {
     $cheminOK = "";
+    $cheminUrlOk = "";
     
     // POUR LE MESSAGE DE RETOUR
     $idForm = $this->verifierSaisie("idForm");
@@ -172,6 +174,7 @@ class FormController extends Controller
                 $tmpName    = $tabInfoFichierUploade["tmp_name"];
                 $size       = $tabInfoFichierUploade["size"];
                 $categorie  = $_POST["categorie"];
+
                 
                 if ($size < 10 * 1024 * 1024) // 10 MEGAOCTETS
                 {
@@ -201,16 +204,26 @@ class FormController extends Controller
                         $nameOK     =  preg_replace("/[^a-zA-Z0-9-_\.]/", "", $name);
 
 
-                        $cheminAssets = $this->assetUrl();
-                        $cheminPhotoUrl = $cheminAssets . "img/santons/" . $categorie ."/";  
-                        $cheminOK   = $cheminPhotoUrl . $nameOK;
+                        $cheminPhotoUrl = "img/santons/" . $categorie ."/";
+                        $cheminMovePhoto = "assets/img/santons/" . $categorie ."/";
+                        // $cheminAssets = new PlatesExtensions;
+                        // $cheminAssetUrl = $cheminAssets->assetUrl();
+                          
+                        // $cheminOK   = $cheminAssetUrl . $nameOK;
+
+                        // url pour le chemin vers le dossier pour le deplacement de l'image
+                         $cheminMoveOK   = $cheminMovePhoto . $nameOK;
+
+                         // url pour la base de donnée
+                         $cheminUrlOk   =  $cheminPhotoUrl . $nameOK;
                         
                         // TRANSFORMER LE CHEMIN OK EN MINUSCULES
-                        $cheminOK = strtolower($cheminOK);
+                        $cheminUrlOk = strtolower($cheminUrlOk);
+                        $cheminMoveOK = strtolower($cheminMoveOK);
                         
                         // ON SORT LE FICHIER DE SA QUARANTAINE
                         // http://php.net/manual/fr/function.move-uploaded-file.php
-                        move_uploaded_file($tmpName, $cheminOK);
+                        move_uploaded_file($tmpName, $cheminMoveOK);
                         
                     }
                     else
@@ -230,70 +243,10 @@ class FormController extends Controller
         }
     }
         
-    return $cheminOK;
+    return $cheminUrlOk;
 }
 
 
-
-    public function artisteUpdateTraitement(){
-        // Récupérer les infos du formulaire
-        $id             = $this->verifierSaisie("id");
-        $nom            = $this->verifierSaisie("nom"); 
-        $genreArt       = $this->verifierSaisie("genreArt"); 
-        $cheminImage    = $this->verifierSaisie("cheminImage"); 
-        $bio            = $this->verifierSaisie("bio"); 
-        //vérifier si les infos sont correcte
-        // transformer $id en nombre entier
-        $id = intval($id);
-        if(($id > 0) && ($nom != "") && ($genreArt != "") && ($cheminImage != "") && ($bio != "")){
-
-             //si ok on ajoute une ligne dans la table artiste
-            //avec le framwork W
-            //je dois créer un objet de la classe ArtistesModel
-            //(car la table mysql s'appel artistes)
-            //ne pas oublier de rajouter use \Model\ArtistesModel
-            $objetArtistesModel = new ArtistesModel;
-            //on peu utiliser la méthode insert
-            $objetArtistesModel->update(["nom"          => $nom, 
-                                        "genreArt"      => $genreArt, 
-                                        "cheminImage"   => $cheminImage, 
-                                        "bio"           => $bio
-                                        ], $id);
-
-            //Message de retour
-            //avec affichage lien vers la fiche //generateUrl permet de generer l'url de la route dans une methode
-            $GLOBALS["artisteUpdateRetour"] = "Artiste Modifié. Voir la fiche de <a href='". $this->generateUrl('vitrine_afficher_artiste', ["id" => $id])."'>$nom</a>";
-        }
-        else{
-            //Message de retour
-            $GLOBALS["artisteUpdateRetour"] = "Information manquante";
-        }
-       
-    }
-
-    public function artisteDeleteTraitement(){
-        // Récuperer l'id
-        $id = $this->verifierSaisie("id");
-
-        // Il faut que l'id soit un nombre superieur à 0
-        //SECURITE : Convertir $id en nombre
-        $id = intval($id);
-
-        if ($id > 0){
-
-            // ON Va deleguer à un objet de la classe ArtisteModel
-            //le travail de supprimer la ligne correspondante à l'ID
-            //Vérifier qu'on a fait le use au debut du fichier
-            $objetArtistesModel = new ArtistesModel;
-            $objetArtistesModel->delete($id);
-
-            $GLOBALS["artisteDeleteRetour"] = "Artiste Supprimer";
-        }else{
-
-            $GLOBALS["artisteDeleteRetour"] = "ERREUR SUR L'ID DE L'ARTISTE A SUPPRIMER";
-        }
-
-    }
 
     //SETTER
     function setVar($nomVariable,$valeurVariable){
@@ -349,6 +302,37 @@ class FormController extends Controller
         die();
     }
 
+    // Front - form de commande special
+
+    public function commandeSpecialFormTraitement(){
+
+        // Récupération des informations du formulaire de contact
+        $nom            = $this->verifierSaisie("nom");
+        $prenom         = $this->verifierSaisie("prenom");
+        $email          = $this->verifierSaisie("email");
+        $sujet          = $this->verifierSaisie("sujet");
+        $message        = $this->verifierSaisie("message");
+
+        // Sécurité
+        if ( $this->verifierEmail($email)
+                                        && ($nom != "")
+                                        && ($prenom != "")
+                                        && ($sujet != "")
+                                        && ($message != "") ){
+
+            
+            // message pour l'utilisateur
+            // $GLOBALS["contactRetour"] = "<p class='bg-success'>Merci $prenom, votre message est bien envoyé !</p>";
+            $GLOBALS["commandeSpecialRetour"] = "<span class='glyphicon glyphicon-ok' aria-hidden='true'></span> Merci $prenom, votre message a bien été envoyé !";
+        }
+
+        else{
+            // $GLOBALS["contactRetour"] = "Il manque des informations";
+            $GLOBALS["commandeSpecialRetour"] = "<span class='glyphicon glyphicon-alert' aria-hidden='true'></span> Il manque des informations !";
+        }
+
+    }
+
     public function loginTraitement(){
 
         // REcuperer les infos du formulaire
@@ -400,12 +384,13 @@ class FormController extends Controller
         // Récupérer les infos du formulaire
         $nom          = $this->verifierSaisie("nom"); 
         $nomUrl       = $this->verifierSaisie("nom_url"); 
+        $prix           = $this->verifierSaisie("prix"); 
         $categorie    = $this->verifierSaisie("categorie"); 
-        $photo        = $this->verifierUpload("photo"); 
+        $photo        = $this->verifierUploadSanton("photo"); 
         $description  = $this->verifierSaisie("description");
         $dateAjout     = date("Y-m-d H:i:s");
         //vérifier si les infos sont correcte
-        if(($nom != "") && ($nomUrl != "") && ($photo != "") && ($description != "")){
+        if(($nom != "") && ($nomUrl != "") && ($prix != "") && ($photo != "") && ($description != "")){
 
              //si ok on ajoute une ligne dans la table artiste
             //avec le framwork W
@@ -416,6 +401,7 @@ class FormController extends Controller
             //on peu utiliser la méthode insert
             $objetSantonModel->insert(["nom" => $nom, 
                                         "nom_url" => $nomUrl, 
+                                        "prix" => $prix, 
                                         "categorie" => $categorie, 
                                         "photo" => $photo,
                                         "description" => $description,
@@ -423,13 +409,89 @@ class FormController extends Controller
                                         ]);
 
             //Message de retour
-            $GLOBALS["santonCreateRetour"] = "<p class='bg-success'>Santon $nom Ajouté</p>";
+           $GLOBALS["santonCreateRetour"] = "<span class='glyphicon glyphicon-ok' aria-hidden='true'></span> Santon $nom Ajouté";
         }
         else{
             //Message de retour
-            $GLOBALS["santonCreateRetour"] = "Information manquante";
+            $GLOBALS["santonCreateRetour"] = "<span class='glyphicon glyphicon-alert' aria-hidden='true'></span> Information manquante";
         }
        
+    }
+
+     public function santonUpdateTraitement(){
+        // Récupérer les infos du formulaire
+        $id             = $this->verifierSaisie("id");
+        $nom          = $this->verifierSaisie("nom"); 
+        $nomUrl       = $this->verifierSaisie("nom_url"); 
+        $prix           = $this->verifierSaisie("prix"); 
+        $categorie    = $this->verifierSaisie("categorie");   
+        $oldPhotoPath    = $this->verifierSaisie("oldPath"); 
+        $photo        = $this->verifierUploadSanton("photo"); 
+        $description  = $this->verifierSaisie("description");
+        $dateAjout     = date("Y-m-d H:i:s");
+        //vérifier si les infos sont correcte
+        if(($nom != "") && ($nomUrl != "") && ($prix != "") && (($photo != "") || ($oldPhotoPath != "")) && ($description != "")){
+
+             //si ok on ajoute une ligne dans la table artiste
+            //avec le framwork W
+            //je dois créer un objet de la classe ArtistesModel
+            //(car la table mysql s'appel artistes)
+            //ne pas oublier de rajouter use \Model\ArtistesModel
+            $objetSantonModel = new SantonModel;
+            //on peu utiliser la méthode insert
+
+            if($photo != ""){
+            $objetSantonModel->update(["nom" => $nom, 
+                                        "nom_url" => $nomUrl, 
+                                        "prix" => $prix, 
+                                        "categorie" => $categorie, 
+                                        "photo" => $photo,
+                                        "description" => $description,
+                                        "date_ajout" => $dateAjout
+                                        ], $id);
+            }else{
+                $objetSantonModel->update(["nom" => $nom, 
+                                        "nom_url" => $nomUrl, 
+                                        "prix" => $prix, 
+                                        "categorie" => $categorie, 
+                                        "photo" => $oldPhotoPath,
+                                        "description" => $description,
+                                        "date_ajout" => $dateAjout
+                                        ], $id);
+            }
+
+            //Message de retour
+           $GLOBALS["santonUpdateRetour"] = "<span class='glyphicon glyphicon-ok' aria-hidden='true'></span> Santon $nom Modifié";
+        }
+        else{
+            //Message de retour
+            $GLOBALS["santonUpdateRetour"] = "<span class='glyphicon glyphicon-alert' aria-hidden='true'></span> Information manquante";
+        }
+       
+    }
+
+    public function santonDeleteTraitement(){
+        // Récuperer l'id
+        $id = $this->verifierSaisie("id");
+
+        // Il faut que l'id soit un nombre superieur à 0
+        //SECURITE : Convertir $id en nombre
+        $id = intval($id);
+
+        if ($id > 0){
+
+            // ON Va deleguer à un objet de la classe ArtisteModel
+            //le travail de supprimer la ligne correspondante à l'ID
+            //Vérifier qu'on a fait le use au debut du fichier
+            $objetsantonModel = new SantonModel;
+            $objetsantonModel->delete($id);
+
+            $GLOBALS["santonDeleteRetour"] = "<span class='glyphicon glyphicon-ok' aria-hidden='true'></span> Santon Supprimé";
+        }else{
+
+            $GLOBALS["santonDeleteRetour"] = "<span class='glyphicon glyphicon-alert' aria-hidden='true'></span> Erreur sur l'id du Santon à supprimer";
+        }
+
     }
 
 

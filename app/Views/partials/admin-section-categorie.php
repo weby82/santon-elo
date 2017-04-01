@@ -25,7 +25,7 @@
                                     <a href="<?php echo $this->url('admin_gerer_santons', ['categorie' => 'mariage']); ?>">Mariage</a>
                                 </li>
                                 <li <?php if(isset($categorie) && $categorie == "speciale") { echo "class='active'"; }?>>
-                                    <a href="<?php echo $this->url('admin_gerer_santons', ['categorie' => 'speciale']); ?>">Commande spéciale</a>
+                                    <a href="<?php echo $this->url('admin_gerer_santons', ['categorie' => 'commande-speciale']); ?>">Commande spéciale</a>
                                 </li>
 						</ul>
 					</nav>
@@ -48,7 +48,9 @@
 
 			    ?>  
 
-				
+					<div class="retour">
+						<?php echo $santonDeleteRetour; ?>
+					</div>
 					<table class="table table-striped">
 						<thead>
 							<th>Photo</th>
@@ -66,6 +68,9 @@
 						$prix 		= $valeur["prix"];
 						$photo 		= $valeur["photo"];
 						$urlPhoto	= $this->assetUrl($photo);
+
+						$hrefSupprimer  = "?idForm=santonDelete&id=$id";
+						$hrefModifier   = $this->url("admin_update_santon", ["id" => $id]);
 					?>
 							<tr>
 								<td><img class="table-img" src="<?php echo $urlPhoto; ?>" alt="<?php echo $nom; ?>"></td>
@@ -73,8 +78,8 @@
 								<td><?php echo $prix; ?> €</td>
 								<td><?php echo $id; ?></td>
 								<td>
-									<a href="" title="modifier"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
-									<a href="" title="supprimer"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+									<a href="<?php echo $hrefModifier; ?>" title="modifier"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+									<a href="<?php echo $hrefSupprimer; ?>" title="supprimer"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
 
 								</td>
 								

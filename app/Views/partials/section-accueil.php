@@ -43,7 +43,7 @@ foreach ($tabLigneActu as $index => $tabColonneActu) {
 
 		<section id="section-last-ajout">
 			<div class="container">
-				<h2>Derniers Ajout</h2>
+				<h2>Derniers Ajouts</h2>
 		<?php
 
 	// Requete SQL pour lire les info dans la table santon
@@ -60,23 +60,24 @@ foreach ($tabLigne as $index => $tabColonne) {
 
 	// récuperer les colonne de chaque ligne
 
-	$id 							= $tabColonne["id"];
-	$nomSanton 						= $tabColonne["nom"];
-	$categorieSanton				= $tabColonne["categorie"];
-	$prixSanton						= $tabColonne["prix"];
-	$photoSanton					= $tabColonne["photo"];
+	$id 					= $tabColonne["id"];
+	$nomSanton 				= $tabColonne["nom"];
+	$nomUrl 				= $tabColonne["nom_url"];
+	$categorie				= $tabColonne["categorie"];
+	$prixSanton				= $tabColonne["prix"];
+	$photoSanton			= $tabColonne["photo"];
 
-
+	$urlPhotoSanton			= $this->assetUrl($photoSanton);
 
 	// Construire le code HTML
 ?>
 					<article class="col-lg-3 col-md-3 col-sm-4 col-xs-12 bloc-santon">
 						<form class="item_form">
 							<div class="bloc-santon-inner">
-								<a href="detail-santon.php?categorie=<?php echo $categorieSanton; ?>&santon_id=<?php echo $id; ?>" title="<?php echo $nomSanton; ?>">
-									<img src="<?php echo $photoSanton; ?>" alt="santon <?php echo $nomSanton; ?>">
+								<a href="<?php echo $this->url('vitrine_afficher_santon', [ 'categorie' => $categorie, 'nomUrl' => $nomUrl ]);?>" title="<?php echo $nomSanton; ?>">
+									<img src="<?php echo $urlPhotoSanton; ?>" alt="santon <?php echo $nomSanton; ?>">
 								</a>
-								<h3><a href="detail-santon.php?categorie=<?php echo $categorieSanton; ?>&santon_id=<?php echo $id; ?>" title="<?php echo $item["nom"]; ?>"><?php echo $nomSanton; ?></a></h3>
+								<h3><a href="<?php echo $this->url('vitrine_afficher_santon', [ 'categorie' => $categorie, 'nomUrl' => $nomUrl ]);?>" title="<?php echo $item["nom"]; ?>"><?php echo $nomSanton; ?></a></h3>
 								<p class="prix-santon"><?php echo $prixSanton; ?> €</p>
 								<div class="item_disp_values">
 	                                <div>Quantité:

@@ -10,7 +10,7 @@
 
 					
 					 
-						<form class="formulaire" method="POST" action="" >
+						<form class="formulaire" method="POST" action="" enctype="multipart/form-data">
 							<div class="retour">
 								<?php echo $santonCreateRetour; ?>
 							</div>
@@ -18,9 +18,13 @@
 								<input type="text" name="nom" required ><span class="highlight"></span><span class="bar"></span>
 						    	<label>Nom</label>
 							</div>
-							<div class="group">
+							<div class="group input-nom-url">
 								<input type="text" name="nom_url" required ><span class="highlight"></span><span class="bar"></span>
 						    	<label>URL (pas d'espace ni d'accent)</label>
+							</div>
+							<div class="group">
+								<input type="text" name="prix" required ><span class="highlight"></span><span class="bar"></span>
+						    	<label>Prix</label>
 							</div>
 							<div class="group">
 								<select class="form-control" name="categorie">
@@ -29,7 +33,7 @@
 									<option value="anniversaire">Anniversaire</option>
 									<option value="communion">Communion</option>
 									<option value="mariage">Mariage</option>
-									<option value="commande-special">Commande spéciale</option>
+									<option value="commande-speciale">Commande spéciale</option>
 								</select>
 							</div>
 							<div class="group">

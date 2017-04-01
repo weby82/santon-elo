@@ -25,11 +25,13 @@
                     <?php
                     $total=0; // define total so the script won't throw silly error of a type 'Undefined variable: total in....'
                     /* Loops through item session array and display data */
-                    foreach($_SESSION["items"] as $item){ 			
+                    foreach($_SESSION["items"] as $item){ 
+
+                    $urlPhoto =	$this->assetUrl($item["item_image"]);		
                     ?>                         
                     <tr class='itemInCardRow'>            
                         <td class='itemInCartDisplay'>
-                            <img class='img-responsive item_disp_image' style='max-width:40px; float:left;' src="<?php echo $item["item_image"]; ?>">
+                            <img class='img-responsive item_disp_image' style='max-width:40px; float:left;' src="<?php echo $urlPhoto; ?>">
                         </td>
                         <td class='itemInCartDisplay'>
                             <?php echo $item["item_name"]; ?>
