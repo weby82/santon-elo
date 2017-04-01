@@ -184,7 +184,7 @@ table tr td.itemInCartDisplay{
 #admin-accueil .btn-block{
     padding: 50px 15px;
     margin-bottom: 15px;
-    font-size: 2em;
+    font-size: 1.7em;
     color: #fff;
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
@@ -310,13 +310,31 @@ table tr td.itemInCartDisplay{
  transition: all 1s ease !important;
 
 }
+#gallery .ug-thumb-wrapper img{
+
+ transition: all 1s ease !important;
+
+}
 /************** Ecran ordinateur ********************/
 @media screen and (min-width:992px) {
     
+    /*******************Admin accueil***************/
+
+    #admin-accueil .btn-block{
+        font-size: 2em;
+    }
     /*************** Admin santon *************/
 
     .admin .col-nav-left .nav>li{
         display: block;
     }
 
+}
+
+/************Tout petit écran ********************/
+
+@media screen and (max-width:420px) {
+    #admin-accueil .bloc-menu div{
+        width: 100% ;
+    }
 }
