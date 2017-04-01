@@ -177,6 +177,20 @@ table tr td.itemInCartDisplay{
     padding: 4px;
 }
 
+/***********************************************************
+                Form Contact
+*********************************************************/
+
+.submit{
+    margin-top: 20px;
+    text-align: center !important;
+}
+.submit button{
+    padding: 12px;
+    font-size: 1.2em;
+    width: 50%;
+}
+
 /**********************************************************************
             Admin - Accueil
 **********************************************************************/
@@ -315,8 +329,26 @@ table tr td.itemInCartDisplay{
  transition: all 1s ease !important;
 
 }
+
+/*************************REcaptcha****************/
+
+.rc-anchor{
+    background-color: #fff !important;
+    border:0.01em solid rgba(219,211,202,0.5);
+}
+
 /************** Ecran ordinateur ********************/
 @media screen and (min-width:992px) {
+
+    /****************Formulaire de contact*********************/
+    .submit.text-right{
+        text-align: right !important;
+    }
+    .submit button{
+        width: auto;
+         padding: 6px 12px;
+        font-size: 1em;
+    }
     
     /*******************Admin accueil***************/
 
@@ -328,6 +360,7 @@ table tr td.itemInCartDisplay{
     .admin .col-nav-left .nav>li{
         display: block;
     }
+
 
 }
 

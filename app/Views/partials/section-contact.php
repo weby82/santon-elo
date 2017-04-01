@@ -5,6 +5,10 @@
 				<h2>Formulaire de contact</h2>
 							
 					<form method="POST" class="formulaire">
+						<!-- message de retour -->
+						<div class="retour">
+							<?php if (isset($GLOBALS["contactRetour"])) echo $GLOBALS["contactRetour"]; ?>
+						</div>
 						<div class="row">
 		        			<div class="colonne-gauche col-md-6 col-xs-12 ">
 
@@ -44,24 +48,27 @@
 								<span class="bar"></span>
 							    <label>Votre message</label>
 							</div>
-
-							<div class="form-group col-md-12 col-xs-12 text-right">
-								<button type="submit" class="btn btn-default">Envoyer</button>
-							</div>
+							
 
 	  					</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="g-recaptcha" data-sitekey="6LeIMBsUAAAAAGjcirRyRPKc305449cDC7uLiLrd"></div>
+							</div>
 
+							<div class="submit col-md-12 text-right">
+								<button type="submit" class="btn btn-default">Envoyer</button>
+							</div>
+						</div>
 
  				 <!-- Côté traitement -->
 						<input type="hidden" name="idFormClasse" value="Contact">
 						<input type="hidden" name="idFormMethode" value="contactTraitement">
 
-					<!-- message de retour -->
-						<div class="retour">
-	<?php if (isset($GLOBALS["contactRetour"])) echo $GLOBALS["contactRetour"]; ?>
-						</div>
+					
 
 					</form>
+
 
 			</div> <!-- container-inner -->
 		</div> <!-- container -->

@@ -36,7 +36,10 @@ if(session_status()==PHP_SESSION_NONE){session_start();}
     <link rel="stylesheet" type="text/css" href="<?php echo $this->assetUrl('css/pier.css') ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo $this->assetUrl('css/liinaa.css') ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo $this->assetUrl('css/damien.css') ?>">
+    
 
+    <!-- Recaptcha -->
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     <script type="text/javascript">
         
         jQuery(document).ready(function(){
