@@ -21,14 +21,14 @@ class Contact{
 										&& ($message != "") ){
 
 
-			$captcha = new Recaptcha('6LeIMBsUAAAAACIMoHkDpf3ZUvDEsGDiynFlySG6');
+			// Je crée un objet de la class ReCaptcha avec ma clé secrete en parametre
+			$captcha = new Recaptcha('6LeIMBsUAAAAACIMoHkDpf3ZUvDEsGDiynFlySG6');	
 			
+			// Si Ën retour du captcha j'ai la reponse False je n'envoi pas le formulaire.
 			if($captcha->checkCode($_POST['g-recaptcha-response']) === false){
 
 				$GLOBALS["contactRetour"] = "<span class='glyphicon glyphicon-alert' aria-hidden='true'></span> Le captcha ne semble pas valide";
 			}else{
-
-
 
 				//envoie du message
 				$mailDestinataire = "damien.bouvier@gmail.com";

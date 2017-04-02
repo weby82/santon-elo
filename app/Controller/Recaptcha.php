@@ -25,7 +25,7 @@ class Recaptcha{
 			curl_setopt($curl, CURLOPT_HEADER, false);
 			curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 			curl_setopt($curl, CURLOPT_TIMEOUT, 1);
-			curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false); // Evite les problèmes, si le ser
+			curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false); // Evite les problèmes, si le serveur est sécurisé
 			$response = curl_exec($curl);
 
 		}else{
