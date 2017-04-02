@@ -59,6 +59,7 @@ class Contact{
 				$header = "From: \"". $prenom ." ". $nom ."\"<".$email.">".$passage_ligne;
 				$header.= "Reply-to: \"". $prenom ." ". $nom ."\"<".$email.">".$passage_ligne;
 				$header.= "MIME-Version: 1.0".$passage_ligne;
+				$header .= "X-Priority: 2".$passage_ligne;
 				$header.= "Content-Type: multipart/mixed;".$passage_ligne." boundary=\"$boundary\"".$passage_ligne;
 				//==========
 				 
@@ -98,6 +99,10 @@ class Contact{
 				
 				// message pour l'utilisateur
 				$GLOBALS["contactRetour"] = "<span class='glyphicon glyphicon-ok' aria-hidden='true'></span> Merci $prenom, votre message a bien été envoyé !";
+
+				// Je vide les champs du formulaire
+				$nom = $prenom = $email = $message = $sujet = NULL;
+                unset($_POST);
 
 
 			} //end test captcha
