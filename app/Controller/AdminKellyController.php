@@ -32,13 +32,14 @@ class AdminKellyController
 	 */
     public function modifierActualites($id)
     {
+    	$this->allowTo('admin');
     	// Le paramètre $id est fourni par le Framework W en extrayant l'info depuis l'url [i:id]
     	$GLOBALS["actualiteUpdateRetour"] = "";
     	
 		//Contoller 
 		// Traitement du formulaire
-		$id = $this->verifierSaisie("idForm");
-		if ($id == "actualiteUpdate")
+		$idForm = $this->verifierSaisie("idForm");
+		if ($idForm == "actualiteUpdate")
 		{
 			// Activer le code pour traiter le formulaire
 			$this->actualiteUpdateTraitement();
@@ -47,8 +48,7 @@ class AdminKellyController
     	// View
     	// Afficher la page
     	$this->show("page/admin-modifier-actualite", 
-    				["idForm" => $id, 
-    				 "actualiteUpdateRetour" => $GLOBALS["actualiteUpdateRetour"],
+    				["id" => $id, "actualiteUpdateRetour" => $GLOBALS["actualiteUpdateRetour"]
     				]);
     }
     
@@ -56,7 +56,7 @@ class AdminKellyController
 	/**
 	 * Page de /admin/artistes
 	 */
-	public function gererActualite()
+	public function gererActualites()
 	{
 		// SECURITE
 		// SEULEMENT LES ROLES admin PEUVENT VOIR CETTE PAGE
@@ -68,7 +68,6 @@ class AdminKellyController
 	    
 	    // RECUPERER L'INFO idForm
 	    $idForm = $this->verifierSaisie("idForm");
-
 	    if ($idForm == "actualiteDelete")
 	    {
 	    	 // ACTIVER LE CODE POUR TRAITER LE FORMULAIRE newsletter
@@ -117,6 +116,7 @@ class AdminKellyController
 	 */
     public function modifierEvenement($id)
     {
+    	$this->allowTo('admin');
     	// Le paramètre $id est fourni par le Framework W en extrayant l'info depuis l'url [i:id]
     	$GLOBALS["evenementUpdateRetour"] = "";
 
@@ -132,9 +132,33 @@ class AdminKellyController
     	// View
     	// Afficher la page
     	$this->show("page/admin-modifier-evenement", 
-    				["id" => $id, 
-    				 "evenementUpdateRetour" => $GLOBALS["evenementUpdateRetour"],
+    				["id" => $id, "evenementUpdateRetour" => $GLOBALS["evenementUpdateRetour"] 
     				]);
     }
 
+
+    /**
+	 * Page de /admin/artistes
+	 */
+	public function gererEvenements()
+	{
+		// SECURITE
+		// SEULEMENT LES ROLES admin PEUVENT VOIR CETTE PAGE
+		$this->allowTo('admin');
+
+	    // CONTROLLER
+	    // TRAITEMENT DU FORMULAIRE
+	    $GLOBALS["evenementDeleteRetour"] = "";
+	    
+	    // RECUPERER L'INFO idForm
+	    $idForm = $this->verifierSaisie("idForm");
+	    if ($idForm == "evenementDelete")
+	    {
+	    	 // ACTIVER LE CODE POUR TRAITER LE FORMULAIRE newsletter
+	        $this->evenementDeleteTraitement();
+	    }
+		
+		// ON TRANSMET A LA VUE DES VARIABLES DEPUIS LE CONTROLEUR AVEC UN TABLEAU ASSOCIATIF
+		$this->show('page/admin-evenements', ["evenementDeleteRetour" => $GLOBALS["evenementDeleteRetour"] ]);
+	}
 }

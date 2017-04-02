@@ -63,7 +63,7 @@
 		['GET|POST', '/admin/liste/actualite', 'AdminKelly#actualites', 'admin_actualites'],
 
 		// Suppression des actualités
-		['GET|POST', '/admin/actualites', 'AdminKelly#gererActualite', 'admin_gerer_actualites'],
+		['GET|POST', '/admin/actualites', 'AdminKelly#gererActualites', 'admin_gerer_actualites'],
 
 		// Modification des actualités
 		['GET|POST', '/admin/modifier/actualite/[:id]', 'AdminKelly#modifierActualites', 'admin_modifier_actualites'],
@@ -77,6 +77,10 @@
 		// Création des évènements
 		['GET|POST', '/admin/creer-evenement', 'AdminKelly#creerEvenement', 'admin_creation_evenements'],
 
-		['GET|POST', '/admin/modifier/evenement', 'Admin#modifierEvenement',	'admin_modifier_evenement'],
+		// Modifiacation/update des évènements
+		['GET|POST', '/admin/modifier/evenement/[:id]', 'AdminKelly#modifierEvenement',	'admin_modifier_evenement'],
+
+		['GET|POST', '/admin/evenements', 'AdminKelly#gererEvenements',	'admin_gerer_evenement'],
+
 
 	);

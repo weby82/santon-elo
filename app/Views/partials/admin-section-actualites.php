@@ -38,6 +38,8 @@
                     $photo          = $valeur["photo"];
 
                     $urlPhoto       =$this->assetUrl($photo);
+
+                    $hrefSupprimer  = "?idForm=actualiteDelete&id=$id";
             ?> 
                     <tr>
                         <td><img class="table-img" src="<?php echo $urlPhoto; ?>" alt="<?php echo $titre; ?>"></td>
@@ -45,8 +47,8 @@
                         <td><?php echo $contenu; ?></td>
                         <td><?php echo $id; ?></td>
                         <td>
-                            <a href="<?php echo $this->url('admin_modifier_actualites'); ?>"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
-                            <a href="<?php echo $this->url('admin_gerer_actualites'); ?>" title="supprimer"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                            <a href="<?php echo $this->url('admin_modifier_actualites' , ['id' => $id]); ?>"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                            <a href="<?php echo $hrefSupprimer; ?>" title="supprimer"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
 
                         </td>                                                              
                                     

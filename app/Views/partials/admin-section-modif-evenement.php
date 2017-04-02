@@ -1,84 +1,84 @@
-<main>
-	<section id="admin-actualite">
-		<div class="container">
-			<h2>Modification d'un évènement</h2>
+<main class="admin">
+	<div class="container">
+		<div class="container-inner">
+			<h2>Modifier un évènement</h2>
+				
+			<section class="section-content" id="formCreerActualite">
 			
 				
 	<?php
 
-	$objetEvenementModel = new \Model\EvenementModel;
+	$objetEvenementsModel = new \Model\EvenementsModel;
 	
-	$tabLigne = $objetEvenementModel->find($id);
+	$tabLigne = $objetEvenementsModel->find($id);
 
 	if(!empty($tabLigne)) {
 	
-		$id = $tabLigne["id"];
-		$titre = $tabLigne["titre"];
-		$description = $tabLigne["contenu"];
-		$photoLigneCourante = $tabLigne["photo"];
+		$id          = $tabLigne["id"];
+		$titre       = $tabLigne["titre"];	
+		$lieu        = $tabLigne["lieu"];	
+		$dateStart   = $tabLigne["date_event_start"];	
+		$dateEnd     = $tabLigne["date_event_end"];	
+		$description = $tabLigne["description"];
+		$photo       = $tabLigne["photo"];
 
-		$contenuLigneCourante = substr($contenuLigneCourante, 0, 500);
+		$urlPhoto = $this->assetUrl($photo);		
 
-		echo 
-<<<CODEHTML	
-	<form method="GET" class="formulaire">
-		<div class="row">
-		    <div class="colonne-gauche col-md-6 col-xs-12 ">
+	?>
 
-		        <div class="group colonne-gauche">
-					<input type="text" name="titre" id="titre" required ><span class="highlight"></span><span class="bar"></span>
-					<label>Titre</label>
-				</div>
-
-				<div class="group colonne-gauche">
-					<input type="text" name="lieu" id="lieu" required ><span class="highlight"></span><span class="bar"></span>
-					<label>Lieu</label>
-				</div>
-
-				<div class="group colonne-gauche">
-					<input type="date" name="debut" id="debut" required ><span class="highlight"></span><span class="bar"></span>
-					<label>Date de début</label>
-				</div>
-
-				<div class="group colonne-gauche">
-					<input type="date" name="fin" id="fin" required ><span class="highlight"></span><span class="bar"></span>
-					<label>Date de fin</label>
-				</div>
-
-				<div class="group colonne-gauche">
-					<input type="text" name="photo" id='photo'><span class="highlight"></span><span class="bar"></span>
-					<label>Photo</label>
-				</div>
-
-			</div>
-
-			<div class="group form-group col-md-6 col-xs-12">
-				<textarea rows="17" type="text" name="description" id="description" required class="hauteur-msg"></textarea>
-				<span class="highlight"></span>
-				<span class="bar"></span>
-				<label>Votre description</label>
-			</div>
-							
+	<form method="GET" class="formulaire" enctype="multipart/form-data">
+		<div class="retour">
+		 	<?php echo $evenementUpdateRetour ?>
+		</div>
+		<div class="group">
+			<input type="text" class="used" name="titre" id="titre" required value="<?php echo $titre ?>" ><span class="highlight"></span><span class="bar"></span>
+			<label>Titre</label>
+		</div>
+		<div class="group colonne-gauche">
+			<input type="text" class="used" name="lieu" id="lieu" required value="<?php echo $lieu ?>"><span class="highlight"></span><span class="bar"></span>
+			<label>Lieu</label>
+		</div>
+		<div class="group">
+			<input type="date" class="used" name="date_event_start" id="debut" required value="<?php echo $dateStart ?>"><span class="highlight"></span><span class="bar"></span>
+			<label>Date de début</label>
 		</div>
 
-		<div class="form-group col-md-12 col-xs-12 text-right">
-			<button type="submit" class="btn btn-default">Créer</button>
+		<div class="group">
+			<input type="date" class="used" name="date_event_end" id="fin" required value="<?php echo $dateEnd ?>"><span class="highlight"></span><span class="bar"></span>
+			<label>Date de fin</label>
 		</div>
 
-	</div>
+		<div class="group img-upload clearfix">
+			<div class="old-photo col-xs-3 col-md-1">
+				<img src="<?php echo $urlPhoto ?>">
+			</div>
+
+			<input type="file" class="col-xs-9 col-md-11" name="photo">
+		</div>		
+		<div class="group">
+			<textarea rows="5" type="text" name="description" required class="used"><?php echo $description ?></textarea><span class="highlight"></span><span class="bar"></span>
+			<label>Votre description</label>
+		</div>
+
+		<button type="submit" class="btn btn-lg btn-default">Modifier</button>
 
 	<!-- Côté traitement -->
-	<input type="hidden" name="idForm" value="evenementCreate">
+	<input type="hidden" name="oldPath" value="<?php echo $photo ?>">
+	<input type="hidden" name="id" value="<?php echo $id ?>">
+	<input type="hidden" name="idForm" value="evenementUpdate">
 
 </form>
-CODEHTML;
+
+<?php
 	}
 	else
 	{
-		echo "Actualité non trouvée";
+		echo "<span class='glyphicon glyphicon-alert' aria-hidden='true'></span> Actualité non trouvée";
 	}
-	?>
+?>
 
-		</div>
-	</section>
+			</section>
+			</div>
+		</div>	
+	<div class="push"></div>
 </main>
