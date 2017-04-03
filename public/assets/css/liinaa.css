@@ -14,8 +14,8 @@ form .colonne-gauche input .formulaire label{
 
 .retour{
 	padding: 5px 5px 5px 10px;
-	margin-bottom: 25px;
 	font-size: 13px;
+	text-align: center;
 	color: #999;
 	font-size: 17px;
 }
@@ -73,7 +73,7 @@ input:focus, textarea:focus { outline: none; }
 	font-weight: normal;
 	position: absolute;
 	pointer-events: none;
-	left: 5%;
+	left: 20px;
 	top: 10px;
 	transition: all 0.2s ease;
 }
@@ -84,7 +84,7 @@ textarea {
 }
 
 .formulaire textarea ~ label {
-	left: 12%;
+	left: 40px;
 }
 
 
