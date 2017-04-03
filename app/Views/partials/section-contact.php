@@ -9,6 +9,7 @@
 						<div class="retour">
 							<?php if (isset($GLOBALS["contactRetour"])) echo $GLOBALS["contactRetour"]; ?>
 						</div>
+
 						<div class="row">
 		        			<div class="colonne-gauche col-md-6 col-xs-12 ">
 

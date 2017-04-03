@@ -11,12 +11,12 @@
 						</a>
 					</div>
 					<div class="col-md-3 col-xs-6">
-						<a class="btn-block" href="" title="Modifier les actualités">
+						<a class="btn-block" href="<?php echo $this->url('admin_actualites'); ?>" title="Modifier les actualités">
 							Modifier les actualités
 						</a>
 					</div>
 					<div class="col-md-3 col-xs-6">
-						<a class="btn-block" href="" title="Modifier les évènements">
+						<a class="btn-block" href="<?php echo $this->url('admin_evenements'); ?>" title="Modifier les évènements">
 							Modifier les évènements
 						</a>
 					</div>

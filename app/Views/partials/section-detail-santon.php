@@ -74,7 +74,7 @@ if(!empty($tabLigne)){
 ?>
 				<section class="col-md-9 col-sm-12 section-content">
 					<figure class="col-md-4 col-sm-3 col-xs-12">
-						<img src="<?php echo $urlPhoto ?>">
+						<img src="<?php echo $urlPhoto ?>" class="img-detail-santon">
 					</figure>
 					<div class="col-md-8 col-sm-9 col-xs-12 detail-santon">
 						<h3><?php echo $nomSanton ?></h3>
