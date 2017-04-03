@@ -5,9 +5,7 @@ namespace Controller;
 use \W\Controller\Controller;
 use \Model\SantonModel;
 use W\View\Plates\PlatesExtensions;
-use \Model\GuestbookModel;
 use Controller\Recaptcha;
-
 
 class FormController extends Controller
 {
@@ -65,7 +63,6 @@ class FormController extends Controller
         }
         
     }
-    
     public function verifierSaisie ($name)
     {
         $valeurSaisie = ""; // AU DEBUT ON A LA CHAINE VIDE
@@ -498,7 +495,6 @@ class FormController extends Controller
 
             //Message de retour
            $GLOBALS["santonCreateRetour"] = "<span class='glyphicon glyphicon-ok' aria-hidden='true'></span> Santon $nom Ajouté";
-
         }
         else{
             //Message de retour
@@ -506,7 +502,6 @@ class FormController extends Controller
         }
        
     }
-
 
      public function santonUpdateTraitement(){
         // Récupérer les infos du formulaire
@@ -800,97 +795,6 @@ class FormController extends Controller
         }else{
 
             $GLOBALS["evenementDeleteRetour"] = "ERREUR SUR L'ID DE L'EVENEMENT A SUPPRIMER";
-        }
-
-    }
-
-
-    // Création d'un avis client (livre)
-    public function livreCreateTraitement(){
-        // Récupérer les infos du formulaire 
-        $nom_client      = $this->verifierSaisie("nom_client"); 
-        $description     = $this->verifierSaisie("description");
-        $date            = date("Y-m-d H:i:s");
-        //vérifier si les infos sont correcte
-        if(($nom_client != "") && ($description != "") && ($date != "")){
-
-             //si ok on ajoute une ligne dans la table artiste
-            //avec le framwork W
-            //je dois créer un objet de la classe ArtistesModel
-            //(car la table mysql s'appel artistes)
-            //ne pas oublier de rajouter use \Model\ArtistesModel
-            $objetLivreModel = new GuestbookModel;
-            //on peu utiliser la méthode insert
-            $objetLivreModel->insert([  "nom_client"    => $nom_client, 
-                                        "description"   => $description, 
-                                        "date"          => $date
-                                    ]);
-
-            //Message de retour
-           $GLOBALS["livreCreateRetour"] = "<span class='glyphicon glyphicon-ok' aria-hidden='true'></span>";
-        }
-        else{
-            //Message de retour
-            $GLOBALS["livreCreateRetour"] = "<span class='glyphicon glyphicon-alert' aria-hidden='true'></span>";
-        }
-       
-    }
-
-
-    public function livreUpdateTraitement(){
-        // Récupérer les infos du formulaire
-        $id             = $this->verifierSaisie("id");
-        $nomClient      = $this->verifierSaisie("nom_client"); 
-        $description    = $this->verifierSaisie("description");
-        $date           = $this->verifierSaisie("date");
-        //vérifier si les infos sont correcte
-        if(($id > 0) && ($nomClient != "") && ($description != "") && ($date != "")){
-
-             //si ok on ajoute une ligne dans la table artiste
-            //avec le framwork W
-            //je dois créer un objet de la classe ArtistesModel
-            //(car la table mysql s'appel artistes)
-            //ne pas oublier de rajouter use \Model\ArtistesModel
-            $objetGuestbookModel = new GuestbookModel;
-            //on peu utiliser la méthode insert
-
-           $objetGuestbookModel->update(["nom_client"       => $nomClient,
-                                        "description"       => $description,
-                                        "date"              => $date
-                                        ], $id);
-            
-
-            //Message de retour
-           $GLOBALS["livreUpdateRetour"] = "<span class='glyphicon glyphicon-ok' aria-hidden='true'></span> Avis $nomClient Modifié";
-        }
-        else{
-            //Message de retour
-            $GLOBALS["livreUpdateRetour"] = "<span class='glyphicon glyphicon-alert' aria-hidden='true'></span> Information manquante";
-        }
-       
-    }
-
-
-    public function livreDeleteTraitement(){
-        // Récuperer l'id
-        $id = $this->verifierSaisie("id");
-
-        // Il faut que l'id soit un nombre superieur à 0
-        //SECURITE : Convertir $id en nombre
-        $id = intval($id);
-
-        if ($id > 0){
-
-            // ON Va deleguer à un objet de la classe ArtisteModel
-            //le travail de supprimer la ligne correspondante à l'ID
-            //Vérifier qu'on a fait le use au debut du fichier
-            $objetLivreModel = new GuestbookModel;
-            $objetLivreModel->delete($id);
-
-            $GLOBALS["livreDeleteRetour"] = "<span class='glyphicon glyphicon-ok' aria-hidden='true'></span> Avis Supprimé";
-        }else{
-
-            $GLOBALS["livreDeleteRetour"] = "<span class='glyphicon glyphicon-alert' aria-hidden='true'></span> Erreur sur l'id du Santon à supprimer";
         }
 
     }

@@ -17,25 +17,15 @@ class AdminKellyController
 		$this->show('page/admin-actualites');
 	}
 
-	/**
-	 * Page d'actualité de l'admin
-	 */
-	public function evenements()
-	{
-	    $this->allowTo('admin');
-		$this->show('page/admin-evenements');
-	}
-
 	
 	/**
 	 * Page de /admin/modifier/artiste/[i:id]
 	 */
     public function modifierActualites($id)
     {
-    	$this->allowTo('admin');
     	// Le paramètre $id est fourni par le Framework W en extrayant l'info depuis l'url [i:id]
     	$GLOBALS["actualiteUpdateRetour"] = "";
-    	
+
 		//Contoller 
 		// Traitement du formulaire
 		$idForm = $this->verifierSaisie("idForm");
@@ -48,15 +38,14 @@ class AdminKellyController
     	// View
     	// Afficher la page
     	$this->show("page/admin-modifier-actualite", 
-    				["id" => $id, "actualiteUpdateRetour" => $GLOBALS["actualiteUpdateRetour"]
-    				]);
+    				["actualiteUpdateRetour" => $GLOBALS["actualiteUpdateRetour"] ]);
     }
     
     
 	/**
 	 * Page de /admin/artistes
 	 */
-	public function gererActualites()
+	public function gererActualite()
 	{
 		// SECURITE
 		// SEULEMENT LES ROLES admin PEUVENT VOIR CETTE PAGE
@@ -68,6 +57,7 @@ class AdminKellyController
 	    
 	    // RECUPERER L'INFO idForm
 	    $idForm = $this->verifierSaisie("idForm");
+
 	    if ($idForm == "actualiteDelete")
 	    {
 	    	 // ACTIVER LE CODE POUR TRAITER LE FORMULAIRE newsletter
@@ -75,7 +65,7 @@ class AdminKellyController
 	    }
 		
 		// ON TRANSMET A LA VUE DES VARIABLES DEPUIS LE CONTROLEUR AVEC UN TABLEAU ASSOCIATIF
-		$this->show('page/admin-actualites', ["actualiteDeleteRetour" => $GLOBALS["actualiteDeleteRetour"] ]);
+		$this->show('page/admin-actualites');
 	}
 
 
@@ -93,72 +83,5 @@ class AdminKellyController
 
 		$this->show('page/admin-creation-actualite', ["actualiteCreateRetour" => $GLOBALS["actualiteCreateRetour"] ]);
 	}
-	
 
-	public function creerEvenement()
-	{
-		$this->allowTo('admin');
-
-		$GLOBALS["evenementCreateRetour"] = "";
-
-		$idForm = $this->verifierSaisie("idForm");
-		if($idForm == "evenementCreate")
-		{
-			$this->evenementCreateTraitement();
-		}
-
-		$this->show('page/admin-creation-evenement', ["evenementCreateRetour" => $GLOBALS["evenementCreateRetour"] ]);
-	}
-
-
-	 /**
-	 * Page de /admin/modifier/artiste/[i:id]
-	 */
-    public function modifierEvenement($id)
-    {
-    	$this->allowTo('admin');
-    	// Le paramètre $id est fourni par le Framework W en extrayant l'info depuis l'url [i:id]
-    	$GLOBALS["evenementUpdateRetour"] = "";
-
-		//Contoller 
-		// Traitement du formulaire
-		$idForm = $this->verifierSaisie("idForm");
-		if ($idForm == "evenementUpdate")
-		{
-			// Activer le code pour traiter le formulaire
-			$this->evenementUpdateTraitement();
-		}
-
-    	// View
-    	// Afficher la page
-    	$this->show("page/admin-modifier-evenement", 
-    				["id" => $id, "evenementUpdateRetour" => $GLOBALS["evenementUpdateRetour"] 
-    				]);
-    }
-
-
-    /**
-	 * Page de /admin/artistes
-	 */
-	public function gererEvenements()
-	{
-		// SECURITE
-		// SEULEMENT LES ROLES admin PEUVENT VOIR CETTE PAGE
-		$this->allowTo('admin');
-
-	    // CONTROLLER
-	    // TRAITEMENT DU FORMULAIRE
-	    $GLOBALS["evenementDeleteRetour"] = "";
-	    
-	    // RECUPERER L'INFO idForm
-	    $idForm = $this->verifierSaisie("idForm");
-	    if ($idForm == "evenementDelete")
-	    {
-	    	 // ACTIVER LE CODE POUR TRAITER LE FORMULAIRE newsletter
-	        $this->evenementDeleteTraitement();
-	    }
-		
-		// ON TRANSMET A LA VUE DES VARIABLES DEPUIS LE CONTROLEUR AVEC UN TABLEAU ASSOCIATIF
-		$this->show('page/admin-evenements', ["evenementDeleteRetour" => $GLOBALS["evenementDeleteRetour"] ]);
-	}
 }
