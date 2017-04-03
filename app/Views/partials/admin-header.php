@@ -60,13 +60,13 @@ if(session_status()==PHP_SESSION_NONE){session_start();}
                           <a href="<?php echo $this->url('admin_gerer_santons', ['categorie' => 'nativite']);?>">Santons</a>
                       </li>
                       <li <?php if($navActive == "actualites") { echo "class='active'"; }?>>
-                        <a href="<?php // echo $this->url('admin_actualites'); ?>">Actualités</a>
+                        <a href="<?php echo $this->url('admin_actualites'); ?>">Actualités</a>
                       </li>
                       <li <?php if($navActive == "evenements") { echo "class='active'"; }?>>
-                          <a href="<?php // echo $this->url('admin_evenements'); ?>">Evènements</a>
+                          <a href="<?php echo $this->url('admin_evenements'); ?>">Evènements</a>
                       </li>
                       <li <?php if($navActive == "livre") { echo "class='active'"; }?>>
-                          <a href="<?php // echo $this->url('admin_livre'); ?>">Livre d'or</a>
+                          <a href="<?php echo $this->url('admin_livre'); ?>">Livre d'or</a>
                       </li>
 
  <?php

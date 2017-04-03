@@ -1,6 +1,6 @@
 <?php
 // MES VARIABLES 
-$navActive = "actualites";
+$navActive = "evenements";
 
 
 // AVEC LE FRAMEWORK W
@@ -10,6 +10,6 @@ $navActive = "actualites";
 
 // ATTENTION: PAS DE .php A LA FIN
 $this->insert('partials/admin-header', ["navActive" => $navActive]);
-$this->insert('partials/admin-section-modif-actualite', ["id" => $id, "actualiteUpdateRetour" => $actualiteUpdateRetour]);
+$this->insert('partials/admin-section-modif-evenement', [ "id" => $id, "evenementUpdateRetour" => $evenementUpdateRetour ]);
 $this->insert('partials/footer');
 

@@ -238,6 +238,7 @@ table tr td.itemInCartDisplay{
 /****************************************************************
                     Admin - Santon
 *****************************************************************/
+
 .formulaire input:focus ~ label, .formulaire input.used ~ label, .formulaire textarea:focus ~ label, .formulaire textarea.used ~ label, .formulaire select:focus ~ label, .formulaire select.used ~ label {
     top: -25px;
     transform: scale(.75);

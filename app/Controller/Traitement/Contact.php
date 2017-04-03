@@ -24,6 +24,7 @@ class Contact{
 			// Je crée un objet de la class ReCaptcha avec ma clé secrete en parametre
 			$captcha = new Recaptcha('6LeIMBsUAAAAACIMoHkDpf3ZUvDEsGDiynFlySG6');	
 			
+
 			// Si Ën retour du captcha j'ai la reponse False je n'envoi pas le formulaire.
 			if($captcha->checkCode($_POST['g-recaptcha-response']) === false){
 
@@ -106,8 +107,6 @@ class Contact{
 
 
 			} //end test captcha
-
-
 
 
 		} //Si les champs ne sont pas tous rempli je fais le else
