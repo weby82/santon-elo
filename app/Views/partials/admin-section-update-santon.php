@@ -27,6 +27,7 @@
 		$nom 			= $tabLigne["nom"];
 		$prix 			= $tabLigne["prix"];
 		$categorie 		= $tabLigne["categorie"];
+		$star 			= $tabLigne["star"];
 		$photoActuel 	= $tabLigne["photo"];
 		$description 	= $tabLigne["description"];
 		$urlPhoto		= $this->assetUrl($photoActuel);
@@ -68,6 +69,13 @@
 								</div>
 							<!-- Temporaire, a remplacer par un upload -->
 								<input class="col-xs-9 col-md-11" type="file" name="photo" placeholder="Ajouter une photo" />
+							</div>
+							<div class="group">
+								<select type="text" name="star" class="used">
+									<option value="OUI" <?php if($star == "OUI") echo "selected" ?>>Oui</option>
+									<option value="NON" <?php if($star == "NON") echo "selected" ?>>Non</option>
+								</select>
+						    	<label>Mise en avant</label>
 							</div>
 							<div class="group">							
 								<textarea class="used" rows="5" name="description" required ><?php echo $description ?></textarea><span class="highlight"></span><span class="bar"></span>

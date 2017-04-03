@@ -17,7 +17,7 @@ if(isset($_POST["item_id"]) && isset($_POST['item_qty'])){
     /* Foreach item -> Remaining data about items fetched from database */
 	foreach($items as $itemPanier){
 
-		$added_item["item_name"] = $itemPanier['nom']; 
+		$added_item["item_name"] = utf8_encode($itemPanier['nom']);
 		$added_item["item_price"] = $itemPanier['prix'];
         $added_item["item_image"] = $itemPanier['photo'];
         $added_item["item_url"]   = $itemPanier["nom_url"];
@@ -55,7 +55,7 @@ if(isset($_POST["load_cart_items"])){
 
                 <td class='itemInCartDisplay'>
                     <a href="<?php echo $this->url('vitrine_afficher_santon', [ 'categorie' => $item["item_categorie"], 'nomUrl' => $item["item_url"] ]);?>" title="<?php echo $item["item_name"] ?>">
-                        <?php echo $item["item_name"] ?> 
+                        <?php echo $item["item_name"]; ?> 
                     </a>          
                 </td>
 
@@ -146,3 +146,4 @@ if(isset($_GET["remove_item_from_cart"]) && isset($_SESSION["items"])){
     /* Calculate total number of items in cart and output it in json format */
     exit(json_encode(array('items_in_cart'=>count($_SESSION['items']))));    
 }
+?>

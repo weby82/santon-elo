@@ -52,7 +52,7 @@ foreach ($tabLigneActu as $index => $tabColonneActu) {
 
 $objetSantonModel = new \Model\SantonModel;
 	
-$tabLigne = $objetSantonModel->findAll("date_ajout", "DESC", 8, 0);
+$tabLigne = $objetSantonModel->findAllColumnTrier("OUI", "star", "date_ajout", "DESC", 8, 0);
 
 // on  fait une boucle foreach pour recuperer les éléments
 

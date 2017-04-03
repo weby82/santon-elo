@@ -40,6 +40,13 @@
 							<!-- Temporaire, a remplacer par un upload -->
 								<input type="file" name="photo" required placeholder="Ajouter une photo" />
 							</div>
+							<div class="group">
+								<select type="text" name="star" class="used">
+									<option value="OUI">Oui</option>
+									<option value="NON">Non</option>
+								</select>
+						    	<label>Mise en avant</label>
+							</div>
 							<div class="group">							
 								<textarea rows="5" name="description" required ></textarea><span class="highlight"></span><span class="bar"></span>
 						    	<label>Description</label>

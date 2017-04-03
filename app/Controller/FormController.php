@@ -467,11 +467,12 @@ class FormController extends Controller
         // Récupérer les infos du formulaire
         $nom          = $this->verifierSaisie("nom"); 
         $nomUrl       = $this->verifierSaisie("nom_url"); 
-        $prix           = $this->verifierSaisie("prix"); 
+        $prix         = $this->verifierSaisie("prix"); 
         $categorie    = $this->verifierSaisie("categorie"); 
+        $star         = $this->verifierSaisie("star"); 
         $photo        = $this->verifierUploadSanton("photo"); 
         $description  = $this->verifierSaisie("description");
-        $dateAjout     = date("Y-m-d H:i:s");
+        $dateAjout    = date("Y-m-d H:i:s");
         //vérifier si les infos sont correcte
         if(($nom != "") && ($nomUrl != "") && ($prix != "") && ($photo != "") && ($description != "")){
 
@@ -486,6 +487,7 @@ class FormController extends Controller
                                         "nom_url" => $nomUrl, 
                                         "prix" => $prix, 
                                         "categorie" => $categorie, 
+                                        "star" => $star, 
                                         "photo" => $photo,
                                         "description" => $description,
                                         "date_ajout" => $dateAjout
@@ -507,7 +509,8 @@ class FormController extends Controller
         $nom          = $this->verifierSaisie("nom"); 
         $nomUrl       = $this->verifierSaisie("nom_url"); 
         $prix           = $this->verifierSaisie("prix"); 
-        $categorie    = $this->verifierSaisie("categorie");   
+        $categorie    = $this->verifierSaisie("categorie");
+        $star         = $this->verifierSaisie("star");    
         $oldPhotoPath    = $this->verifierSaisie("oldPath"); 
         $photo        = $this->verifierUploadSanton("photo"); 
         $description  = $this->verifierSaisie("description");
@@ -528,6 +531,7 @@ class FormController extends Controller
                                         "nom_url" => $nomUrl, 
                                         "prix" => $prix, 
                                         "categorie" => $categorie, 
+                                        "star" => $star,
                                         "photo" => $photo,
                                         "description" => $description,
                                         "date_ajout" => $dateAjout
@@ -537,6 +541,7 @@ class FormController extends Controller
                                         "nom_url" => $nomUrl, 
                                         "prix" => $prix, 
                                         "categorie" => $categorie, 
+                                        "star" => $star,
                                         "photo" => $oldPhotoPath,
                                         "description" => $description,
                                         "date_ajout" => $dateAjout
