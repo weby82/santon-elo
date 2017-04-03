@@ -18,6 +18,9 @@
 		// Detail d'un santon
 		['GET|POST', '/categorie/[:categorie]/[:nomUrl]', 'VitrineDamien#santon', 'vitrine_afficher_santon'],
 
+		//Commande special
+		['GET|POST', '/commande-speciale', 'VitrineDamien#commandeSpeciale', 'vitrine_commande_speciale'],
+
 		// Liste des actualités
 		['GET|POST', '/actualites', 'VitrineKelly#actualites', 'vitrine_actualites'],
 
@@ -58,7 +61,6 @@
 		['GET|POST', '/admin/ajouter-santon', 'AdminDamien#ajouterSanton', 'admin_ajouter_santon'],
 
 		['GET|POST', '/admin/modifier-santon/[:id]', 'AdminDamien#updateSanton', 'admin_update_santon'],
-
 
 
 		// Page d'actualité côté admin 
