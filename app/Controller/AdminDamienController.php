@@ -65,18 +65,23 @@ class AdminDamienController
 	public function santonsDefault()
 	{
 	
-		$this->redirectToRoute('vitrine_categorie', ['categorie' => "nativite"]);
+		$this->redirectToRoute('admin_gerer_santons', ['categorie' => "nativite"]);
 	}
 
 	public function gererSantons($categorie)
 	{
 		$this->allowTo('admin');
-		//mecanique du framwork W
-		// On recupere la valeur du parametre de la route [:id] dans le parametre de la methode
-		//debug
-		//echo "Il faut afficher les détails de $id";
-		// il faut transmettre l'ID pour récuperer les infos
-		$this->show('page/admin-categorie-santons', ["categorie" => $categorie]);
+
+		$GLOBALS["santonDeleteRetour"] = "";
+		// Suppression d'artiste
+		$idForm = $this->verifierSaisie("idForm");
+	    if ($idForm == "santonDelete"){
+
+	    	//actuver le code pour traiter le formulaire
+	    	$this->santonDeleteTraitement();
+	    }
+		
+		$this->show('page/admin-categorie-santons', ["categorie" => $categorie, "santonDeleteRetour" => $GLOBALS["santonDeleteRetour"] ]);
 	}
 
 	public function ajouterSanton()
@@ -97,6 +102,23 @@ class AdminDamienController
 	    
 		
 		$this->show('page/admin-ajouter-santon', [ "santonCreateRetour" => $GLOBALS["santonCreateRetour"] ]);
+	}
+
+	public function updateSanton($id){
+
+		$this->allowTo('admin');
+
+		$GLOBALS["santonUpdateRetour"] = "";
+
+		// RECUPERER L'INFO idForm
+	    $idForm = $this->verifierSaisie("idForm");
+	    if ($idForm == "santonUpdate")
+	    {
+	        // ACTIVER LE CODE POUR TRAITER LE FORMULAIRE artisteCreate
+	        $this->santonUpdateTraitement();
+	    }
+
+		$this->show('page/admin-update-santon', ["id" => $id, "santonUpdateRetour" =>$GLOBALS["santonUpdateRetour"]]);
 	}
 
 }

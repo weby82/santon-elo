@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Ven 24 Mars 2017 à 16:06
+-- Généré le :  Jeu 30 Mars 2017 à 17:21
 -- Version du serveur :  10.1.19-MariaDB
--- Version de PHP :  5.5.38
+-- Version de PHP :  5.6.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -70,10 +70,10 @@ INSERT INTO `carousel` (`id`, `nom`, `photo`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `evenement`
+-- Structure de la table `evenements`
 --
 
-CREATE TABLE `evenement` (
+CREATE TABLE `evenements` (
   `id` int(11) NOT NULL,
   `titre` varchar(255) NOT NULL,
   `lieu` varchar(255) NOT NULL,
@@ -83,6 +83,15 @@ CREATE TABLE `evenement` (
   `photo` varchar(255) NOT NULL,
   `date_publication` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `evenements`
+--
+
+INSERT INTO `evenements` (`id`, `titre`, `lieu`, `date_event_start`, `date_event_end`, `description`, `photo`, `date_publication`) VALUES
+(1, 'Marché de Noël', 'Aix en Provence', '2017-12-05', '2017-12-22', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidata.\r\n', 'img/evenements/creche.jpg', '2017-11-02'),
+(2, 'Mariage', 'Marseille', '2017-05-02', '2017-05-04', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ', 'img/evenements/mariage.jpg', '2017-04-01'),
+(3, 'Pâques', 'Salon de Provence', '2017-04-05', '2017-04-15', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidata. ', 'img/evenements/paques.jpg', '2017-03-27');
 
 -- --------------------------------------------------------
 
@@ -119,24 +128,35 @@ CREATE TABLE `santon` (
 --
 
 INSERT INTO `santon` (`id`, `nom`, `nom_url`, `description`, `categorie`, `prix`, `photo`, `stock`, `date_ajout`) VALUES
-(1, 'Mouton', 'mouton', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae, eligendi fugiat necessitatibus illo deleniti, dignissimos voluptates nam incidunt est impedit animi eum vel consectetur non nulla provident sunt, architecto deserunt.', 'nativite', '12', '/santon-elo/public/assets/img/santons/nativite/mouton.jpg', 'OUI', '2017-03-03 00:00:00'),
-(2, 'Vache', 'vache', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae, eligendi fugiat necessitatibus illo deleniti, dignissimos voluptates nam incidunt est impedit animi eum vel consectetur non nulla provident sunt, architecto deserunt.', 'nativite', '12', '/santon-elo/public/assets/img/santons/nativite/vache.jpg', 'NON', '2017-03-03 09:21:00'),
-(3, 'Vierge', 'vierge', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae, eligendi fugiat necessitatibus illo deleniti, dignissimos voluptates nam incidunt est impedit animi eum vel consectetur non nulla provident sunt, architecto deserunt.', 'nativite', '12', '/santon-elo/public/assets/img/santons/nativite/santon3.jpg', 'OUI', '2017-03-05 11:13:00'),
-(4, 'Ange', 'ange', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae, eligendi fugiat necessitatibus illo deleniti, dignissimos voluptates nam incidunt est impedit animi eum vel consectetur non nulla provident sunt, architecto deserunt.', 'nativite', '12', '/santon-elo/public/assets/img/santons/nativite/ange.jpg', 'OUI', '2017-03-05 15:00:00'),
-(5, 'Ange2', 'ange2', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae, eligendi fugiat necessitatibus illo deleniti, dignissimos voluptates nam incidunt est impedit animi eum vel consectetur non nulla provident sunt, architecto deserunt.', 'bapteme', '12', '/santon-elo/public/assets/img/santons/nativite/ange.jpg', 'OUI', '2017-03-05 15:00:00');
+(1, 'Mouton', 'mouton', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae, eligendi fugiat necessitatibus illo deleniti, dignissimos voluptates nam incidunt est impedit animi eum vel consectetur non nulla provident sunt, architecto deserunt.', 'nativite', '12', 'img/santons/nativite/mouton.jpg', 'OUI', '2017-03-03 00:00:00'),
+(2, 'Vache', 'vache', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae, eligendi fugiat necessitatibus illo deleniti, dignissimos voluptates nam incidunt est impedit animi eum vel consectetur non nulla provident sunt, architecto deserunt.', 'nativite', '12', 'img/santons/nativite/vache.jpg', 'NON', '2017-03-03 09:21:00'),
+(3, 'Vierge', 'vierge', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae, eligendi fugiat necessitatibus illo deleniti, dignissimos voluptates nam incidunt est impedit animi eum vel consectetur non nulla provident sunt, architecto deserunt.', 'nativite', '12', 'img/santons/nativite/santon3.jpg', 'OUI', '2017-03-05 11:13:00'),
+(4, 'Ange', 'ange', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae, eligendi fugiat necessitatibus illo deleniti, dignissimos voluptates nam incidunt est impedit animi eum vel consectetur non nulla provident sunt, architecto deserunt.', 'nativite', '12', 'img/santons/nativite/ange.jpg', 'OUI', '2017-03-05 15:00:00'),
+(5, 'Ange2', 'ange2', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae, eligendi fugiat necessitatibus illo deleniti, dignissimos voluptates nam incidunt est impedit animi eum vel consectetur non nulla provident sunt, architecto deserunt.', 'bapteme', '12', 'img/santons/nativite/ange.jpg', 'OUI', '2017-03-05 15:00:00'),
+(7, 'vache 6', 'mouton5', 'Une vache transformé en mouton', 'communion', '13', 'img/santons/communion/vache.jpg', '', '2017-03-30 16:37:30'),
+(8, 'Vache 8', 'vache8', 'Une vache encore, pour changer\r\nElle est sympa elle.\r\nElle fait Meuuuh aussi', 'anniversaire', '14', 'img/santons/anniversaire/vache.jpg', '', '2017-03-30 16:45:40'),
+(9, 'Mariage 1', 'mariage1', 'Commande pour un mariage ! Strass sur la robe de marié. Figurine de 12 cm', 'mariage', '30', 'img/santons/mariage/santon-mariage.jpg', '', '2017-03-30 17:20:26');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `utilisateur`
+-- Structure de la table `users`
 --
 
-CREATE TABLE `utilisateur` (
+CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `pseudo` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `password` varchar(1000) NOT NULL,
+  `role` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `email`, `password`, `role`) VALUES
+(1, 'admin', 'admin@email.com', '$2y$10$XSPKQvwMtWMMvVRn1B8KsuE.66S7BgO2nJHqD3Z9wSwnBS.hhT8RS', 'admin');
 
 --
 -- Index pour les tables exportées
@@ -155,9 +175,9 @@ ALTER TABLE `carousel`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `evenement`
+-- Index pour la table `evenements`
 --
-ALTER TABLE `evenement`
+ALTER TABLE `evenements`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -173,9 +193,9 @@ ALTER TABLE `santon`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `utilisateur`
+-- Index pour la table `users`
 --
-ALTER TABLE `utilisateur`
+ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -193,10 +213,10 @@ ALTER TABLE `actualite`
 ALTER TABLE `carousel`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
--- AUTO_INCREMENT pour la table `evenement`
+-- AUTO_INCREMENT pour la table `evenements`
 --
-ALTER TABLE `evenement`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `evenements`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT pour la table `guestbook`
 --
@@ -206,12 +226,12 @@ ALTER TABLE `guestbook`
 -- AUTO_INCREMENT pour la table `santon`
 --
 ALTER TABLE `santon`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
--- AUTO_INCREMENT pour la table `utilisateur`
+-- AUTO_INCREMENT pour la table `users`
 --
-ALTER TABLE `utilisateur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -59,4 +59,24 @@ class VitrineDamienController
 											]);
 	}
 
+	public function commandeSpeciale(){
+
+		// CONTROLLER
+	    // TRAITEMENT DU FORMULAIRE
+	    $GLOBALS["commandeSpecialRetour"] = "";
+	    
+	    // RECUPERER L'INFO idForm
+	    $idForm = $this->verifierSaisie("idForm");
+	    if ($idForm == "commandeSpecialForm")
+	    {
+	        // ACTIVER LE CODE POUR TRAITER LE FORMULAIRE newsletter
+	        $this->commandeSpecialFormTraitement();
+	    }
+	    
+
+		$this->show('page/commande-speciale', ["commandeSpecialRetour" => $GLOBALS["commandeSpecialRetour"] 
+											]);
+
+	}
+
 }
