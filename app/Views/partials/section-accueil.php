@@ -27,7 +27,7 @@ foreach ($tabLigneActu as $index => $tabColonneActu) {
 ?>
 				<article class="col-md-4 col-sm-6 col-xs-12 articles-actu">
 					<div class="article-inner">
-						<img src="<?php echo $urlPhoto ?>" alt="#">
+						<img src="<?php echo $urlPhoto ?>" alt="#" class="img-circle">
 						<div class="desc-actu">
 							<h3><?php echo $titreActu ?></h3>
 							<p><?php echo $contenuActu ?></p>
@@ -69,6 +69,7 @@ foreach ($tabLigne as $index => $tabColonne) {
 
 	$urlPhotoSanton			= $this->assetUrl($photoSanton);
 
+	$urlPhotoSanton			= $this->assetUrl($photoSanton);
 	// Construire le code HTML
 ?>
 					<article class="col-lg-3 col-md-3 col-sm-4 col-xs-12 bloc-santon">
