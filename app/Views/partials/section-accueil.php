@@ -26,14 +26,14 @@ foreach ($tabLigneActu as $index => $tabColonneActu) {
 	// Construire le code HTML
 ?>
 				<article class="col-md-4 col-sm-6 col-xs-12 articles-actu">
-					<!-- <div class="article-inner"> -->
-						<img src="<?php echo $urlPhoto ?>" alt="#">
+					<div class="article-inner">
+						<img src="<?php echo $urlPhoto ?>" alt="#" class="img-circle">
 						<div class="desc-actu">
 							<h3><?php echo $titreActu ?></h3>
 							<p><?php echo $contenuActu ?></p>
 							<p class="lien-article"><a class="btn btn-default" href="<?php echo $urlActu ?>">Lire la suite</a></p>
 						</div>
-					<!-- </div> -->
+					</div>
 				</article>
 <?php
 }
@@ -43,7 +43,7 @@ foreach ($tabLigneActu as $index => $tabColonneActu) {
 
 		<section id="section-last-ajout">
 			<div class="container">
-				<h2>Derniers Ajout</h2>
+				<h2>Derniers Ajouts</h2>
 		<?php
 
 	// Requete SQL pour lire les info dans la table santon
@@ -68,13 +68,14 @@ foreach ($tabLigne as $index => $tabColonne) {
 
 
 
+	$urlPhotoSanton			= $this->assetUrl($photoSanton);
 	// Construire le code HTML
 ?>
 					<article class="col-lg-3 col-md-3 col-sm-4 col-xs-12 bloc-santon">
 						<form class="item_form">
 							<div class="bloc-santon-inner">
 								<a href="detail-santon.php?categorie=<?php echo $categorieSanton; ?>&santon_id=<?php echo $id; ?>" title="<?php echo $nomSanton; ?>">
-									<img src="<?php echo $photoSanton; ?>" alt="santon <?php echo $nomSanton; ?>">
+									<img src="<?php echo $urlPhotoSanton; ?>" alt="santon <?php echo $nomSanton; ?>">
 								</a>
 								<h3><a href="detail-santon.php?categorie=<?php echo $categorieSanton; ?>&santon_id=<?php echo $id; ?>" title="<?php echo $item["nom"]; ?>"><?php echo $nomSanton; ?></a></h3>
 								<p class="prix-santon"><?php echo $prixSanton; ?> €</p>

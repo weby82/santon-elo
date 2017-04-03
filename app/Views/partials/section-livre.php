@@ -1,10 +1,7 @@
+<!-- Création du main avec actualités et dernier ajouts -->
 	<main>
 		<div class="container">
 			<h2>Livre d'or</h2>
-
-			<nav id="navigation-page">
-    <ul>
-
 <?php
 $objetGuestbookModel = new \Model\GuestbookModel;
 	
@@ -15,7 +12,7 @@ $countGuestbook = 0;
 
 foreach ($tabLigneGuestbook as $index => $tabColonneGuestbook) {
 
-	// récuperer les colonnes de chaque ligne
+	// récuperer les colonne de chaque ligne
 
 	$idGuestbook 		= $tabColonneGuestbook["id"];
 	$nomClient 			= $tabColonneGuestbook["nom_client"];
@@ -29,15 +26,10 @@ foreach ($tabLigneGuestbook as $index => $tabColonneGuestbook) {
 		if($countGuestbook % 2 == 0){
 			$pair = "pull-right";
 			$offset = 3;
-			$speech ="speech";
 		}else{
 			$pair ="";
-			$speech="speech-right";
 			$offset = 2;
 		}
-
-		// bulle droite/gauche
-		
 
 	// Mettre les dates format français
 		$phpDate = strtotime( $date );
@@ -47,7 +39,7 @@ foreach ($tabLigneGuestbook as $index => $tabColonneGuestbook) {
 ?>
 			<section id="section-temoignage-or">
 				<div class="item-or">
-					<div class="temoignage-or col-md-8 col-md-offset-2 <?php echo $pair . " " . $speech ?>">
+					<div class="speech temoignage-or col-md-8 col-md-offset-2 <?php echo $pair ?>">
 						<h4><?php echo $nomClient ?></h4>
 						<p class="description-temoignage-or"><?php echo $description ?></p>
 						<p class="date-temoignage-or"><?php echo $date ?></p>

@@ -6,7 +6,7 @@
 			<div class="container-inner">
 				<h2>Avis client</h2>
 
-				<section class="col-md-9 col-sm-12 section-content">
+				<section class="col-sm-12 section-content">
 
 					<a class="btn btn-default" href="<?php echo $this->url('admin_creer_livre'); ?>">
 					 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Ajouter un avis client
@@ -22,7 +22,10 @@
 					// on  fait une boucle foreach pour recuperer les éléments        
 
 			    ?>  
-
+					
+					<div class="retour">
+						<?php echo $livreDeleteRetour; ?>
+					</div>
 				
 					<table class="table table-striped">
 						<thead>
@@ -37,14 +40,16 @@
 						$id 			= $valeur["id"];
 						$nomClient 		= $valeur["nom_client"];
 						$description 	= $valeur["description"];
+
+						$hrefSupprimer  = "?idForm=livreDelete&id=$id";
 					?>
 							<tr>
 								<td><?php echo $nomClient; ?></td>
 								<td><?php echo $description; ?></td>
 								<td><?php echo $id; ?></td>
 								<td>
-									<a href="<?php echo $this->url('admin_modifier_livre'); ?>" title="modifier"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
-									<a href="" title="supprimer"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+									<a href="<?php echo $this->url('admin_modifier_livre', ['id' => $id]); ?>" title="modifier"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+									<a href="<?php echo $hrefSupprimer; ?>" title="supprimer"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
 
 								</td>
 								

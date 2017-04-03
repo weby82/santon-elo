@@ -17,7 +17,7 @@
 
 							<!-- Formulaire -->
 								<div class="group">
-									<input type="text" name="nom" required ><span class="highlight"></span><span class="bar"></span>
+									<input type="text" name="nom_client" required ><span class="highlight"></span><span class="bar"></span>
 							    	<label>Nom</label>
 								</div>
 								<div class="group">

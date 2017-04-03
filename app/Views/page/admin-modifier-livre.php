@@ -9,8 +9,8 @@ $navActive = "livre";
 // http://platesphp.com/templates/nesting/
 
 // ATTENTION: PAS DE .php A LA FIN
-$this->insert('partials/header', ["navActive" => $navActive]);
-$this->insert('partials/admin-section-modifier-livre', ["id" => $id, "livreUpdateRetour" => $livreUpdateRetour]);
+$this->insert('partials/admin-header', ["navActive" => $navActive]);
+$this->insert('partials/admin-section-modifier-livre', [ "id" => $id, "livreUpdateRetour" => $livreUpdateRetour]);
 $this->insert('partials/footer');
 
 
