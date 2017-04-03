@@ -4,7 +4,6 @@
 			<div class="container-inner">
 				<h2>Formulaire de contact</h2>
 							
-
 					<form method="POST" class="formulaire">
 						<!-- message de retour -->
 						<div class="retour">
@@ -74,6 +73,8 @@
  				 <!-- Côté traitement -->
 						<input type="hidden" name="idFormClasse" value="Contact">
 						<input type="hidden" name="idFormMethode" value="contactTraitement">
+
+					
 
 					</form>
 
