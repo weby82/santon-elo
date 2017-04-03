@@ -5,7 +5,16 @@
 	<main>
 		<div class="container">
 			<div class="container-inner">
-				<h2>Nativité</h2>
+				<h2>
+				<?php 
+				if($categorie == "nativite"){echo "Nativité";};
+				if($categorie == "bapteme"){echo "Baptême";};
+				if($categorie == "anniversaire"){echo "Anniversaire";};
+				if($categorie == "mariage"){echo "Mariage";};
+				if($categorie == "communion"){echo "Communion";};
+				 ?>
+				 	
+				 </h2>
 				<aside class="col-md-3 col-sm-12 col-nav-left">
 					<nav>
 						<h3>Catégories</h3>
@@ -25,8 +34,8 @@
                                 <li <?php if(isset($categorie) && $categorie == "mariage") { echo "class='active'"; }?>>
                                     <a href="<?php echo $this->url('vitrine_categorie', ['categorie' => 'mariage']); ?>">Mariage</a>
                                 </li>
-                                <li <?php if(isset($categorie) && $categorie == "speciale") { echo "class='active'"; }?>>
-                                    <a href="<?php echo $this->url('vitrine_categorie', ['categorie' => 'speciale']); ?>">Commande spéciale</a>
+                                <li <?php if(isset($categorie) && $categorie == "commande-speciale") { echo "class='active'"; }?>>
+                                    <a href="<?php echo $this->url('vitrine_commande_speciale', ['categorie' => 'commande-speciale']); ?>">Commande spéciale</a>
                                 </li>
 						</ul>
 					</nav>

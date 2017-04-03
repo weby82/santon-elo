@@ -25,7 +25,7 @@
                                     <a href="<?php echo $this->url('admin_gerer_santons', ['categorie' => 'mariage']); ?>">Mariage</a>
                                 </li>
                                 <li <?php if(isset($categorie) && $categorie == "speciale") { echo "class='active'"; }?>>
-                                    <a href="<?php echo $this->url('admin_gerer_santons', ['categorie' => 'speciale']); ?>">Commande spéciale</a>
+                                    <a href="<?php echo $this->url('admin_gerer_santons', ['categorie' => 'commande-speciale']); ?>">Commande spéciale</a>
                                 </li>
 						</ul>
 					</nav>
