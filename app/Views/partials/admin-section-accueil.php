@@ -21,7 +21,7 @@
 						</a>
 					</div>
 					<div class="col-md-3 col-xs-6">
-						<a class="btn-block" href="" title="Modifier le livre d'or">
+						<a class="btn-block" href="<?php echo $this->url('admin_livre'); ?>" title="Modifier le livre d'or">
 							Modifier le livre d'or
 						</a>
 					</div>
