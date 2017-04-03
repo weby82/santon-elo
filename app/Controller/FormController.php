@@ -581,13 +581,13 @@ class FormController extends Controller
             // ON Va deleguer à un objet de la classe ArtisteModel
             //le travail de supprimer la ligne correspondante à l'ID
             //Vérifier qu'on a fait le use au debut du fichier
-            $objetActualiteModel = new ActualiteModel;
-            $objetActualiteModel->delete($id);
+            $objetactualiteModel = new ActualiteModel;
+            $objetactualiteModel->delete($id);
 
-            $GLOBALS["actualiteDeleteRetour"] = "Actualité Supprimer";
+            $GLOBALS["actualiteDeleteRetour"] = "<span class='glyphicon glyphicon-ok' aria-hidden='true'></span> Actualité Supprimée";
         }else{
 
-            $GLOBALS["actualiteDeleteRetour"] = "ERREUR SUR L'ID DE L'ACTUALITE A SUPPRIMER";
+            $GLOBALS["actualiteDeleteRetour"] = "<span class='glyphicon glyphicon-alert' aria-hidden='true'></span> Erreur sur l'id de l'actualité à supprimer";
         }
 
     }
@@ -822,10 +822,10 @@ function verifierUploadEvenement ($nameInput)
             $objetEvenementsModel = new EvenementsModel;
             $objetEvenementsModel->delete($id);
 
-            $GLOBALS["evenementDeleteRetour"] = "Evènement Supprimer";
+            $GLOBALS["evenementDeleteRetour"] = "<span class='glyphicon glyphicon-ok' aria-hidden='true'></span> Evènement Supprimé";
         }else{
 
-            $GLOBALS["evenementDeleteRetour"] = "ERREUR SUR L'ID DE L'EVENEMENT A SUPPRIMER";
+            $GLOBALS["evenementDeleteRetour"] = "<span class='glyphicon glyphicon-alert' aria-hidden='true'></span> Erreur sur l'id de l'évènement à supprimer";
         }
 
     }

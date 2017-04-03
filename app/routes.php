@@ -80,7 +80,7 @@
 		// Modifiacation/update des évènements
 		['GET|POST', '/admin/modifier/evenement/[:id]', 'AdminKelly#modifierEvenement',	'admin_modifier_evenement'],
 
-		['GET|POST', '/admin/evenements', 'AdminKelly#gererEvenements',	'admin_gerer_evenement'],
+		['GET|POST', '/admin/evenements', 'AdminKelly#gererEvenements',	'admin_gerer_evenements'],
 
 
 	);

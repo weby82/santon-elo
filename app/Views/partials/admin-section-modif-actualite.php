@@ -34,12 +34,14 @@
 		    <input type="text" name="titre" required value="<?php echo $titreLigneCourante; ?>" class="used"><span class="highlight"></span><span class="bar"></span>
 			<label>Titre</label>
 		</div>
-		<div class="group img-upload clearfix">
-			<div class="old-photo col-xs-3 col-md-1">
+		<div class="clearfix">
+			<div class="old-photo col-xs-3 col-md-1 group img-upload">
 				<img class="" src="<?php echo $urlPhoto; ?>">
 			</div>
-
-			<input class="col-xs-9 col-md-11" type="file" name="photo" >
+			
+			<div class="group">
+				<input class="col-xs-9 col-md-11" type="file" name="photo">
+			</div>
 		</div>
 		<div class="group">
 			<textarea  rows="5" type="text" name="contenu" id="contenu" required  class="used"><?php echo $contenuLigneCourante; ?></textarea></span><span class="bar"></span>
