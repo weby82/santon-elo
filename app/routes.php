@@ -67,9 +67,9 @@
 
 
 
-		['GET|POST', '/admin/liste/actualite', 'AdminKelly#actualites', 'admin_actualites'],
 
-		['GET|POST', '/admin/actualites', 'AdminKelly#gererActualite', 'admin_gerer_actualites'],
+		// Page d'actualité côté admin 
+		['GET|POST', '/admin/liste/actualite', 'AdminKelly#gererActualites', 'admin_actualites'],
 
 		['GET|POST', '/admin/modifier/actualite', 'AdminKelly#modifierActualites', 'admin_modifier_actualites'],
 
