@@ -26,8 +26,10 @@ foreach ($tabLigneGuestbook as $index => $tabColonneGuestbook) {
 		if($countGuestbook % 2 == 0){
 			$pair = "pull-right";
 			$offset = 3;
+			$speech ="speech";
 		}else{
 			$pair ="";
+			$speech="speech-right";
 			$offset = 2;
 		}
 
@@ -39,7 +41,7 @@ foreach ($tabLigneGuestbook as $index => $tabColonneGuestbook) {
 ?>
 			<section id="section-temoignage-or">
 				<div class="item-or">
-					<div class="speech temoignage-or col-md-8 col-md-offset-2 <?php echo $pair ?>">
+					<div class="temoignage-or col-xs-12 col-xs-offset-0 col-md-8 col-md-offset-2 <?php echo $pair . " " . $speech ?>">
 						<h4><?php echo $nomClient ?></h4>
 						<p class="description-temoignage-or"><?php echo $description ?></p>
 						<p class="date-temoignage-or"><?php echo $date ?></p>

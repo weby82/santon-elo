@@ -177,6 +177,20 @@ table tr td.itemInCartDisplay{
     padding: 4px;
 }
 
+/***********************************************************
+                Form Contact
+*********************************************************/
+
+.submit{
+    margin-top: 20px;
+    text-align: center !important;
+}
+.submit button{
+    padding: 12px;
+    font-size: 1.2em;
+    width: 50%;
+}
+
 /**********************************************************************
             Admin - Accueil
 **********************************************************************/
@@ -184,7 +198,7 @@ table tr td.itemInCartDisplay{
 #admin-accueil .btn-block{
     padding: 50px 15px;
     margin-bottom: 15px;
-    font-size: 2em;
+    font-size: 1.7em;
     color: #fff;
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
@@ -224,6 +238,17 @@ table tr td.itemInCartDisplay{
 /****************************************************************
                     Admin - Santon
 *****************************************************************/
+.formulaire input:focus ~ label, .formulaire input.used ~ label, .formulaire textarea:focus ~ label, .formulaire textarea.used ~ label, .formulaire select:focus ~ label, .formulaire select.used ~ label {
+    top: -25px;
+    transform: scale(.75);
+    left: 1%;
+    /* font-size: 14px; */
+    color: #647277;
+}
+.input-nom-url input:focus ~ label, .input-nom-url input.used ~ label{
+    left: -2% !important;
+}
+
 .retour{
     margin-bottom: 20px;
 }
@@ -249,7 +274,9 @@ table tr td.itemInCartDisplay{
 #formAjoutSanton form label{
     left:2%;
 }
-
+.formulaire select:focus ~ label, .formulaire select.used ~ label{
+    left: 0 !important;
+}
 #formAjoutSanton input:focus ~ label, #formAjoutSanton input.used ~ label, #formAjoutSanton textarea:focus ~ label, #formAjoutSanton textarea.used ~ label{
     left:0;
 }
@@ -267,13 +294,80 @@ table tr td.itemInCartDisplay{
         box-shadow: 0 0 6px rgb(253, 212, 212);
 }
 
+.img-upload{
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+}
+.img-upload input{
+    height: 50px;
+    align-items: center;
+}
+.img-upload img{
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+
+/**********************Gallery commande special****************************/
+
+#gallery .ug-thumb-wrapper{
+    -moz-border-radius: 50% !important;
+    -webkit-border-radius: 50% !important;
+    border-radius: 50% !important;
+    overflow: hidden;
+}
+#gallery .ug-thumb-wrapper:hover img{
+
+ transform: scale(1.40) rotate(30deg);
+ transition: all 1s ease !important;
+
+}
+#gallery .ug-thumb-wrapper img{
+
+ transition: all 1s ease !important;
+
+}
+
+/*************************REcaptcha****************/
+
+.rc-anchor{
+    background-color: #fff !important;
+    border:0.01em solid rgba(219,211,202,0.5);
+}
+
 /************** Ecran ordinateur ********************/
 @media screen and (min-width:992px) {
+
+    /****************Formulaire de contact*********************/
+    .submit.text-right{
+        text-align: right !important;
+    }
+    .submit button{
+        width: auto;
+         padding: 6px 12px;
+        font-size: 1em;
+    }
     
+    /*******************Admin accueil***************/
+
+    #admin-accueil .btn-block{
+        font-size: 2em;
+    }
     /*************** Admin santon *************/
 
     .admin .col-nav-left .nav>li{
         display: block;
     }
 
+
+}
+
+/************Tout petit écran ********************/
+
+@media screen and (max-width:420px) {
+    #admin-accueil .bloc-menu div{
+        width: 100% ;
+    }
 }

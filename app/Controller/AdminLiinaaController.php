@@ -62,7 +62,7 @@ class AdminLiinaaController
 
 
 
-	public function gererLivre($id)
+	public function gererLivre()
 	{
 		$this->allowTo('admin');
 
@@ -75,7 +75,7 @@ class AdminLiinaaController
 	    	$this->livreDeleteTraitement();
 	    }
 		
-		$this->show('page/admin-livre', ["categorie" => $categorie, "livreDeleteRetour" => $GLOBALS["livreDeleteRetour"] ]);
+		$this->show('page/admin-livre', ["livreDeleteRetour" => $GLOBALS["livreDeleteRetour"] ]);
 	}
 
 

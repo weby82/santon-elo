@@ -27,7 +27,7 @@ foreach ($tabLigneActu as $index => $tabColonneActu) {
 ?>
 				<article class="col-md-4 col-sm-6 col-xs-12 articles-actu">
 					<div class="article-inner">
-						<img src="<?php echo $urlPhoto ?>" alt="#" class="img-circle">
+						<img src="<?php echo $urlPhoto ?>" alt="#">
 						<div class="desc-actu">
 							<h3><?php echo $titreActu ?></h3>
 							<p><?php echo $contenuActu ?></p>
@@ -52,7 +52,7 @@ foreach ($tabLigneActu as $index => $tabColonneActu) {
 
 $objetSantonModel = new \Model\SantonModel;
 	
-$tabLigne = $objetSantonModel->findAll("date_ajout", "DESC", 8, 0);
+$tabLigne = $objetSantonModel->findAllColumnTrier("OUI", "star", "date_ajout", "DESC", 8, 0);
 
 // on  fait une boucle foreach pour recuperer les éléments
 
@@ -60,24 +60,24 @@ foreach ($tabLigne as $index => $tabColonne) {
 
 	// récuperer les colonne de chaque ligne
 
-	$id 							= $tabColonne["id"];
-	$nomSanton 						= $tabColonne["nom"];
-	$categorieSanton				= $tabColonne["categorie"];
-	$prixSanton						= $tabColonne["prix"];
-	$photoSanton					= $tabColonne["photo"];
-
-
+	$id 					= $tabColonne["id"];
+	$nomSanton 				= $tabColonne["nom"];
+	$nomUrl 				= $tabColonne["nom_url"];
+	$categorie				= $tabColonne["categorie"];
+	$prixSanton				= $tabColonne["prix"];
+	$photoSanton			= $tabColonne["photo"];
 
 	$urlPhotoSanton			= $this->assetUrl($photoSanton);
+
 	// Construire le code HTML
 ?>
 					<article class="col-lg-3 col-md-3 col-sm-4 col-xs-12 bloc-santon">
 						<form class="item_form">
 							<div class="bloc-santon-inner">
-								<a href="detail-santon.php?categorie=<?php echo $categorieSanton; ?>&santon_id=<?php echo $id; ?>" title="<?php echo $nomSanton; ?>">
+								<a href="<?php echo $this->url('vitrine_afficher_santon', [ 'categorie' => $categorie, 'nomUrl' => $nomUrl ]);?>" title="<?php echo $nomSanton; ?>">
 									<img src="<?php echo $urlPhotoSanton; ?>" alt="santon <?php echo $nomSanton; ?>">
 								</a>
-								<h3><a href="detail-santon.php?categorie=<?php echo $categorieSanton; ?>&santon_id=<?php echo $id; ?>" title="<?php echo $item["nom"]; ?>"><?php echo $nomSanton; ?></a></h3>
+								<h3><a href="<?php echo $this->url('vitrine_afficher_santon', [ 'categorie' => $categorie, 'nomUrl' => $nomUrl ]);?>" title="<?php echo $item["nom"]; ?>"><?php echo $nomSanton; ?></a></h3>
 								<p class="prix-santon"><?php echo $prixSanton; ?> €</p>
 								<div class="item_disp_values">
 	                                <div>Quantité:
