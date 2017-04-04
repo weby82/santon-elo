@@ -74,6 +74,7 @@ foreach ($tabLigne as $index => $tabColonne) {
 					<article class="col-lg-3 col-md-3 col-sm-4 col-xs-12 bloc-santon">
 						<form class="item_form">
 							<div class="bloc-santon-inner">
+
 								<a href="<?php echo $this->url('vitrine_afficher_santon', [ 'categorie' => $categorie, 'nomUrl' => $nomUrl ]);?>" title="<?php echo $nomSanton; ?>">
 									<img src="<?php echo $urlPhotoSanton; ?>" alt="santon <?php echo $nomSanton; ?>">
 								</a>

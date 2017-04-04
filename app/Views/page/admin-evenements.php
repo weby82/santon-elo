@@ -3,7 +3,9 @@
 	$navActive = "actualite";
 
 	$this->insert('partials/admin-header', ["navActive" => $navActive]);
-	$this->insert('partials/admin-section-evenements',["navActive" => $navActive]);
+
+	$this->insert('partials/admin-section-evenements',["navActive" => $navActive, "evenementDeleteRetour" =>$evenementDeleteRetour]);
+
 	$this->insert('partials/footer');
 
 	// require_once('private/starter.php');

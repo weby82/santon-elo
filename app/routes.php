@@ -39,6 +39,9 @@
 		//Affichage panier
 		['GET|POST', '/panier', 'VitrineDamien#panier', 'vitrine_panier'],
 
+		//Paiement apr chèque
+		['GET|POST', '/paiement/cheque', 'VitrineDamien#paiementCheque', 'vitrine_paiement_cheque'],
+
 
 		///////////////////////////Backoffice//////////////////////////////
 
@@ -62,11 +65,10 @@
 
 		['GET|POST', '/admin/modifier-santon/[:id]', 'AdminDamien#updateSanton', 'admin_update_santon'],
 
-		// Page d'actualité côté admin 
-		['GET|POST', '/admin/liste/actualite', 'AdminKelly#actualites', 'admin_actualites'],
 
-		// Suppression des actualités
-		['GET|POST', '/admin/actualites', 'AdminKelly#gererActualites', 'admin_gerer_actualites'],
+		// Page d'actualité côté admin 
+		['GET|POST', '/admin/liste/actualite', 'AdminKelly#gererActualites', 'admin_actualites'],
+
 
 		// Modification des actualités
 		['GET|POST', '/admin/modifier/actualite/[:id]', 'AdminKelly#modifierActualites', 'admin_modifier_actualites'],
@@ -74,8 +76,10 @@
 		// Création des actualités
 		['GET|POST', '/admin/creer-actualite', 'AdminKelly#creerActualite', 'admin_creation_actualites'],
 
+
 		// Page d'évènement côté admin
-		['GET|POST', '/admin/liste/evenement', 'AdminKelly#evenements', 'admin_evenements'],
+		['GET|POST', '/admin/liste/evenement', 'AdminKelly#gererEvenements', 'admin_evenements'],
+
 
 		// Création des évènements
 		['GET|POST', '/admin/creer-evenement', 'AdminKelly#creerEvenement', 'admin_creation_evenements'],
@@ -91,6 +95,5 @@
 		['GET|POST', '/admin/creer-livre', 'AdminLiinaa#creerLivre', 'admin_creer_livre'],
 		// Modifier l'avis client
  		['GET|POST',	'/admin/modifier/livre/[:id]', 'AdminLiinaa#modifierLivre',	'admin_modifier_livre'],
- 		// Supprimer l'avis client
 
 	);

@@ -58,24 +58,19 @@ class AdminKellyController
 	 */
 	public function gererActualites()
 	{
-		// SECURITE
-		// SEULEMENT LES ROLES admin PEUVENT VOIR CETTE PAGE
 		$this->allowTo('admin');
 
-	    // CONTROLLER
-	    // TRAITEMENT DU FORMULAIRE
-	    $GLOBALS["actualiteDeleteRetour"] = "";
-	    
-	    // RECUPERER L'INFO idForm
-	    $idForm = $this->verifierSaisie("idForm");
-	    if ($idForm == "actualiteDelete")
-	    {
-	    	 // ACTIVER LE CODE POUR TRAITER LE FORMULAIRE newsletter
-	        $this->actualiteDeleteTraitement();
+		$GLOBALS["actualiteDeleteRetour"] = "";
+		// Suppression d'artiste
+		$idForm = $this->verifierSaisie("idForm");
+	    if ($idForm == "actualiteDelete"){
+
+	    	//actuver le code pour traiter le formulaire
+	    	$this->actualiteDeleteTraitement();
 	    }
 		
-		// ON TRANSMET A LA VUE DES VARIABLES DEPUIS LE CONTROLEUR AVEC UN TABLEAU ASSOCIATIF
 		$this->show('page/admin-actualites', ["actualiteDeleteRetour" => $GLOBALS["actualiteDeleteRetour"] ]);
+
 	}
 
 

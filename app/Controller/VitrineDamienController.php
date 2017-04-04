@@ -79,4 +79,26 @@ class VitrineDamienController
 
 	}
 
+
+	public function paiementCheque(){
+
+		// CONTROLLER
+	    // TRAITEMENT DU FORMULAIRE
+	    $GLOBALS["paiementChequeRetour"] = "";
+	    
+	    // RECUPERER L'INFO idForm
+	    $idForm = $this->verifierSaisie("idForm");
+	    if ($idForm == "paiementChequeForm")
+	    {
+	        // ACTIVER LE CODE POUR TRAITER LE FORMULAIRE newsletter
+	        $this->paiementChequeFormTraitement();
+	    }
+	    
+
+		$this->show('page/paiement-cheque', ["paiementChequeRetour" => $GLOBALS["paiementChequeRetour"] 
+											]);
+
+	}
+
+
 }

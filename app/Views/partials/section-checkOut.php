@@ -39,7 +39,8 @@
                     <tr>                 
                         <td class='itemInCartDisplay' colspan='3'>
                             <div>
-                                <a class="btn btn-default checkout_btn" href='#' title="Payer par chèque">Payer par chèque</a>
+
+                                <a class="btn btn-default checkout_btn" href="<?php echo $this->url('vitrine_paiement_cheque'); ?>" title="Payer par chèque">Payer par chèque</a>
                                 <a class="btn btn-default checkout_btn" href='#' title="Paypal">Payer par Paypal</a>
                                 <a class="btn btn-default continue_shopping_btn" href="<?php echo $this->url('vitrine_categorie', ['categorie' => 'nativite']); ?>" title="Continue Shopping">Continuer les achats</a>
 

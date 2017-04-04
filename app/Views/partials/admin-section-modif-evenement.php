@@ -26,7 +26,9 @@
 
 	?>
 
-	<form method="GET" class="formulaire" enctype="multipart/form-data">
+
+	<form method="POST" class="formulaire" enctype="multipart/form-data">
+
 		<div class="retour">
 		 	<?php echo $evenementUpdateRetour ?>
 		</div>
@@ -48,12 +50,14 @@
 			<label>Date de fin</label>
 		</div>
 
-		<div class="group img-upload clearfix">
-			<div class="old-photo col-xs-3 col-md-1">
+		<div class="clearfix">
+			<div class="old-photo col-xs-3 col-md-1 group img-upload">
 				<img src="<?php echo $urlPhoto ?>">
 			</div>
-
+			<div class="group">
 			<input type="file" class="col-xs-9 col-md-11" name="photo">
+			</div>
+
 		</div>		
 		<div class="group">
 			<textarea rows="5" type="text" name="description" required class="used"><?php echo $description ?></textarea><span class="highlight"></span><span class="bar"></span>

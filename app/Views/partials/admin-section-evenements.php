@@ -18,7 +18,11 @@
             $tabLigne = $objetEvenementsModel->findAll("id", "DESC");
 
              ?>
-            
+
+                <div class="retour">
+                <?php echo $evenementDeleteRetour; ?>
+            </div>
+
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -43,7 +47,9 @@
                     $description = $valeur["description"];
                     $photo       = $valeur["photo"];
 
-                    $urlPhoto    =$this->assetUrl($photo);
+
+                    $urlPhoto    = $this->assetUrl($photo);
+
                     $hrefSupprimer  = "?idForm=evenementDelete&id=$id";
             ?> 
                     <tr>

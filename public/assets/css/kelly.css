@@ -71,9 +71,15 @@
 
 .img-circle {
 	box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.5);
+	transition: all 0.5s ease;
+	border: 3px solid white;
 }
 
-
+.img-responsive:hover, .img-responsive:focus {
+	transition: all 0.5s ease;
+	transform: scale(1.20) rotate(30deg);
+	overflow: hidden;
+}
 
 /* évenement */
 
@@ -100,3 +106,43 @@
 	font-weight: bold;
 	margin-bottom: 2%;
 }
+
+.list-evenement .list-evenement-inner:hover img {
+	transition: all 0.5s ease;
+	transform: scale(1.1) rotate(30deg);	
+}
+
+
+/* admin évènement */
+.hauteur-msg {
+	height: 20%;
+}
+
+
+/* admin actualité */
+.btn-admin-actu {
+	margin-right: 8%;
+}
+
+#formCreerActualite .formulaire{
+    margin-top: 35px;
+}
+
+#formCreerActualite form label{
+    left:2%;
+}
+
+#formCreerActualite input:focus ~ label, #formCreerActualite input.used ~ label, #formCreerActualite textarea:focus ~ label, #formCreerActualite textarea.used ~ label{
+    left:0;
+}
+
+/* détail santon image */
+.img-detail-santon {
+	transition: all 0.5s ease;
+}
+
+.img-detail-santon:hover, .img-detail-santon:focus{
+	transition: all 0.5s ease;
+	transform: scale(1.30) rotate(30deg);
+}
+
