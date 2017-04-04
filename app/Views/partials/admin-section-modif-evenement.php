@@ -26,7 +26,9 @@
 
 	?>
 
+
 	<form method="POST" class="formulaire" enctype="multipart/form-data">
+
 		<div class="retour">
 		 	<?php echo $evenementUpdateRetour ?>
 		</div>
@@ -55,6 +57,7 @@
 			<div class="group">
 			<input type="file" class="col-xs-9 col-md-11" name="photo">
 			</div>
+
 		</div>		
 		<div class="group">
 			<textarea rows="5" type="text" name="description" required class="used"><?php echo $description ?></textarea><span class="highlight"></span><span class="bar"></span>

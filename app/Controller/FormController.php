@@ -5,10 +5,10 @@ namespace Controller;
 use \W\Controller\Controller;
 use \Model\SantonModel;
 use W\View\Plates\PlatesExtensions;
-use Controller\Recaptcha;
+use \Model\GuestbookModel;
 use \Model\ActualiteModel;
 use \Model\EvenementsModel;
-
+use Controller\Recaptcha;
 
 class FormController extends Controller
 {
@@ -251,6 +251,7 @@ class FormController extends Controller
 }
 
 
+
    // METHODE
     // Je surcharge la methode show() de la classe parent Controller
     public function show($file, array $data = array()){
@@ -412,6 +413,7 @@ class FormController extends Controller
         }
 
     }
+    
 
      // Front - form de commande special
 
@@ -433,8 +435,11 @@ class FormController extends Controller
         if ( $this->verifierEmail($email)
                                         && ($nom != "")
                                         && ($prenom != "")
-                                        && ($sujet != "")
-                                        && ($message != "") ){
+                                        && ($tel != "")
+                                        && ($adresse != "")
+                                        && ($codePostal != "")
+                                        && ($ville != "")
+                                        && ($detailCommande != "") ){
 
             
             // Je crée un objet de la class ReCaptcha avec ma clé secrete en parametre
@@ -458,8 +463,8 @@ class FormController extends Controller
                     $passage_ligne = "\n";
                 }
                 //=====Déclaration des messages au format texte et au format HTML.
-                $message_txt = "Commande de $prenom $nom pour un paiement par chèque" . $passage_ligne . "Email : $email" . $passage_ligne . "Tel : $tel" . $passage_ligne . "Objet du message : " . $sujet . $passage_ligne . $passage_ligne . $message;
-                $message_html = "<html><head></head><body>Message de $prenom $nom<br /> Email : $email <br /><br /> Objet du message : $sujet <br /><br /> $message</body></html>";
+                $message_txt = "Commande de $prenom $nom avec un paiement par chèque" . $passage_ligne . "Email : $email" . $passage_ligne . "Tel : $tel" . $passage_ligne . "Adresse : " . $passage_ligne . "$adresse" . $passage_ligne . "$codePostal $ville" . $passage_ligne . $passage_ligne . "Objet du message : " . $sujet . $passage_ligne . $passage_ligne . $detailCommande . $passage_ligne . $passage_ligne . $commentaire;
+                $message_html = "<html><head></head><body>Commande de $prenom $nom avec un paiement par chèque<br /><b>Email</b> : $email <br /><b>Tel : $tel</b><br /><b>Adresse : </b><br />$adresse <br />$codePostal $ville<br /><br /> <b>Objet du message : </b>$sujet <br /><br /> <b>Commande :</b><br />$detailCommande <br /><br /><b>Commentaire :</b><br />$commentaire</body></html>";
                 //==========
                  
                  
@@ -530,6 +535,7 @@ class FormController extends Controller
         }
 
     }
+
 
 
     public function loginTraitement(){
@@ -699,12 +705,15 @@ class FormController extends Controller
     }
 
 
+
     public function actualiteCreateTraitement(){
        // Récupérer les infos du formulaire
        $titre    = $this->verifierSaisie("titre"); 
        $contenu  = $this->verifierSaisie("contenu"); 
+
        $photo        = $this->verifierUploadActualite("photo"); 
        $dateAjout     = date("Y-m-d H:i:s"); 
+      
        //vérifier si les infos sont correcte
        if(($titre != "") && ($contenu != "") && ($photo != "")){
 
@@ -927,6 +936,7 @@ class FormController extends Controller
         $dateStart     = date("Y-m-d H:i:s"); 
         $dateEnd       = date("Y-m-d H:i:s"); 
         $description   = $this->verifierSaisie("description"); 
+
         $photo         = $this->verifierUploadEvenement("photo"); 
         $date          = date("Y-m-d H:i:s"); 
 
@@ -1081,6 +1091,7 @@ function verifierUploadEvenement ($nameInput)
 
     public function evenementUpdateTraitement(){
         // Récupérer les infos du formulaire
+
         $id           = $this->verifierSaisie("id");
         $titre        = $this->verifierSaisie("titre"); 
         $lieu         = $this->verifierSaisie("lieu");
@@ -1152,6 +1163,96 @@ function verifierUploadEvenement ($nameInput)
         }else{
 
             $GLOBALS["evenementDeleteRetour"] = "<span class='glyphicon glyphicon-alert' aria-hidden='true'></span> Erreur sur l'id de l'évènement à supprimer";
+        }
+
+    }
+
+    // Création d'un avis client (livre)
+    public function livreCreateTraitement(){
+        // Récupérer les infos du formulaire 
+        $nom_client      = $this->verifierSaisie("nom_client"); 
+        $description     = $this->verifierSaisie("description");
+        $date            = date("Y-m-d H:i:s");
+        //vérifier si les infos sont correcte
+        if(($nom_client != "") && ($description != "") && ($date != "")){
+
+             //si ok on ajoute une ligne dans la table artiste
+            //avec le framwork W
+            //je dois créer un objet de la classe ArtistesModel
+            //(car la table mysql s'appel artistes)
+            //ne pas oublier de rajouter use \Model\ArtistesModel
+            $objetLivreModel = new GuestbookModel;
+            //on peu utiliser la méthode insert
+            $objetLivreModel->insert([  "nom_client"    => $nom_client, 
+                                        "description"   => $description, 
+                                        "date"          => $date
+                                    ]);
+
+            //Message de retour
+           $GLOBALS["livreCreateRetour"] = "<span class='glyphicon glyphicon-ok' aria-hidden='true'></span>";
+        }
+        else{
+            //Message de retour
+            $GLOBALS["livreCreateRetour"] = "<span class='glyphicon glyphicon-alert' aria-hidden='true'></span>";
+        }
+       
+    }
+
+
+    public function livreUpdateTraitement(){
+        // Récupérer les infos du formulaire
+        $id             = $this->verifierSaisie("id");
+        $nomClient      = $this->verifierSaisie("nom_client"); 
+        $description    = $this->verifierSaisie("description");
+        $date           = $this->verifierSaisie("date");
+        //vérifier si les infos sont correcte
+        if(($id > 0) && ($nomClient != "") && ($description != "") && ($date != "")){
+
+             //si ok on ajoute une ligne dans la table artiste
+            //avec le framwork W
+            //je dois créer un objet de la classe ArtistesModel
+            //(car la table mysql s'appel artistes)
+            //ne pas oublier de rajouter use \Model\ArtistesModel
+            $objetGuestbookModel = new GuestbookModel;
+            //on peu utiliser la méthode insert
+
+           $objetGuestbookModel->update(["nom_client"       => $nomClient,
+                                        "description"       => $description,
+                                        "date"              => $date
+                                        ], $id);
+            
+
+            //Message de retour
+           $GLOBALS["livreUpdateRetour"] = "<span class='glyphicon glyphicon-ok' aria-hidden='true'></span> Avis $nomClient Modifié";
+        }
+        else{
+            //Message de retour
+            $GLOBALS["livreUpdateRetour"] = "<span class='glyphicon glyphicon-alert' aria-hidden='true'></span> Information manquante";
+        }
+       
+    }
+
+
+    public function livreDeleteTraitement(){
+        // Récuperer l'id
+        $id = $this->verifierSaisie("id");
+
+        // Il faut que l'id soit un nombre superieur à 0
+        //SECURITE : Convertir $id en nombre
+        $id = intval($id);
+
+        if ($id > 0){
+
+            // ON Va deleguer à un objet de la classe ArtisteModel
+            //le travail de supprimer la ligne correspondante à l'ID
+            //Vérifier qu'on a fait le use au debut du fichier
+            $objetLivreModel = new GuestbookModel;
+            $objetLivreModel->delete($id);
+
+            $GLOBALS["livreDeleteRetour"] = "<span class='glyphicon glyphicon-ok' aria-hidden='true'></span> Avis Supprimé";
+        }else{
+
+            $GLOBALS["livreDeleteRetour"] = "<span class='glyphicon glyphicon-alert' aria-hidden='true'></span> Erreur sur l'id du Santon à supprimer";
         }
 
     }
