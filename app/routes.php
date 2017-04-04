@@ -39,6 +39,9 @@
 		//Affichage panier
 		['GET|POST', '/panier', 'VitrineDamien#panier', 'vitrine_panier'],
 
+		//Paiement apr chèque
+		['GET|POST', '/paiement/cheque', 'VitrineDamien#paiementCheque', 'vitrine_paiement_cheque'],
+
 
 		///////////////////////////Backoffice//////////////////////////////
 
@@ -64,16 +67,14 @@
 
 
 
+
 		// Page d'actualité côté admin 
 		['GET|POST', '/admin/liste/actualite', 'AdminKelly#gererActualites', 'admin_actualites'],
 
-		
+		['GET|POST', '/admin/modifier/actualite', 'AdminKelly#modifierActualites', 'admin_modifier_actualites'],
 
-		// Modification des actualités
-		['GET|POST', '/admin/modifier/actualite/[:id]', 'AdminKelly#modifierActualites', 'admin_modifier_actualites'],
-
-		// Création des actualités
 		['GET|POST', '/admin/creer-actualite', 'AdminKelly#creerActualite', 'admin_creation_actualites'],
+
 
 		// Page d'évènement côté admin
 		['GET|POST', '/admin/liste/evenement', 'AdminKelly#gererEvenements', 'admin_evenements'],

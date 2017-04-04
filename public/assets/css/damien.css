@@ -254,6 +254,9 @@ table tr td.itemInCartDisplay{
 }
 .table-img{
     max-width: 50px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%; 
 
 }
 .table tbody tr td{
@@ -350,6 +353,12 @@ table tr td.itemInCartDisplay{
         font-size: 1em;
     }
     
+    /********************Formulaire de paiement par cheque*********************/
+
+    .formulaire .commentaire{
+        height: 150px;
+    }
+
     /*******************Admin accueil***************/
 
     #admin-accueil .btn-block{

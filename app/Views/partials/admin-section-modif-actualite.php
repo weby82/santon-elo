@@ -1,10 +1,7 @@
-<main class="admin">
-	<div class="container">
-		<div class="container-inner">
-			<h2>Modifier une actualité</h2>
-				
-			<section class="section-content" id="formCreerActualite">
-
+<main>
+	<section id="admin-actualite">
+		<div class="container">
+			<h2>Modification d'une actualité</h2>
 			
 				
 	<?php
@@ -20,20 +17,18 @@
 		$contenuLigneCourante = $tabLigne["contenu"];
 		$photoLigneCourante = $tabLigne["photo"];
 
+		$contenuLigneCourante = substr($contenuLigneCourante, 0, 500);
 
-		$urlPhoto = $this->assetUrl($photoLigneCourante);
+		echo 
+<<<CODEHTML
+	<form method="GET" class="formulaire">
 
-	?>
-
-	<form method="POST" class="formulaire" action="" enctype="multipart/form-data">
-		<div class="retour">
-			<?php echo $actualiteUpdateRetour; ?>
-		</div>
-
-	    <div class="group">
-		    <input type="text" name="titre" required value="<?php echo $titreLigneCourante; ?>" class="used"><span class="highlight"></span><span class="bar"></span>
+	    <div class="colonne-gauche col-md-6 col-xs-12 ">
+			<div class="group colonne-gauche">
+		    <input type="text" name="titre" id="titre" required ><span class="highlight"></span><span class="bar"></span>
 			<label>Titre</label>
 		</div>
+
 		<div class="clearfix">
 			<div class="old-photo col-xs-3 col-md-1 group img-upload">
 				<img class="" src="<?php echo $urlPhoto; ?>">
@@ -42,30 +37,25 @@
 			<div class="group">
 				<input class="col-xs-9 col-md-11" type="file" name="photo">
 			</div>
+
 		</div>
-		<div class="group">
-			<textarea  rows="5" type="text" name="contenu" id="contenu" required  class="used"><?php echo $contenuLigneCourante; ?></textarea></span><span class="bar"></span>
+
+		<div class="group form-group col-md-6 col-xs-12 ">
+			<textarea  rows="7" type="text" name="contenu" id="contenu" required></textarea></span><span class="bar"></span>
 			<label>Votre contenu</label>
 		</div>
 
-		<button type="submit" class="btn btn-lg btn-default">Modifier</button>
+		<div class="form-group col-md-12 col-xs-12 text-right">
+		    <button type="submit" class="btn btn-default">Modifier une actualité</button>
+		</div>
 
 		<input type="hidden" name="idForm" value="actualiteUpdate">
-		<input type="hidden" name="id" value="<?php echo $id; ?>">
-		<input type="hidden" name="oldPath" value="<?php echo $photoLigneCourante; ?>">
+		
+					
+		<div class="retour">
+			$actualiteUpdateRetour	
+		</div>
 
 	</form>
-
-<?php
+CODEHTML;
 	}
-	else
-	{
-		echo "<span class='glyphicon glyphicon-alert' aria-hidden='true'></span> Actualité non trouvée";
-	}
-?>
-
-			</section>
-			</div>
-		</div>	
-	<div class="push"></div>
-</main>

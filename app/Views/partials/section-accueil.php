@@ -27,7 +27,7 @@ foreach ($tabLigneActu as $index => $tabColonneActu) {
 ?>
 				<article class="col-md-4 col-sm-6 col-xs-12 articles-actu">
 					<div class="article-inner">
-						<img src="<?php echo $urlPhoto ?>" alt="#" class="img-circle">
+						<img src="<?php echo $urlPhoto ?>" alt="#">
 						<div class="desc-actu">
 							<h3><?php echo $titreActu ?></h3>
 							<p><?php echo $contenuActu ?></p>
@@ -69,14 +69,14 @@ foreach ($tabLigne as $index => $tabColonne) {
 
 	$urlPhotoSanton			= $this->assetUrl($photoSanton);
 
-	$urlPhotoSanton			= $this->assetUrl($photoSanton);
 	// Construire le code HTML
 ?>
 					<article class="col-lg-3 col-md-3 col-sm-4 col-xs-12 bloc-santon">
 						<form class="item_form">
 							<div class="bloc-santon-inner">
-								<a href="detail-santon.php?categorie=<?php echo $categorieSanton; ?>&santon_id=<?php echo $id; ?>" title="<?php echo $nomSanton; ?>">
-									<img src="<?php echo $urlPhotoSanton; ?>" class="zoom-img" alt="santon <?php echo $nomSanton; ?>">
+
+								<a href="<?php echo $this->url('vitrine_afficher_santon', [ 'categorie' => $categorie, 'nomUrl' => $nomUrl ]);?>" title="<?php echo $nomSanton; ?>">
+									<img src="<?php echo $urlPhotoSanton; ?>" alt="santon <?php echo $nomSanton; ?>">
 								</a>
 								<h3><a href="<?php echo $this->url('vitrine_afficher_santon', [ 'categorie' => $categorie, 'nomUrl' => $nomUrl ]);?>" title="<?php echo $item["nom"]; ?>"><?php echo $nomSanton; ?></a></h3>
 								<p class="prix-santon"><?php echo $prixSanton; ?> €</p>
