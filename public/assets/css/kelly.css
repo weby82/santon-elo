@@ -72,11 +72,13 @@
 .img-circle {
 	box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.5);
 	transition: all 0.5s ease;
+	border: 3px solid white;
 }
 
 .img-responsive:hover, .img-responsive:focus {
 	transition: all 0.5s ease;
-	transform: scale(1.20) rotate(15deg);
+	transform: scale(1.20) rotate(30deg);
+	overflow: hidden;
 }
 
 /* évenement */
@@ -103,6 +105,11 @@
 	color: #647277;
 	font-weight: bold;
 	margin-bottom: 2%;
+}
+
+.list-evenement .list-evenement-inner:hover img {
+	transition: all 0.5s ease;
+	transform: scale(1.1) rotate(30deg);	
 }
 
 
@@ -136,6 +143,6 @@
 
 .img-detail-santon:hover, .img-detail-santon:focus{
 	transition: all 0.5s ease;
-	transform: scale(1.30) rotate(15deg);
+	transform: scale(1.30) rotate(30deg);
 }
 

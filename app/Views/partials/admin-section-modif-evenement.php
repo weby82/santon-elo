@@ -26,7 +26,7 @@
 
 	?>
 
-	<form method="GET" class="formulaire" enctype="multipart/form-data">
+	<form method="POST" class="formulaire" enctype="multipart/form-data">
 		<div class="retour">
 		 	<?php echo $evenementUpdateRetour ?>
 		</div>

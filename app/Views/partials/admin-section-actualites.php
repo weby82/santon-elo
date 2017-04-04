@@ -2,7 +2,7 @@
 <main class="admin">
     <div class="container">
         <div class="container-inner">
-            <h2>Administration - Actualité</h2>
+            <h2>Administration - Actualités</h2>
             <section class="section-content">
 
             <a class="btn btn-default" href="<?php echo $this->url('admin_creation_actualites'); ?>">
@@ -18,7 +18,9 @@
             $tabLigne = $objetActualiteModel->findAll("id", "DESC");
 
              ?>
-            
+            <div class="retour">
+                <?php echo $actualiteDeleteRetour; ?>
+            </div>
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -37,7 +39,7 @@
                     $contenu        = $valeur["contenu"];
                     $photo          = $valeur["photo"];
 
-                    $urlPhoto       =$this->assetUrl($photo);
+                    $urlPhoto       = $this->assetUrl($photo);
 
                     $hrefSupprimer  = "?idForm=actualiteDelete&id=$id";
             ?> 
