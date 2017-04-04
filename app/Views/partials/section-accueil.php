@@ -27,7 +27,7 @@ foreach ($tabLigneActu as $index => $tabColonneActu) {
 ?>
 				<article class="col-md-4 col-sm-6 col-xs-12 articles-actu">
 					<div class="article-inner">
-						<img src="<?php echo $urlPhoto ?>" alt="#">
+						<img src="<?php echo $urlPhoto ?>" alt="#" class="img-circle">
 						<div class="desc-actu">
 							<h3><?php echo $titreActu ?></h3>
 							<p><?php echo $contenuActu ?></p>
