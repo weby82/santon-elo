@@ -256,13 +256,13 @@ section img{
 }
 
 .articles-actu img {
-	width: 50%;	
+	width: 60%;	
 	margin-left: 20%;
 }
-
-.articles-actu img:hover{
+.list-actualite .list-actualite-inner:hover img,
+#section-last-actu .article-inner:hover img{
 	transition: all 0.5s ease;
-	transform: scale(1.1) rotate(15deg);	
+	transform: scale(1.1) rotate(30deg);	
 }
 
 .article-inner p{
@@ -331,18 +331,16 @@ section img{
 	border-radius: 8px 8px 0 0;
 }
 
-.bloc-santon-inner:hover,
-.bloc-santon-inner:focus{
+.bloc-santon-inner:hover {
 	background: #BAD1D1;
 	/*background: #BAD1D1;*/
 	box-shadow: 8px 8px 5px rgba(0,0,0,0.2);
 	transition: all 0.5s ease;
 	transform: scale(1.1);
+
 }	
 
-.bloc-santon-inner .btn-default:hover{
-	
-}
+
 .bloc-santon-inner:hover .btn-default{
 	background: #6E8A94;
 	border-color: #6E8A94;

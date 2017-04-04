@@ -703,7 +703,7 @@ class FormController extends Controller
        // Récupérer les infos du formulaire
        $titre    = $this->verifierSaisie("titre"); 
        $contenu  = $this->verifierSaisie("contenu"); 
-       $photo    = $this->verifierSaisie("photo"); 
+       $photo        = $this->verifierUploadActualite("photo"); 
        $dateAjout     = date("Y-m-d H:i:s"); 
        //vérifier si les infos sont correcte
        if(($titre != "") && ($contenu != "") && ($photo != "")){
@@ -905,16 +905,15 @@ class FormController extends Controller
 
         if ($id > 0){
 
-            // ON Va deleguer à un objet de la classe ArtisteModel
-            //le travail de supprimer la ligne correspondante à l'ID
+            // ON Va deleguer à un objet de la classe ActualiteModel
             //Vérifier qu'on a fait le use au debut du fichier
-            $objetActualiteModel = new ActualiteModel;
-            $objetActualiteModel->delete($id);
+            $objetactualiteModel = new ActualiteModel;
+            $objetactualiteModel->delete($id);
 
-            $GLOBALS["actualiteDeleteRetour"] = "Actualité Supprimer";
+            $GLOBALS["actualiteDeleteRetour"] = "<span class='glyphicon glyphicon-ok' aria-hidden='true'></span> Actualité Supprimée";
         }else{
 
-            $GLOBALS["actualiteDeleteRetour"] = "ERREUR SUR L'ID DE L'ACTUALITE A SUPPRIMER";
+            $GLOBALS["actualiteDeleteRetour"] = "<span class='glyphicon glyphicon-alert' aria-hidden='true'></span> Erreur sur l'id de l'actualité à supprimer";
         }
 
     }
@@ -928,7 +927,7 @@ class FormController extends Controller
         $dateStart     = date("Y-m-d H:i:s"); 
         $dateEnd       = date("Y-m-d H:i:s"); 
         $description   = $this->verifierSaisie("description"); 
-        $photo         = $this->verifierSaisie("photo"); 
+        $photo         = $this->verifierUploadEvenement("photo"); 
         $date          = date("Y-m-d H:i:s"); 
 
         //vérifier si les infos sont correcte
@@ -1085,8 +1084,8 @@ function verifierUploadEvenement ($nameInput)
         $id           = $this->verifierSaisie("id");
         $titre        = $this->verifierSaisie("titre"); 
         $lieu         = $this->verifierSaisie("lieu");
-        $dateStart    = date("Y-m-d H:i:s");  
-        $dateEnd      = date("Y-m-d H:i:s");  
+        $dateStart    = $this->verifierSaisie("date_event_start");
+        $dateEnd      = $this->verifierSaisie("date_event_end");  
         $description  = $this->verifierSaisie("description"); 
         $oldPhotoPath = $this->verifierSaisie("oldPath"); 
         $photo        = $this->verifierUploadEvenement("photo"); 
@@ -1149,10 +1148,10 @@ function verifierUploadEvenement ($nameInput)
             $objetEvenementsModel = new EvenementsModel;
             $objetEvenementsModel->delete($id);
 
-            $GLOBALS["evenementDeleteRetour"] = "Evènement Supprimer";
+            $GLOBALS["evenementDeleteRetour"] = "<span class='glyphicon glyphicon-ok' aria-hidden='true'></span> Evènement Supprimé";
         }else{
 
-            $GLOBALS["evenementDeleteRetour"] = "ERREUR SUR L'ID DE L'EVENEMENT A SUPPRIMER";
+            $GLOBALS["evenementDeleteRetour"] = "<span class='glyphicon glyphicon-alert' aria-hidden='true'></span> Erreur sur l'id de l'évènement à supprimer";
         }
 
     }
