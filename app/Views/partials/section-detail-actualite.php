@@ -26,9 +26,11 @@
 		<section class="detail-actualite">
 		<article>
             <div class="list-detail-actualite-inner">
-                <figure class="col-md-4">
-                    <img src="$urlPhoto" alt="image 1" class="img-responsive img-circle img-actualite">
-                </figure>
+            	<div class="col-md-4 img-bulle">
+	                <figure>
+	                    <img src="$urlPhoto" alt="image 1" class="img-responsive img-circle img-actualite">
+	                </figure>
+                </div>
                 <div class="col-md-8 div-actualite">
                     <p>$contenuLigneCourante</p>
                 </div>
