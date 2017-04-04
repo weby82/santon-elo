@@ -34,8 +34,8 @@
 ?>
 		<article class="col-xs-12 col-xs-offset-0 col-md-8  col-md-offset-<?php echo $offset; ?>">
             <div class="list-actualite-inner">
-                <figure class="col-md-4 col-xs-12 <?php echo $pair; ?>">
-                    <img src="<?php echo $urlPhoto; ?>" alt="image 1" class="img-responsive img-circle">
+                <figure class="col-md-4 col-xs-12 <?php echo $pair; ?>">            
+                    <img src="<?php echo $urlPhoto; ?>" alt="image 1" class="img-responsive ">              
                 </figure>
                 <div class="col-md-8 col-xs-12 article-detail">
                     <h3><?php echo $titreLigneCourante; ?></h3>
