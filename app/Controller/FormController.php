@@ -731,11 +731,11 @@ class FormController extends Controller
                                         ]);
 
             //Message de retour
-            $GLOBALS["actualiteCreateRetour"] = "Actualite $titre créée";
+            $GLOBALS["actualiteCreateRetour"] = "<span class='glyphicon glyphicon-ok' aria-hidden='true'></span> Actualite $titre créée";
         }
         else{
             //Message de retour
-            $GLOBALS["actualiteCreateRetour"] = "Information manquante";
+            $GLOBALS["actualiteCreateRetour"] = "<span class='glyphicon glyphicon-alert' aria-hidden='true'></span> Information manquante";
         }
        
     }
@@ -933,8 +933,8 @@ class FormController extends Controller
         // Récupérer les infos du formulaire
         $titre         = $this->verifierSaisie("titre"); 
         $lieu          = $this->verifierSaisie("lieu"); 
-        $dateStart     = date("Y-m-d H:i:s"); 
-        $dateEnd       = date("Y-m-d H:i:s"); 
+        $dateStart    = $this->verifierSaisie("date_event_start"); 
+        $dateEnd      = $this->verifierSaisie("date_event_end"); 
         $description   = $this->verifierSaisie("description"); 
 
         $photo         = $this->verifierUploadEvenement("photo"); 
@@ -946,8 +946,7 @@ class FormController extends Controller
                 && ($dateStart != "") 
                     && ($dateEnd != "") 
                         && ($description != "") 
-                            && ($photo != "") 
-                                && ($date != "")){
+                            && ($photo != "")){
 
              //si ok on ajoute une ligne dans la table artiste
             //avec le framwork W
@@ -960,16 +959,17 @@ class FormController extends Controller
                                           "lieu"             => $lieu, 
                                           "date_event_start" => $dateStart,
                                           "date_event_end"   => $dateEnd,
+                                          "description"      => $description,
                                           "photo"            => $photo, 
                                           "date_publication" => $date
                                         ]);
 
             //Message de retour
-            $GLOBALS["evenementCreateRetour"] = "Evenement $titre Ajouté";
+            $GLOBALS["evenementCreateRetour"] = "<span class='glyphicon glyphicon-ok' aria-hidden='true'></span> Evenement $titre Ajouté";
         }
         else{
             //Message de retour
-            $GLOBALS["evenementCreateRetour"] = "Information manquante";
+            $GLOBALS["evenementCreateRetour"] = "<span class='glyphicon glyphicon-alert' aria-hidden='true'></span> Information manquante";
         }
        
     }
@@ -1172,9 +1172,9 @@ function verifierUploadEvenement ($nameInput)
         // Récupérer les infos du formulaire 
         $nom_client      = $this->verifierSaisie("nom_client"); 
         $description     = $this->verifierSaisie("description");
-        $date            = date("Y-m-d H:i:s");
+        $date            = date("Y-m-d");
         //vérifier si les infos sont correcte
-        if(($nom_client != "") && ($description != "") && ($date != "")){
+        if(($nom_client != "") && ($description != "")){
 
              //si ok on ajoute une ligne dans la table artiste
             //avec le framwork W
@@ -1189,11 +1189,11 @@ function verifierUploadEvenement ($nameInput)
                                     ]);
 
             //Message de retour
-           $GLOBALS["livreCreateRetour"] = "<span class='glyphicon glyphicon-ok' aria-hidden='true'></span>";
+           $GLOBALS["livreCreateRetour"] = "<span class='glyphicon glyphicon-ok' aria-hidden='true'></span> Avis de $nom_client ajouté";
         }
         else{
             //Message de retour
-            $GLOBALS["livreCreateRetour"] = "<span class='glyphicon glyphicon-alert' aria-hidden='true'></span>";
+            $GLOBALS["livreCreateRetour"] = "<span class='glyphicon glyphicon-alert' aria-hidden='true'></span> Des informations sont manquantes";
         }
        
     }

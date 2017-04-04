@@ -8,7 +8,7 @@
 				
 					<section class="section-content" id="formAjoutlivre">
 
-							<form class="formulaire" method="GET" action="">
+							<form class="formulaire" method="POST" action="">
 							
 							<!-- Message de retour -->
 								<div class="retour">
@@ -23,10 +23,6 @@
 								<div class="group">
 									<textarea rows="5" name="description" required ></textarea><span class="highlight"></span><span class="bar"></span>
 							    	<label>Avis du client</label>
-								</div>
-								<div class="group">
-									<input type="text" name="date" required ><span class="highlight"></span><span class="bar"></span>
-							    	<label>Date</label>
 								</div>
 														
 								<button type="submit" class="btn btn-lg btn-default"> Ajouter</button>

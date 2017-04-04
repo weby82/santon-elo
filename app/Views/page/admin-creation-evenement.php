@@ -1,7 +1,7 @@
 
 <?php
 
-	$navActive = "evenement";
+	$navActive = "evenements";
 
 
 	$this->insert('partials/admin-header', ["navActive" => $navActive]);

@@ -52,7 +52,7 @@
                         <td><?php echo $id; ?></td>
                         <td>
                             <a href="<?php echo $this->url('admin_modifier_actualites' , ['id' => $id]); ?>"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
-                            <a href="<?php echo $hrefSupprimer; ?>" title="supprimer"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                            <a href="<?php echo $hrefSupprimer; ?>" title="supprimer" class="delete"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
 
                         </td>                                                              
                                     

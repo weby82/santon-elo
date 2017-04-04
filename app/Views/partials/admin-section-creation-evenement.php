@@ -3,7 +3,7 @@
 			<div class="container-inner">
 				<h2>Création d'évènements</h2>
 					<section class="section-content" id="formCreerEvenement">	
-						<form method="GET" class="formulaire">
+						<form method="POST" class="formulaire" enctype="multipart/form-data">
 							<div class="retour">
 								<?php echo $evenementCreateRetour; ?>
 							</div>
@@ -22,12 +22,12 @@
 							</div>
 
 							<div class="group colonne-gauche">
-							    <input type="date" name="debut" id="debut" required ><span class="highlight"></span><span class="bar"></span>
+							    <input type="date" name="date_event_start" id="debut" class="used" required ><span class="highlight"></span><span class="bar"></span>
 							    <label>Date de début</label>
 							</div>
 
 							<div class="group colonne-gauche">
-							    <input type="date" name="fin" id="fin" required ><span class="highlight"></span><span class="bar"></span>
+							    <input type="date" name="date_event_end" id="fin" class="used" required ><span class="highlight"></span><span class="bar"></span>
 							    <label>Date de fin</label>
 							</div>
 

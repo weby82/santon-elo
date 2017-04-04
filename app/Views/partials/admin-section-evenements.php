@@ -47,6 +47,11 @@
                     $description = $valeur["description"];
                     $photo       = $valeur["photo"];
 
+                    $phpDateStart = strtotime( $dateStart );
+                    $dateStartLigneCourante = date( 'd-m-Y', $phpDateStart );
+                    $phpDateEnd = strtotime( $dateEnd );
+                    $dateEndLigneCourante = date( 'd-m-Y', $phpDateEnd );
+
 
                     $urlPhoto    = $this->assetUrl($photo);
 
@@ -56,13 +61,13 @@
                         <td><img class="table-img" src="<?php echo $urlPhoto; ?>" alt="<?php echo $titre; ?>"></td>
                         <td><?php echo $titre; ?></td>
                         <td><?php echo $lieu; ?></td>
-                        <td><?php echo $dateStart; ?></td>
-                        <td><?php echo $dateEnd; ?></td>
+                        <td width="90px"><?php echo $dateStartLigneCourante; ?></td>
+                        <td width="90px"><?php echo $dateEndLigneCourante; ?></td>
                         <td><?php echo $description; ?></td>
                         <td><?php echo $id; ?></td>
                         <td>
                             <a href="<?php echo $this->url('admin_modifier_evenement', ['id' => $id]); ?>"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
-                            <a href="<?php echo $hrefSupprimer; ?>" title="supprimer"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                            <a href="<?php echo $hrefSupprimer; ?>" title="supprimer" class="delete"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
                         </td>                                                              
                                     
                     </tr>
