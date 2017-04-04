@@ -39,6 +39,9 @@
 		//Affichage panier
 		['GET|POST', '/panier', 'VitrineDamien#panier', 'vitrine_panier'],
 
+		//Paiement apr chèque
+		['GET|POST', '/paiement/cheque', 'VitrineDamien#paiementCheque', 'vitrine_paiement_cheque'],
+
 
 		///////////////////////////Backoffice//////////////////////////////
 
@@ -64,28 +67,23 @@
 
 
 
-		// Page d'actualité côté admin 
 		['GET|POST', '/admin/liste/actualite', 'AdminKelly#actualites', 'admin_actualites'],
 
-		// Suppression des actualités
-		['GET|POST', '/admin/actualites', 'AdminKelly#gererActualites', 'admin_gerer_actualites'],
+		['GET|POST', '/admin/actualites', 'AdminKelly#gererActualite', 'admin_gerer_actualites'],
 
-		// Modification des actualités
-		['GET|POST', '/admin/modifier/actualite/[:id]', 'AdminKelly#modifierActualites', 'admin_modifier_actualites'],
+		['GET|POST', '/admin/modifier/actualite', 'AdminKelly#modifierActualites', 'admin_modifier_actualites'],
 
-		// Création des actualités
 		['GET|POST', '/admin/creer-actualite', 'AdminKelly#creerActualite', 'admin_creation_actualites'],
 
+
 		// Page d'évènement côté admin
-		['GET|POST', '/admin/liste/evenement', 'AdminKelly#evenements', 'admin_evenements'],
+		['GET|POST', '/admin/liste/evenement', 'AdminKelly#gererEvenements', 'admin_evenements'],
 
 		// Création des évènements
 		['GET|POST', '/admin/creer-evenement', 'AdminKelly#creerEvenement', 'admin_creation_evenements'],
 
 		// Modifiacation/update des évènements
 		['GET|POST', '/admin/modifier/evenement/[:id]', 'AdminKelly#modifierEvenement',	'admin_modifier_evenement'],
-
-		['GET|POST', '/admin/evenements', 'AdminKelly#gererEvenements',	'admin_gerer_evenement'],
 
 
 	);

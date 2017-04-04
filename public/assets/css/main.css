@@ -197,6 +197,7 @@ li.active #dropcategorie > a:focus {
 *********************************************************/
 
 #carousel-accueil{
+	display: none;
 	margin-bottom: 40px;
 }
 
@@ -586,6 +587,11 @@ h1, h2, h3 {
 	.navbar-right.cart-btn {
    	 	padding: 0 15px;
    	 	margin-right: 0;
+	}
+
+	/************carousel********************/
+	#carousel-accueil{
+		display: block;
 	}
 }
 
