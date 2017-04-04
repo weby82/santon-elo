@@ -25,9 +25,9 @@
                     <thead>
                         <tr>
                             <th>Photo</th>
-                            <th>titre</th>
-                            <th>contenu</th>
-                            <th>id</th>
+                            <th>Titre</th>
+                            <th>Contenu</th>
+                            <th>Id</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -43,6 +43,7 @@
 
                     $hrefSupprimer  = "?idForm=actualiteDelete&id=$id";
 
+
             ?> 
                     <tr>
                         <td><img class="table-img" src="<?php echo $urlPhoto; ?>" alt="<?php echo $titre; ?>"></td>
@@ -50,8 +51,8 @@
                         <td><?php echo $contenu; ?></td>
                         <td><?php echo $id; ?></td>
                         <td>
-                            <a href="<?php echo $this->url('admin_modifier_actualites'); ?>"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
-                            <a href="<?php echo $this->url('admin_gerer_actualites'); ?>" title="supprimer"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                            <a href="<?php echo $this->url('admin_modifier_actualites' , ['id' => $id]); ?>"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                            <a href="<?php echo $hrefSupprimer; ?>" title="supprimer"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
 
                         </td>                                                              
                                     
