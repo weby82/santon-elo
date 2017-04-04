@@ -79,10 +79,10 @@ if(session_status()==PHP_SESSION_NONE){session_start();}
                             if(count($_SESSION["items"]) > 0){
                                 echo count($_SESSION["items"]);
                             }else{
-                                echo "empty";
+                                echo "0";
                             }
                         }else{
-                            echo "empty";
+                            echo "0";
                         }
                     ?>
                 </span>

@@ -439,7 +439,7 @@ class FormController extends Controller
                                         && ($adresse != "")
                                         && ($codePostal != "")
                                         && ($ville != "")
-                                        && ($detailCommande != "") ){
+                                        && ($detailCommande != "")){
 
             
             // Je crée un objet de la class ReCaptcha avec ma clé secrete en parametre
@@ -523,6 +523,8 @@ class FormController extends Controller
             // $GLOBALS["contactRetour"] = "<p class='bg-success'>Merci $prenom, votre message est bien envoyé !</p>";
             $GLOBALS["paiementChequeRetour"] = "<span class='glyphicon glyphicon-ok' aria-hidden='true'></span> Merci $prenom, votre commande a bien été envoyé ! Vous recevrez rapidement une réponse !";
 
+                // je vide le panier en detruisant la session
+                session_destroy();
                 // Je vide les champs du formulaire
                 $nom = $prenom = $email = $message = $sujet = NULL;
                 unset($_POST);

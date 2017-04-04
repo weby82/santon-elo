@@ -94,12 +94,17 @@
 							</div> 
 
 							<div class="group form-group col-md-12 col-xs-12 ">
-								<textarea rows="7" name="detailCommande" id="detailCommande" required class="used form-control" disabled>Santons commandés :<?php
-										echo "\n";
+								<textarea rows="7" name="detailCommande" id="detailCommande" class="used form-control" readonly>Santons commandés :<?php
+										echo "\r\n";
 										$total=0; 
-										foreach($_SESSION["items"] as $item){
-											echo "- ". $item["item_name"] . " x " . $item["item_qty"]. " = ". "€". sprintf("%.2f", ($item["item_price"] * $item["item_qty"])). "\n";
-											$total += ($item["item_price"] * $item["item_qty"]);
+										if(isset($_SESSION["items"])){
+											foreach($_SESSION["items"] as $item){
+												 echo "- ". $item["item_name"] . " x " . $item["item_qty"]. " = ". "€". sprintf("%.2f", ($item["item_price"] * $item["item_qty"])). "\r\n";
+												$total += ($item["item_price"] * $item["item_qty"]);
+
+											}
+										}else{
+											echo "Aucun santon dans votre panier";
 										}
 										echo "\nTotal = ". sprintf("%.2f",$total) . "€";
 									?></textarea>
