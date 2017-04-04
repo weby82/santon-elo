@@ -249,11 +249,6 @@ class FormController extends Controller
 
 
 
-    //SETTER
-    function setVar($nomVariable,$valeurVariable){
-        $this->tabVariableView[$nomVariable] = $valeurVariable;
-    }
-
    // METHODE
     // Je surcharge la methode show() de la classe parent Controller
     public function show($file, array $data = array()){
@@ -437,8 +432,11 @@ class FormController extends Controller
         if ( $this->verifierEmail($email)
                                         && ($nom != "")
                                         && ($prenom != "")
-                                        && ($sujet != "")
-                                        && ($message != "") ){
+                                        && ($tel != "")
+                                        && ($adresse != "")
+                                        && ($codePostal != "")
+                                        && ($ville != "")
+                                        && ($detailCommande != "") ){
 
             
             // Je crée un objet de la class ReCaptcha avec ma clé secrete en parametre
@@ -462,8 +460,8 @@ class FormController extends Controller
                     $passage_ligne = "\n";
                 }
                 //=====Déclaration des messages au format texte et au format HTML.
-                $message_txt = "Commande de $prenom $nom pour un paiement par chèque" . $passage_ligne . "Email : $email" . $passage_ligne . "Tel : $tel" . $passage_ligne . "Objet du message : " . $sujet . $passage_ligne . $passage_ligne . $message;
-                $message_html = "<html><head></head><body>Message de $prenom $nom<br /> Email : $email <br /><br /> Objet du message : $sujet <br /><br /> $message</body></html>";
+                $message_txt = "Commande de $prenom $nom avec un paiement par chèque" . $passage_ligne . "Email : $email" . $passage_ligne . "Tel : $tel" . $passage_ligne . "Adresse : " . $passage_ligne . "$adresse" . $passage_ligne . "$codePostal $ville" . $passage_ligne . $passage_ligne . "Objet du message : " . $sujet . $passage_ligne . $passage_ligne . $detailCommande . $passage_ligne . $passage_ligne . $commentaire;
+                $message_html = "<html><head></head><body>Commande de $prenom $nom avec un paiement par chèque<br /><b>Email</b> : $email <br /><b>Tel : $tel</b><br /><b>Adresse : </b><br />$adresse <br />$codePostal $ville<br /><br /> <b>Objet du message : </b>$sujet <br /><br /> <b>Commande :</b><br />$detailCommande <br /><br /><b>Commentaire :</b><br />$commentaire</body></html>";
                 //==========
                  
                  
