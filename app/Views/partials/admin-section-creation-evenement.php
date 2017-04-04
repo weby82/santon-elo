@@ -31,8 +31,9 @@
 							    <label>Date de fin</label>
 							</div>
 
-							<div class="group">
-							    <input type="file" name="photo" required>
+							<div class="group colonne-gauche">
+							    <input type="text" name="photo" id='photo'><span class="highlight"></span><span class="bar"></span>
+							    <label>Photo</label>
 							</div>
 
 							</div>

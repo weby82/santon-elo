@@ -75,4 +75,15 @@
 
 		['GET|POST', '/admin/creer-actualite', 'AdminKelly#creerActualite', 'admin_creation_actualites'],
 
+
+		// Page d'évènement côté admin
+		['GET|POST', '/admin/liste/evenement', 'AdminKelly#gererEvenements', 'admin_evenements'],
+
+		// Création des évènements
+		['GET|POST', '/admin/creer-evenement', 'AdminKelly#creerEvenement', 'admin_creation_evenements'],
+
+		// Modifiacation/update des évènements
+		['GET|POST', '/admin/modifier/evenement/[:id]', 'AdminKelly#modifierEvenement',	'admin_modifier_evenement'],
+
+
 	);
