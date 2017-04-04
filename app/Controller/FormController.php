@@ -8,6 +8,7 @@ use W\View\Plates\PlatesExtensions;
 use \Model\GuestbookModel;
 use \Model\ActualiteModel;
 use \Model\EvenementsModel;
+use Controller\Recaptcha;
 
 class FormController extends Controller
 {
@@ -65,7 +66,6 @@ class FormController extends Controller
         }
         
     }
-    
     public function verifierSaisie ($name)
     {
         $valeurSaisie = ""; // AU DEBUT ON A LA CHAINE VIDE
@@ -134,9 +134,10 @@ class FormController extends Controller
 
 
     // Verifier le champ d'upload
-    function verifierUpload ($nameInput)
+    function verifierUploadSanton ($nameInput)
     {
     $cheminOK = "";
+    $cheminUrlOk = "";
     
     // POUR LE MESSAGE DE RETOUR
     $idForm = $this->verifierSaisie("idForm");
@@ -177,6 +178,7 @@ class FormController extends Controller
                 $tmpName    = $tabInfoFichierUploade["tmp_name"];
                 $size       = $tabInfoFichierUploade["size"];
                 $categorie  = $_POST["categorie"];
+
                 
                 if ($size < 10 * 1024 * 1024) // 10 MEGAOCTETS
                 {
@@ -250,66 +252,6 @@ class FormController extends Controller
 
 
 
-    public function artisteUpdateTraitement(){
-        // Récupérer les infos du formulaire
-        $id             = $this->verifierSaisie("id");
-        $nom            = $this->verifierSaisie("nom"); 
-        $genreArt       = $this->verifierSaisie("genreArt"); 
-        $cheminImage    = $this->verifierSaisie("cheminImage"); 
-        $bio            = $this->verifierSaisie("bio"); 
-        //vérifier si les infos sont correcte
-        // transformer $id en nombre entier
-        $id = intval($id);
-        if(($id > 0) && ($nom != "") && ($genreArt != "") && ($cheminImage != "") && ($bio != "")){
-
-             //si ok on ajoute une ligne dans la table artiste
-            //avec le framwork W
-            //je dois créer un objet de la classe ArtistesModel
-            //(car la table mysql s'appel artistes)
-            //ne pas oublier de rajouter use \Model\ArtistesModel
-            $objetArtistesModel = new ArtistesModel;
-            //on peu utiliser la méthode insert
-            $objetArtistesModel->update(["nom"          => $nom, 
-                                        "genreArt"      => $genreArt, 
-                                        "cheminImage"   => $cheminImage, 
-                                        "bio"           => $bio
-                                        ], $id);
-
-            //Message de retour
-            //avec affichage lien vers la fiche //generateUrl permet de generer l'url de la route dans une methode
-            $GLOBALS["artisteUpdateRetour"] = "Artiste Modifié. Voir la fiche de <a href='". $this->generateUrl('vitrine_afficher_artiste', ["id" => $id])."'>$nom</a>";
-        }
-        else{
-            //Message de retour
-            $GLOBALS["artisteUpdateRetour"] = "Information manquante";
-        }
-       
-    }
-
-    public function artisteDeleteTraitement(){
-        // Récuperer l'id
-        $id = $this->verifierSaisie("id");
-
-        // Il faut que l'id soit un nombre superieur à 0
-        //SECURITE : Convertir $id en nombre
-        $id = intval($id);
-
-        if ($id > 0){
-
-            // ON Va deleguer à un objet de la classe ArtisteModel
-            //le travail de supprimer la ligne correspondante à l'ID
-            //Vérifier qu'on a fait le use au debut du fichier
-            $objetArtistesModel = new ArtistesModel;
-            $objetArtistesModel->delete($id);
-
-            $GLOBALS["artisteDeleteRetour"] = "Artiste Supprimer";
-        }else{
-
-            $GLOBALS["artisteDeleteRetour"] = "ERREUR SUR L'ID DE L'ARTISTE A SUPPRIMER";
-        }
-
-    }
-
     //SETTER
     function setVar($nomVariable,$valeurVariable){
         $this->tabVariableView[$nomVariable] = $valeurVariable;
@@ -364,6 +306,119 @@ class FormController extends Controller
         die();
     }
 
+    // Front - form de commande special
+
+    public function commandeSpecialFormTraitement(){
+
+        // Récupération des informations du formulaire de contact
+        $nom            = $this->verifierSaisie("nom");
+        $prenom         = $this->verifierSaisie("prenom");
+        $email          = $this->verifierSaisie("email");
+        $sujet          = $this->verifierSaisie("sujet");
+        $message        = $this->verifierSaisie("message");
+
+        // Sécurité
+        if ( $this->verifierEmail($email)
+                                        && ($nom != "")
+                                        && ($prenom != "")
+                                        && ($sujet != "")
+                                        && ($message != "") ){
+
+            
+            // Je crée un objet de la class ReCaptcha avec ma clé secrete en parametre
+            $captcha = new Recaptcha('6LeIMBsUAAAAACIMoHkDpf3ZUvDEsGDiynFlySG6');   
+            
+            // Si Ën retour du captcha j'ai la reponse False je n'envoi pas le formulaire.
+            if($captcha->checkCode($_POST['g-recaptcha-response']) === false){
+
+                $GLOBALS["commandeSpecialRetour"] = "<span class='glyphicon glyphicon-alert' aria-hidden='true'></span> Le captcha ne semble pas valide";
+                return false;
+            }else{ // Le captcha est valide
+
+                //envoie du message
+                $mailDestinataire = "damien.bouvier@gmail.com";
+                if (!preg_match("#^[a-z0-9._-]+@(hotmail|live|msn).[a-z]{2,4}$#", $mailDestinataire)) // On filtre les serveurs qui présentent des bogues.
+                {
+                    $passage_ligne = "\r\n";
+                }
+                else
+                {
+                    $passage_ligne = "\n";
+                }
+                //=====Déclaration des messages au format texte et au format HTML.
+                $message_txt = "Message de $prenom $nom." . $passage_ligne . "Email : $email" . $passage_ligne . "Objet du message : " . $sujet . $passage_ligne . $passage_ligne . $message;
+                $message_html = "<html><head></head><body>Message de $prenom $nom<br /> Email : $email <br /><br /> Objet du message : $sujet <br /><br /> $message</body></html>";
+                //==========
+                 
+                 
+                //=====Création de la boundary.
+                $boundary = "-----=".md5(rand());
+                $boundary_alt = "-----=".md5(rand());
+                //==========
+                 
+                //=====Définition du sujet.
+                $sujet = "Commande spéciale depuis le site Santon Elo";
+                //=========
+                 
+                //=====Création du header de l'e-mail.
+                $header = "From: \"". $prenom ." ". $nom ."\"<".$email.">".$passage_ligne;
+                $header.= "Reply-to: \"". $prenom ." ". $nom ."\"<".$email.">".$passage_ligne;
+                $header.= "MIME-Version: 1.0".$passage_ligne;
+                $header .= "X-Priority: 2".$passage_ligne;
+                $header.= "Content-Type: multipart/mixed;".$passage_ligne." boundary=\"$boundary\"".$passage_ligne;
+                //==========
+                 
+                //=====Création du message.
+                $message = $passage_ligne."--".$boundary.$passage_ligne;
+                $message.= "Content-Type: multipart/alternative;".$passage_ligne." boundary=\"$boundary_alt\"".$passage_ligne;
+                $message.= $passage_ligne."--".$boundary_alt.$passage_ligne;
+                //=====Ajout du message au format texte.
+                $message.= "Content-Type: text/plain; charset=\"ISO-8859-1\"".$passage_ligne;
+                $message.= "Content-Transfer-Encoding: 8bit".$passage_ligne;
+                $message.= $passage_ligne.$message_txt.$passage_ligne;
+                //==========
+                 
+                $message.= $passage_ligne."--".$boundary_alt.$passage_ligne;
+                 
+                //=====Ajout du message au format HTML.
+                $message.= "Content-Type: text/html; charset=\"ISO-8859-1\"".$passage_ligne;
+                $message.= "Content-Transfer-Encoding: 8bit".$passage_ligne;
+                $message.= $passage_ligne.$message_html.$passage_ligne;
+                //==========
+                 
+                //=====On ferme la boundary alternative.
+                $message.= $passage_ligne."--".$boundary_alt."--".$passage_ligne;
+                //==========
+                 
+                 
+                 
+                $message.= $passage_ligne."--".$boundary.$passage_ligne;
+                 
+                
+                //=====Envoi de l'e-mail.
+                mail($mailDestinataire,$sujet,$message,$header);
+                 
+                //==========
+
+
+
+            // message pour l'utilisateur
+            // $GLOBALS["contactRetour"] = "<p class='bg-success'>Merci $prenom, votre message est bien envoyé !</p>";
+            $GLOBALS["commandeSpecialRetour"] = "<span class='glyphicon glyphicon-ok' aria-hidden='true'></span> Merci $prenom, votre message a bien été envoyé !";
+
+                // Je vide les champs du formulaire
+                $nom = $prenom = $email = $message = $sujet = NULL;
+                unset($_POST);
+            }
+        }
+
+        else{
+            // $GLOBALS["contactRetour"] = "Il manque des informations";
+            $GLOBALS["commandeSpecialRetour"] = "<span class='glyphicon glyphicon-alert' aria-hidden='true'></span> Il manque des informations !";
+        }
+
+    }
+
     public function loginTraitement(){
 
         // REcuperer les infos du formulaire
@@ -415,11 +470,12 @@ class FormController extends Controller
         // Récupérer les infos du formulaire
         $nom          = $this->verifierSaisie("nom"); 
         $nomUrl       = $this->verifierSaisie("nom_url"); 
-        $prix           = $this->verifierSaisie("prix"); 
+        $prix         = $this->verifierSaisie("prix"); 
         $categorie    = $this->verifierSaisie("categorie"); 
+        $star         = $this->verifierSaisie("star"); 
         $photo        = $this->verifierUploadSanton("photo"); 
         $description  = $this->verifierSaisie("description");
-        $dateAjout     = date("Y-m-d H:i:s");
+        $dateAjout    = date("Y-m-d H:i:s");
         //vérifier si les infos sont correcte
         if(($nom != "") && ($nomUrl != "") && ($prix != "") && ($photo != "") && ($description != "")){
 
@@ -434,6 +490,7 @@ class FormController extends Controller
                                         "nom_url" => $nomUrl, 
                                         "prix" => $prix, 
                                         "categorie" => $categorie, 
+                                        "star" => $star, 
                                         "photo" => $photo,
                                         "description" => $description,
                                         "date_ajout" => $dateAjout
@@ -449,13 +506,14 @@ class FormController extends Controller
        
     }
 
-    public function santonUpdateTraitement(){
+     public function santonUpdateTraitement(){
         // Récupérer les infos du formulaire
         $id             = $this->verifierSaisie("id");
         $nom          = $this->verifierSaisie("nom"); 
         $nomUrl       = $this->verifierSaisie("nom_url"); 
         $prix           = $this->verifierSaisie("prix"); 
-        $categorie    = $this->verifierSaisie("categorie");   
+        $categorie    = $this->verifierSaisie("categorie");
+        $star         = $this->verifierSaisie("star");    
         $oldPhotoPath    = $this->verifierSaisie("oldPath"); 
         $photo        = $this->verifierUploadSanton("photo"); 
         $description  = $this->verifierSaisie("description");
@@ -476,6 +534,7 @@ class FormController extends Controller
                                         "nom_url" => $nomUrl, 
                                         "prix" => $prix, 
                                         "categorie" => $categorie, 
+                                        "star" => $star,
                                         "photo" => $photo,
                                         "description" => $description,
                                         "date_ajout" => $dateAjout
@@ -485,6 +544,7 @@ class FormController extends Controller
                                         "nom_url" => $nomUrl, 
                                         "prix" => $prix, 
                                         "categorie" => $categorie, 
+                                        "star" => $star,
                                         "photo" => $oldPhotoPath,
                                         "description" => $description,
                                         "date_ajout" => $dateAjout
@@ -984,7 +1044,6 @@ function verifierUploadEvenement ($nameInput)
         }
 
     }
-
 
     // Création d'un avis client (livre)
     public function livreCreateTraitement(){
