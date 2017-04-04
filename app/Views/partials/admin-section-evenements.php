@@ -22,7 +22,7 @@
                 <div class="retour">
                 <?php echo $evenementDeleteRetour; ?>
             </div>
-
+            <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -69,6 +69,7 @@
             <?php } ?>
                 </tbody>
                 </table>
+            </div>
             </section>
         </div>
     </div>  

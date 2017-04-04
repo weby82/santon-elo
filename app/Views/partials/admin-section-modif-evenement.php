@@ -50,14 +50,12 @@
 			<label>Date de fin</label>
 		</div>
 
-		<div class="clearfix">
-			<div class="old-photo col-xs-3 col-md-1 group img-upload">
-				<img src="<?php echo $urlPhoto ?>">
-			</div>
-			<div class="group">
-			<input type="file" class="col-xs-9 col-md-11" name="photo">
+		<div class="group img-upload clearfix">
+			<div class="old-photo col-xs-3 col-md-1">
+				<img class="" src="<?php echo $urlPhoto; ?>">
 			</div>
 
+			<input class="col-xs-9 col-md-11" type="file" name="photo" >
 		</div>		
 		<div class="group">
 			<textarea rows="5" type="text" name="description" required class="used"><?php echo $description ?></textarea><span class="highlight"></span><span class="bar"></span>

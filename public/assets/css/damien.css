@@ -190,6 +190,13 @@ table tr td.itemInCartDisplay{
     font-size: 1.2em;
     width: 50%;
 }
+/**********************************************************************
+            Admin
+**********************************************************************/
+.admin table .glyphicon{
+    font-size: 1.8em;
+}
+
 
 /**********************************************************************
             Admin - Accueil
@@ -265,6 +272,7 @@ table tr td.itemInCartDisplay{
 
 .admin .col-nav-left{
     display: block;
+    margin-bottom: 15px;
 }
 
 .admin .col-nav-left .nav>li{
@@ -333,12 +341,6 @@ table tr td.itemInCartDisplay{
 
 }
 
-/*************************REcaptcha****************/
-
-.rc-anchor{
-    background-color: #fff !important;
-    border:0.01em solid rgba(219,211,202,0.5);
-}
 
 /************** Ecran ordinateur ********************/
 @media screen and (min-width:992px) {
@@ -369,10 +371,20 @@ table tr td.itemInCartDisplay{
     .admin .col-nav-left .nav>li{
         display: block;
     }
+    .admin table .glyphicon{
+        font-size: 1.2em;
+    }
 
 
 }
+/******************Smartphone**********************/
+@media screen and (max-width: 767px){
 
+    .table-responsive {
+       
+        border: 0 none;
+    }
+}
 /************Tout petit écran ********************/
 
 @media screen and (max-width:420px) {
