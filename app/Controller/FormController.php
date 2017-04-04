@@ -6,9 +6,6 @@ use \W\Controller\Controller;
 use \Model\SantonModel;
 use W\View\Plates\PlatesExtensions;
 use Controller\Recaptcha;
-use \Model\ActualiteModel;
-use \Model\EvenementsModel;
-
 
 class FormController extends Controller
 {
@@ -251,6 +248,7 @@ class FormController extends Controller
 }
 
 
+
    // METHODE
     // Je surcharge la methode show() de la classe parent Controller
     public function show($file, array $data = array()){
@@ -412,6 +410,7 @@ class FormController extends Controller
         }
 
     }
+    
 
      // Front - form de commande special
 
@@ -433,8 +432,11 @@ class FormController extends Controller
         if ( $this->verifierEmail($email)
                                         && ($nom != "")
                                         && ($prenom != "")
-                                        && ($sujet != "")
-                                        && ($message != "") ){
+                                        && ($tel != "")
+                                        && ($adresse != "")
+                                        && ($codePostal != "")
+                                        && ($ville != "")
+                                        && ($detailCommande != "") ){
 
             
             // Je crée un objet de la class ReCaptcha avec ma clé secrete en parametre
@@ -458,8 +460,8 @@ class FormController extends Controller
                     $passage_ligne = "\n";
                 }
                 //=====Déclaration des messages au format texte et au format HTML.
-                $message_txt = "Commande de $prenom $nom pour un paiement par chèque" . $passage_ligne . "Email : $email" . $passage_ligne . "Tel : $tel" . $passage_ligne . "Objet du message : " . $sujet . $passage_ligne . $passage_ligne . $message;
-                $message_html = "<html><head></head><body>Message de $prenom $nom<br /> Email : $email <br /><br /> Objet du message : $sujet <br /><br /> $message</body></html>";
+                $message_txt = "Commande de $prenom $nom avec un paiement par chèque" . $passage_ligne . "Email : $email" . $passage_ligne . "Tel : $tel" . $passage_ligne . "Adresse : " . $passage_ligne . "$adresse" . $passage_ligne . "$codePostal $ville" . $passage_ligne . $passage_ligne . "Objet du message : " . $sujet . $passage_ligne . $passage_ligne . $detailCommande . $passage_ligne . $passage_ligne . $commentaire;
+                $message_html = "<html><head></head><body>Commande de $prenom $nom avec un paiement par chèque<br /><b>Email</b> : $email <br /><b>Tel : $tel</b><br /><b>Adresse : </b><br />$adresse <br />$codePostal $ville<br /><br /> <b>Objet du message : </b>$sujet <br /><br /> <b>Commande :</b><br />$detailCommande <br /><br /><b>Commentaire :</b><br />$commentaire</body></html>";
                 //==========
                  
                  
@@ -530,6 +532,7 @@ class FormController extends Controller
         }
 
     }
+
 
 
     public function loginTraitement(){
@@ -699,14 +702,17 @@ class FormController extends Controller
     }
 
 
+
     public function actualiteCreateTraitement(){
        // Récupérer les infos du formulaire
        $titre    = $this->verifierSaisie("titre"); 
        $contenu  = $this->verifierSaisie("contenu"); 
+
        $photo        = $this->verifierUploadActualite("photo"); 
        $dateAjout     = date("Y-m-d H:i:s"); 
+
        //vérifier si les infos sont correcte
-       if(($titre != "") && ($contenu != "") && ($photo != "")){
+       if(($titre != "") && ($contenu != "") && ($photo != "") && ($date != "")){
 
             //si ok on ajoute une ligne dans la table artiste
             //avec le framwork W
@@ -718,11 +724,11 @@ class FormController extends Controller
             $objetActualiteModel->insert(["titre"   => $titre, 
                                           "contenu" => $contenu, 
                                           "photo"   => $photo, 
-                                          "date"    => $dateAjout
+                                          "date"    => $date
                                         ]);
 
             //Message de retour
-            $GLOBALS["actualiteCreateRetour"] = "Actualite $titre créée";
+            $GLOBALS["actualiteCreateRetour"] = "Actualite $titre Ajouté";
         }
         else{
             //Message de retour
@@ -731,134 +737,20 @@ class FormController extends Controller
        
     }
 
-     // Verifier le champ d'upload
-    function verifierUploadActualite ($nameInput)
-    {
-    $cheminOK = "";
-    $cheminUrlOk = "";
-    
-    // POUR LE MESSAGE DE RETOUR
-    $idForm = $this->verifierSaisie("idForm");
-    
-    // CONTROLLER
-    // VERIFIER SI IL Y A UN FICHIER UPLOADE
-    // VERIFIER SI IL N'Y A PAS DE CODE D'ERREUR
-    // VERIFIER LE SUFFIXE DU FICHIER 
-    // (INTERDIRE .php, .asp, .jsp, etc...)
-    // (AUTORISER CERTAINS SUFFIXES .jpeg, .jpg, .gif, .png, .svg, .pdf, .txt, .doc, .docx, .xls, .ppt, .pptx, .odt, .html, .css, .js, .ttf, .otf)
-    // (ET NE PAS OUBLIER LES VARIANTES EN MAJUSCULES...)
-    // FILTRER LE NOM DU FICHIER POUR ENLEVER LES CARACTERES BIZARRES POUR LES URLS
-    // ON VA PRENDRE LA RESPONSABILITE DE SORTIR LE FICHIER DE SA QUARANTAINE
-    // (IDEALEMENT IL FAUDRAIT PASSER LE FICHIER A TRAVERS UN ANTIVIRUS POUR DETECTER LES VIRUS :-/)
-    // ET ON LE DEPLACE DANS LE DOSSIER assets/uploads/
-    // (AVEC LE NOM FILTRE)
-    
-    // NOTE: 
-    // POUR LES IMAGES, ON PEUT UTILISER DES FONCTIONS DE PHP
-    // POUR CREER DES MINIATURES
-    
-    // EST-CE QUE LE TABLEAU $_FILES CONTIENT LA CLE $nameInput
-    if (isset($_FILES[$nameInput]))
-    {
-        // EN HTML
-        // <input type="file" name="upload" />
-        // EN PHP
-        $tabInfoFichierUploade = $_FILES[$nameInput];
-        if (!empty($tabInfoFichierUploade))
-        {
-            $error = $tabInfoFichierUploade["error"];
-            if ($error == 0)
-            {
-                // L'UPLOAD S'EST BIEN DEROULE
-                // JE RECUPERE LES AUTRES INFOS
-                $name       = $tabInfoFichierUploade["name"];
-                $type       = $tabInfoFichierUploade["type"];
-                $tmpName    = $tabInfoFichierUploade["tmp_name"];
-                $size       = $tabInfoFichierUploade["size"];
-
-                
-                if ($size < 10 * 1024 * 1024) // 10 MEGAOCTETS
-                {
-                    // OK EN DESSOUS DE LA TAILLE LIMITE
-                    // ON VERIFIE L'EXTENSION
-                    // http://php.net/manual/fr/function.pathinfo.php
-                    $extension = pathinfo($name, PATHINFO_EXTENSION);
-                    // METTRE L'EXTENSION EN MINUSCULES
-                    // http://php.net/manual/fr/function.strtolower.php
-                    $extension = strtolower($extension);
-                    
-                    // IL FAUT VERIFIER SI L'EXTENSION EST AUTORISEE
-                    $tabExtensionOK = 
-                    [ 
-                        "jpeg", "jpg", "gif", "png", "svg"
-                        
-                    ];
-                    
-                    // http://php.net/manual/fr/function.in-array.php
-                    if (in_array($extension, $tabExtensionOK))
-                    {
-                        // OK EXTENSION AUTORISEE
-                        // ON EST PRET A DEPLACER LE FICHIER DANS SON DOSSIER assets/uploads
-                        // http://php.net/manual/fr/function.preg-replace.php
-                        // TOUS LES CARACTERES QUI NE SONT DES LETTRES ENTRE a et z ou entre A et Z ou entre 0 et 9 ou qui ne sont -, _, .
-                        // ALORS IL FAUT REMPLACER PAR LE CARACTERE "" (EN FAIT LES SUPPRIMER)
-                        $nameOK     =  preg_replace("/[^a-zA-Z0-9-_\.]/", "", $name);
-
-
-                        $cheminPhotoUrl = "img/actualites/";
-                        $cheminMovePhoto = "assets/img/actualites/";
-                        // $cheminAssets = new PlatesExtensions;
-                        // $cheminAssetUrl = $cheminAssets->assetUrl();
-                          
-                        // $cheminOK   = $cheminAssetUrl . $nameOK;
-
-                        // url pour le chemin vers le dossier pour le deplacement de l'image
-                         $cheminMoveOK   = $cheminMovePhoto . $nameOK;
-
-                         // url pour la base de donnée
-                         $cheminUrlOk   =  $cheminPhotoUrl . $nameOK;
-                        
-                        // TRANSFORMER LE CHEMIN OK EN MINUSCULES
-                        $cheminUrlOk = strtolower($cheminUrlOk);
-                        $cheminMoveOK = strtolower($cheminMoveOK);
-                        
-                        // ON SORT LE FICHIER DE SA QUARANTAINE
-                        // http://php.net/manual/fr/function.move-uploaded-file.php
-                        move_uploaded_file($tmpName, $cheminMoveOK);
-                        
-                    }
-                    else
-                    {
-                        // KO
-                        // EXTENSION NON AUTORISEE
-                        $GLOBALS["actualiteCreateRetour"] = "EXTENSION NON CONFORME";
-                    }
-                }
-                else 
-                {
-                    // KO
-                    // FICHIER TROP VOLUMINEUX
-                    $GLOBALS["actualiteCreateRetour"] = "FICHIER TROP VOLUMINEUX";
-                }
-            }
-        }
-    }
-     return $cheminUrlOk;
-}
-
          // Admin pour les actualités
     public function actualiteUpdateTraitement(){
         // Récupérer les infos du formulaire
-        $id           = $this->verifierSaisie("id");
-        $titre        = $this->verifierSaisie("titre"); 
-        $contenu      = $this->verifierSaisie("contenu"); 
-        $photo        = $this->verifierUploadActualite("photo"); 
-        $oldPhotoPath = $this->verifierSaisie("oldPath"); 
-        $date         = date("Y-m-d H:i:s");
+        $titre       = $this->verifierSaisie("titre"); 
+        $contenu     = $this->verifierSaisie("contenu"); 
+        $photo       = $this->verifierSaisie("photo"); 
+        $date        = $this->verifierSaisie("date"); 
         //vérifier si les infos sont correcte
         // transformer $id en nombre entier
+        $id = $this->verifierSaisie("id");
+        $id = intval($id);
 
-        if(($id > 0) && ($titre != "") && ($contenu != "") && (($photo != "") || ($oldPhotoPath != "")) && ($date != "")){
+
+        if(($id > 0) && ($titre != "") && ($contenu != "") && ($photo != "") && ($date != "")){
 
              //si ok on ajoute une ligne dans la table artiste
             //avec le framwork W
@@ -867,30 +759,19 @@ class FormController extends Controller
             //ne pas oublier de rajouter use \Model\ArtistesModel
             $objetActualiteModel = new ActualiteModel;
             //on peu utiliser la méthode insert
-
-            if($photo != ""){
-             $objetActualiteModel->update(["titre"    => $titre, 
+            $objetActualiteModel->update(["titre"    => $titre, 
                                           "contenu"  => $contenu, 
                                           "photo"    => $photo, 
                                           "date"     => $date
-                                        ], 
-                                        $id);
-            }else{
-                $objetActualiteModel->update(["titre" => $titre, 
-                                          "contenu"   => $contenu, 
-                                          "photo"     => $oldPhotoPath, 
-                                          "date"      => $date
-                                        ], 
-                                        $id);
-            }
+                                        ], $id);
 
             //Message de retour
             //avec affichage lien vers la fiche //generateUrl permet de generer l'url de la route dans une methode
-            $GLOBALS["actualiteUpdateRetour"] = "<span class='glyphicon glyphicon-ok' aria-hidden='true'></span> Actualité $titre Modifiée";
+            $GLOBALS["actualiteUpdateRetour"] = "Actualité Modifié ($titre)";
         }
         else{
             //Message de retour
-            $GLOBALS["actualiteUpdateRetour"] = "<span class='glyphicon glyphicon-alert' aria-hidden='true'></span> Information manquante";
+            $GLOBALS["actualiteUpdateRetour"] = "Information(s) manquante(s)";
         }
        
     }
@@ -924,11 +805,13 @@ class FormController extends Controller
         // Récupérer les infos du formulaire
         $titre         = $this->verifierSaisie("titre"); 
         $lieu          = $this->verifierSaisie("lieu"); 
-        $dateStart     = date("Y-m-d H:i:s"); 
-        $dateEnd       = date("Y-m-d H:i:s"); 
+        $dateStart     = $this->verifierSaisie("date_event_start"); 
+        $dateEnd       = $this->verifierSaisie("date_event_end"); 
         $description   = $this->verifierSaisie("description"); 
+
         $photo         = $this->verifierUploadEvenement("photo"); 
         $date          = date("Y-m-d H:i:s"); 
+
 
         //vérifier si les infos sont correcte
         if(($titre != "") 
@@ -946,12 +829,12 @@ class FormController extends Controller
             //ne pas oublier de rajouter use \Model\ArtistesModel
             $objetEvenementsModel = new EvenementsModel;
             //on peu utiliser la méthode insert
-            $objetEvenementsModel->insert(["titre"           => $titre, 
+            $objetEvenementsModel->insert(["titre"            => $titre, 
                                           "lieu"             => $lieu, 
                                           "date_event_start" => $dateStart,
                                           "date_event_end"   => $dateEnd,
                                           "photo"            => $photo, 
-                                          "date_publication" => $date
+                                          "date_publication"             => $date
                                         ]);
 
             //Message de retour
@@ -964,123 +847,9 @@ class FormController extends Controller
        
     }
 
-
-function verifierUploadEvenement ($nameInput)
-    {
-    $cheminOK = "";
-    $cheminUrlOk = "";
-    
-    // POUR LE MESSAGE DE RETOUR
-    $idForm = $this->verifierSaisie("idForm");
-    
-    // CONTROLLER
-    // VERIFIER SI IL Y A UN FICHIER UPLOADE
-    // VERIFIER SI IL N'Y A PAS DE CODE D'ERREUR
-    // VERIFIER LE SUFFIXE DU FICHIER 
-    // (INTERDIRE .php, .asp, .jsp, etc...)
-    // (AUTORISER CERTAINS SUFFIXES .jpeg, .jpg, .gif, .png, .svg, .pdf, .txt, .doc, .docx, .xls, .ppt, .pptx, .odt, .html, .css, .js, .ttf, .otf)
-    // (ET NE PAS OUBLIER LES VARIANTES EN MAJUSCULES...)
-    // FILTRER LE NOM DU FICHIER POUR ENLEVER LES CARACTERES BIZARRES POUR LES URLS
-    // ON VA PRENDRE LA RESPONSABILITE DE SORTIR LE FICHIER DE SA QUARANTAINE
-    // (IDEALEMENT IL FAUDRAIT PASSER LE FICHIER A TRAVERS UN ANTIVIRUS POUR DETECTER LES VIRUS :-/)
-    // ET ON LE DEPLACE DANS LE DOSSIER assets/uploads/
-    // (AVEC LE NOM FILTRE)
-    
-    // NOTE: 
-    // POUR LES IMAGES, ON PEUT UTILISER DES FONCTIONS DE PHP
-    // POUR CREER DES MINIATURES
-    
-    // EST-CE QUE LE TABLEAU $_FILES CONTIENT LA CLE $nameInput
-    if (isset($_FILES[$nameInput]))
-    {
-        // EN HTML
-        // <input type="file" name="upload" />
-        // EN PHP
-        $tabInfoFichierUploade = $_FILES[$nameInput];
-        if (!empty($tabInfoFichierUploade))
-        {
-            $error = $tabInfoFichierUploade["error"];
-            if ($error == 0)
-            {
-                // L'UPLOAD S'EST BIEN DEROULE
-                // JE RECUPERE LES AUTRES INFOS
-                $name       = $tabInfoFichierUploade["name"];
-                $type       = $tabInfoFichierUploade["type"];
-                $tmpName    = $tabInfoFichierUploade["tmp_name"];
-                $size       = $tabInfoFichierUploade["size"];
-
-                
-                if ($size < 10 * 1024 * 1024) // 10 MEGAOCTETS
-                {
-                    // OK EN DESSOUS DE LA TAILLE LIMITE
-                    // ON VERIFIE L'EXTENSION
-                    // http://php.net/manual/fr/function.pathinfo.php
-                    $extension = pathinfo($name, PATHINFO_EXTENSION);
-                    // METTRE L'EXTENSION EN MINUSCULES
-                    // http://php.net/manual/fr/function.strtolower.php
-                    $extension = strtolower($extension);
-                    
-                    // IL FAUT VERIFIER SI L'EXTENSION EST AUTORISEE
-                    $tabExtensionOK = 
-                    [ 
-                        "jpeg", "jpg", "gif", "png", "svg"
-                        
-                    ];
-                    
-                    // http://php.net/manual/fr/function.in-array.php
-                    if (in_array($extension, $tabExtensionOK))
-                    {
-                        // OK EXTENSION AUTORISEE
-                        // ON EST PRET A DEPLACER LE FICHIER DANS SON DOSSIER assets/uploads
-                        // http://php.net/manual/fr/function.preg-replace.php
-                        // TOUS LES CARACTERES QUI NE SONT DES LETTRES ENTRE a et z ou entre A et Z ou entre 0 et 9 ou qui ne sont -, _, .
-                        // ALORS IL FAUT REMPLACER PAR LE CARACTERE "" (EN FAIT LES SUPPRIMER)
-                        $nameOK     =  preg_replace("/[^a-zA-Z0-9-_\.]/", "", $name);
-
-
-                        $cheminPhotoUrl = "img/evenements/";
-                        $cheminMovePhoto = "assets/img/evenements/";
-                        // $cheminAssets = new PlatesExtensions;
-                        // $cheminAssetUrl = $cheminAssets->assetUrl();
-                          
-                        // $cheminOK   = $cheminAssetUrl . $nameOK;
-
-                        // url pour le chemin vers le dossier pour le deplacement de l'image
-                         $cheminMoveOK   = $cheminMovePhoto . $nameOK;
-
-                         // url pour la base de donnée
-                         $cheminUrlOk   =  $cheminPhotoUrl . $nameOK;
-                        
-                        // TRANSFORMER LE CHEMIN OK EN MINUSCULES
-                        $cheminUrlOk = strtolower($cheminUrlOk);
-                        $cheminMoveOK = strtolower($cheminMoveOK);
-                        
-                        // ON SORT LE FICHIER DE SA QUARANTAINE
-                        // http://php.net/manual/fr/function.move-uploaded-file.php
-                        move_uploaded_file($tmpName, $cheminMoveOK);
-                        
-                    }
-                    else
-                    {
-                        // KO
-                        // EXTENSION NON AUTORISEE
-                        $GLOBALS["evenementCreateRetour"] = "EXTENSION NON CONFORME";
-                    }
-                }
-                else 
-                {
-                    // KO
-                    // FICHIER TROP VOLUMINEUX
-                    $GLOBALS["evenementCreateRetour"] = "FICHIER TROP VOLUMINEUX";
-                }
-            }
-        }
-    }
-     return $cheminUrlOk;
-}
-
     public function evenementUpdateTraitement(){
         // Récupérer les infos du formulaire
+
         $id           = $this->verifierSaisie("id");
         $titre        = $this->verifierSaisie("titre"); 
         $lieu         = $this->verifierSaisie("lieu");
@@ -1101,36 +870,25 @@ function verifierUploadEvenement ($nameInput)
             //ne pas oublier de rajouter use \Model\ArtistesModel
             $objetEvenementsModel = new EvenementsModel;
             //on peu utiliser la méthode insert
-            if($photo != ""){
-                $objetEvenementsModel->update(["titre"                => $titre,
-                                               "lieu"                 => $lieu,
-                                               "date_event_start"     => $dateStart,
-                                               "date_event_end"       => $dateEnd, 
-                                               "description"          => $description, 
-                                               "photo"                => $photo, 
-                                               "date_publication"     => $date
-                                            ], $id);
-            }else{
-               $objetEvenementsModel->update(["titre"                => $titre,
-                                               "lieu"                 => $lieu,
-                                               "date_event_start"     => $dateStart,
-                                               "date_event_end"       => $dateEnd, 
-                                               "description"          => $description, 
-                                               "photo"                => $oldPhotoPath, 
-                                               "date_publication"     => $date
-                                            ], $id); 
-            }
+            $objetEvenementsModel->update(["titre"                => $titre,
+                                           "lieu"                 => $lieu,
+                                           "date_event_start"     => $dateStart,
+                                           "date_event_end"       => $dateEnd, 
+                                           "description"          => $description, 
+                                           "photo"                => $photo, 
+                                           "date_publication"     => $date
+                                        ], $id);
+
             //Message de retour
             //avec affichage lien vers la fiche //generateUrl permet de generer l'url de la route dans une methode
-            $GLOBALS["evenementUpdateRetour"] = "<span class='glyphicon glyphicon-ok' aria-hidden='true'></span> Evènement $titre Modifié";
+            $GLOBALS["evenementUpdateRetour"] = "Evènement Modifié. Voir la fiche de <a href='". $this->generateUrl('vitrine_evenements', ["id" => $id])."'>$titre</a>";
         }
         else{
             //Message de retour
-            $GLOBALS["evenementUpdateRetour"] = "<span class='glyphicon glyphicon-alert' aria-hidden='true'></span> Information manquante";
+            $GLOBALS["evenementUpdateRetour"] = "Information manquante";
         }
        
     }
-    
 
     public function evenementDeleteTraitement(){
         // Récuperer l'id
@@ -1145,8 +903,8 @@ function verifierUploadEvenement ($nameInput)
             // ON Va deleguer à un objet de la classe ArtisteModel
             //le travail de supprimer la ligne correspondante à l'ID
             //Vérifier qu'on a fait le use au debut du fichier
-            $objetEvenementsModel = new EvenementsModel;
-            $objetEvenementsModel->delete($id);
+            $objetEvenementModel = new EvenementModel;
+            $objetEvenementModel->delete($id);
 
             $GLOBALS["evenementDeleteRetour"] = "<span class='glyphicon glyphicon-ok' aria-hidden='true'></span> Evènement Supprimé";
         }else{
