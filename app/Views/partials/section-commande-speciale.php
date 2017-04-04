@@ -115,8 +115,7 @@
 							</div> <!--colonne-gauche -->
 
 							<div class="group form-group col-md-6 col-xs-12 ">
-								<textarea rows="7" type="text" name="message" id="message" required class="<?php if(isset($_POST['message'])) echo 'used'; ?>"><?php if(isset($_POST['message'])) echo $_POST['message']; ?>
-								</textarea>
+								<textarea rows="7" type="text" name="message" id="message" required class="<?php if(isset($_POST['message'])) echo 'used'; ?>"><?php if(isset($_POST['message'])) echo $_POST['message']; ?></textarea>
 								<span class="highlight"></span>
 								<span class="bar"></span>
 							    <label>Description de votre commande</label>

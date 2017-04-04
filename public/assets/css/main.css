@@ -43,6 +43,8 @@
 
 body{
 	background: #fffaee;
+	font-family: 'palanquin', helvetica, sans-serif;
+	font-size: 15px;
 }
 header{
 	background: #6E8A94;
@@ -56,8 +58,12 @@ footer{
 	background: #6E8A94;
 	margin-top: 50px;
 }
-
-h1, h2, h3, h4, .navbar-brand, .navbar li a, .btn-default, .col-nav-left li a{
+h1, h2, h3, h4, .navbar li a, .col-nav-left li a{
+	font-family: 'Comfortaa', cursive;
+	font-weight: bold;
+}
+ .navbar-brand, .btn-default, .btn{
+ 	
 	font-family: 'palanquin', helvetica, sans-serif;
 }
 h2{
@@ -72,10 +78,11 @@ a:hover{
 /*****************************************************
 		Bouton
 ***************************************************/
-.btn-default{
+.btn-default, .btn{
 	background-color: #BAD1D1;
 	color: #fff;
 	border-color: #BAD1D1;
+	font-size: 15px;
 }
 
 .btn-default:hover{
@@ -89,6 +96,9 @@ a:hover{
 	background-color: #6E8A94;
 	color: #fff;
 	border-color: #BAD1D1;
+}
+button.recherche{
+	    padding: 6px 12px 5px;
 }
 
 /*****************************************************
@@ -122,7 +132,6 @@ header .container>.navbar-header{
 }
 .navbar li a{
 	color: #647277;
-	font-weight: 500;
 	text-transform: uppercase;
 	white-space: nowrap;
 	border-radius: 20px;
@@ -522,9 +531,7 @@ h1 {
 	margin-left: 30px;
 }
 
-h1, h2, h3 {
-	font-family: 'Palanquin', sans-serif;
-}
+
 
 .img-responsive {
 	width: 100%;

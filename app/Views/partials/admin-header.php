@@ -27,6 +27,9 @@ if(session_status()==PHP_SESSION_NONE){session_start();}
     <link rel="stylesheet" type="text/css" href="<?php echo $this->assetUrl('css/pier.css') ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo $this->assetUrl('css/liinaa.css') ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo $this->assetUrl('css/damien.css') ?>">
+
+    <!-- Google webfont -->
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa:300,400,700" rel="stylesheet">
 </head>
 <body>
    <!-- Création de l'en tête et du bandeau de navigation -->

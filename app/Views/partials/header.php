@@ -37,6 +37,8 @@ if(session_status()==PHP_SESSION_NONE){session_start();}
     <link rel="stylesheet" type="text/css" href="<?php echo $this->assetUrl('css/liinaa.css') ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo $this->assetUrl('css/damien.css') ?>">
     
+    <!-- Google webfont -->
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa:300,400,700" rel="stylesheet">
 
     <!-- Recaptcha -->
     <script src='https://www.google.com/recaptcha/api.js'></script>
@@ -90,7 +92,7 @@ if(session_status()==PHP_SESSION_NONE){session_start();}
               <div class="input-group">
                 <input type="text" class="form-control" placeholder="Rechercher">
                 <span class="input-group-btn">
-                  <button class="btn btn-default" type="button">
+                  <button class="btn btn-default recherche" type="button">
                     <span class="glyphicon glyphicon-search"></span>
                   </button>
                 </span>
