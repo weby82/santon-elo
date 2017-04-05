@@ -16,6 +16,8 @@ main.admin{
 .quantite select.form-control{
     display: inline-block;
     width: auto;
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 #section-detail-santon figure{
