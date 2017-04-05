@@ -46,31 +46,31 @@ $(document).ready(function(){
 		var item_id = $(this).attr("item_id"); // get item id        
         /* This part make sure tha the removed item disappears from shopping cart and is being removed */
         /* json gets the item_id */
-		$.getJSON( cheminPanier, {"remove_item_from_cart":item_id} , function(data){ //get Item id
-			$("#items_in_shopping_cart").html(data.items_in_cart); //update Item count in cart-info bar
+		$.getJSON( cheminPanier, {"remove_item_from_cart":item_id} ).always(function(data){ //get Item id
+            $("#items_in_shopping_cart").html(data.items_in_cart); //update Item count in cart-info bar
             // update shopping cart content
-			$(".shopping_cart_info").trigger( "click" ); 
-		});
+            $(".shopping_cart_info").trigger( "click" ); 
+        });
 	});  
 
     /* Change item quantity - ADD */
     $("#shopping_cart_output").on("click", "a.add_itm_qty", function(e){
         e.preventDefault(); 
         var item_id = $(this).attr("item_id");   
-        $.getJSON( cheminPanier, {"add_itm_qty":item_id} , function(data){ 
+        $.getJSON( cheminPanier, {"add_itm_qty":item_id} ).always(function(data){ 
             // update specific item quantity on event
-			$(".shopping_cart_info").click(); 
-		});
+            $(".shopping_cart_info").trigger( "click" ); 
+        });
     }); 
 
     /* Change item quantity - SUBTRUCT */
      $("#shopping_cart_output").on("click", "a.subtruct_itm_qty", function(e){
         e.preventDefault(); 
         var item_id = $(this).attr("item_id");   
-        $.getJSON( cheminPanier, {"subtruct_itm_qty":item_id} , function(data){ 
+        $.getJSON( cheminPanier, {"subtruct_itm_qty":item_id} ).always(function(data){ 
             // update specific item quantity on event
-			$(".shopping_cart_info").click(); 
-		});
+            $(".shopping_cart_info").trigger( "click" ); 
+        });
     }); 
         
     /* Display image on click */

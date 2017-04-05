@@ -39,6 +39,7 @@ if(isset($_POST["load_cart_items"])){
 	if(isset($_SESSION["items"]) && count($_SESSION["items"])>0){
 
     ?>
+        <div class="table-responsive">
         <table class='table'> <!--Start table that will holds all data in the shopping cart --> 
         <?php
         $total=0; // define total so the script won't throw silly error of a type 'Undefined variable: total in....'
@@ -50,7 +51,7 @@ if(isset($_POST["load_cart_items"])){
         ?>			
             <tr class='itemInCardRow'>            
                 <td class='itemInCartDisplay'>
-                    <img class='img-responsive item_disp_image' style='max-width:80px; float:left;' src="<?php echo $urlPhoto; ?>">
+                    <img class='img-responsive item_disp_image' style='max-width:80px;' src="<?php echo $urlPhoto; ?>">
                 </td>
 
                 <td class='itemInCartDisplay'>
@@ -81,13 +82,13 @@ if(isset($_POST["load_cart_items"])){
         
             <!-- This part displays Checkout button and price total -->
             <tr>                 
-                <td class='itemInCartDisplay' colspan='4'>
+                <td class='itemInCartDisplay' colspan='2'>
                     <div>
                         <a href='<?php echo $this->url('vitrine_commander'); ?>' title="Review Cart and Check-Out"><button type="button" class="btn btn-default checkoutButton">COMMANDER</button></a>
 <!--                        <a class="checkoutButton" href="view_cart.php" CHECKOUT</a>            -->
                     </div>
                 </td>                
-                 <td class='itemInCartDisplay' style='text-align:right;'>
+                 <td class='itemInCartDisplay' colspan='2' style='text-align:right;'>
                     <div class="cart-products-total">                        
                         <span>Total : <span style='font-size:20px; color:#008cba;'></span>
                             <?php
@@ -99,6 +100,7 @@ if(isset($_POST["load_cart_items"])){
                 </td>
             </tr>
         </table>
+        </div>
     
     <?php 
        

@@ -5,7 +5,7 @@
 				<li>|</li>
 				<li><a href="#!">CGU</a></li>
 				<li>|</li>
-				<li><a href="https://fr-fr.facebook.com/santonelolm/">Rejoignez-nous sur Facebook</a></li>
+				<li><a href="https://fr-fr.facebook.com/santonelolm/"><img class="logo-facebook" src="<?php echo $this->assetUrl('img/facebook.png') ?>" />Rejoignez-nous sur Facebook</a></li>
 			</ul>
 			<p>Copyright &copy;Santon'Elo 2017</p>
 		</div>

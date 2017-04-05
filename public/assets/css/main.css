@@ -100,6 +100,15 @@ a:hover{
 button.recherche{
 	    padding: 6px 12px 5px;
 }
+.navbar-form{
+	border: 0 none;
+	-webkit-box-shadow: none; 
+	-moz-box-shadow:none;
+    box-shadow: none; 
+}
+
+
+}
 
 /*****************************************************
 		Navbar
@@ -580,6 +589,11 @@ h1 {
 footer li a:hover{
 	color: #fdd4d4;
 	text-decoration: none;
+}
+.logo-facebook{
+	width: 20px;
+	margin-top: -9px;
+	margin-right: 3px;
 }
 
 /***************Résolution d'écran minimum 768 px****************/

@@ -107,14 +107,13 @@ table tr td.itemInCartDisplay{
 #shopping_cart_output ul.cart-products-loaded li{margin-bottom: 1px;padding: 5px;background: #888;}
 .shopping_cart_holder .remove_item_from_cart{
     float: right;
-    margin-left: 30px;
     padding: 0 10px;
     color: #647277;
     text-decoration: none;
     font-size: 18px;
 }
 .shopping_cart_holder .remove_item_from_cart:hover{font-weight:600;}
-.cart-products-total{padding: 5px 0px 0px 5px;text-align: right;font-weight: bold;}
+.cart-products-total{padding: 5px 0px 0px 5px;text-align: left;font-weight: bold;}
 .shopping_cart_holder h3{margin-bottom:15px;padding: 0px 0px 5px 0px;color:#647277;}
 
 /* Checkout button */
@@ -168,6 +167,10 @@ table tr td.itemInCartDisplay{
 
 /*####################### DISPLAY INFO ABOUT UPDATED CART(in the middle of the page) #######################*/
 
+.itemInCartDisplay .checkout_btn,.itemInCartDisplay .continue_shopping_btn{
+    margin-bottom: 5px;
+}
+
 /*********************************************************************
             bloc santon liste santon
 **************************************************************/
@@ -176,7 +179,7 @@ table tr td.itemInCartDisplay{
     margin:10px 0;
 }
 .bloc-santon .item_disp_values select{
-    padding: 4px;
+    padding:0 4px;
 }
 
 /***********************************************************
@@ -392,4 +395,11 @@ table tr td.itemInCartDisplay{
     #admin-accueil .bloc-menu div{
         width: 100% ;
     }
+
+   
+}
+@media screen and (max-width:380px) {
+     .item_disp_image{
+        display: none;
+     }
 }
