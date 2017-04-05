@@ -464,7 +464,7 @@ class FormController extends Controller
                 }
                 //=====Déclaration des messages au format texte et au format HTML.
                 $message_txt = "Commande de $prenom $nom avec un paiement par chèque" . $passage_ligne . "Email : $email" . $passage_ligne . "Tel : $tel" . $passage_ligne . "Adresse : " . $passage_ligne . "$adresse" . $passage_ligne . "$codePostal $ville" . $passage_ligne . $passage_ligne . "Objet du message : " . $sujet . $passage_ligne . $passage_ligne . $detailCommande . $passage_ligne . $passage_ligne . $commentaire;
-                $message_html = "<html><head></head><body>Commande de $prenom $nom avec un paiement par chèque<br /><b>Email</b> : $email <br /><b>Tel : $tel</b><br /><b>Adresse : </b><br />$adresse <br />$codePostal $ville<br /><br /> <b>Objet du message : </b>$sujet <br /><br /> <b>Commande :</b><br />$detailCommande <br /><br /><b>Commentaire :</b><br />$commentaire</body></html>";
+                $message_html = "<html><head></head><body>Commande de $prenom $nom avec un paiement par chèque<br /><b>Email</b> : $email <br /><b>Tel : $tel</b><br /><b>Adresse : </b><br />$adresse <br />$codePostal $ville<br /><br /> <b>Objet du message : </b>$sujet <br /><br /><pre style='font-size:14px;'>$detailCommande </pre><br /><br /><b>Commentaire :</b><br />$commentaire</body></html>";
                 //==========
                  
                  
@@ -483,6 +483,14 @@ class FormController extends Controller
                 $header.= "MIME-Version: 1.0".$passage_ligne;
                 $header .= "X-Priority: 2".$passage_ligne;
                 $header.= "Content-Type: multipart/mixed;".$passage_ligne." boundary=\"$boundary\"".$passage_ligne;
+                //==========
+
+                //=====Création du header pour le client de l'e-mail.
+                $header2 = "From: \"Santon Elo\"<".$mailDestinataire.">".$passage_ligne;
+                $header2.= "Reply-to: \"Santon Elo\"<".$mailDestinataire.">".$passage_ligne;
+                $header2.= "MIME-Version: 1.0".$passage_ligne;
+                $header2 .= "X-Priority: 2".$passage_ligne;
+                $header2.= "Content-Type: multipart/mixed;".$passage_ligne." boundary=\"$boundary\"".$passage_ligne;
                 //==========
                  
                 //=====Création du message.
@@ -514,6 +522,9 @@ class FormController extends Controller
                 
                 //=====Envoi de l'e-mail.
                 mail($mailDestinataire,$sujet,$message,$header);
+
+                // ENvoi d'une copie du mail au client
+                mail($email,"Votre commande de Santon",$message,$header2);
                  
                 //==========
 
