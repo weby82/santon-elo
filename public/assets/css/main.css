@@ -181,6 +181,13 @@ li.active #dropcategorie > a:focus {
 #dropcategorie ul{
 	background: #fdd4d4;
 }
+.dropdown-menu{
+	float: none;
+	position: relative;
+}
+.dropdown-menu>li>a{
+	padding: 8px 20px;
+}
 
 #dropcategorie > ul > li{
 	margin-bottom: 5px;
@@ -581,6 +588,15 @@ footer li a:hover{
 	/*****************************************
 		menu top
 	***************************************/
+
+	.dropdown-menu{
+		float: left;
+		position: absolute;
+	}
+	.dropdown-menu>li>a{
+		padding: 3px 20px;
+	}
+
 	.navbar>li>a:focus, 
 	.navbar ul>li>a:hover, 
 	.navbar li.active > a, 
@@ -592,6 +608,7 @@ footer li a:hover{
 		border: 4px solid #fffaee;
 		text-decoration: none;
 	}
+
 
 	.navbar ul > li{
 		margin-bottom:0;
