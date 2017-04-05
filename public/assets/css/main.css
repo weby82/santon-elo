@@ -435,12 +435,10 @@ footer div p{
 /**************************************************************
 		Detail santon
 **********************************************************/
-#section-detail-santon .section-content figure img{
-	border: 5px solid #fff;
+#section-detail-santon .section-content figure{
 	-webkit-box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.2);
 	-moz-box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.2);
 	box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.2);
-	border-radius: 50%;
 	width: 85%;
 
 }
