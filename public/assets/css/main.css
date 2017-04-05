@@ -568,6 +568,13 @@ h1 {
 	/* box-shadow: 10px 10px 5px #888888;	*/
 }
 
+/*****************FOOTER***********************************/
+
+footer li a:hover{
+	color: #fdd4d4;
+	text-decoration: none;
+}
+
 /***************Résolution d'écran minimum 768 px****************/
 @media screen and (min-width:768px){
 	
