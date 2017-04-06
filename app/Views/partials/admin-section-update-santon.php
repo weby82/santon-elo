@@ -9,15 +9,12 @@
 				<section class="section-content" id="formAjoutSanton">
 
 <?php 
-	// On va chercher les info depuis la table artistes
-	// avec le framework W 
-	// on va passer par la class ArtistesModel
+	
 	$objetSantonModel = new \Model\SantonModel;
-	// findAll retourne un tableau de tableau (ligne + colonne)
+	
 	$tabLigne = $objetSantonModel->find($id);
 
-	//debug
-	//print_r($tabLigne);
+
 	// Si j'ai bien un tableau avec dees infos
 
 	if(!empty($tabLigne)){

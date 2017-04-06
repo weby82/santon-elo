@@ -475,16 +475,16 @@ class FormController extends Controller
                 $username = $tabUser["username"];
 
 
-                $GLOBALS["loginRetour"] = "Bienvenue $username";
+                $GLOBALS["loginRetour"] = "<span class='glyphicon glyphicon-ok' aria-hidden='true'></span>  Bienvenue $username";
 
                 $this->redirectToRoute("admin_accueil");
             }
             else{
-                 $GLOBALS["loginRetour"] = "Identifiant incorrects ";
+                 $GLOBALS["loginRetour"] = "<span class='glyphicon glyphicon-alert' aria-hidden='true'></span> Identifiant incorrects ";
             }
         }else{
 
-            $GLOBALS["loginRetour"] = "Identifiant incorrects ";
+            $GLOBALS["loginRetour"] = "<span class='glyphicon glyphicon-alert' aria-hidden='true'></span> Identifiant incorrects ";
         }
     }
 

@@ -42,6 +42,8 @@ if(session_status()==PHP_SESSION_NONE){session_start();}
 
     <!-- Recaptcha -->
     <script src='https://www.google.com/recaptcha/api.js'></script>
+
+    <!-- Script pour la gallery Unite -->
     <script type="text/javascript">
         
         jQuery(document).ready(function(){

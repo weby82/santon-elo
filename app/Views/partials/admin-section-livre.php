@@ -17,9 +17,7 @@
 			        $objetGuestbookModel = new \Model\GuestbookModel;
 	
 					$tabLigne = $objetGuestbookModel->findAll("id", "DESC");
-
-					
-					// on  fait une boucle foreach pour recuperer les éléments        
+					       
 
 			    ?>  
 					
@@ -36,7 +34,8 @@
 							<th>Action</th>
 						</thead>
 						<tbody>
-					<?php 
+					<?php
+					// on  fait une boucle foreach pour recuperer les éléments 
 						foreach ($tabLigne as $key => $valeur) {
 						$id 			= $valeur["id"];
 						$nomClient 		= $valeur["nom_client"];
@@ -67,5 +66,4 @@
 				</section>
 			</div>
 		</div>	
-		 <div class="push"></div>
 	</main>

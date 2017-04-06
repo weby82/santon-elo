@@ -61,9 +61,9 @@
 		['GET|POST', '/admin/santons/[:categorie]', 'AdminDamien#gererSantons', 'admin_gerer_santons'],
 
 		// création de Santon
-		['GET|POST', '/admin/ajouter-santon', 'AdminDamien#ajouterSanton', 'admin_ajouter_santon'],
+		['GET|POST', '/admin/santon/ajouter', 'AdminDamien#ajouterSanton', 'admin_ajouter_santon'],
 
-		['GET|POST', '/admin/modifier-santon/[:id]', 'AdminDamien#updateSanton', 'admin_update_santon'],
+		['GET|POST', '/admin/santon/modifier/[:id]', 'AdminDamien#updateSanton', 'admin_update_santon'],
 
 
 		// Page d'actualité côté admin 

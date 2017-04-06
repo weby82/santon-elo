@@ -1,4 +1,4 @@
-<!-- Création du main avec actualités et dernier ajouts -->
+
 	<main class="admin">
 		<section id="admin-accueil">
 			<div class="container">

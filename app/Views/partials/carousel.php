@@ -26,8 +26,6 @@ foreach ($tabLigne as $index => $tabColonne) {
 	$photo			= $tabColonne["photo"];
 	$nom			= $tabColonne["nom"];
 	$urlPhoto		= $this->assetUrl($photo);
-	
-
 
 	// Construire le code HTML
 ?>

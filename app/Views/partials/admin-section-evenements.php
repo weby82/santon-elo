@@ -10,7 +10,7 @@
             </a>
 
             <?php
-            // ON VA CHERCHER LES INFOS DEPUIS LA TABLE actualite
+            
             $objetEvenementsModel = new \Model\EvenementsModel;
 
             // findAll RETOURNE UN TABLEAU DE TABLEAU (LIGNES + COLONNES)
@@ -78,5 +78,4 @@
             </section>
         </div>
     </div>  
-    <div class="push"></div>
 </main>

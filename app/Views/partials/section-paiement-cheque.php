@@ -94,6 +94,7 @@
 							</div> 
 
 							<div class="group form-group col-md-12 col-xs-12 ">
+							<!-- J'affiche les items du panier dans le textarea en readonly -->
 								<textarea rows="7" name="detailCommande" id="detailCommande" class="used form-control" readonly>Santons commandés :<?php
 										echo "\r\n";
 										$total=0; 

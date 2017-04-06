@@ -37,14 +37,11 @@
 					</a>
 
 				<?php    
-			        /* FETCH ITEMS ACCORDING TO CATEGORIES CHOSEN BY USER */
 
 			        $objetSantonModel = new \Model\SantonModel;
 	
 					$tabLigne = $objetSantonModel->findAllColumn($categorie, "categorie");
-
-					
-					// on  fait une boucle foreach pour recuperer les éléments        
+     
 
 			    ?>  
 
@@ -61,6 +58,7 @@
 						</thead>
 						<tbody>
 					<?php 
+						// on  fait une boucle foreach pour recuperer les éléments   
 						foreach ($tabLigne as $key => $valeur) {
 						$id 		= $valeur["id"];
 						$nomUrl 	= $valeur["nom_url"];
@@ -69,7 +67,9 @@
 						$photo 		= $valeur["photo"];
 						$urlPhoto	= $this->assetUrl($photo);
 
+						// lien de suppression de la ligne
 						$hrefSupprimer  = "?idForm=santonDelete&id=$id";
+						// lien vers l'update
 						$hrefModifier   = $this->url("admin_update_santon", ["id" => $id]);
 					?>
 							<tr>
@@ -91,6 +91,5 @@
 					</table>
 				</section>
 			</div>
-		</div>	
-		 <div class="push"></div>
+		</div>	 
 	</main>

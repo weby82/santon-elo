@@ -6,6 +6,9 @@
 					<div class="login-block-inner">
 						<h2>Connexion</h2>
 						<form class="formulaire" method="POST" action="">
+							<div class="retour">
+								<?php echo $loginRetour; ?>
+							</div>
 							<div class="group">
 								<input type="text" name="identifiant" required><span class="highlight"></span><span class="bar"></span>
 						    	<label>Email ou nom d'utilisateur</label>
@@ -18,9 +21,6 @@
 								<button class="btn btn-default btn-lg btn-block" type="submit"> Me connecter</button>
 							</div>
 							<input type="hidden" name="idForm" value="login">
-							<div class="retour">
-								<?php echo $loginRetour; ?>
-							</div>
 						</form>
 					</div>
 				</div>
