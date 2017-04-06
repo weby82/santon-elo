@@ -18,6 +18,7 @@ class Recaptcha{
 
 		$url = "https://www.google.com/recaptcha/api/siteverify?secret={$this->secret}&response=$code";
 
+		// utilisation de l'extension cURL
 		if(function_exists('curl_version')){
 
 			$curl = curl_init($url);
@@ -34,7 +35,7 @@ class Recaptcha{
         $response = file_get_contents($url);
 
 		}
-
+		// si je n'ai pas de reponse je retourne false
 		if(empty($response) || is_null($response)){
 			return false;
 		}

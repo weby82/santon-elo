@@ -6,32 +6,25 @@ class AdminDamienController
     extends FormController  // ON HERITE DE LA CLASSE FormController 
                             // QUI HERITE DE LA CLASSE W\Controller\Controller
 {
-    // METHODE
-    
-
+  
 
     public function login()
 	{
 
-		// CONTROLLER
-	    // TRAITEMENT DU FORMULAIRE
+
 	    $GLOBALS["loginRetour"] = "";
 	    
 	    // RECUPERER L'INFO idForm
 	    $idForm = $this->verifierSaisie("idForm");
 	    if ($idForm == "login")
 	    {
-	        // ACTIVER LE CODE POUR TRAITER LE FORMULAIRE newsletter
+	        // ACTIVER LE CODE POUR TRAITER LE FORMULAIRE de login
 	        $this->loginTraitement();
 	    }
 	    
-	    // VIEW
-		// LA METHODE show EST DEFINIE 
-		// DANS LA CLASSE PARENTE Controller
-		// ON ACTIVE LA PARTIE VIEW
 		
 		// ON TRANSMET A LA VUE DES VARIABLES DEPUIS LE CONTROLEUR AVEC UN TABLEAU ASSOCIATIF
-		// LA CLE newsletterRetour VA ETRE TRANSFORME EN VARIABLE LOCALE $newsletterRetour
+		// LA CLE loginRetour VA ETRE TRANSFORME EN VARIABLE LOCALE $loginRetour
 		$this->show('page/admin-login', [ "loginRetour" => $GLOBALS["loginRetour"] ]);
 	}
 
@@ -42,6 +35,7 @@ class AdminDamienController
 	{
 		// On crée un objet de la classe \W\Security\AuthentificationModel
 		$objetAuthentificationModel = new \W\Security\AuthentificationModel;
+		//deconnexion de la session
 		$objetAuthentificationModel->logUserOut();
 
 		// On redirige vers la page de login
@@ -73,11 +67,12 @@ class AdminDamienController
 		$this->allowTo('admin');
 
 		$GLOBALS["santonDeleteRetour"] = "";
-		// Suppression d'artiste
+
+		// Suppression de santon
 		$idForm = $this->verifierSaisie("idForm");
 	    if ($idForm == "santonDelete"){
 
-	    	//actuver le code pour traiter le formulaire
+	    	//activer le code pour traiter le formulaire
 	    	$this->santonDeleteTraitement();
 	    }
 		
@@ -87,7 +82,6 @@ class AdminDamienController
 	public function ajouterSanton()
 	{
 		//SECURITE
-		//SEULEMENT LES ROLES ADMIN PEUVENT VOIR LA PAGE
 		$this->allowTo('admin');
 
 
@@ -96,7 +90,7 @@ class AdminDamienController
 	    $idForm = $this->verifierSaisie("idForm");
 	    if ($idForm == "santonCreate")
 	    {
-	        // ACTIVER LE CODE POUR TRAITER LE FORMULAIRE artisteCreate
+	        // ACTIVER LE CODE POUR TRAITER LE FORMULAIRE santonCreate
 	        $this->santonCreateTraitement();
 	    }
 	    
@@ -114,7 +108,7 @@ class AdminDamienController
 	    $idForm = $this->verifierSaisie("idForm");
 	    if ($idForm == "santonUpdate")
 	    {
-	        // ACTIVER LE CODE POUR TRAITER LE FORMULAIRE artisteCreate
+	        // ACTIVER LE CODE POUR TRAITER LE FORMULAIRE santonUpdate
 	        $this->santonUpdateTraitement();
 	    }
 

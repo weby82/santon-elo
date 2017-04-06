@@ -30,22 +30,27 @@ class VitrineDamienController
 	}
 
 	
+	/**
+	 * Page des santons trié par categorie
+	 */
 	public function categorie($categorie)
 	{
-		//mecanique du framwork W
-		// On recupere la valeur du parametre de la route [:id] dans le parametre de la methode
-		//debug
-		//echo "Il faut afficher les détails de $id";
-		// il faut transmettre l'ID pour récuperer les infos
+		
 		$this->show('page/categorie-santons', ["categorie" => $categorie]);
 	}
 
+	/**
+	 * Page par defaut des categorie si aucun n'est rentré dans l'url, on redirige vers la categorie Nativité
+	 */
 	public function categorieDefault()
 	{
 	
 		$this->redirectToRoute('vitrine_categorie', ['categorie' => "nativite"]);
 	}
 
+	/**
+	 * Page détail des santons
+	 */
 	public function santon($categorie, $nomUrl)
 	{
 		//mecanique du framwork W
@@ -59,17 +64,19 @@ class VitrineDamienController
 											]);
 	}
 
+	/**
+	 * Page des commande special
+	 */
 	public function commandeSpeciale(){
 
-		// CONTROLLER
-	    // TRAITEMENT DU FORMULAIRE
+
 	    $GLOBALS["commandeSpecialRetour"] = "";
 	    
 	    // RECUPERER L'INFO idForm
 	    $idForm = $this->verifierSaisie("idForm");
 	    if ($idForm == "commandeSpecialForm")
 	    {
-	        // ACTIVER LE CODE POUR TRAITER LE FORMULAIRE newsletter
+	        // ACTIVER LE CODE POUR TRAITER LE FORMULAIRE de commande special
 	        $this->commandeSpecialFormTraitement();
 	    }
 	    
@@ -80,17 +87,18 @@ class VitrineDamienController
 	}
 
 
+	/**
+	 * Page paiement par cheque
+	 */
+
 	public function paiementCheque(){
 
-		// CONTROLLER
-	    // TRAITEMENT DU FORMULAIRE
 	    $GLOBALS["paiementChequeRetour"] = "";
 	    
 	    // RECUPERER L'INFO idForm
 	    $idForm = $this->verifierSaisie("idForm");
 	    if ($idForm == "paiementChequeForm")
 	    {
-	        // ACTIVER LE CODE POUR TRAITER LE FORMULAIRE newsletter
 	        $this->paiementChequeFormTraitement();
 	    }
 	    

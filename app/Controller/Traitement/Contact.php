@@ -124,13 +124,4 @@ class Contact{
 } //class contact
 
 
- // $headers = "From: $email" . "\r\n" .
-	// 		     'Reply-To: webmaster@example.com' . "\r\n" .
-	// 		     'X-Mailer: PHP/' . phpversion();
-			     
-	// 		    mail(   "webmaster@mail.me", 
-	// 		            "$Contacte depuis le site Santon Elo", 
-	// 		            "$contenuMail",
-	// 		            $headers );
-
 ?>

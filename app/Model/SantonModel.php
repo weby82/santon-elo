@@ -5,13 +5,13 @@ namespace Model;
 // On va hériter de la classe Model du Framework W
 use W\Model\Model;
 
-// La mécanique du framework W va déduire à partir du nom de la classe
-// Quel est le nom de la table correspondate (Camelcase => snake_case) NewsletterListeModel => newsletter_liste
+
 class SantonModel extends Model{ // on fait l'héritage de la classe parente Model
 
-	// On peut si besoin ajouter des méthodes qui vont faire des requetes SQL spécifique
-	// Pour la table newsletter
+	// Requete SQL specifique aux santons
 
+
+	// permet de recuperer les données d'une colonne passé en parametre (valeur de la colonne, nom de la colonne)
 	public function findColumn($valeurColonne, $colonne = "id")
 	{
 		$sql = 'SELECT * FROM ' . $this->table . ' WHERE ' . $colonne .'  = :valeurColonne LIMIT 1';
@@ -22,6 +22,7 @@ class SantonModel extends Model{ // on fait l'héritage de la classe parente Mod
 		return $sth->fetch();
 	}
 
+	// Permet de recuperer toutes les lignes d'après une valeur de colonne
 	public function findAllColumn($valeurColonne, $colonne = "id")
 	{
 		$sql = 'SELECT * FROM ' . $this->table . ' WHERE ' . $colonne .'  = :valeurColonne ';
@@ -33,6 +34,7 @@ class SantonModel extends Model{ // on fait l'héritage de la classe parente Mod
 	}
 
 
+	// Permet de recupérer toutes les lignes d'aprés la valeur d'une colonne avec trie ordonné.
 	public function findAllColumnTrier($valeurColonne, $colonne = "id", $orderBy = '', $orderDir = 'ASC', $limit = null, $offset = null)
 	{
 		$sql = 'SELECT * FROM ' . $this->table . ' WHERE ' . $colonne .'  = :valeurColonne ';

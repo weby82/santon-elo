@@ -325,9 +325,13 @@ section img{
 }
 .col-nav-left{
 	display: block;
+	margin-bottom: 20px;
 }
 .col-nav-left, .col-nav-left .nav a{
 	color:#647277;
+}
+.col-nav-left .nav>li{
+	display: inline-block;
 }
 .col-nav-left li a{
 	font-weight: 600;
@@ -336,6 +340,7 @@ section img{
 	color: #fff;
 }
 .col-nav-left h3{
+	display: none;
 	margin-top: 0;
 }
 .col-nav-left li a:hover{
@@ -531,12 +536,6 @@ footer div p{
 	}
 }
 
-@media screen and (max-width: 992px) {
-
-	.col-nav-left{
-		display: none;
-	}
-}
 
 /******************************************************
                   	CONTENU LISTE ARTICLES	
@@ -648,7 +647,13 @@ footer li a:hover{
 
 @media screen and (min-width:992px) {
 
-	
+	.col-nav-left h3{
+		display: block;
+	}
+	.col-nav-left .nav>li{
+		display: block;
+	}
+
 	.list-article article .img-responsive{
 		max-width: 220px;
 	}
