@@ -3,8 +3,8 @@
 namespace Controller;
 
 class AdminLiinaaController 
-    extends FormController  // ON HERITE DE LA CLASSE FormController 
-                            // QUI HERITE DE LA CLASSE W\Controller\Controller
+    extends FormController  // On hérite de la classe FormController 
+                            
 {
     // METHODE
     
@@ -22,17 +22,16 @@ class AdminLiinaaController
 	// Ajouter un avis client
 	public function creerLivre()
 	{
-		//SECURITE
-		//SEULEMENT LES ROLES ADMIN PEUVENT VOIR LA PAGE
+		//Securité
 		$this->allowTo('admin');
 
 
 		$GLOBALS["livreCreateRetour"] = "";
-		// RECUPERER L'INFO idForm
+		// Récupérer l'info idForm
 	    $idForm = $this->verifierSaisie("idForm");
 	    if ($idForm == "livreCreate")
 	    {
-	        // ACTIVER LE CODE POUR TRAITER LE FORMULAIRE artisteCreate
+	        // Activer le code pour traiter le formulaire livreCreate
 	        $this->livreCreateTraitement();
 	    }
 	    
@@ -49,11 +48,11 @@ class AdminLiinaaController
 
 		$GLOBALS["livreUpdateRetour"] = "";
 
-		// RECUPERER L'INFO idForm
+		// Récupérer l'info idForm
 	    $idForm = $this->verifierSaisie("idForm");
 	    if ($idForm == "livreUpdate")
 	    {
-	        // ACTIVER LE CODE POUR TRAITER LE FORMULAIRE artisteCreate
+	        // Activer le code pour traiter le formulaire livreUpdate
 	        $this->livreUpdateTraitement();
 	    }
 
@@ -67,11 +66,11 @@ class AdminLiinaaController
 		$this->allowTo('admin');
 
 		$GLOBALS["livreDeleteRetour"] = "";
-		// Suppression d'artiste
+		// Suppression d'un avis
 		$idForm = $this->verifierSaisie("idForm");
 	    if ($idForm == "livreDelete"){
 
-	    	//actuver le code pour traiter le formulaire
+	    	//activer le code pour traiter le formulaire
 	    	$this->livreDeleteTraitement();
 	    }
 		

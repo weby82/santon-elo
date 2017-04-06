@@ -3,12 +3,9 @@
 namespace Controller;
 
 class AdminKellyController 
-    extends FormController  // ON HERITE DE LA CLASSE FormController 
-                            // QUI HERITE DE LA CLASSE W\Controller\Controller
-{
-    // METHODE
-    
-	/**
+    extends FormController  
+                            
+{   /**
 	 * Page d'actualité de l'admin
 	 */
 	public function actualites()
@@ -18,7 +15,7 @@ class AdminKellyController
 	}
 
 	/**
-	 * Page d'actualité de l'admin
+	 * Page des évènements de l'admin
 	 */
 	public function evenements()
 	{
@@ -28,12 +25,12 @@ class AdminKellyController
 
 	
 	/**
-	 * Page de /admin/modifier/artiste/[i:id]
+	 * Page de /admin/modifier/actualite/[:id]
 	 */
     public function modifierActualites($id)
     {
     	$this->allowTo('admin');
-    	// Le paramètre $id est fourni par le Framework W en extrayant l'info depuis l'url [i:id]
+    	// Le paramètre $id est fourni par le Framework W en extrayant l'info depuis l'url [:id]
     	$GLOBALS["actualiteUpdateRetour"] = "";
     	
 		//Contoller 
@@ -54,18 +51,18 @@ class AdminKellyController
     
     
 	/**
-	 * Page de /admin/artistes
+	 * Page de /admin/liste/actualite
 	 */
 	public function gererActualites()
 	{
 		$this->allowTo('admin');
 
 		$GLOBALS["actualiteDeleteRetour"] = "";
-		// Suppression d'artiste
+		// Suppression des actualités
 		$idForm = $this->verifierSaisie("idForm");
 	    if ($idForm == "actualiteDelete"){
 
-	    	//actuver le code pour traiter le formulaire
+	    	//activer le code pour traiter le formulaire
 	    	$this->actualiteDeleteTraitement();
 	    }
 		
@@ -107,12 +104,12 @@ class AdminKellyController
 
 
 	 /**
-	 * Page de /admin/modifier/artiste/[i:id]
+	 * Page de /admin/modifier/evenement/[:id]
 	 */
     public function modifierEvenement($id)
     {
     	$this->allowTo('admin');
-    	// Le paramètre $id est fourni par le Framework W en extrayant l'info depuis l'url [i:id]
+    	// Le paramètre $id est fourni par le Framework W en extrayant l'info depuis l'url [:id]
     	$GLOBALS["evenementUpdateRetour"] = "";
 
 		//Contoller 
@@ -133,27 +130,22 @@ class AdminKellyController
 
 
     /**
-	 * Page de /admin/artistes
+	 * Page de /admin/evenements
 	 */
 	public function gererEvenements()
 	{
-		// SECURITE
-		// SEULEMENT LES ROLES admin PEUVENT VOIR CETTE PAGE
+		// Securite
 		$this->allowTo('admin');
 
-	    // CONTROLLER
-	    // TRAITEMENT DU FORMULAIRE
 	    $GLOBALS["evenementDeleteRetour"] = "";
 	    
-	    // RECUPERER L'INFO idForm
+	    // Récupérer l'info idForm
 	    $idForm = $this->verifierSaisie("idForm");
 	    if ($idForm == "evenementDelete")
 	    {
-	    	 // ACTIVER LE CODE POUR TRAITER LE FORMULAIRE newsletter
 	        $this->evenementDeleteTraitement();
 	    }
 		
-		// ON TRANSMET A LA VUE DES VARIABLES DEPUIS LE CONTROLEUR AVEC UN TABLEAU ASSOCIATIF
 		$this->show('page/admin-evenements', ["evenementDeleteRetour" => $GLOBALS["evenementDeleteRetour"] ]);
 	}
 }

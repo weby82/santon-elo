@@ -14,53 +14,21 @@ class FormController extends Controller
 {
     // METHODE
     
-    // EN HTML
-    // <input name="toto" />
-    // EN PHP
-    // $toto = verifierSaisie("toto");
      function __construct ()
     {
-        // CETTE METHODE SERA APPELEE PAR TOUTES LES ROUTES
-        // CAR LA ROUTE PRECISE QUELLE CLASSE ET QUELLE METHODE APPELER
-        // DONC LE FRAMEWORK W DOIT CREER UN OBJET DE CETTE CLASSE
-        // AVANT D'ACTIVER LA METHODE
-        // ET LES CLASSES DANS LES ROUTES HERITENT DE CETTE CLASSE
-        // FormController
-        // DONC LA METHODE __construct DE LA CLASSE FormController
-        // EST AUSSI APPELEE A LA CREATION DE L'OBJET...
-        
-        // ON PEUT DONC AJOUTER ICI LE CODE QU'ON VEUT ACTIVER
-        // POUR TOUTES LES ROUTES...
-        
-        // APPELER LE CONSTRUCTEUR DU parent
-        // POUR CONTINUER A GARDER LA MECANIQUE DU FRAMEWORK W
-        // parent::__construct();
-        
-        // TRAITEMENT DU FORMULAIRE
+        // Traitement du formulaire
         $idFormClasse  = $this->verifierSaisie("idFormClasse");
         $idFormMethode = $this->verifierSaisie("idFormMethode");
         
-        // UN PEU DE SECURITE...
-        // JE VAIS COMPLETER LE CHEMIN VERS LE NAMESPACE DE LA CLASSE
         $idFormClasse  = "\Controller\Traitement\\$idFormClasse";
         
         if ( ($idFormClasse != "") && ($idFormMethode != "") )
         {
-            // ON A UN FORMULAIRE A TRAITER
-            // ON CHERCHE SI IL Y A UNE CLASSE AVEC LA METHODE DEMANDEE
-            // http://php.net/manual/fr/function.method-exists.php
             if (method_exists($idFormClasse, $idFormMethode))
             {
-                // ON PEUT APPELER LA METHODE
-                // ON CREE UN OBJET
-                // ET AVEC L'OBJET ON APPELLE LA METHODE
-                
-                // ASTUCE:
-                // CREATION DYNAMIQUE D'OBJET
-                // ET APPEL DYNAMIQUE A UNE METHODE
-                // http://php.net/manual/fr/language.oop5.basic.php
+                // On crée un objet avec lequel on appelle la méthode
                 $objet = new $idFormClasse;
-                // $this EST L'OBJET DE CLASSE FormController
+                // $this est l'objet de la classe FormController
                 $objet->$idFormMethode($this);
             }
         }
@@ -68,43 +36,34 @@ class FormController extends Controller
     }
     public function verifierSaisie ($name)
     {
-        $valeurSaisie = ""; // AU DEBUT ON A LA CHAINE VIDE
+        $valeurSaisie = ""; 
         
-        // http://php.net/manual/fr/reserved.variables.request.php
-        // JE VERIFIE SI L'INFO EST PRESENTE
+        // Je vérifie que l'info est présente
         if (isset($_REQUEST[$name]))
         {
-            // ALORS JE LA STOCKE DANS UNE VARIABLE PHP
+            // Donc je la stocke dans une variable php
             $valeurSaisie = $_REQUEST[$name];
             
-            // FILTRER LA VALEUR POUR SE PROTEGER UN PEU
+            // Filtrer la valeur pour se protéger un peu
             
-            // ENLEVER LES BALISES HTML ET PHP
-            // http://php.net/manual/fr/function.strip-tags.php
+            // Enlever les balises html et php
             $valeurSaisie = strip_tags($valeurSaisie);
             
-            // ENLEVER LES ESPACES VIDES AU DEBUT ET A LA FIN
-            // http://php.net/manual/fr/function.trim.php
-            $valeurSaisie = trim($valeurSaisie);
-            
-            // http://php.net/manual/fr/function.ctype-alpha.php
-            // http://php.net/manual/fr/function.str-replace.php
-            // http://php.net/manual/fr/function.preg-replace.php
-            
+            // Enlever les espaces vides au début et à la fin
+            $valeurSaisie = trim($valeurSaisie);            
         }
         
-        // RENVOIE LA VALEUR DE $valeurSaisie
+        // Renvoie la $valeurSaisie
         return $valeurSaisie;
     
     }
 
-    // CONTRAINTES
-    // FORMAT D'UN EMAIL (nom@domaine.suffixe)
+    // Contraintes
+    // Format de l'email (nom@domaine.suffixe)
     function verifierEmail ($email)
     {
         $resultat = false;
         
-        // http://php.net/manual/en/function.filter-var.php
         if ( ($email != "") && (filter_var($email, FILTER_VALIDATE_EMAIL) !== false) )
         {
             $resultat = true;
@@ -114,65 +73,28 @@ class FormController extends Controller
     }
 
 
-    // PAGINATION
-    function calculerNombreLigne ($nomTable)
-{
-    $resultat = 0;
-    
-    // ON VA CALCULER LE NOMBRE DE LIGNE DANS LA TABLE $nomTable
-    // https://sql.sh/fonctions/agregation/count
-    $requeteSQL = "SELECT COUNT(id) FROM $nomTable";
-    $tabToken = [];
-    
-    $objetPDOStatement = envoyerRequeteSQL($requeteSQL, $tabToken);
-    // http://php.net/manual/fr/pdostatement.fetchcolumn.php
-    $resultat = $objetPDOStatement->fetchColumn();
-    $resultat = intval($resultat);
-    
-    return $resultat;
-}
-
-
     // Verifier le champ d'upload
     function verifierUploadSanton ($nameInput)
     {
     $cheminOK = "";
     $cheminUrlOk = "";
     
-    // POUR LE MESSAGE DE RETOUR
+    // Message de retour
     $idForm = $this->verifierSaisie("idForm");
     
     // CONTROLLER
-    // VERIFIER SI IL Y A UN FICHIER UPLOADE
-    // VERIFIER SI IL N'Y A PAS DE CODE D'ERREUR
-    // VERIFIER LE SUFFIXE DU FICHIER 
-    // (INTERDIRE .php, .asp, .jsp, etc...)
-    // (AUTORISER CERTAINS SUFFIXES .jpeg, .jpg, .gif, .png, .svg, .pdf, .txt, .doc, .docx, .xls, .ppt, .pptx, .odt, .html, .css, .js, .ttf, .otf)
-    // (ET NE PAS OUBLIER LES VARIANTES EN MAJUSCULES...)
-    // FILTRER LE NOM DU FICHIER POUR ENLEVER LES CARACTERES BIZARRES POUR LES URLS
-    // ON VA PRENDRE LA RESPONSABILITE DE SORTIR LE FICHIER DE SA QUARANTAINE
-    // (IDEALEMENT IL FAUDRAIT PASSER LE FICHIER A TRAVERS UN ANTIVIRUS POUR DETECTER LES VIRUS :-/)
-    // ET ON LE DEPLACE DANS LE DOSSIER assets/uploads/
-    // (AVEC LE NOM FILTRE)
-    
-    // NOTE: 
-    // POUR LES IMAGES, ON PEUT UTILISER DES FONCTIONS DE PHP
-    // POUR CREER DES MINIATURES
-    
-    // EST-CE QUE LE TABLEAU $_FILES CONTIENT LA CLE $nameInput
+    //Vérifier s'il y a un fichier à charger
+      
+    // Est-ce que le tableau $_FILES contient la clé $nameInput
     if (isset($_FILES[$nameInput]))
-    {
-        // EN HTML
-        // <input type="file" name="upload" />
-        // EN PHP
+    {    
         $tabInfoFichierUploade = $_FILES[$nameInput];
         if (!empty($tabInfoFichierUploade))
         {
             $error = $tabInfoFichierUploade["error"];
             if ($error == 0)
             {
-                // L'UPLOAD S'EST BIEN DEROULE
-                // JE RECUPERE LES AUTRES INFOS
+                // Récupérations des infos
                 $name       = $tabInfoFichierUploade["name"];
                 $type       = $tabInfoFichierUploade["type"];
                 $tmpName    = $tabInfoFichierUploade["tmp_name"];
@@ -182,29 +104,21 @@ class FormController extends Controller
                 
                 if ($size < 10 * 1024 * 1024) // 10 MEGAOCTETS
                 {
-                    // OK EN DESSOUS DE LA TAILLE LIMITE
-                    // ON VERIFIE L'EXTENSION
-                    // http://php.net/manual/fr/function.pathinfo.php
+                    // En dessous de la taille limite on vérifie l'extension
                     $extension = pathinfo($name, PATHINFO_EXTENSION);
-                    // METTRE L'EXTENSION EN MINUSCULES
-                    // http://php.net/manual/fr/function.strtolower.php
+                    // Mettre l'extension en minuscule
                     $extension = strtolower($extension);
                     
-                    // IL FAUT VERIFIER SI L'EXTENSION EST AUTORISEE
+                    // Vérifier si l'extension est autorisée
                     $tabExtensionOK = 
                     [ 
                         "jpeg", "jpg", "gif", "png", "svg"
                         
                     ];
                     
-                    // http://php.net/manual/fr/function.in-array.php
                     if (in_array($extension, $tabExtensionOK))
                     {
-                        // OK EXTENSION AUTORISEE
-                        // ON EST PRET A DEPLACER LE FICHIER DANS SON DOSSIER assets/uploads
-                        // http://php.net/manual/fr/function.preg-replace.php
-                        // TOUS LES CARACTERES QUI NE SONT DES LETTRES ENTRE a et z ou entre A et Z ou entre 0 et 9 ou qui ne sont -, _, .
-                        // ALORS IL FAUT REMPLACER PAR LE CARACTERE "" (EN FAIT LES SUPPRIMER)
+                        // Remplacement des caractères qui ne sont pas des lettres entre a et z ou entre A et Z ou entre 0 et 9 ou qui ne sont -, _, .
                         $nameOK     =  preg_replace("/[^a-zA-Z0-9-_\.]/", "", $name);
 
 
@@ -221,26 +135,22 @@ class FormController extends Controller
                          // url pour la base de donnée
                          $cheminUrlOk   =  $cheminPhotoUrl . $nameOK;
                         
-                        // TRANSFORMER LE CHEMIN OK EN MINUSCULES
+                        // Transformer le chemin ok en minuscule
                         $cheminUrlOk = strtolower($cheminUrlOk);
                         $cheminMoveOK = strtolower($cheminMoveOK);
                         
-                        // ON SORT LE FICHIER DE SA QUARANTAINE
-                        // http://php.net/manual/fr/function.move-uploaded-file.php
                         move_uploaded_file($tmpName, $cheminMoveOK);
                         
                     }
                     else
-                    {
-                        // KO
-                        // EXTENSION NON AUTORISEE
+                    {                    
+                        // Extension non autorisée
                         $GLOBALS["santonCreateRetour"] = "EXTENSION NON CONFORME";
                     }
                 }
                 else 
-                {
-                    // KO
-                    // FICHIER TROP VOLUMINEUX
+                {                   
+                    // Fichier trop volumineux
                     $GLOBALS["santonCreateRetour"] = "FICHIER TROP VOLUMINEUX";
                 }
             }
@@ -273,20 +183,6 @@ class FormController extends Controller
                 'w_site_name'     => $app->getConfig('site_name'),
             ]
         );
-
-        // Je peux ajouter des variables qui seront disponible dans tout les fichier view
-        // $this->tabVariableView = [
-        //                     "var1" => date("Y"),
-        //                     ];
-        
-        // $this->setVar("var1", date('Y'));
-
-        //$engine->addData($this->tabVariableView);
-
-        // On peut ajouter des fonctions supplementaire dans la partie view
-        // $engine->registerFunction('afficherDate', function(){
-        //     echo date("Y");
-        // });
 
         $engine->registerFunction('afficherVarGlob', function($nomVar){
             if (isset($GLOBALS["$nomVar"])){echo $GLOBALS["$nomVar"];};
@@ -398,7 +294,6 @@ class FormController extends Controller
 
 
             // message pour l'utilisateur
-            // $GLOBALS["contactRetour"] = "<p class='bg-success'>Merci $prenom, votre message est bien envoyé !</p>";
             $GLOBALS["commandeSpecialRetour"] = "<span class='glyphicon glyphicon-ok' aria-hidden='true'></span> Merci $prenom, votre message a bien été envoyé !";
 
                 // Je vide les champs du formulaire
@@ -408,7 +303,6 @@ class FormController extends Controller
         }
 
         else{
-            // $GLOBALS["contactRetour"] = "Il manque des informations";
             $GLOBALS["commandeSpecialRetour"] = "<span class='glyphicon glyphicon-alert' aria-hidden='true'></span> Il manque des informations !";
         }
 
@@ -531,7 +425,6 @@ class FormController extends Controller
 
 
             // message pour l'utilisateur
-            // $GLOBALS["contactRetour"] = "<p class='bg-success'>Merci $prenom, votre message est bien envoyé !</p>";
             $GLOBALS["paiementChequeRetour"] = "<span class='glyphicon glyphicon-ok' aria-hidden='true'></span> Merci $prenom, votre commande a bien été envoyé ! Vous recevrez rapidement une réponse !";
 
                 // je vide le panier en detruisant la session
@@ -543,7 +436,6 @@ class FormController extends Controller
         }
 
         else{
-            // $GLOBALS["contactRetour"] = "Il manque des informations";
             $GLOBALS["paiementChequeRetour"] = "<span class='glyphicon glyphicon-alert' aria-hidden='true'></span> Il manque des informations !";
         }
 
@@ -553,8 +445,7 @@ class FormController extends Controller
 
     public function loginTraitement(){
 
-        // REcuperer les infos du formulaire
-
+        // Récuperer les infos du formulaire
         $identifiant = $this->verifierSaisie("identifiant");
         $password = $this->verifierSaisie("password");
 
@@ -611,11 +502,7 @@ class FormController extends Controller
         //vérifier si les infos sont correcte
         if(($nom != "") && ($nomUrl != "") && ($prix != "") && ($photo != "") && ($description != "")){
 
-             //si ok on ajoute une ligne dans la table artiste
-            //avec le framwork W
-            //je dois créer un objet de la classe ArtistesModel
-            //(car la table mysql s'appel artistes)
-            //ne pas oublier de rajouter use \Model\ArtistesModel
+            //Création d'un objet de la classe SantonModel
             $objetSantonModel = new SantonModel;
             //on peu utiliser la méthode insert
             $objetSantonModel->insert(["nom" => $nom, 
@@ -653,13 +540,8 @@ class FormController extends Controller
         //vérifier si les infos sont correcte
         if(($nom != "") && ($nomUrl != "") && ($prix != "") && (($photo != "") || ($oldPhotoPath != "")) && ($description != "")){
 
-             //si ok on ajoute une ligne dans la table artiste
-            //avec le framwork W
-            //je dois créer un objet de la classe ArtistesModel
-            //(car la table mysql s'appel artistes)
-            //ne pas oublier de rajouter use \Model\ArtistesModel
+            //Création d'un objet de la classe SantonModel
             $objetSantonModel = new SantonModel;
-            //on peu utiliser la méthode insert
 
             if($photo != ""){
             $objetSantonModel->update(["nom" => $nom, 
@@ -703,9 +585,7 @@ class FormController extends Controller
 
         if ($id > 0){
 
-            // ON Va deleguer à un objet de la classe ArtisteModel
-            //le travail de supprimer la ligne correspondante à l'ID
-            //Vérifier qu'on a fait le use au debut du fichier
+            // On va deleguer à un objet de la classe SantonModel le travail de supprimer la ligne correspondante à l'ID
             $objetsantonModel = new SantonModel;
             $objetsantonModel->delete($id);
 
@@ -730,13 +610,9 @@ class FormController extends Controller
        //vérifier si les infos sont correcte
        if(($titre != "") && ($contenu != "") && ($photo != "")){
 
-            //si ok on ajoute une ligne dans la table artiste
-            //avec le framwork W
-            //je dois créer un objet de la classe ArtistesModel
-            //(car la table mysql s'appel artistes)
-            //ne pas oublier de rajouter use \Model\ArtistesModel
+            //Création d'un objet de la classe ActualiteModel
             $objetActualiteModel = new ActualiteModel;
-            //on peu utiliser la méthode insert
+            
             $objetActualiteModel->insert(["titre"   => $titre, 
                                           "contenu" => $contenu, 
                                           "photo"   => $photo, 
@@ -762,37 +638,16 @@ class FormController extends Controller
     // POUR LE MESSAGE DE RETOUR
     $idForm = $this->verifierSaisie("idForm");
     
-    // CONTROLLER
-    // VERIFIER SI IL Y A UN FICHIER UPLOADE
-    // VERIFIER SI IL N'Y A PAS DE CODE D'ERREUR
-    // VERIFIER LE SUFFIXE DU FICHIER 
-    // (INTERDIRE .php, .asp, .jsp, etc...)
-    // (AUTORISER CERTAINS SUFFIXES .jpeg, .jpg, .gif, .png, .svg, .pdf, .txt, .doc, .docx, .xls, .ppt, .pptx, .odt, .html, .css, .js, .ttf, .otf)
-    // (ET NE PAS OUBLIER LES VARIANTES EN MAJUSCULES...)
-    // FILTRER LE NOM DU FICHIER POUR ENLEVER LES CARACTERES BIZARRES POUR LES URLS
-    // ON VA PRENDRE LA RESPONSABILITE DE SORTIR LE FICHIER DE SA QUARANTAINE
-    // (IDEALEMENT IL FAUDRAIT PASSER LE FICHIER A TRAVERS UN ANTIVIRUS POUR DETECTER LES VIRUS :-/)
-    // ET ON LE DEPLACE DANS LE DOSSIER assets/uploads/
-    // (AVEC LE NOM FILTRE)
     
-    // NOTE: 
-    // POUR LES IMAGES, ON PEUT UTILISER DES FONCTIONS DE PHP
-    // POUR CREER DES MINIATURES
-    
-    // EST-CE QUE LE TABLEAU $_FILES CONTIENT LA CLE $nameInput
     if (isset($_FILES[$nameInput]))
     {
-        // EN HTML
-        // <input type="file" name="upload" />
-        // EN PHP
         $tabInfoFichierUploade = $_FILES[$nameInput];
         if (!empty($tabInfoFichierUploade))
         {
             $error = $tabInfoFichierUploade["error"];
             if ($error == 0)
             {
-                // L'UPLOAD S'EST BIEN DEROULE
-                // JE RECUPERE LES AUTRES INFOS
+                // Récupération des infos
                 $name       = $tabInfoFichierUploade["name"];
                 $type       = $tabInfoFichierUploade["type"];
                 $tmpName    = $tabInfoFichierUploade["tmp_name"];
@@ -801,29 +656,21 @@ class FormController extends Controller
                 
                 if ($size < 10 * 1024 * 1024) // 10 MEGAOCTETS
                 {
-                    // OK EN DESSOUS DE LA TAILLE LIMITE
-                    // ON VERIFIE L'EXTENSION
-                    // http://php.net/manual/fr/function.pathinfo.php
+                    // Vérification de l'extension
                     $extension = pathinfo($name, PATHINFO_EXTENSION);
-                    // METTRE L'EXTENSION EN MINUSCULES
-                    // http://php.net/manual/fr/function.strtolower.php
+                    // Mettre l'extension en minuscule
                     $extension = strtolower($extension);
                     
-                    // IL FAUT VERIFIER SI L'EXTENSION EST AUTORISEE
+                    // Vérifier si l'extension est autorisée
                     $tabExtensionOK = 
                     [ 
                         "jpeg", "jpg", "gif", "png", "svg"
                         
                     ];
                     
-                    // http://php.net/manual/fr/function.in-array.php
                     if (in_array($extension, $tabExtensionOK))
                     {
-                        // OK EXTENSION AUTORISEE
-                        // ON EST PRET A DEPLACER LE FICHIER DANS SON DOSSIER assets/uploads
-                        // http://php.net/manual/fr/function.preg-replace.php
-                        // TOUS LES CARACTERES QUI NE SONT DES LETTRES ENTRE a et z ou entre A et Z ou entre 0 et 9 ou qui ne sont -, _, .
-                        // ALORS IL FAUT REMPLACER PAR LE CARACTERE "" (EN FAIT LES SUPPRIMER)
+                        // Remplacement des caractères qui ne sont pas des lettres entre a et z ou entre A et Z ou entre 0 et 9 ou qui ne sont -, _, .
                         $nameOK     =  preg_replace("/[^a-zA-Z0-9-_\.]/", "", $name);
 
 
@@ -840,26 +687,22 @@ class FormController extends Controller
                          // url pour la base de donnée
                          $cheminUrlOk   =  $cheminPhotoUrl . $nameOK;
                         
-                        // TRANSFORMER LE CHEMIN OK EN MINUSCULES
+                        // Transformer le chemin ok en minuscule 
                         $cheminUrlOk = strtolower($cheminUrlOk);
                         $cheminMoveOK = strtolower($cheminMoveOK);
                         
-                        // ON SORT LE FICHIER DE SA QUARANTAINE
-                        // http://php.net/manual/fr/function.move-uploaded-file.php
                         move_uploaded_file($tmpName, $cheminMoveOK);
                         
                     }
                     else
                     {
-                        // KO
-                        // EXTENSION NON AUTORISEE
+                        // Extension non autorisée
                         $GLOBALS["actualiteCreateRetour"] = "EXTENSION NON CONFORME";
                     }
                 }
                 else 
                 {
-                    // KO
-                    // FICHIER TROP VOLUMINEUX
+                    // Fichier trop volumineux
                     $GLOBALS["actualiteCreateRetour"] = "FICHIER TROP VOLUMINEUX";
                 }
             }
@@ -877,18 +720,13 @@ class FormController extends Controller
         $photo        = $this->verifierUploadActualite("photo"); 
         $oldPhotoPath = $this->verifierSaisie("oldPath"); 
         $date         = date("Y-m-d H:i:s");
+
         //vérifier si les infos sont correcte
         // transformer $id en nombre entier
-
         if(($id > 0) && ($titre != "") && ($contenu != "") && (($photo != "") || ($oldPhotoPath != "")) && ($date != "")){
 
-             //si ok on ajoute une ligne dans la table artiste
-            //avec le framwork W
-            //je dois créer un objet de la classe ArtistesModel
-            //(car la table mysql s'appel artistes)
-            //ne pas oublier de rajouter use \Model\ArtistesModel
+            // Création de l'objet de la classe ActualiteModel
             $objetActualiteModel = new ActualiteModel;
-            //on peu utiliser la méthode insert
 
             if($photo != ""){
              $objetActualiteModel->update(["titre"    => $titre, 
@@ -907,7 +745,6 @@ class FormController extends Controller
             }
 
             //Message de retour
-            //avec affichage lien vers la fiche //generateUrl permet de generer l'url de la route dans une methode
             $GLOBALS["actualiteUpdateRetour"] = "<span class='glyphicon glyphicon-ok' aria-hidden='true'></span> Actualité $titre Modifiée";
         }
         else{
@@ -927,7 +764,7 @@ class FormController extends Controller
 
         if ($id > 0){
 
-            // ON Va deleguer à un objet de la classe ActualiteModel
+            // On va deleguer à un objet de la classe ActualiteModel
             //Vérifier qu'on a fait le use au debut du fichier
             $objetactualiteModel = new ActualiteModel;
             $objetactualiteModel->delete($id);
@@ -961,13 +798,9 @@ class FormController extends Controller
                         && ($description != "") 
                             && ($photo != "")){
 
-             //si ok on ajoute une ligne dans la table artiste
-            //avec le framwork W
-            //je dois créer un objet de la classe ArtistesModel
-            //(car la table mysql s'appel artistes)
-            //ne pas oublier de rajouter use \Model\ArtistesModel
+            // Création de l'objet de la classe EvenementModel
             $objetEvenementsModel = new EvenementsModel;
-            //on peu utiliser la méthode insert
+
             $objetEvenementsModel->insert(["titre"           => $titre, 
                                           "lieu"             => $lieu, 
                                           "date_event_start" => $dateStart,
@@ -993,40 +826,21 @@ function verifierUploadEvenement ($nameInput)
     $cheminOK = "";
     $cheminUrlOk = "";
     
-    // POUR LE MESSAGE DE RETOUR
+    // Message de retour
     $idForm = $this->verifierSaisie("idForm");
     
-    // CONTROLLER
-    // VERIFIER SI IL Y A UN FICHIER UPLOADE
-    // VERIFIER SI IL N'Y A PAS DE CODE D'ERREUR
-    // VERIFIER LE SUFFIXE DU FICHIER 
-    // (INTERDIRE .php, .asp, .jsp, etc...)
-    // (AUTORISER CERTAINS SUFFIXES .jpeg, .jpg, .gif, .png, .svg, .pdf, .txt, .doc, .docx, .xls, .ppt, .pptx, .odt, .html, .css, .js, .ttf, .otf)
-    // (ET NE PAS OUBLIER LES VARIANTES EN MAJUSCULES...)
-    // FILTRER LE NOM DU FICHIER POUR ENLEVER LES CARACTERES BIZARRES POUR LES URLS
-    // ON VA PRENDRE LA RESPONSABILITE DE SORTIR LE FICHIER DE SA QUARANTAINE
-    // (IDEALEMENT IL FAUDRAIT PASSER LE FICHIER A TRAVERS UN ANTIVIRUS POUR DETECTER LES VIRUS :-/)
-    // ET ON LE DEPLACE DANS LE DOSSIER assets/uploads/
-    // (AVEC LE NOM FILTRE)
     
-    // NOTE: 
-    // POUR LES IMAGES, ON PEUT UTILISER DES FONCTIONS DE PHP
-    // POUR CREER DES MINIATURES
-    
-    // EST-CE QUE LE TABLEAU $_FILES CONTIENT LA CLE $nameInput
+    // Est-ce que le tableau $_FILES contient la clé $nameInput
     if (isset($_FILES[$nameInput]))
     {
-        // EN HTML
-        // <input type="file" name="upload" />
-        // EN PHP
+       
         $tabInfoFichierUploade = $_FILES[$nameInput];
         if (!empty($tabInfoFichierUploade))
         {
             $error = $tabInfoFichierUploade["error"];
             if ($error == 0)
             {
-                // L'UPLOAD S'EST BIEN DEROULE
-                // JE RECUPERE LES AUTRES INFOS
+                // Je récupère les autre infos
                 $name       = $tabInfoFichierUploade["name"];
                 $type       = $tabInfoFichierUploade["type"];
                 $tmpName    = $tabInfoFichierUploade["tmp_name"];
@@ -1035,29 +849,21 @@ function verifierUploadEvenement ($nameInput)
                 
                 if ($size < 10 * 1024 * 1024) // 10 MEGAOCTETS
                 {
-                    // OK EN DESSOUS DE LA TAILLE LIMITE
-                    // ON VERIFIE L'EXTENSION
-                    // http://php.net/manual/fr/function.pathinfo.php
+                    // Vérification de l'extension
                     $extension = pathinfo($name, PATHINFO_EXTENSION);
-                    // METTRE L'EXTENSION EN MINUSCULES
-                    // http://php.net/manual/fr/function.strtolower.php
+                    // Mettre l'exension en minuscule
                     $extension = strtolower($extension);
                     
-                    // IL FAUT VERIFIER SI L'EXTENSION EST AUTORISEE
+                    // Vérifier si l'extension est autorisée
                     $tabExtensionOK = 
                     [ 
                         "jpeg", "jpg", "gif", "png", "svg"
                         
                     ];
                     
-                    // http://php.net/manual/fr/function.in-array.php
                     if (in_array($extension, $tabExtensionOK))
                     {
-                        // OK EXTENSION AUTORISEE
-                        // ON EST PRET A DEPLACER LE FICHIER DANS SON DOSSIER assets/uploads
-                        // http://php.net/manual/fr/function.preg-replace.php
-                        // TOUS LES CARACTERES QUI NE SONT DES LETTRES ENTRE a et z ou entre A et Z ou entre 0 et 9 ou qui ne sont -, _, .
-                        // ALORS IL FAUT REMPLACER PAR LE CARACTERE "" (EN FAIT LES SUPPRIMER)
+                        // Remplacement des caractères qui ne sont pas des lettres entre a et z ou entre A et Z ou entre 0 et 9 ou qui ne sont -, _, .
                         $nameOK     =  preg_replace("/[^a-zA-Z0-9-_\.]/", "", $name);
 
 
@@ -1074,26 +880,23 @@ function verifierUploadEvenement ($nameInput)
                          // url pour la base de donnée
                          $cheminUrlOk   =  $cheminPhotoUrl . $nameOK;
                         
-                        // TRANSFORMER LE CHEMIN OK EN MINUSCULES
+                        // Transformer le chemin ok en minuscule
                         $cheminUrlOk = strtolower($cheminUrlOk);
                         $cheminMoveOK = strtolower($cheminMoveOK);
                         
-                        // ON SORT LE FICHIER DE SA QUARANTAINE
-                        // http://php.net/manual/fr/function.move-uploaded-file.php
                         move_uploaded_file($tmpName, $cheminMoveOK);
                         
                     }
                     else
                     {
-                        // KO
-                        // EXTENSION NON AUTORISEE
+                        
+                        // Extension non autorisée
                         $GLOBALS["evenementCreateRetour"] = "EXTENSION NON CONFORME";
                     }
                 }
                 else 
                 {
-                    // KO
-                    // FICHIER TROP VOLUMINEUX
+                    // Fichier trop volumineux
                     $GLOBALS["evenementCreateRetour"] = "FICHIER TROP VOLUMINEUX";
                 }
             }
@@ -1118,11 +921,7 @@ function verifierUploadEvenement ($nameInput)
         if(($id > 0) && ($titre != "") && ($lieu != "") && ($dateStart != "") && ($dateEnd != "") && ($description != "") && (($photo != "") || ($oldPhotoPath != "")) 
             && ($date != "")){
 
-             //si ok on ajoute une ligne dans la table artiste
-            //avec le framwork W
-            //je dois créer un objet de la classe ArtistesModel
-            //(car la table mysql s'appel artistes)
-            //ne pas oublier de rajouter use \Model\ArtistesModel
+            // Création d'un objet de la classe EvenementModel
             $objetEvenementsModel = new EvenementsModel;
             //on peu utiliser la méthode insert
             if($photo != ""){
@@ -1144,8 +943,8 @@ function verifierUploadEvenement ($nameInput)
                                                "date_publication"     => $date
                                             ], $id); 
             }
+
             //Message de retour
-            //avec affichage lien vers la fiche //generateUrl permet de generer l'url de la route dans une methode
             $GLOBALS["evenementUpdateRetour"] = "<span class='glyphicon glyphicon-ok' aria-hidden='true'></span> Evènement $titre Modifié";
         }
         else{
@@ -1166,9 +965,7 @@ function verifierUploadEvenement ($nameInput)
 
         if ($id > 0){
 
-            // ON Va deleguer à un objet de la classe ArtisteModel
-            //le travail de supprimer la ligne correspondante à l'ID
-            //Vérifier qu'on a fait le use au debut du fichier
+            // On va deleguer à un objet de la classe EvenementModel le travail de supprimer la ligne correspondante à l'ID
             $objetEvenementsModel = new EvenementsModel;
             $objetEvenementsModel->delete($id);
 
@@ -1189,11 +986,7 @@ function verifierUploadEvenement ($nameInput)
         //vérifier si les infos sont correcte
         if(($nom_client != "") && ($description != "")){
 
-             //si ok on ajoute une ligne dans la table artiste
-            //avec le framwork W
-            //je dois créer un objet de la classe ArtistesModel
-            //(car la table mysql s'appel artistes)
-            //ne pas oublier de rajouter use \Model\ArtistesModel
+            // Création d'un objet de la classe GuestbookModel
             $objetLivreModel = new GuestbookModel;
             //on peu utiliser la méthode insert
             $objetLivreModel->insert([  "nom_client"    => $nom_client, 
@@ -1221,11 +1014,7 @@ function verifierUploadEvenement ($nameInput)
         //vérifier si les infos sont correcte
         if(($id > 0) && ($nomClient != "") && ($description != "") && ($date != "")){
 
-             //si ok on ajoute une ligne dans la table artiste
-            //avec le framwork W
-            //je dois créer un objet de la classe ArtistesModel
-            //(car la table mysql s'appel artistes)
-            //ne pas oublier de rajouter use \Model\ArtistesModel
+            // Création d'un objet de la classe GuestbookModel
             $objetGuestbookModel = new GuestbookModel;
             //on peu utiliser la méthode insert
 
@@ -1256,9 +1045,7 @@ function verifierUploadEvenement ($nameInput)
 
         if ($id > 0){
 
-            // ON Va deleguer à un objet de la classe ArtisteModel
-            //le travail de supprimer la ligne correspondante à l'ID
-            //Vérifier qu'on a fait le use au debut du fichier
+            // On va deleguer à un objet de la classe EvenementModel le travail de supprimer la ligne correspondante à l'ID
             $objetLivreModel = new GuestbookModel;
             $objetLivreModel->delete($id);
 

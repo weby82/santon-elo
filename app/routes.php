@@ -84,9 +84,10 @@
 		// Création des évènements
 		['GET|POST', '/admin/creer-evenement', 'AdminKelly#creerEvenement', 'admin_creation_evenements'],
 
-		// Modifiacation/update des évènements
+		// Modification/update des évènements
 		['GET|POST', '/admin/modifier/evenement/[:id]', 'AdminKelly#modifierEvenement',	'admin_modifier_evenement'],
 
+		// Suppression des évènements
 		['GET|POST', '/admin/evenements', 'AdminKelly#gererEvenements',	'admin_gerer_evenement'],
 
 		// Liste des avis client
