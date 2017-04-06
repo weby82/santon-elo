@@ -16,7 +16,7 @@
 
 			        $objetGuestbookModel = new \Model\GuestbookModel;
 	
-					$tabLigne = $objetGuestbookModel->findAll("id", "DESC");
+					$tabLigne = $objetGuestbookModel->findAll("date", "DESC");
 					       
 
 			    ?>  

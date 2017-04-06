@@ -43,12 +43,12 @@
 
 		echo
 <<<CODEHTML
-		<article>
-            <div class="list-evenement-inner col-md-8 col-md-offset-2" >
-                <figure class="col-md-4 $pair">
-                    <img src="$urlPhoto" alt="image 1" class="img-responsive img-circle">
+		<article class="col-md-8 col-md-offset-2 col-xs-12 col-xs-offset-0">
+            <div class="list-evenement-inner" >
+                <figure class="col-md-4 col-xs-12 $pair">
+                    <img src="$urlPhoto" alt="image 1" class="img-responsive">
                 </figure>
-                <div class="col-md-8 div-evenement">
+                <div class="col-md-8 col-xs-12 article-detail">
                     <h3>$titreLigneCourante</h3>
                     <div class="calendrier">
 	                    <span>A $lieuLigneCourante</span> 

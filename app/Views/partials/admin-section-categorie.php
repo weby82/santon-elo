@@ -40,7 +40,7 @@
 
 			        $objetSantonModel = new \Model\SantonModel;
 	
-					$tabLigne = $objetSantonModel->findAllColumn($categorie, "categorie");
+					$tabLigne = $objetSantonModel->findAllColumnTrier($categorie, "categorie", "nom", "ASC");
      
 
 			    ?>  

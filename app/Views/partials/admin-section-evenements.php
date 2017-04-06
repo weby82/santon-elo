@@ -15,7 +15,7 @@
 
             // findAll RETOURNE UN TABLEAU DE TABLEAU (LIGNES + COLONNES)
             // AVEC LES PARAMETRES, ON TRIE SUR LA COLONNE id EN ORDRE DECROISSANT
-            $tabLigne = $objetEvenementsModel->findAll("id", "DESC");
+            $tabLigne = $objetEvenementsModel->findAll("date_event_start", "DESC");
 
              ?>
 

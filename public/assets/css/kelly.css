@@ -1,39 +1,3 @@
-@media screen and (min-width:585px) and (max-width:992px) {
-	/* Page d'actualité */
-	.list-actualite {
-		margin: 20px 50px;		
-	}
-
-	.list-detail-actualite-inner figure{
-		width: 50%;
-		margin-left:auto;
-		margin-right: auto;
-
-	}
-}
-
-@media screen and (min-width:992px) {
-
-	/* detail actualité */
-	.div-actualite {
-		font-size: 16px;
-		margin-top: 8%;
-	}
-
-	.detail-actualite {
-		margin-top: 8%;
-		margin-right: 10%;
-	}
-
-	.list-detail-actualite-inner figure{
-		width: 80%;
-		margin-left: auto;
-		margin-right: auto;
-	}
-
-}
-
-
 /* liste actualité */
 .list-actualite-inner{
 	font-size: 15px;
@@ -109,7 +73,7 @@ figure {
 	padding-top: 0;
 }
 
-.list-evenement-inner{
+.list-evenement article{
 	margin-top: 8%;
 }
 
@@ -123,7 +87,9 @@ figure {
 	transition: all 0.5s ease;
 	transform: scale(1.1) rotate(30deg);	
 }
+@media screen and (min-width:992px) {
 
+}
 
 /* admin évènement */
 .hauteur-msg {
@@ -158,3 +124,38 @@ figure {
 	transform: scale(1.30) rotate(30deg);
 }
 
+@media screen and (min-width:585px) and (max-width:992px) {
+	/* Page d'actualité et évenement */
+	
+
+	.list-detail-actualite-inner figure, 
+	.list-actualite-inner figure,
+	 .list-evenement-inner figure{
+		width: 50%;
+		margin-left:auto;
+		margin-right: auto;
+		float: none !important;
+
+	}
+}
+
+@media screen and (min-width:992px) {
+
+	/* detail actualité */
+	.div-actualite {
+		font-size: 16px;
+		margin-top: 8%;
+	}
+
+	.detail-actualite {
+		margin-top: 8%;
+		margin-right: 10%;
+	}
+
+	.list-detail-actualite-inner figure{
+		width: 80%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+}

@@ -15,7 +15,7 @@
 
             // findAll RETOURNE UN TABLEAU DE TABLEAU (LIGNES + COLONNES)
             // AVEC LES PARAMETRES, ON TRIE SUR LA COLONNE id EN ORDRE DECROISSANT
-            $tabLigne = $objetActualiteModel->findAll("id", "DESC");
+            $tabLigne = $objetActualiteModel->findAll("date", "DESC");
 
              ?>
             <div class="retour">
@@ -25,9 +25,10 @@
                     <thead>
                         <tr>
                             <th>Photo</th>
-                            <th>Titre</th>
+                            <th width="120px">Titre</th>
                             <th>Contenu</th>
                             <th>Id</th>
+                            <th width="90px">Date ajout</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -37,11 +38,14 @@
                     $id             = $valeur["id"];
                     $titre          = $valeur["titre"];
                     $contenu        = $valeur["contenu"];
+                    $dateActu       = $valeur["date"];
                     $photo          = $valeur["photo"];
 
                     $urlPhoto       = $this->assetUrl($photo);
-
                     $hrefSupprimer  = "?idForm=actualiteDelete&id=$id";
+
+                    $phpDateActu = strtotime( $dateActu );
+                    $dateLigneFr = date( 'd-m-Y', $phpDateActu );
 
 
             ?> 
@@ -50,6 +54,7 @@
                         <td><?php echo $titre; ?></td>
                         <td><?php echo $contenu; ?></td>
                         <td><?php echo $id; ?></td>
+                        <td><?php echo $dateLigneFr; ?></td>
                         <td>
                             <a href="<?php echo $this->url('admin_modifier_actualites' , ['id' => $id]); ?>"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
                             <a href="<?php echo $hrefSupprimer; ?>" title="supprimer" class="delete"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
